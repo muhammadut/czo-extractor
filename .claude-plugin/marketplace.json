@@ -14,7 +14,7 @@
         "repo": "muhammadut/czo-extractor"
       },
       "description": "Extract and query CZO/CSIO mapping codes for any insurance carrier. 7-phase extraction with VB Parser, covering coverages, endorsements, discounts, surcharges, Z-codes, and province-specific logic.",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "license": "MIT",
       "keywords": ["csio", "czo", "insurance", "converter", "mapping", "vbnet"]
     }
