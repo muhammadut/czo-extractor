@@ -8,13 +8,48 @@ You are a CZO/CSIO mapping extraction agent. Your job is to produce a **complete
 ## VB Parser Tool
 
 You MUST use the VB Parser for all VB.NET file reading. It is the most reliable method.
+Use simple grep for string-matching verification sweeps only (Phase 7).
 
 **Auto-detect the parser** by searching these locations in order:
-1. Run: `find /c/Users -path "*/iq-update/*/tools/win-x64/vb-parser.exe" 2>/dev/null | head -1`
-2. Run: `find /c/Users -path "*/.claude/plugins/cache/*/vb-parser.exe" 2>/dev/null | head -1`
-3. If not found, tell the user: "VB Parser not found. Install the iq-update plugin first, or provide the path to vb-parser.exe."
+1. Run: `find "$HOME/.claude/plugins/cache" -name "vb-parser.exe" 2>/dev/null | head -1`
+2. Run: `find "$USERPROFILE/.claude/plugins/cache" -name "vb-parser.exe" 2>/dev/null | head -1`
+3. Run: `which vb-parser 2>/dev/null || where vb-parser 2>/dev/null`
+4. If not found, tell the user: "VB Parser not found. Install the iq-update plugin first (`claude plugin install iq-update@iq-update-marketplace`), or provide the path to vb-parser.exe."
 
-**Usage**: `<vb-parser-path> parse "<filepath>"` — returns JSON with functions, Select Case blocks, assignments, variables.
+**Usage**: `<vb-parser-path> parse "<filepath>"`
+
+**VB Parser output schema** (JSON):
+```json
+{
+  "file": "path/to/file.vb",
+  "totalLines": 308,
+  "parseErrors": [],
+  "functions": [
+    {
+      "name": "FunctionName",
+      "kind": "Function|Sub",
+      "visibility": "Public|Protected|Private",
+      "returnType": "Boolean|String|...",
+      "startLine": 10,
+      "endLine": 50,
+      "parameters": [{ "name": "param1", "type": "String", "modifier": "ByVal" }],
+      "selectCases": [
+        {
+          "expression": "frameworkDiscountCode",
+          "cases": [{ "labels": ["DiscountCode.Web"], "startLine": 15, "endLine": 16 }]
+        }
+      ],
+      "assignments": [{ "target": "csioValue", "value": "\"csio:ZINTD\"", "line": 16 }],
+      "localVariables": [{ "name": "csioValue", "type": "String", "line": 12 }]
+    }
+  ]
+}
+```
+
+Key fields for extraction:
+- `functions[].selectCases[].cases[].labels` — the framework enum values (left side of mapping)
+- `functions[].assignments[].value` — the CZO code strings (right side of mapping)
+- `functions[].name` — tells you the direction (TryConvertToCsio* = outbound, TryConvertToFramework* = inbound)
 
 ## Codebase Detection
 
@@ -94,16 +129,82 @@ Each version/company folder contains:
 
 16. Cross-reference: every code in CompanyConstants should appear in a converter.
 17. Run verification grep: `grep -r 'csio:Z' <version>/Companies/<carrier>/ --include='*.vb' | grep -v CompanyConstants`
-18. Produce output JSON with sections:
-    - `_metadata` — carrier, versions, date, file counts
-    - `coverageCodes` — autoEndorsements, homeEndorsements, homeLiabilities, watercraftLiability, scheduledPropertyItems
-    - `discountCodes` — autoDiscounts, autoSurcharges, habDiscounts, habSurcharges, tierCodes
-    - `genericBaseCodes` — foundational codes inherited from generic base
-    - `enumMappings` — policyTypes, vehicleBodyTypes, constructionTypes, etc.
-    - `responseClassification` — IsDiscount/IsSurcharge patterns
-    - `zCodeInventory` — complete Z-code list (carrier-proprietary codes)
-    - `provinceSpecificLogic` — mappings that vary by province
-    - `verificationReport` — completeness assessment
+18. Produce output JSON following this schema:
+
+```json
+{
+  "_metadata": {
+    "carrier": "Aviva",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V132", "V134", "V148"],
+    "extractionDate": "2026-03-17",
+    "filesProcessed": 219,
+    "description": "Complete CZO mapping for Aviva"
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "Opcf05": { "csioCode": "csio:End5", "source": "standard", "description": "OPCF 5" }
+    },
+    "homeEndorsements": {
+      "Earthquake": {
+        "csioCode": "csio:ERQK",
+        "source": "aviva",
+        "description": "Earthquake Coverage",
+        "deductibleOptions": { "EQH2": "2%", "EQH5": "5%" },
+        "provinceSpecific": { "BC": "additional codes..." }
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "WebDiscount": { "csioCode": "csio:ZINTD", "description": "Web/Internet Discount" }
+    },
+    "autoSurcharges": {},
+    "habDiscounts": {},
+    "habSurcharges": {},
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": ["list of standard codes carrier inherits unchanged"],
+    "homeLiabilities": [],
+    "homeDiscounts": [],
+    "homeSurcharges": [],
+    "autoEndorsementsOntario": [],
+    "autoEndorsementsNonOntario": [],
+    "autoDiscounts": [],
+    "autoSurcharges": []
+  },
+  "enumMappings": {
+    "policyTypes": {},
+    "vehicleBodyTypes": {},
+    "constructionTypes": {},
+    "fireProtectionClass": {},
+    "convictionCodes": {},
+    "lapseReasons": {}
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["csio:DIS*", "csio:ZT* (not ZTNE)", "..."],
+    "isSurchargePatterns": ["csio:SUR*", "csio:ZRHDS*", "..."]
+  },
+  "zCodeInventory": {
+    "autoCoverage": ["csio:Z38A", "csio:Z27F"],
+    "habCoverage": ["csio:ZBYL1", "csio:ZSAF1"],
+    "discountsSurcharges": ["csio:ZINTD", "csio:ZT0"]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 215,
+    "totalGenericInheritedCodes": 360,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%"
+  }
+}
+```
+
+Use this exact structure. Every code entry must have at minimum `csioCode` and `description`. Add `source` ("standard" or carrier name), `provinceSpecific` where logic varies, and `deductibleOptions`/`limitOptions` where applicable.
 
 19. Write output following the `.czo-extraction/` folder structure (see below).
 
@@ -169,7 +270,6 @@ All output goes into a `.czo-extraction/` folder at the converter root. Create i
 6. Update `.czo-extraction/config.json`:
    ```json
    {
-     "pluginVersion": "1.0.0",
      "lastRun": "YYYY-MM-DDTHH:MM:SS",
      "lastCarrier": "<CarrierName>",
      "converterRoot": "<auto-detected path>",
