@@ -1,20 +1,32 @@
 ---
-description: Answer questions about a carrier's CZO/CSIO mappings from extracted data or live code
+description: Answer questions about a carrier's CZO/CSIO mappings. Supports querying specific dates with @date syntax.
 ---
 
 Query: $ARGUMENTS
 
-Parse the arguments to extract the carrier name (first word) and the question (remaining words).
+Parse the arguments:
+- First word = carrier name
+- If `@YYYY-MM-DD` appears anywhere, use that date's extraction instead of latest
+- Remaining words = the question
 
-## Data Sources (check in order)
+## Data Sources
 
-1. **Pre-extracted JSON** — look for `extracts/<CarrierName>_czo_mapping.json` in the converter root
-2. **Live code** — if no extract exists, use the `czo-extractor` agent to read files directly
+1. **Date-specific extraction**: If `@YYYY-MM-DD` was specified, read `.czo-extraction/carriers/<Carrier>/<YYYY-MM-DD>.json`
+2. **Latest extraction**: Otherwise read `.czo-extraction/carriers/<Carrier>/latest.json`
+3. **Live code**: If no extraction exists, tell the user to run `/czo-extractor:extract <Carrier>` first, or offer to read files directly using the `czo-extractor` agent
 
 ## Answer Format
 
-- Include the actual CZO code (e.g., `csio:ERQK`) in every answer
-- Note whether codes are standard CSIO or carrier-proprietary (Z-codes)
-- Show province variants if the answer varies by province
-- Show all condition branches if the answer depends on policy type, coverage type, etc.
-- Include the source file path where the mapping is defined
+- Include actual CZO codes (e.g., `csio:ERQK`) in every answer
+- Note standard CSIO vs carrier-proprietary (Z-codes)
+- Show province variants if applicable
+- Show all condition branches (policy type, coverage type, etc.)
+- Include source file path where the mapping is defined
+
+## Example Queries
+
+```
+/czo-extractor:query Aviva What earthquake codes do we send in BC?
+/czo-extractor:query Aviva List all Z-codes
+/czo-extractor:query Aviva @2026-03-17 What discounts existed on that date?
+```

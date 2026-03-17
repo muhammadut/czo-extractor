@@ -20,38 +20,70 @@ claude --plugin-dir ./path/to/czo-extractor
 ## Skills
 
 ### `/czo-extractor:extract <CarrierName>`
-Extracts ALL CZO mapping codes for a carrier. Runs as an isolated subagent using the VB Parser. Produces a comprehensive JSON with coverages, endorsements, discounts, surcharges, Z-codes, and enum mappings.
+Full 7-phase extraction for a carrier. Runs as an isolated subagent using the VB Parser. Saves output to `.czo-extraction/carriers/<Carrier>/<date>.json`.
 
 ```
 /czo-extractor:extract Aviva
 /czo-extractor:extract Intact
-/czo-extractor:extract Wawanesa
-/czo-extractor:extract PortageMutual
 ```
 
-Output: `extracts/<CarrierName>_czo_mapping.json`
-
 ### `/czo-extractor:query <CarrierName> <question>`
-Answer questions about a carrier's CZO mappings from extracted data or live code.
+Answer questions from extracted data. Supports `@YYYY-MM-DD` to query historical extractions.
 
 ```
 /czo-extractor:query Aviva What earthquake codes do we send in BC?
-/czo-extractor:query Aviva List all Z-codes
-/czo-extractor:query Aviva What discounts do we send for home?
+/czo-extractor:query Aviva @2026-03-17 List all Z-codes
+```
+
+### `/czo-extractor:list [pending|extracted]`
+Show all carriers and their extraction status.
+
+```
+/czo-extractor:list             # All carriers
+/czo-extractor:list pending     # Only un-extracted
+```
+
+### `/czo-extractor:history [CarrierName]`
+Show extraction history for a carrier or all carriers.
+
+```
+/czo-extractor:history Aviva    # Aviva's extraction timeline
+/czo-extractor:history          # Summary of all carriers
+```
+
+### `/czo-extractor:diff <CarrierName> <date1> <date2>`
+Compare two extractions to see what codes were added, removed, or changed.
+
+```
+/czo-extractor:diff Aviva 2026-03-17 2026-04-01
+/czo-extractor:diff Aviva 2026-03-17 latest
+```
+
+## Output Folder Structure
+
+All extractions are saved in `.czo-extraction/` at the converter root:
+
+```
+.czo-extraction/
+├── config.json                          # Plugin state and settings
+├── inventory.json                       # All carriers + extraction status
+└── carriers/
+    └── Aviva/
+        ├── latest.json                  # Most recent extraction (auto-updated)
+        ├── 2026-03-17.json              # Date-stamped extraction
+        └── history.json                 # Extraction log for this carrier
 ```
 
 ## Dependency
 
-Requires the VB Parser tool (bundled with the `iq-update` plugin). The agent auto-detects the parser location from the iq-update plugin cache. If not found, install iq-update first or provide the path manually.
+Requires the VB Parser tool (bundled with the `iq-update` plugin). The agent auto-detects the parser from the iq-update plugin cache. If not found, install iq-update first.
 
 ## Architecture Quick Reference
 
-The converter codebase uses versioned folders with inheritance:
-- **v043/** = base version (1400+ files, all carriers inherit from here)
-- **V044/** through **V149/** = incremental overrides via class inheritance
-- **Generic/** = shared code for all carriers
-- **Companies/\<CarrierName\>/** = carrier-specific overrides
-- **FrameworkToCsio/** = TBW to CZO XML (outbound request)
-- **CsioToFramework/** = CZO XML to TBW (inbound response)
-- **EnumConverters/** = value-to-value lookup tables
+- **v043/** through **V149/** = versioned folders with class inheritance (latest wins)
+- **Generic/** = shared converters for all carriers
+- **Companies/\<Carrier\>/** = carrier-specific overrides
+- **FrameworkToCsio/** = TBW to CZO XML (outbound)
+- **CsioToFramework/** = CZO XML to TBW (inbound)
 - **CompanyConstants.vb** = carrier's CZO code dictionary
+- **EnumConverters/** = value-to-value lookup tables

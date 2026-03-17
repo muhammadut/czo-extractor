@@ -105,7 +105,77 @@ Each version/company folder contains:
     - `provinceSpecificLogic` — mappings that vary by province
     - `verificationReport` — completeness assessment
 
-19. Write to `extracts/<CarrierName>_czo_mapping.json` in the converter root.
+19. Write output following the `.czo-extraction/` folder structure (see below).
+
+## Output Structure
+
+All output goes into a `.czo-extraction/` folder at the converter root. Create it if it doesn't exist.
+
+```
+.czo-extraction/
+├── config.json                          # Plugin state: last run, settings
+├── inventory.json                       # All carriers list + extraction status
+├── carriers/
+│   └── <CarrierName>/
+│       ├── latest.json                  # Copy of most recent extraction
+│       ├── <YYYY-MM-DD>.json            # Date-stamped extraction
+│       └── history.json                 # Log of all extractions for this carrier
+```
+
+### Step-by-step output procedure:
+
+1. Create `.czo-extraction/carriers/<CarrierName>/` if it doesn't exist.
+
+2. Write the extraction JSON to `.czo-extraction/carriers/<CarrierName>/<YYYY-MM-DD>.json` using today's date.
+
+3. Copy the same file to `.czo-extraction/carriers/<CarrierName>/latest.json` (overwrite).
+
+4. Update `.czo-extraction/carriers/<CarrierName>/history.json`:
+   ```json
+   {
+     "carrier": "<CarrierName>",
+     "extractions": [
+       {
+         "date": "YYYY-MM-DD",
+         "file": "<YYYY-MM-DD>.json",
+         "totalCodes": <count>,
+         "zCodeCount": <count>,
+         "filesProcessed": <count>,
+         "versions": ["V132", "V134", "V148"],
+         "durationSeconds": <approx>,
+         "status": "complete"
+       }
+     ]
+   }
+   ```
+   Append to the `extractions` array if history.json already exists (read it first).
+
+5. Update `.czo-extraction/inventory.json` with carrier status:
+   ```json
+   {
+     "lastUpdated": "YYYY-MM-DD",
+     "carriers": {
+       "<CarrierName>": {
+         "status": "extracted",
+         "lastExtraction": "YYYY-MM-DD",
+         "totalCodes": <count>,
+         "latestFile": "carriers/<CarrierName>/latest.json"
+       }
+     }
+   }
+   ```
+   Merge with existing inventory (don't overwrite other carriers).
+
+6. Update `.czo-extraction/config.json`:
+   ```json
+   {
+     "pluginVersion": "1.0.0",
+     "lastRun": "YYYY-MM-DDTHH:MM:SS",
+     "lastCarrier": "<CarrierName>",
+     "converterRoot": "<auto-detected path>",
+     "vbParserPath": "<auto-detected path>"
+   }
+   ```
 
 ## Important Rules
 
@@ -115,3 +185,5 @@ Each version/company folder contains:
 - Z-codes (starting with Z after csio:) are carrier-proprietary — MUST capture
 - Note province-specific logic branches
 - Flag orphan codes (in constants but unused) and undeclared codes (in code but not in constants)
+- Always write date-stamped files — NEVER overwrite historical extractions
+- Always update history.json and inventory.json after extraction

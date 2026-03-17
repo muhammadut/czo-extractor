@@ -11,7 +11,8 @@ Enum/
 IdentifierMappings/
 My Project/
 
-# Extraction outputs (generated, not committed)
+# Extraction outputs (generated locally, not part of plugin)
+.czo-extraction/
 extracts/
 codex_verification.json
 aviva_czo_mapping_extract.json
