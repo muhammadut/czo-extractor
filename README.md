@@ -21,7 +21,7 @@ claude plugin install czo-extractor@czo-extractor-marketplace
 ### Prerequisites
 
 - [Claude Code CLI](https://claude.ai/code)
-- The `iq-update` plugin (provides the VB Parser tool)
+- Git LFS (for the bundled VB Parser binary)
 
 ## Usage
 
@@ -74,7 +74,7 @@ The plugin uses a 7-phase extraction methodology:
 6. **CsioToFramework** — Parse inbound response parsing (CZO XML → TBW)
 7. **Verify** — Cross-reference all codes via grep sweep
 
-Files are parsed using the Roslyn-based VB Parser (from the iq-update plugin) for reliable structural analysis of VB.NET code.
+Files are parsed using the Roslyn-based VB Parser (bundled at `tools/win-x64/vb-parser.exe`, tracked via Git LFS) for reliable structural analysis of VB.NET code.
 
 ## License
 

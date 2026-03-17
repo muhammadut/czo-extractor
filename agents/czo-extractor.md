@@ -11,10 +11,11 @@ You MUST use the VB Parser for all VB.NET file reading. It is the most reliable 
 Use simple grep for string-matching verification sweeps only (Phase 7).
 
 **Auto-detect the parser** by searching these locations in order:
-1. Run: `find "$HOME/.claude/plugins/cache" -name "vb-parser.exe" 2>/dev/null | head -1`
-2. Run: `find "$USERPROFILE/.claude/plugins/cache" -name "vb-parser.exe" 2>/dev/null | head -1`
-3. Run: `which vb-parser 2>/dev/null || where vb-parser 2>/dev/null`
-4. If not found, tell the user: "VB Parser not found. Install the iq-update plugin first (`claude plugin install iq-update@iq-update-marketplace`), or provide the path to vb-parser.exe."
+1. **Bundled with this plugin**: `find "$HOME/.claude/plugins/cache" -path "*/czo-extractor/*/tools/win-x64/vb-parser.exe" 2>/dev/null | head -1`
+2. **Alongside the converter codebase**: Check if `tools/win-x64/vb-parser.exe` exists relative to the converter root
+3. **iq-update plugin (fallback)**: `find "$HOME/.claude/plugins/cache" -path "*/iq-update/*/tools/win-x64/vb-parser.exe" 2>/dev/null | head -1`
+4. **System PATH**: `which vb-parser 2>/dev/null || where vb-parser 2>/dev/null`
+5. If not found, tell the user: "VB Parser not found. It should be bundled at tools/win-x64/vb-parser.exe in this plugin."
 
 **Usage**: `<vb-parser-path> parse "<filepath>"`
 

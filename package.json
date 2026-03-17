@@ -8,6 +8,7 @@
     ".claude-plugin/",
     "skills/",
     "agents/",
+    "tools/",
     "CLAUDE.md"
   ]
 }

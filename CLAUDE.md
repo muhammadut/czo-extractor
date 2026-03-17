@@ -74,9 +74,9 @@ All extractions are saved in `.czo-extraction/` at the converter root:
         └── history.json                 # Extraction log for this carrier
 ```
 
-## Dependency
+## VB Parser
 
-Requires the VB Parser tool (bundled with the `iq-update` plugin). The agent auto-detects the parser from the iq-update plugin cache. If not found, install iq-update first.
+The Roslyn-based VB Parser is **bundled** at `tools/win-x64/vb-parser.exe` (37MB, tracked via Git LFS). No external dependencies required. The agent auto-detects it from the plugin's tools/ directory.
 
 ## Architecture Quick Reference
 
