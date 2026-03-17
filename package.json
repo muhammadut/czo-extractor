@@ -1,0 +1,13 @@
+{
+  "name": "@muhammadut/czo-extractor",
+  "version": "1.0.0",
+  "description": "Extract and query CZO/CSIO mapping codes from VB.NET converter codebases. Produces comprehensive JSON inventories of all coverage codes, endorsements, discounts, surcharges, and Z-codes sent to insurance carriers.",
+  "keywords": ["claude-code-plugin", "csio", "czo", "insurance", "converter", "mapping", "vbnet"],
+  "license": "MIT",
+  "files": [
+    ".claude-plugin/",
+    "skills/",
+    "agents/",
+    "CLAUDE.md"
+  ]
+}

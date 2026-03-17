@@ -1,50 +1,57 @@
-# CZO Converter Project
+# CZO Extractor Plugin
 
-## Available Commands
+Extract and query CZO/CSIO mapping codes from VB.NET converter codebases for any insurance carrier.
 
-This project has custom slash commands for extracting and querying CZO/CSIO mapping codes from the converter codebase:
+## Installation
 
-### `/czo-extract <CarrierName>`
-Extracts ALL CZO mapping codes for a given insurance carrier. Produces a comprehensive JSON file with coverages, endorsements, discounts, surcharges, Z-codes, and enum mappings.
+```bash
+# Add marketplace
+claude plugin marketplace add https://github.com/muhammadut/czo-extractor/.claude-plugin/marketplace.json
 
-```
-/czo-extract Aviva           # Already done — see extracts/Aviva_czo_mapping.json
-/czo-extract Intact           # Extract for Intact
-/czo-extract Wawanesa         # Extract for Wawanesa
-/czo-extract PortageMutual    # Extract for Portage Mutual
+# Install plugin
+claude plugin install czo-extractor@czo-extractor-marketplace
 ```
 
-Output goes to `extracts/<CarrierName>_czo_mapping.json`.
-
-### `/czo-query <CarrierName> <question>`
-Answer questions about a carrier's CZO mappings based on extracted data or by reading the code directly.
-
-```
-/czo-query Aviva What earthquake codes do we send in BC?
-/czo-query Aviva List all Z-codes
-/czo-query Aviva What discounts do we send for home?
-/czo-query Aviva What changed between V134 and V148?
+Or for local development:
+```bash
+claude --plugin-dir ./path/to/czo-extractor
 ```
 
-## Tool Dependency
+## Skills
 
-These commands use the VB Parser for reliable VB.NET code analysis:
+### `/czo-extractor:extract <CarrierName>`
+Extracts ALL CZO mapping codes for a carrier. Runs as an isolated subagent using the VB Parser. Produces a comprehensive JSON with coverages, endorsements, discounts, surcharges, Z-codes, and enum mappings.
+
 ```
-C:\Users\tariqusama\.claude\plugins\cache\iq-update-marketplace\iq-update\0.5.3\tools\win-x64\vb-parser.exe
+/czo-extractor:extract Aviva
+/czo-extractor:extract Intact
+/czo-extractor:extract Wawanesa
+/czo-extractor:extract PortageMutual
 ```
 
-## Extracted Data
+Output: `extracts/<CarrierName>_czo_mapping.json`
 
-- `extracts/Aviva_czo_mapping.json` — Complete Aviva extraction (carrier-specific + generic base + response classification)
-- `extracts/carrier_inventory.json` — All 23 carriers with custom code + 27 generic-only carriers
+### `/czo-extractor:query <CarrierName> <question>`
+Answer questions about a carrier's CZO mappings from extracted data or live code.
+
+```
+/czo-extractor:query Aviva What earthquake codes do we send in BC?
+/czo-extractor:query Aviva List all Z-codes
+/czo-extractor:query Aviva What discounts do we send for home?
+```
+
+## Dependency
+
+Requires the VB Parser tool (bundled with the `iq-update` plugin). The agent auto-detects the parser location from the iq-update plugin cache. If not found, install iq-update first or provide the path manually.
 
 ## Architecture Quick Reference
 
+The converter codebase uses versioned folders with inheritance:
 - **v043/** = base version (1400+ files, all carriers inherit from here)
 - **V044/** through **V149/** = incremental overrides via class inheritance
 - **Generic/** = shared code for all carriers
-- **Companies/<CarrierName>/** = carrier-specific overrides
-- **FrameworkToCsio/** = TBW → CZO XML (outbound request)
-- **CsioToFramework/** = CZO XML → TBW (inbound response)
+- **Companies/\<CarrierName\>/** = carrier-specific overrides
+- **FrameworkToCsio/** = TBW to CZO XML (outbound request)
+- **CsioToFramework/** = CZO XML to TBW (inbound response)
 - **EnumConverters/** = value-to-value lookup tables
 - **CompanyConstants.vb** = carrier's CZO code dictionary

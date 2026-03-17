@@ -1,0 +1,24 @@
+# VB.NET source code (not part of plugin)
+*.vb
+*.vbproj
+*.config
+v043/
+V0*/
+V1*/
+VYYY/
+Dao/
+Enum/
+IdentifierMappings/
+My Project/
+
+# Extraction outputs (generated, not committed)
+extracts/
+codex_verification.json
+aviva_czo_mapping_extract.json
+
+# Legacy commands (replaced by plugin skills)
+.claude/commands/
+
+# OS files
+Thumbs.db
+.DS_Store

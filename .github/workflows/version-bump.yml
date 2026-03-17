@@ -1,0 +1,69 @@
+name: Auto Version Bump
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.github/**'
+      - '*.md'
+
+jobs:
+  version-bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version bump type
+        id: bump-type
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          if echo "$COMMIT_MSG" | grep -iq "breaking\|major"; then
+            echo "type=major" >> $GITHUB_OUTPUT
+          elif echo "$COMMIT_MSG" | grep -iq "feat\|feature\|add"; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get current version
+        id: current
+        run: |
+          VERSION=$(grep '"version"' .claude-plugin/plugin.json | head -1 | sed 's/.*"version": *"\([^"]*\)".*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Calculate new version
+        id: new
+        run: |
+          IFS='.' read -r MAJOR MINOR PATCH <<< "${{ steps.current.outputs.version }}"
+          BUMP="${{ steps.bump-type.outputs.type }}"
+          if [ "$BUMP" = "major" ]; then
+            MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0
+          elif [ "$BUMP" = "minor" ]; then
+            MINOR=$((MINOR + 1)); PATCH=0
+          else
+            PATCH=$((PATCH + 1))
+          fi
+          echo "version=$MAJOR.$MINOR.$PATCH" >> $GITHUB_OUTPUT
+
+      - name: Update version in all files
+        run: |
+          OLD="${{ steps.current.outputs.version }}"
+          NEW="${{ steps.new.outputs.version }}"
+          sed -i "s/\"version\": \"$OLD\"/\"version\": \"$NEW\"/g" .claude-plugin/plugin.json
+          sed -i "s/\"version\": \"$OLD\"/\"version\": \"$NEW\"/g" .claude-plugin/marketplace.json
+          sed -i "s/\"version\": \"$OLD\"/\"version\": \"$NEW\"/g" package.json
+
+      - name: Commit and tag
+        run: |
+          NEW="${{ steps.new.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .claude-plugin/plugin.json .claude-plugin/marketplace.json package.json
+          git diff --cached --quiet || git commit -m "chore: bump version to $NEW [skip ci]"
+          git tag "v$NEW"
+          git push origin main --tags
