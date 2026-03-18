@@ -137,18 +137,46 @@ Each version/company folder contains:
     "carrier": "Aviva",
     "extractedFrom": "Cssi.Schemas.Csio.Converters",
     "versions": ["V132", "V134", "V148"],
+    "latestVersion": "V148",
     "extractionDate": "2026-03-17",
     "filesProcessed": 219,
-    "description": "Complete CZO mapping for Aviva"
+    "description": "Complete CZO mapping for Aviva",
+    "versionRoles": {
+      "V148": "Guidewire (new service)",
+      "V134": "BAU (current service)",
+      "V132": "Legacy base"
+    }
   },
   "coverageCodes": {
     "autoEndorsements": {
-      "Opcf05": { "csioCode": "csio:End5", "source": "standard", "description": "OPCF 5" }
+      "VehicleSharing": {
+        "csioCode": "csio:5CS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Permission to Participate in Vehicle Sharing"
+      },
+      "WorryFreeBundle1000": {
+        "csioCode": "csio:ZCS1",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134", "V148"],
+        "description": "Worry-Free Bundle $1,000"
+      },
+      "Opcf44": {
+        "csioCode": "csio:44",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Family Protection OPCF 44"
+      }
     },
     "homeEndorsements": {
       "Earthquake": {
         "csioCode": "csio:ERQK",
         "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134", "V148"],
         "description": "Earthquake Coverage",
         "deductibleOptions": { "EQH2": "2%", "EQH5": "5%" },
         "provinceSpecific": { "BC": "additional codes..." }
@@ -160,7 +188,13 @@ Each version/company folder contains:
   },
   "discountCodes": {
     "autoDiscounts": {
-      "WebDiscount": { "csioCode": "csio:ZINTD", "description": "Web/Internet Discount" }
+      "WebDiscount": {
+        "csioCode": "csio:ZINTD",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134", "V148"],
+        "description": "Web/Internet Discount"
+      }
     },
     "autoSurcharges": {},
     "habDiscounts": {},
@@ -190,21 +224,52 @@ Each version/company folder contains:
     "isSurchargePatterns": ["csio:SUR*", "csio:ZRHDS*", "..."]
   },
   "zCodeInventory": {
-    "autoCoverage": ["csio:Z38A", "csio:Z27F"],
-    "habCoverage": ["csio:ZBYL1", "csio:ZSAF1"],
-    "discountsSurcharges": ["csio:ZINTD", "csio:ZT0"]
+    "autoCoverage": [
+      { "code": "csio:Z38A", "version": "V134", "availableIn": ["V134", "V148"] }
+    ],
+    "habCoverage": [
+      { "code": "csio:ZBYL1", "version": "V134", "availableIn": ["V134", "V148"] }
+    ],
+    "discountsSurcharges": [
+      { "code": "csio:ZINTD", "version": "V134", "availableIn": ["V134", "V148"] }
+    ]
   },
   "verificationReport": {
-    "totalCarrierSpecificCodes": 215,
-    "totalGenericInheritedCodes": 360,
+    "totalCarrierSpecificCodes": 322,
+    "totalGenericInheritedCodes": 55,
     "orphanCodes": [],
     "undeclaredCodes": [],
-    "extractionCompleteness": "100%"
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V148only": 5,
+      "V134only": 25,
+      "sharedAcrossVersions": 292
+    }
   }
 }
 ```
 
-Use this exact structure. Every code entry must have at minimum `csioCode` and `description`. Add `source` ("standard" or carrier name), `provinceSpecific` where logic varies, and `deductibleOptions`/`limitOptions` where applicable.
+### Version tagging rules
+
+For EVERY code entry, include these two version fields:
+- `"version"`: The LATEST version folder where this code's constant is defined. Determined by checking CompanyConstants.vb in order: V148 first, then V134, then V132.
+- `"availableIn"`: Array of ALL version folders that contain this code in their CompanyConstants.vb. This tells the user which services use this code.
+
+To populate these fields:
+1. Parse CompanyConstants.vb from each version folder (already done in Phase 2).
+2. For each code, check which versions contain it.
+3. `"version"` = the highest version that has it.
+4. `"availableIn"` = all versions that have it, sorted ascending.
+
+Example interpretation:
+- `"availableIn": ["V148"]` → Guidewire-only code, not in BAU
+- `"availableIn": ["V134"]` → BAU-only code, dropped from Guidewire
+- `"availableIn": ["V132", "V134", "V148"]` → Present in all versions
+- `"availableIn": ["V134", "V148"]` → Added in V134, carried forward
+
+Also add `"versionRoles"` to `_metadata` explaining what each version is used for (e.g., BAU vs Guidewire). Determine this by checking the ConverterFactory inheritance and service vendor routing in the latest version folders.
+
+Use this exact structure. Every code entry must have at minimum `csioCode`, `description`, `version`, and `availableIn`. Add `source` ("standard" or carrier name), `provinceSpecific` where logic varies, and `deductibleOptions`/`limitOptions` where applicable.
 
 19. Write output following the `.czo-extraction/` folder structure (see below).
 

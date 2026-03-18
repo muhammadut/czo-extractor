@@ -34,11 +34,22 @@ The extraction JSON has these top-level keys:
 - `.zCodeInventory` — all carrier-proprietary Z-codes by category
 - `.verificationReport` — completeness stats
 
-Each code entry has at minimum: `csioCode`, `description`. May also have: `source`, `provinceSpecific`, `deductibleOptions`, `limitOptions`.
+Each code entry has: `csioCode`, `description`, `version` (latest version folder), `availableIn` (all versions containing this code). May also have: `source`, `provinceSpecific`, `deductibleOptions`, `limitOptions`.
+
+### Version fields
+- `"version": "V148"` — the latest version where this code is defined
+- `"availableIn": ["V134", "V148"]` — which service versions include this code
+- `"_metadata.versionRoles"` — explains what each version is (e.g., V148=Guidewire, V134=BAU)
+
+### Common version-based queries
+- "What codes are Guidewire-only?" → filter where `availableIn` contains only the Guidewire version
+- "What codes are BAU-only?" → filter where `availableIn` does NOT contain the Guidewire version
+- "What's new in V148?" → filter where `availableIn` = ["V148"] only
 
 ## Answer Format
 
 - Include actual CZO codes (e.g., `csio:ERQK`) in every answer
 - Note standard CSIO vs carrier-proprietary (Z-codes start with Z after csio:)
+- Include the version and availableIn when relevant to the question
 - Show province variants if applicable
 - Show all condition branches (policy type, coverage type, etc.)
