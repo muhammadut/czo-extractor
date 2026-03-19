@@ -271,7 +271,34 @@ Also add `"versionRoles"` to `_metadata` explaining what each version is used fo
 
 Use this exact structure. Every code entry must have at minimum `csioCode`, `description`, `version`, and `availableIn`. Add `source` ("standard" or carrier name), `provinceSpecific` where logic varies, and `deductibleOptions`/`limitOptions` where applicable.
 
-19. Write output following the `.czo-extraction/` folder structure (see below).
+19. Write JSON output following the `.czo-extraction/` folder structure (see below).
+
+### PHASE 8: Extract Business Rules (Knowledge Base)
+
+20. Parse the KEY converter files that contain business logic (conditions, province rules, limit calculations). These are the files where Select Case blocks and If/Else branches determine WHICH code gets sent WHEN. Focus on:
+    - `FrameworkToCsio/Unrated/PcCoverageConverter.vb` — endorsement routing, earthquake logic, deductible/limit calculations, province-specific rules
+    - `FrameworkToCsio/Unrated/PcCoverageCollectionConverter.vb` — discount/surcharge addition logic, vehicle-level and hab-level processing
+    - `FrameworkToCsio/Unrated/PcPolicyConverter.vb` — group discount tier mapping by province
+    - `FrameworkToCsio/Unrated/DwellRatingConverter.vb` — dwelling classification (Basic/Preferred/Deluxe)
+    - Parse from LATEST version first. Then parse the previous version to document what changed.
+
+21. For each function, translate the VB.NET logic to plain English rules. Format:
+    ```markdown
+    ### [FunctionName]
+    **What it does**: [one sentence]
+    **When it runs**: [what triggers this]
+    **Rules**:
+    - If province = BC AND earthquake type starts with "EQ1": deductible = 5%
+    - If province = BC AND earthquake type starts with "EQ2": deductible = 10%
+    **Codes sent**: csio:ERQK, csio:ZEQLE (BC only)
+    ```
+    NO VB syntax. Plain English only. A business analyst must be able to read this.
+
+22. Write the rules document to `.czo-extraction/carriers/<CarrierName>/<YYYY-MM-DD>-rules.md`.
+
+23. Copy to `.czo-extraction/carriers/<CarrierName>/latest-rules.md` (overwrite).
+
+24. If the carrier has multiple versions (e.g., V134=BAU, V148=Guidewire), include a section at the end titled "## Version Differences (V148 vs V134)" that lists exactly what changed.
 
 ## Output Structure
 
@@ -283,8 +310,10 @@ All output goes into a `.czo-extraction/` folder at the converter root. Create i
 ├── inventory.json                       # All carriers list + extraction status
 ├── carriers/
 │   └── <CarrierName>/
-│       ├── latest.json                  # Copy of most recent extraction
-│       ├── <YYYY-MM-DD>.json            # Date-stamped extraction
+│       ├── latest.json                  # Most recent code dictionary
+│       ├── latest-rules.md              # Most recent business rules document
+│       ├── <YYYY-MM-DD>.json            # Date-stamped code dictionary
+│       ├── <YYYY-MM-DD>-rules.md        # Date-stamped business rules
 │       └── history.json                 # Log of all extractions for this carrier
 ```
 
@@ -294,9 +323,13 @@ All output goes into a `.czo-extraction/` folder at the converter root. Create i
 
 2. Write the extraction JSON to `.czo-extraction/carriers/<CarrierName>/<YYYY-MM-DD>.json` using today's date.
 
-3. Copy the same file to `.czo-extraction/carriers/<CarrierName>/latest.json` (overwrite).
+3. Write the rules document to `.czo-extraction/carriers/<CarrierName>/<YYYY-MM-DD>-rules.md`.
 
-4. Update `.czo-extraction/carriers/<CarrierName>/history.json`:
+4. Copy JSON to `.czo-extraction/carriers/<CarrierName>/latest.json` (overwrite).
+
+5. Copy rules to `.czo-extraction/carriers/<CarrierName>/latest-rules.md` (overwrite).
+
+6. Update `.czo-extraction/carriers/<CarrierName>/history.json`:
    ```json
    {
      "carrier": "<CarrierName>",
@@ -316,7 +349,7 @@ All output goes into a `.czo-extraction/` folder at the converter root. Create i
    ```
    Append to the `extractions` array if history.json already exists (read it first).
 
-5. Update `.czo-extraction/inventory.json` with carrier status:
+7. Update `.czo-extraction/inventory.json` with carrier status:
    ```json
    {
      "lastUpdated": "YYYY-MM-DD",
@@ -332,7 +365,7 @@ All output goes into a `.czo-extraction/` folder at the converter root. Create i
    ```
    Merge with existing inventory (don't overwrite other carriers).
 
-6. Update `.czo-extraction/config.json`:
+8. Update `.czo-extraction/config.json`:
    ```json
    {
      "lastRun": "YYYY-MM-DDTHH:MM:SS",
