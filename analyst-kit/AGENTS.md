@@ -14,11 +14,14 @@ All extraction data is in the `carriers/` folder:
 ```
 carriers/
 ├── Aviva/
-│   ├── latest.json          ← most recent extraction (use this by default)
-│   ├── 2026-03-17.json      ← date-stamped extraction
+│   ├── latest.json          ← code dictionary (use this for code lookups)
+│   ├── latest-rules.md      ← business rules in plain English (use this for HOW/WHEN/WHY questions)
+│   ├── 2026-03-17.json      ← date-stamped code dictionary
+│   ├── 2026-03-17-rules.md  ← date-stamped business rules
 │   └── history.json         ← log of all extractions
 ├── Intact/
 │   ├── latest.json
+│   ├── latest-rules.md
 │   └── ...
 └── ...
 ```
@@ -27,7 +30,11 @@ Also:
 - `inventory.json` — shows all carriers and their extraction status
 - `config.json` — extraction settings
 
-Always use `carriers/<Carrier>/latest.json` unless the user specifies a date.
+**Two files per carrier — use BOTH:**
+- `latest.json` — answers "WHAT codes exist?" (the dictionary)
+- `latest-rules.md` — answers "HOW does it work?" (the logic, conditions, province rules)
+
+Always check BOTH files when answering questions. The JSON has the code list; the rules doc has the conversion logic (province-specific branches, deductible tiers, limit calculations, version differences).
 
 ## JSON Structure
 
@@ -91,28 +98,48 @@ Each code entry looks like:
   - `["V134"]` only → BAU-only (current service, dropped from new)
   - `["V134", "V148"]` → both services
 
+## Which File Answers Which Question
+
+| Question type | Use this file |
+|---|---|
+| "What code do we send for X?" | `latest.json` |
+| "List all Z-codes" | `latest.json` → zCodeInventory |
+| "What codes are Guidewire-only?" | `latest.json` → filter by availableIn |
+| "How does earthquake deductible work in BC?" | `latest-rules.md` |
+| "What are the province-specific rules?" | `latest-rules.md` |
+| "What limit options exist for building bylaw?" | `latest-rules.md` |
+| "What changed between V134 and V148?" | `latest-rules.md` → Version Differences section |
+| "Create an Excel of all codes" | `latest.json` |
+| "Compare Aviva vs Intact" | Both carriers' `latest.json` |
+
+**Rule of thumb**: If the question is "WHAT code?" → JSON. If the question is "HOW/WHEN/WHY?" → rules.md. If unsure, check both.
+
 ## What You Can Do
 
 When the analyst asks questions, you can:
 
 1. **Look up codes**: Read the JSON and find specific coverages, endorsements, discounts
-2. **Create Excel files**: Generate .csv or .xlsx files with any subset of the data
-3. **Compare carriers**: Load two carrier JSONs and diff their codes
-4. **Filter by version**: Show only Guidewire-new codes, BAU-only codes, etc.
-5. **List Z-codes**: Show all proprietary codes that may need updating
-6. **Province analysis**: Check for province-specific logic in the data
-7. **Create reports**: Summarize findings in tables, charts, or documents
-8. **Answer "what do we send?"**: For any coverage/endorsement/discount, show the exact code
+2. **Explain conversion logic**: Read the rules doc and explain how a specific code is determined (conditions, province rules, deductible tiers)
+3. **Create Excel files**: Generate .csv or .xlsx files with any subset of the data
+4. **Compare carriers**: Load two carrier JSONs and diff their codes
+5. **Filter by version**: Show only Guidewire-new codes, BAU-only codes, etc.
+6. **List Z-codes**: Show all proprietary codes that may need updating
+7. **Province analysis**: Read rules doc for province-specific branches
+8. **Create reports**: Summarize findings in tables, charts, or documents
+9. **Answer "what do we send?"**: For any coverage/endorsement/discount, show the exact code AND the conditions under which it's sent
 
 ## Common Questions the Analyst Will Ask
 
 - "What coverages do we send for Aviva home?"
 - "List all Z-codes for Aviva"
-- "What earthquake deductible options do we have?"
+- "What earthquake deductible options do we have?" ← needs rules.md
+- "How does earthquake work differently in BC vs Alberta?" ← needs rules.md
 - "What discounts are Guidewire-only?"
 - "Create an Excel of all auto endorsements with their codes"
 - "Compare Aviva vs Intact home endorsements"
 - "What codes were dropped from V134 to V148?"
 - "Which codes are proprietary vs standard CSIO?"
-- "What building bylaw limit options exist?"
-- "Show all watercraft liability codes by boat type"
+- "What building bylaw limit options exist?" ← needs rules.md
+- "Show all watercraft liability codes by boat type" ← needs rules.md
+- "How does End 39 routing work in NS vs Ontario?" ← needs rules.md
+- "What sewer backup limit do we send in NB vs Ontario?" ← needs rules.md
