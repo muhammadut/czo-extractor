@@ -80,20 +80,32 @@ Look for `.czo-extraction/carriers/<Carrier>/latest.json` at the converter root.
 
 ## Step 7: Check ADO Credentials
 
-Search for `.env` file with ADO credentials in this order:
+Search for `.env` file at:
 1. `<converter_root>/.env`
 2. `<converter_root>/../.env`
-3. The known location: `E:/intelli-new/Cssi.Net/Portage Mutual/.env`
 
-The `.env` must contain: `ADO_PAT`, `ADO_ORG`, `ADO_PROJECT`
+**If `.env` is found**, verify it contains `ADO_PAT`, `ADO_ORG`, `ADO_PROJECT`. If any are missing, ask for the missing values (see below).
 
-If not found, tell the user to create `<converter_root>/.env`:
+**If `.env` is NOT found**, prompt the user interactively:
+
+```
+ADO credentials needed for ticket fetching.
+
+ADO Personal Access Token (PAT): <ask user to paste>
+ADO Organization [rivalitinc]: <ask, use default if blank>
+ADO Project [Rival Insurance Technology]: <ask, use default if blank>
+Use visualstudio.com URLs? [Y/n]: <ask, default Y>
+```
+
+Write the `.env` file at `<converter_root>/.env`:
 ```bash
-export ADO_PAT='your-personal-access-token'
-export ADO_ORG='rivalitinc'
-export ADO_PROJECT='Rival Insurance Technology'
+export ADO_PAT='<user-provided>'
+export ADO_ORG='<user-provided or default>'
+export ADO_PROJECT='<user-provided or default>'
 export ADO_USE_VSCOM='1'
 ```
+
+The defaults (`rivalitinc`, `Rival Insurance Technology`, `ADO_USE_VSCOM=1`) match the standard CSSI Azure DevOps setup. Most users just need to paste their PAT.
 
 ## Step 8: Find Plugin Root and fetch-ticket.sh
 
