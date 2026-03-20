@@ -4,6 +4,15 @@ description: Extract all CZO/CSIO mapping codes and business rules for an insura
 
 Extract CZO mappings for carrier: $ARGUMENTS
 
+**If no carrier name is provided** ($ARGUMENTS is empty), show usage and stop:
+```
+Usage: /czo-extractor:extract <CarrierName>
+
+Example: /czo-extractor:extract Aviva
+
+Run /czo-extractor:list to see available carriers.
+```
+
 This skill chains TWO agents in sequence:
 
 ## Step 1: Extraction (czo-extractor agent)

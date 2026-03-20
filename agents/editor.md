@@ -36,9 +36,13 @@ Read `plan/intents.yaml` from the workstream directory. Parse all intents.
 If validation fails, report which intents are invalid and STOP. Do not apply any edits.
 
 **Check for resume** — if `execution/operations_log.yaml` exists (retry after failure):
-- Read completed intent IDs from the log
-- Skip those intents during processing
-- Log: "Resuming from intent <first_incomplete_id>, skipping <count> already-applied intents"
+- Read completed intent IDs and their file paths from the log
+- For each file that has a snapshot but some intents FAILED or are missing from the log:
+  - That file was reverted to its snapshot state
+  - ALL intents for that file must be re-applied (not just the failed ones)
+  - Mark previously-completed intents for that file as "re-applying"
+- For files where ALL intents succeeded: skip entirely
+- Log: "Resuming: re-applying <count> intents for <count> files, skipping <count> fully-completed files"
 
 **Intent schema contract** (produced by analyzer, consumed by editor):
 - `action` field (intent-level): Describes WHAT to do — `add_constants`, `add_case_branch`, `create_file`, `update_factory_method`, `add_factory_method`, `add_compile_include`, or a generic edit

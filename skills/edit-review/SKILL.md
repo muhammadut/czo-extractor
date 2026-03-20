@@ -6,7 +6,10 @@ Review the code changes for the active workstream.
 
 ## Preconditions
 
-**FIRST ACTION**: Read `.czo-workstreams/paths.md` at the converter root.
+**FIRST ACTION**: Find and read `.czo-workstreams/paths.md`.
+
+Search in order: current directory, parent directories (up to 3 levels), known converter location.
+If not found: "No workspace found. Run `/czo-extractor:edit-init <Carrier>` first."
 
 Find the active workstream:
 1. List directories in `<workstreams_root>/ws-*/`
@@ -82,17 +85,20 @@ completed_at: <ISO timestamp>
 ```
 
 On rejection:
-1. Restore all files from snapshots
-2. Update `state: REVERTED`
-3. Tell user: "Changes have been rolled back. To start over, delete the workstream and re-plan:"
+1. Restore all modified files from snapshots (copy snapshot back to original path using `snapshots/manifest.yaml`)
+2. **Delete any files that were CREATED** (intents with `action: create_file`) — these have no snapshot, they must be removed
+3. **Revert .vbproj changes** if any `<Compile Include>` entries were added for new files
+4. Update `state: REVERTED`
+5. Tell user: "Changes have been rolled back. To start over, delete the workstream and re-plan:"
 ```
 rm -rf <workstreams_root>/ws-<ticket_id>
 /czo-extractor:edit-plan <ticket>
 ```
 
 On rework:
-1. Update `state: PLANNING`, reset `gate1_plan: pending`
-2. Tell user to re-plan: `/czo-extractor:edit-plan <ticket>` (ticket content will be reused, not re-fetched)
+1. **Clean up execution artifacts**: delete `execution/` subdirectory (snapshots, operations_log) so the next execution starts fresh
+2. Update `state: PLANNING`, reset `gate1_plan: pending`
+3. Tell user to re-plan: `/czo-extractor:edit-plan <ticket>` (ticket content will be reused, not re-fetched)
 
 ## Step 3: Post-Approval Suggestion
 

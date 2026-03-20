@@ -13,15 +13,22 @@ One-time setup per carrier. Creates a `.czo-workstreams/` workspace at the conve
 - First word = carrier name (e.g., `Aviva`)
 - Normalize capitalization to match folder names in `Companies/`
 
-**If no carrier name is provided**, tell the user:
+**If no carrier name is provided**, list available carriers and stop:
 ```
 Usage: /czo-extractor:edit-init <CarrierName>
 
 Example: /czo-extractor:edit-init Aviva
 
 Available carriers:
+  <list from */Companies/*/ in converter root>
 ```
-Then list all carrier folders found under `*/Companies/` in the converter root and stop.
+
+**If carrier name doesn't match any folder** in `*/Companies/`, show:
+```
+Carrier '<name>' not found. Available carriers:
+  <list>
+Did you mean: <closest match>?
+```
 
 ## Step 2: Auto-Detect Converter Root
 
@@ -88,9 +95,27 @@ export ADO_PROJECT='Rival Insurance Technology'
 export ADO_USE_VSCOM='1'
 ```
 
-## Step 8: Create Workspace
+## Step 8: Find Plugin Root and fetch-ticket.sh
+
+The plugin root is the directory containing this SKILL.md's parent `skills/` directory. Resolve it:
+1. Check if this skill is running from a local plugin directory (look for `fetch-ticket.sh` alongside `skills/`)
+2. Search the plugin cache: `find "$HOME/.claude/plugins/cache" -path "*/czo-extractor/*/fetch-ticket.sh" 2>/dev/null | head -1`
+3. If not found, error: "fetch-ticket.sh not found. Ensure the plugin is properly installed."
+
+Store both `plugin_root` and `fetch_ticket` absolute paths.
+
+## Step 9: Create Workspace
 
 Create `.czo-workstreams/` at the converter root if it doesn't exist.
+
+**If `.czo-workstreams/paths.md` already exists**, read it and check the `carrier_name` field:
+- If it matches the current carrier: proceed (re-init is safe, will overwrite config)
+- If it's a DIFFERENT carrier: check for active workstreams (`ws-*/manifest.yaml` with state != COMPLETED and state != REVERTED). If any exist, warn:
+  ```
+  Active workstreams exist for <old_carrier>. Switching to <new_carrier> will not
+  affect existing workstreams, but paths.md will point to the new carrier.
+  Complete or delete active workstreams first, or type 'continue' to proceed anyway.
+  ```
 
 ### Write `paths.md`
 
@@ -153,7 +178,7 @@ extraction:
 initialized: <ISO timestamp>
 ```
 
-## Step 9: Report
+## Step 10: Report
 
 Print a summary:
 ```

@@ -6,7 +6,10 @@ Execute the approved code change plan.
 
 ## Preconditions
 
-**FIRST ACTION**: Read `.czo-workstreams/paths.md` at the converter root.
+**FIRST ACTION**: Find and read `.czo-workstreams/paths.md`.
+
+Search in order: current directory, parent directories (up to 3 levels), known converter location.
+If not found: "No workspace found. Run `/czo-extractor:edit-init <Carrier>` first."
 
 Then find the active workstream:
 1. List directories in `<workstreams_root>/ws-*/`

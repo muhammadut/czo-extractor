@@ -6,16 +6,33 @@ Plan code changes for ticket: $ARGUMENTS
 
 ## Preconditions
 
-**FIRST ACTION**: Read `.czo-workstreams/paths.md` at the converter root.
-- If it doesn't exist, tell the user: "Run `/czo-extractor:edit-init <Carrier>` first."
-- Parse all paths from it. These are your source of truth for the rest of this skill.
+**FIRST ACTION**: Find and read `.czo-workstreams/paths.md`.
+
+Search for it in this order:
+1. Current working directory: `./.czo-workstreams/paths.md`
+2. Parent directories (up to 3 levels): `../.czo-workstreams/paths.md`, etc.
+3. Known converter location: `E:/cssi/Cssi.Net/Components/Cssi.Schemas/Cssi.Schemas.Csio.Converters/.czo-workstreams/paths.md`
+
+If not found, tell the user: "No workspace found. Run `/czo-extractor:edit-init <Carrier>` from the converter root first."
+
+Parse all paths from it. These are your source of truth for the rest of this skill.
 
 Also read `.czo-workstreams/config.yaml` for carrier metadata.
+If config.yaml doesn't exist, tell the user: "Workspace incomplete — config.yaml not found. Re-run `/czo-extractor:edit-init <Carrier>`."
 
 ## Step 1: Parse Arguments
 
+**If $ARGUMENTS is empty**, tell the user and stop:
+```
+Usage: /czo-extractor:edit-plan <ticket-number>
+
+Example: /czo-extractor:edit-plan 26765
+         /czo-extractor:edit-plan https://dev.azure.com/.../26765
+```
+
 - Accept a work item ID (e.g., `26765`) or full ADO URL
 - Extract the numeric ID
+- If no numeric ID can be extracted, error: "Expected a ticket number or ADO URL. Got: '<input>'"
 
 ## Step 2: Check for Existing Extraction
 
@@ -58,14 +75,14 @@ The output goes to `workitem-<id>-full/` in the current directory.
 
 **Verify output exists**:
 ```bash
-test -f workitem-<id>-full/llm-context-brief.md
+test -f <workstreams_root>/workitem-<ticket_id>-full/llm-context-brief.md
 ```
 
 Move the output into the workstream:
 ```bash
 mkdir -p <workstreams_root>/ws-<ticket_id>/ticket
-mv workitem-<id>-full/* <workstreams_root>/ws-<ticket_id>/ticket/
-rmdir workitem-<id>-full
+mv <workstreams_root>/workitem-<ticket_id>-full/* <workstreams_root>/ws-<ticket_id>/ticket/
+rmdir <workstreams_root>/workitem-<ticket_id>-full
 ```
 
 ## Step 3b: Check for External Links
@@ -97,6 +114,11 @@ Then type 'continue' to proceed with analysis.
 If no external links are found, proceed directly.
 
 ## Step 4: Create Workstream Manifest
+
+**Check for existing workstream** at `<workstreams_root>/ws-<ticket_id>/manifest.yaml`:
+- If it exists and state is `EXECUTED` or `COMPLETED`: warn the user "This ticket already has executed changes. Re-planning will reset the workstream. Type 'continue' to proceed or 'cancel' to stop."
+- If it exists and state is `PLANNING` with `gate1_plan: approved`: warn "Plan was already approved. Re-planning will reset approval. Continue?"
+- If state is `PLANNING` with `gate1_plan: pending`: proceed silently (re-plan is expected)
 
 Write `<workstreams_root>/ws-<ticket_id>/manifest.yaml`:
 ```yaml
@@ -138,9 +160,11 @@ The analyzer agent will produce:
 **Validate analyzer output**:
 1. Check `plan/execution_plan.md` exists and is non-empty
 2. Check `plan/intents.yaml` exists and is valid YAML
-3. Check each intent in intents.yaml has required fields: `id`, `file`, `action`, `changes`
-4. Check that every file referenced in intents actually exists in the converter codebase
-5. If validation fails, tell the user what went wrong and offer to re-run analysis
+3. If intents array is empty, tell user: "No code changes identified for this ticket. The ticket may not contain actionable CSIO/CZO mapping changes."
+4. Check each intent has required fields: `id`, `file`, `action`, `changes`
+5. Check that every file referenced in intents actually exists (except for `create_file` intents where the file is new)
+6. **Check for `[NEEDS CLARIFICATION]` markers** in any intent's content. If found, flag them prominently at Gate 1: "WARNING: X intents have unresolved placeholders that MUST be filled in before execution."
+7. If validation fails, tell the user what went wrong and offer to re-run analysis
 
 ## Step 6: Gate 1 — Developer Approval
 

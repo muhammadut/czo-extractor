@@ -4,8 +4,16 @@ description: Answer questions about a carrier's CZO/CSIO mappings. Supports quer
 
 Query: $ARGUMENTS
 
+**If $ARGUMENTS is empty**, show usage and stop:
+```
+Usage: /czo-extractor:query <CarrierName> <question>
+
+Example: /czo-extractor:query Aviva What earthquake codes do we send in BC?
+```
+
 Parse the arguments:
 - First word = carrier name
+- Validate the carrier name matches a known carrier (check `.czo-extraction/carriers/` or `*/Companies/` folders). If not recognized, tell the user: "'<word>' is not a recognized carrier. Available carriers: <list>"
 - If `@YYYY-MM-DD` appears anywhere, use that date's extraction instead of latest
 - Remaining words = the question
 
