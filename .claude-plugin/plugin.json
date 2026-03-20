@@ -1,6 +1,6 @@
 {
   "name": "czo-extractor",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Extract, query, and edit CZO/CSIO mapping codes in VB.NET converter codebases. Produces JSON code inventories and supports ticket-driven code editing with plan/execute/review workflow.",
   "keywords": ["csio", "czo", "insurance", "converter", "mapping", "vbnet", "code-editing", "ado-tickets"]
 }
