@@ -17,6 +17,12 @@ extracts/
 codex_verification.json
 aviva_czo_mapping_extract.json
 
+# Edit workstreams (generated locally per carrier)
+.czo-workstreams/
+
+# Fetched ticket data (temporary)
+workitem-*-full/
+
 # Legacy commands (replaced by plugin skills)
 .claude/commands/
 
