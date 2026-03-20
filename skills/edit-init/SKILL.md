@@ -13,6 +13,16 @@ One-time setup per carrier. Creates a `.czo-workstreams/` workspace at the conve
 - First word = carrier name (e.g., `Aviva`)
 - Normalize capitalization to match folder names in `Companies/`
 
+**If no carrier name is provided**, tell the user:
+```
+Usage: /czo-extractor:edit-init <CarrierName>
+
+Example: /czo-extractor:edit-init Aviva
+
+Available carriers:
+```
+Then list all carrier folders found under `*/Companies/` in the converter root and stop.
+
 ## Step 2: Auto-Detect Converter Root
 
 Find the converter codebase by searching for the version folder structure:
