@@ -1,0 +1,936 @@
+{
+  "_metadata": {
+    "carrier": "PortageMutual",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043"],
+    "latestVersion": "v043",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 49,
+    "description": "Complete CZO mapping for PortageMutual. Single-version carrier (v043 only) inheriting from v043/Generic base.",
+    "versionRoles": {
+      "v043": "Base version (only version for this carrier)"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {},
+    "homeEndorsements": {
+      "SewerBackup": {
+        "csioCode": "csio:WATER",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Sewer Backup / Water Damage Endorsement (Unlimited Form sends csio:WATER; Limited Form or capped amount sends standard SewerBackupCoverage code via generic base)"
+      },
+      "WaterCoverage": {
+        "csioCode": "csio:OVWAT",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Overland Water Coverage"
+      },
+      "HomeSystemandServiceLineBundle": {
+        "csioCode": "csio:SMART",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Home Systems and Service Line Endorsement"
+      },
+      "TenantRestriction": {
+        "csioCode": "csio:VTEXC ",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Tenant Restriction (note trailing space in code)"
+      },
+      "RoofSurfaceBasisOfSettlement": {
+        "csioCode": "csio:ROOFW",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Roof Surface Basis of Settlement"
+      },
+      "ClaimsProtector": {
+        "csioCode": "standard:ClaimFreeProtection",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Claims Protector / Claim-Free Protection (uses standard CSIO code via generic base)"
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "Age": {
+        "csioCode": "standard:DiscountDriverAge",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Driver Age Discount (overrides base to explicitly map DiscountCode.Age)"
+      },
+      "MultiVehicleTpl": {
+        "csioCode": "standard:DiscountMultiVehicle",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Multi-Vehicle Discount (TPL) - maps to standard Multi-Vehicle code"
+      },
+      "MultiVehicleDcpd": {
+        "csioCode": "standard:DiscountMultiVehicle",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Multi-Vehicle Discount (DCPD) - maps to standard Multi-Vehicle code"
+      },
+      "MultiVehicleColl": {
+        "csioCode": "standard:DiscountMultiVehicle",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Multi-Vehicle Discount (Collision) - maps to standard Multi-Vehicle code"
+      }
+    },
+    "autoSurcharges": {},
+    "habDiscounts": {
+      "SecuritySystem": {
+        "csioCode": "standard:PremisesAlarmFireorIntrusionSystem",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Premises Alarm / Fire or Intrusion System Discount"
+      },
+      "Deductible": {
+        "csioCode": "standard:MiscellaneousDiscount",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Deductible Discount (maps to Miscellaneous Discount)"
+      },
+      "Age": {
+        "csioCode": "standard:MatureCitizen",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Mature Citizen / Age Discount"
+      },
+      "CreditScore": {
+        "csioCode": "csio:DISST",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Distinct Client Discount (credit-score based, proprietary code)"
+      }
+    },
+    "habSurcharges": {
+      "Suites": {
+        "csioCode": "standard:MultipleFamilySurcharge",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Multiple Family / Suites Surcharge"
+      },
+      "Deductible": {
+        "csioCode": "standard:MiscellaneousSurcharge",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Deductible Surcharge (maps to Miscellaneous Surcharge)"
+      },
+      "Heating": {
+        "csioCode": "standard:SecondaryAuxiliaryHeating",
+        "source": "portagemutual",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Secondary/Auxiliary Heating Surcharge"
+      }
+    },
+    "tierCodes": {}
+  },
+  "carrierSpecificConstants": {
+    "questions": {
+      "RebuildingCost": {
+        "fieldCode": "REBUILD",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Rebuilding Cost question field"
+      },
+      "SolidFuelWETTInspected": {
+        "fieldCode": "WETT.INSP",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Solid Fuel WETT Inspected question field"
+      },
+      "BackwaterValve": {
+        "fieldCode": "BW.FLAPR",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Backwater Valve question field"
+      },
+      "BackwaterValveInstallationDate": {
+        "fieldCode": "BW.IN.DT",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Backwater Valve Installation Date question field"
+      },
+      "OldStyleBackup": {
+        "fieldCode": "CA.BASIN",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Old Style Backup (Catch Basin) question field"
+      },
+      "OldStyleBackupInstallationDate": {
+        "fieldCode": "CA.IN.DT",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Old Style Backup Installation Date question field"
+      },
+      "AutomaticSumpPump": {
+        "fieldCode": "AU.SPUMP",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Automatic Sump Pump question field"
+      },
+      "AutomaticSumpPumpInstallationDate": {
+        "fieldCode": "AU.IN.DT",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Automatic Sump Pump Installation Date question field"
+      },
+      "SignedApplication": {
+        "fieldCode": "SIGN.APP",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Signed Application Warranty question field"
+      },
+      "SignedPaymentAuthorization": {
+        "fieldCode": "SIGN.PAY",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Signed Payment Authorization question field"
+      },
+      "CurrentMVR": {
+        "fieldCode": "MVR.CUR",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Current Motor Vehicle Record question field"
+      }
+    },
+    "habPackageAndOtherForms": {
+      "AllRiskPersonalProperty": {
+        "fieldCode": "ARPP",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "All Risk Personal Property endorsement code (non-CSIO proprietary)"
+      },
+      "GolfPackageEndorsement": {
+        "fieldCode": "GOLFP",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Golf Package Endorsement code (non-CSIO proprietary)"
+      },
+      "LogConstructionSettlementLimitation": {
+        "fieldCode": "LOGSL",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Log Construction Settlement Limitation code (non-CSIO proprietary)"
+      },
+      "WaterDamageEndorsement": {
+        "fieldCode": "WATER",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Water Damage Endorsement code (non-CSIO proprietary, not to be confused with csio:WATER)"
+      },
+      "AdditionalRebuildingCost": {
+        "fieldCode": "ADDRC",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Additional Rebuilding Cost code (non-CSIO proprietary)"
+      },
+      "RentedUnitOwnersEndorsement": {
+        "fieldCode": "RCUOE",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Rented/Condo Unit Owners Endorsement code (non-CSIO proprietary)"
+      },
+      "BackwaterValveMaintenanceClause": {
+        "fieldCode": "VALVE",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Backwater Valve Maintenance Clause code (non-CSIO proprietary)"
+      },
+      "ActualCashValueEndorsement": {
+        "fieldCode": "ACV",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Actual Cash Value Endorsement code (non-CSIO proprietary)"
+      },
+      "DeferredLossSettlementClause": {
+        "fieldCode": "DEFER",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Deferred Loss Settlement Clause code (non-CSIO proprietary)"
+      }
+    },
+    "coverageTypes": {
+      "EssentialsBroad": {
+        "value": "Essentials Broad",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Essentials Broad coverage type - maps to standard HomeownersBroadForm policy type"
+      },
+      "EssentialsComp": {
+        "value": "Essentials Comp",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Essentials Comp coverage type - maps to standard HomeownersComprehensiveForm policy type"
+      },
+      "EnhancedBroad": {
+        "value": "Enhanced Broad",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Enhanced Broad coverage type - maps to standard HomeownersBroadExpandedForm policy type"
+      },
+      "EnhancedComp": {
+        "value": "Enhanced Comp",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Enhanced Comp coverage type - maps to standard HomeownersComprehensiveExpandedForm policy type"
+      }
+    },
+    "attachmentTypes": {
+      "SewerBackupQuestionnaire": {
+        "fieldCode": "SBQ",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Sewer Backup Questionnaire attachment type"
+      }
+    },
+    "responseIndicators": {
+      "OwnATrampoline": {
+        "csioCode": "csio:137",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Response indicator: Own a Trampoline"
+      },
+      "OwnAGardenTractor": {
+        "csioCode": "csio:138",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Response indicator: Own a Garden Tractor"
+      },
+      "OwnAGolfCart": {
+        "csioCode": "csio:139",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Response indicator: Own a Golf Cart"
+      },
+      "OwnAnUnlicencedRecreationalVehicle": {
+        "csioCode": "csio:140",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Response indicator: Own an Unlicenced Recreational Vehicle"
+      },
+      "OwnAMotorizedWheelchair": {
+        "csioCode": "csio:141",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Response indicator: Own a Motorized Wheelchair"
+      },
+      "OwnAnyWatercraft": {
+        "csioCode": "csio:142",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Response indicator: Own any Watercraft"
+      }
+    }
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "BettermentsAndImprovements",
+      "BuildingBylawsExtension",
+      "Earthquake",
+      "EquipmentBreakdownCoverage",
+      "FireFightingCoverage",
+      "GlassReducedDeductible",
+      "GlassBreakage",
+      "GuaranteedReplacementCost",
+      "IdentityTheft",
+      "MassEvacuation",
+      "RentalIncome",
+      "ReplacementOrRepairCost",
+      "SewerBackup (base code, overridden by PortageMutual)",
+      "SingleLimitEndorsement",
+      "SpecialLimitsEnhancement",
+      "VacancyPermit",
+      "WindHailCoverage",
+      "LegalExpense",
+      "PowerInterruptionCoverage",
+      "FoodFreezerFoodSpoilage",
+      "CreditCardFraud",
+      "WaterCoverage (base code, overridden by PortageMutual)",
+      "ServiceLineCoverage",
+      "CondoDeductibleAssessment",
+      "LimitedRoofCoverage",
+      "TheftfromVehicle",
+      "AccidentalDeathandDismemberment",
+      "ClaimsProtector",
+      "InflationProtectionEndorsement",
+      "VandalismByTenantExclusion",
+      "AdditionalInsuredEndorsement",
+      "AdditionalNamedInsuredCooccupant",
+      "DebrisRemoval",
+      "EscapeOfFuelOil",
+      "ExtendedCareEndorsement",
+      "FloodEndorsement",
+      "HomeBasedBusiness",
+      "LeaseholdCondoCorpEndorsement",
+      "PersonalPropertyReplacementExtension",
+      "ReplacementCostOnContents",
+      "TravelInsurance",
+      "VandalismMaliciousActsExclusionTenantsGuests",
+      "PetAccidentWordingSupplement",
+      "CollectivelyOwnedLifeLeasePropertyCoverage",
+      "LifeLeasePropertyCoverage",
+      "BooksToolsAndInstrumentsPertainingToBusiness"
+    ],
+    "homeLiabilities": [
+      "DayCareInHome",
+      "ResidenceEmployees",
+      "RentedRoomSuite / RoomerBoarder",
+      "DwellingUnderConstruction",
+      "BusinessUseOfHome",
+      "BedAndBreakfast",
+      "AdditionalResidence / Acreage",
+      "SwimmingPool",
+      "Boat / BoatAndMotor",
+      "SeasonalDwelling",
+      "Atv",
+      "AdditionalNamedInsured",
+      "ElevatorEscalatorsInclinators",
+      "PremisesExtension",
+      "JetSki",
+      "GolfCart",
+      "ForestAndPrairieProtectionEndorsement",
+      "VoluntaryCompensation",
+      "LiabilityRestriction",
+      "Horses"
+    ],
+    "homeDiscounts": [
+      "BusinessUse",
+      "ClaimForgiveness",
+      "CooperativeComplex",
+      "Evaluator",
+      "GroupRate",
+      "HailResistant",
+      "Heating",
+      "HomeSecurity",
+      "LongTermOccupancy",
+      "MatureCitizen",
+      "MiscellaneousDiscount",
+      "MobileHomeTiedDown",
+      "MortgageFree",
+      "MultipleFamilyDiscount",
+      "MultipleLine",
+      "MultiplePropertyRisks",
+      "NeighbourhoodWatch",
+      "NewHome",
+      "NewPolicy",
+      "NoClaims",
+      "Nonsmoker",
+      "Occupation",
+      "PreferredConstruction",
+      "Renewal",
+      "Retiree",
+      "SeniorCitizen",
+      "SmokeDetector",
+      "Sprinklered",
+      "TankerShuttleService",
+      "ValuedPreferredCustomer",
+      "YearBuiltOtherthanNewHome",
+      "WaterLeakDetectionSystem"
+    ],
+    "homeSurcharges": [
+      "AbsenteeLandlord",
+      "AgeConditionOfHome",
+      "BusinessUse",
+      "Claims",
+      "CommercialExposure",
+      "HailDamageSusceptibility",
+      "LogHome",
+      "MiscellaneousSurcharge",
+      "MultipleFamilySurcharge",
+      "Nonpayment",
+      "NoPreviousInsurance",
+      "Occupancy",
+      "PrimaryHeating",
+      "RiskLocation",
+      "SecondaryAuxiliaryHeating"
+    ],
+    "autoEndorsementsOntario": [
+      "DrivingRecordProtectorClaims (ClaimsProtectionPlan)",
+      "Opcf02 (End2)",
+      "Opcf03 (End3)",
+      "Opcf05 (End5)",
+      "Opcf05C (End5C)",
+      "Opcf05D (End5D)",
+      "Opcf06A (End6A)",
+      "Opcf06D (End6D)",
+      "Opcf07 (End7)",
+      "Opcf08 (End8)",
+      "Opcf08A (End8A)",
+      "Opcf09 (End9)",
+      "Opcf13C (End13C)",
+      "Opcf16 (End16)",
+      "Opcf17 (End17)",
+      "Opcf19 (End19)",
+      "Opcf19A (End19A)",
+      "Opcf20 (End20)",
+      "Opcf23A (End23A)",
+      "Opcf23B (End23B)",
+      "Opcf25A (End25A)",
+      "Opcf27 (End27)",
+      "Opcf27B (End27B)",
+      "Opcf28 (End28)",
+      "Opcf28A (End28A)",
+      "Opcf29 (End29)",
+      "Opcf30 (End30)",
+      "Opcf31 (End31)",
+      "Opcf32 (End32)",
+      "Opcf35 (End35 / EmergencyAssistancePackage)",
+      "Opcf37 (End37)",
+      "Opcf38 (End38)",
+      "Opcf40 (End40)",
+      "Opcf43 (End43)",
+      "Opcf43A (End43A)",
+      "Opcf44 (End44R)",
+      "Opcf46 (End46)",
+      "Opcf47 (End47)",
+      "Opcf48 (End48)",
+      "Pak06 (Pak20and27)",
+      "LossOfUseBroadForm (End20A)",
+      "PermissionToCarryRadioactiveMaterial (End4B)",
+      "DissapearingDeductible (End26)",
+      "PetAccidentWordingEndorsement (AnimalLiabilityExtension)",
+      "Pak08",
+      "Pak09"
+    ],
+    "autoEndorsementsNonOntario": [
+      "DrivingRecordProtectorClaims (End39)",
+      "EmergencyAssistancePackage (End35)",
+      "End2", "End3", "End4A", "End4B",
+      "End5", "End5A", "End6A", "End6B", "End6C", "End6D",
+      "End7", "End8", "End8A", "End9",
+      "End13C", "End13D", "End13H",
+      "End16", "End17", "End19", "End19A",
+      "End20", "End20A", "End22", "End23A", "End23B",
+      "End24", "End25", "End25A",
+      "End27", "End27B", "End28", "End28A",
+      "End30", "End30A", "End31", "End32",
+      "End35", "End36", "End37", "End38", "End39", "End40",
+      "End43", "End43R", "End43RL", "End44", "End48",
+      "Pak03", "Pak05", "Pak06", "Pak08", "Pak09",
+      "DissapearingDeductible (End26)",
+      "PetAccidentWordingEndorsement (AnimalLiabilityExtension)"
+    ],
+    "autoDiscounts": [
+      "Age (DiscountDriverAge / DiscountSeniorCitizen)",
+      "AssociationMembership",
+      "AwayAtSchool",
+      "ClaimForgiveness",
+      "ClaimsFree (DiscountNoClaims)",
+      "ConvictionFree",
+      "ConvictionFreeOccasional",
+      "DriverTraining",
+      "Experience",
+      "Farm",
+      "Female",
+      "GoodStudent",
+      "GraduatedLicense",
+      "GraduatedLicenseOccasional",
+      "GroupRate",
+      "Hybrid",
+      "IPromiseProgram",
+      "InsuredsDrivingRecord",
+      "LowAnnualMileage",
+      "LowCommuteDistance",
+      "MaritalStatus",
+      "Miscellaneous",
+      "MortgageeFree",
+      "MultiLine",
+      "MultiVehicle",
+      "NewDriver",
+      "NewVehicle",
+      "NonSmoker",
+      "OccasionalDriver",
+      "Occupation",
+      "OutOfProvince",
+      "OwnerOfVehicle",
+      "PreferredCustomer",
+      "Professional",
+      "RecreationalVehicle",
+      "ReligiousClerical",
+      "Renewal",
+      "Retiree",
+      "SecuritySystem (HomeSecurity)",
+      "ShortCommute",
+      "Stability",
+      "TrailPermit",
+      "WinterTire (csio:DISSN)",
+      "AntiLockBrakes (DiscountMiscellaneous)"
+    ],
+    "autoSurcharges": [
+      "BusinessUse",
+      "Carpooling",
+      "Claims",
+      "ClaimsOccasional",
+      "CommercialExposure",
+      "ClaimConvictionOccasional",
+      "Convictions",
+      "ConvictionsOccasional",
+      "ExplosiveMaterial",
+      "HighKilometersDriven",
+      "HighPerformance",
+      "Miscellaneous",
+      "MultipleOperator",
+      "OutOfProvince",
+      "OversizeEngine",
+      "USExposure",
+      "ClaimsFree (SurchargeNoofComprehensiveClaims)"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "CondoComprehensive": {
+        "framework": "HabCoverageType.Comprehensive",
+        "csio": "ComprehensiveCondominiumForm",
+        "version": "v043",
+        "description": "Condo Comprehensive policy type"
+      },
+      "CondoBasic": {
+        "framework": "HabCoverageType.Basic",
+        "csio": "CondominiumPackageBroadForm",
+        "version": "v043",
+        "description": "Condo Basic policy type (rating manual lists broad, tables listed as basic, sent as broad)"
+      },
+      "SeasonalBasic": {
+        "framework": "Homeowners Basic",
+        "csio": "SeasonalDwellingStandardForm",
+        "version": "v043",
+        "description": "Seasonal Dwelling Standard Form"
+      },
+      "SeasonalBroad": {
+        "framework": "Homeowners Broad",
+        "csio": "SeasonalDwellingBroadForm",
+        "version": "v043",
+        "description": "Seasonal Dwelling Broad Form"
+      },
+      "SeasonalComp": {
+        "framework": "Homeowners Comp.",
+        "csio": "SeasonalDwellingComprehensiveForm",
+        "version": "v043",
+        "description": "Seasonal Dwelling Comprehensive Form"
+      },
+      "HomeBroadSingleLimit": {
+        "framework": "Broad Single Limit",
+        "csio": "HomeownersBroadForm",
+        "version": "v043",
+        "description": "Homeowners Broad Form (Single Limit)"
+      },
+      "HomeCompSingleLimit": {
+        "framework": "Comp. Single Limit",
+        "csio": "HomeownersComprehensiveForm",
+        "version": "v043",
+        "description": "Homeowners Comprehensive Form (Single Limit)"
+      },
+      "HomeEnhancedBroad": {
+        "framework": "Enhanced Broad",
+        "csio": "HomeownersBroadExpandedForm",
+        "version": "v043",
+        "description": "Homeowners Broad Expanded Form (Enhanced Broad)"
+      },
+      "HomeEnhancedComp": {
+        "framework": "Enhanced Comp",
+        "csio": "HomeownersComprehensiveExpandedForm",
+        "version": "v043",
+        "description": "Homeowners Comprehensive Expanded Form (Enhanced Comp)"
+      },
+      "HomeEssentialsBroad": {
+        "framework": "Essentials Broad",
+        "csio": "HomeownersBroadForm",
+        "version": "v043",
+        "description": "Homeowners Broad Form (Essentials Broad maps to same code as standard Broad)"
+      },
+      "HomeEssentialsComp": {
+        "framework": "Essentials Comp",
+        "csio": "HomeownersComprehensiveForm",
+        "version": "v043",
+        "description": "Homeowners Comprehensive Form (Essentials Comp maps to same code as standard Comp)"
+      }
+    },
+    "valuationProducts": {
+      "EZITV": {
+        "framework": "EvaluatorType.EZITV",
+        "csio": "7",
+        "version": "v043",
+        "description": "EZITV evaluator"
+      },
+      "IClarify": {
+        "framework": "EvaluatorType.IClarify",
+        "csio": "8",
+        "version": "v043",
+        "description": "IClarify evaluator"
+      },
+      "E2Value": {
+        "framework": "EvaluatorType.E2Value",
+        "csio": "9",
+        "version": "v043",
+        "description": "E2Value evaluator"
+      }
+    },
+    "classSpecificRatedIndicator": {
+      "SingleLimit": {
+        "framework": "Single Limit",
+        "csio": "Preferred",
+        "version": "v043",
+        "description": "Single Limit classification maps to Preferred rated indicator"
+      }
+    },
+    "earthquakeSettlementBasis": {
+      "BuildingOnly": {
+        "framework": "Building Only",
+        "csio": "csio:EB",
+        "version": "v043",
+        "description": "Earthquake valuation - Building Only"
+      },
+      "BuildingAndContents": {
+        "framework": "Building and Contents",
+        "csio": "csio:EA",
+        "version": "v043",
+        "description": "Earthquake valuation - Building and/or Contents"
+      },
+      "ContentsOnly": {
+        "framework": "Contents Only (default)",
+        "csio": "csio:EC",
+        "version": "v043",
+        "description": "Earthquake valuation - Contents Only (fallback default)"
+      }
+    }
+  },
+  "responseClassification": {
+    "increasedAccidentBenefitsCodes": {
+      "ACB": {
+        "csioCode": "csio:ACB",
+        "version": "v043",
+        "description": "Attendant Care - maps to IncreasedAccidentBenefitsOntario.AttendantCare"
+      },
+      "DCB": {
+        "csioCode": "csio:DCB",
+        "version": "v043",
+        "description": "Dependant Care - maps to IncreasedAccidentBenefitsOntario.DependantCare"
+      },
+      "MEDRH": {
+        "csioCode": "csio:MEDRH",
+        "version": "v043",
+        "description": "Medical Rehabilitation - maps to IncreasedAccidentBenefitsOntario.MedicalRehabilitation"
+      }
+    },
+    "isDiscountPatterns": [
+      "All standard CSIO discount codes (inherited from generic base)",
+      "csio:DISST (PortageMutual-specific Distinct Client Discount)"
+    ],
+    "isSurchargePatterns": [
+      "All standard CSIO surcharge codes (inherited from generic base)"
+    ]
+  },
+  "zCodeInventory": {
+    "autoCoverage": [],
+    "habCoverage": [
+      {
+        "code": "csio:OVWAT",
+        "constantName": "WaterCoverage",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Overland Water Coverage"
+      },
+      {
+        "code": "csio:SMART",
+        "constantName": "HomeSystemsServiceLineEndorsement",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Home Systems and Service Line Endorsement"
+      },
+      {
+        "code": "csio:VTEXC ",
+        "constantName": "TenantRestriction",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Tenant Restriction (note trailing space)"
+      },
+      {
+        "code": "csio:ROOFW",
+        "constantName": "RoofSurfaceBasisOfSettlement",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Roof Surface Basis of Settlement"
+      }
+    ],
+    "discountsSurcharges": [
+      {
+        "code": "csio:DISST",
+        "constantName": "DistinctClientDiscount",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Distinct Client Discount (hab credit score discount)"
+      }
+    ],
+    "responseIndicators": [
+      {
+        "code": "csio:137",
+        "constantName": "OwnATrampoline",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Own a Trampoline response indicator"
+      },
+      {
+        "code": "csio:138",
+        "constantName": "OwnAGardenTractor",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Own a Garden Tractor response indicator"
+      },
+      {
+        "code": "csio:139",
+        "constantName": "OwnAGolfCart",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Own a Golf Cart response indicator"
+      },
+      {
+        "code": "csio:140",
+        "constantName": "OwnAnUnlicencedRecreationalVehicle",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Own an Unlicenced Recreational Vehicle response indicator"
+      },
+      {
+        "code": "csio:141",
+        "constantName": "OwnAMotorizedWheelchair",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Own a Motorized Wheelchair response indicator"
+      },
+      {
+        "code": "csio:142",
+        "constantName": "OwnAnyWatercraft",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Own any Watercraft response indicator"
+      }
+    ],
+    "earthquakeValuation": [
+      {
+        "code": "csio:EA",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Earthquake valuation - Building and/or Contents"
+      },
+      {
+        "code": "csio:EB",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Earthquake valuation - Building Only"
+      },
+      {
+        "code": "csio:EC",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Earthquake valuation - Contents Only"
+      }
+    ],
+    "accidentBenefits": [
+      {
+        "code": "csio:ACB",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Attendant Care benefit"
+      },
+      {
+        "code": "csio:DCB",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Dependant Care benefit"
+      },
+      {
+        "code": "csio:MEDRH",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical Rehabilitation benefit"
+      }
+    ],
+    "standardCodesUsedInlineNotConstants": [
+      {
+        "code": "csio:WATER",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Standard Water code used inline in SewerBackup endorsement (Unlimited Form path)"
+      }
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 16,
+    "totalGenericInheritedCodes": 150,
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {
+        "code": "csio:WATER",
+        "location": "EnumConverters/CoverageCodeConverter.vb lines 80,84",
+        "note": "Used inline (not in PortageConstants) for SewerBackup Unlimited Form path. Also defined in CsioConstants.CsioCode.WaterCoverage."
+      },
+      {
+        "code": "csio:ACB",
+        "location": "CsioToFramework/Unrated/PcCoverageConverter.vb line 19",
+        "note": "Standard CSIO code used inline for Attendant Care response parsing"
+      },
+      {
+        "code": "csio:DCB",
+        "location": "CsioToFramework/Unrated/PcCoverageConverter.vb line 21",
+        "note": "Standard CSIO code used inline for Dependant Care response parsing"
+      },
+      {
+        "code": "csio:MEDRH",
+        "location": "CsioToFramework/Unrated/PcCoverageConverter.vb line 23",
+        "note": "Standard CSIO code used inline for Medical Rehabilitation response parsing"
+      },
+      {
+        "code": "csio:EA",
+        "location": "FrameworkToCsio/Unrated/PcCoverageConverter.vb line 96",
+        "note": "Standard CSIO code used inline for Earthquake Building and Contents valuation"
+      },
+      {
+        "code": "csio:EB",
+        "location": "FrameworkToCsio/Unrated/PcCoverageConverter.vb line 93",
+        "note": "Standard CSIO code used inline for Earthquake Building Only valuation"
+      },
+      {
+        "code": "csio:EC",
+        "location": "FrameworkToCsio/Unrated/PcCoverageConverter.vb line 99",
+        "note": "Standard CSIO code used inline for Earthquake Contents Only valuation"
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "v043only": 16,
+      "sharedAcrossVersions": 0
+    },
+    "notes": [
+      "PortageMutual is a single-version carrier with all code in v043/Companies/PortageMutual/",
+      "No carrier-specific auto endorsement overrides - all auto endorsements inherited from Generic base",
+      "Carrier overrides 4 enum converter functions: TryConvertToCsioAutoDiscount, TryConvertToCsioHabDiscount, TryConvertToCsioHabSurcharge, TryConvertToCsioHomeEndorsement",
+      "TenantRestriction code 'csio:VTEXC ' has a trailing space which may be intentional",
+      "Multiple CsioToFramework response stubs are marked 'TODO: Map this' (e.g., BackwaterValve, SumpPump conversions)",
+      "PortageMutual uses non-CSIO proprietary codes for several hab forms (ARPP, GOLFP, LOGSL, WATER, ADDRC, RCUOE, VALVE, ACV, DEFER) - these are NOT csio: prefixed"
+    ]
+  }
+}

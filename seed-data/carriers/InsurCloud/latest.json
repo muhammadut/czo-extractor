@@ -1,0 +1,803 @@
+{
+  "_metadata": {
+    "carrier": "InsurCloud",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V134"],
+    "latestVersion": "V134",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 91,
+    "description": "Complete CZO mapping for InsurCloud (Gore Mutual via InsurCloud ServiceVendor)",
+    "versionRoles": {
+      "V134": "InsurCloud service vendor for Gore Mutual and SGI Canada"
+    },
+    "notes": [
+      "InsurCloud is routed via ServiceVendor.InsurCloud in ConverterFactoryLoader",
+      "Gore Mutual uses InsurCloud when serviceVendor = ServiceVendor.InsurCloud",
+      "SGI Canada also routes to InsurCloud for ServiceVendor.InsurCloud",
+      "Inherits from V134.Generic -> v043.Generic for base codes"
+    ]
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "constantName": "CompanyCsioCode.OPCF49",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "OPCF 49 - Endorsement (Ontario only)",
+        "direction": "bidirectional"
+      },
+      "Opcf47R": {
+        "csioCode": "csio:47R",
+        "constantName": "CompanyCsioCode.OPCF47R",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "OPCF 47R - Endorsement (Ontario only)",
+        "direction": "bidirectional"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "(dynamic: EndorsementForChangeInDeductibleNotice from V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Disappearing Deductible / Change in Deductible Notice endorsement",
+        "direction": "bidirectional",
+        "notes": "Uses enum factory value, not a constant. Applied to both Ontario and non-Ontario auto."
+      }
+    },
+    "homeEndorsements": {
+      "LogEndorsement": {
+        "csioCode": "(dynamic: LogConstructionSettlementLimitation from V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Log Construction Settlement Limitation",
+        "direction": "bidirectional"
+      },
+      "GolfCart": {
+        "csioCode": "csio:GOLFC",
+        "constantName": "CsioConstants.LiabilityExtensions.GolfCart",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Golf Cart Liability Extension",
+        "direction": "bidirectional"
+      },
+      "GlassReducedDeductible": {
+        "csioCode": "(dynamic: GlassBreakage from V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Glass Breakage / Reduced Glass Deductible",
+        "direction": "bidirectional"
+      },
+      "VacantLandCondoCorpEndorsement": {
+        "csioCode": "(dynamic: VacantLand from PersonalLiability values)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Vacant Land / Condo Corporation Endorsement",
+        "direction": "bidirectional"
+      },
+      "WaterCoverage": {
+        "csioCode": "(dynamic: OverlandWaterCoverage from V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Overland Water Coverage",
+        "direction": "bidirectional",
+        "limitOptions": {
+          "PolicyLimit": "Sends -1 as limit when 'Policy Limit' is selected",
+          "Numeric": "Sends parsed decimal value"
+        }
+      },
+      "EnhancedCoverage": {
+        "csioCode": "(dynamic: EnhancedCoverageOptionForSelectedClients from V125 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Enhanced Coverage Option for Selected Clients",
+        "direction": "bidirectional"
+      },
+      "CottageRentalEndorsement": {
+        "csioCode": "(dynamic: RentalEndorsement from V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Cottage/Rental Endorsement",
+        "direction": "outbound"
+      },
+      "VacancyPermit": {
+        "csioCode": "(dynamic: VacancyPermit from V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Vacancy Permit Endorsement",
+        "direction": "outbound"
+      }
+    },
+    "accidentBenefitsCodes": {
+      "NonEarnerBenefit": {
+        "csioCode": "csio:NEB",
+        "constantName": "CompanyCsioCode.NonEarnerBenefit",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Non-Earner Benefit (Ontario Increased Accident Benefits)",
+        "direction": "bidirectional"
+      },
+      "CaregiverBenefitCatastrophic": {
+        "csioCode": "csio:CGCAT",
+        "constantName": "CompanyCsioCode.CaregiverBenefitCatastrophic",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Caregiver Benefit - Catastrophic",
+        "direction": "bidirectional"
+      },
+      "CaregiverBenefit": {
+        "csioCode": "csio:CGB",
+        "constantName": "CompanyCsioCode.CaregiverBenefit",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Caregiver Benefit",
+        "direction": "bidirectional"
+      },
+      "LostEducationalExpenses": {
+        "csioCode": "csio:LEE",
+        "constantName": "CompanyCsioCode.LostEducationalExpenses",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Lost Educational Expenses",
+        "direction": "bidirectional"
+      },
+      "ExpensesOfVisitors": {
+        "csioCode": "csio:EXV",
+        "constantName": "CompanyCsioCode.ExpensesOfVisitors",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Expenses of Visitors",
+        "direction": "bidirectional"
+      },
+      "HousekeepingHomeMaintenanceCatastrophic": {
+        "csioCode": "csio:HHCAT",
+        "constantName": "CompanyCsioCode.HousekeepingHomeMaintenanceCatastrophic",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Housekeeping / Home Maintenance - Catastrophic",
+        "direction": "bidirectional"
+      },
+      "HousekeepingHomeMaintenance": {
+        "csioCode": "csio:HHM",
+        "constantName": "CompanyCsioCode.HousekeepingHomeMaintenance",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Housekeeping / Home Maintenance",
+        "direction": "bidirectional"
+      },
+      "DamageToPersonalItems": {
+        "csioCode": "csio:DPI",
+        "constantName": "CompanyCsioCode.DamageToPersonalItems",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Damage to Personal Items",
+        "direction": "bidirectional"
+      },
+      "DeathBenefit": {
+        "csioCode": "csio:DEA",
+        "constantName": "CompanyCsioCode.DeathBenefit",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Death Benefit",
+        "direction": "bidirectional"
+      },
+      "FuneralBenefit": {
+        "csioCode": "csio:FNB",
+        "constantName": "CompanyCsioCode.FuneralBenefit",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Funeral Benefit",
+        "direction": "bidirectional"
+      }
+    },
+    "policyTypeCodes": {
+      "FEC": {
+        "csioCode": "csio:61",
+        "constantName": "CoverageTypes.FEC",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Fire and Extended Coverage (FEC) policy form",
+        "direction": "outbound",
+        "notes": "Also used for RentedDwellingAllRisk"
+      },
+      "RentedDwellingAllRisk": {
+        "csioCode": "csio:61",
+        "constantName": "CoverageTypes.RentedDwellingAllRisk",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Rented Dwelling - All Risk form"
+      },
+      "RentedDwellingNamedPerils": {
+        "csioCode": "csio:62",
+        "constantName": "CoverageTypes.RentedDwellingNamedPerils",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Rented Dwelling - Named Perils form"
+      },
+      "RentedDwellingFEC": {
+        "csioCode": "csio:69",
+        "constantName": "CoverageTypes.RentedDwellingFEC",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Rented Dwelling - Fire and Extended Coverage form"
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "EmployeeDiscount": {
+        "csioCode": "csio:DISEM",
+        "constantName": "CompanyCoverageCsioCode.EmployeeDiscount",
+        "frameworkMapping": "DiscountCode.Occupation",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Employee / Occupation Discount",
+        "direction": "inbound",
+        "notes": "Also used for hab discounts"
+      },
+      "WinterTires": {
+        "csioCode": "csio:DISSN",
+        "constantName": "CompanyCoverageCsioCode.WinterTires",
+        "frameworkMapping": "DiscountCode.WinterTire",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Winter Tires / Snow Tire Discount"
+      },
+      "NorthernTerritoryDiscount": {
+        "csioCode": "csio:DISTR",
+        "constantName": "CompanyCoverageCsioCode.NorthernTerritoryDiscount",
+        "frameworkMapping": "DiscountCode.Territory",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Northern Territory Discount",
+        "notes": "Also used for hab discounts"
+      },
+      "Retiree": {
+        "csioCode": "csio:DISRD",
+        "constantName": "CompanyCoverageCsioCode.Retiree",
+        "frameworkMapping": "DiscountCode.Retiree",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Retiree Discount"
+      },
+      "MultiVehicle": {
+        "csioCode": "csio:DISMV",
+        "constantName": "CompanyCoverageCsioCode.MultiVehicle",
+        "frameworkMapping": "DiscountCode.MultiVehicle",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Multi-Vehicle Discount"
+      },
+      "AntiTheftRecoveryDiscount": {
+        "csioCode": "csio:DISAL",
+        "constantName": "CompanyCoverageCsioCode.AntiTheftRecoveryDiscount",
+        "frameworkMapping": "DiscountCode.AntiTheft",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Anti-Theft / Alarm Recovery Discount"
+      },
+      "MultiLinePolicy": {
+        "csioCode": "csio:DISMP",
+        "constantName": "CompanyCoverageCsioCode.MultiLinePolicy",
+        "frameworkMapping": "DiscountCode.MultiLine",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Multi-Line / Multi-Policy Discount"
+      },
+      "GraduatedLicensing": {
+        "csioCode": "csio:DISGR",
+        "constantName": "CompanyCoverageCsioCode.GraduatedLicensing",
+        "frameworkMapping": "DiscountCode.GraduatedLicense",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Graduated Licensing Discount"
+      },
+      "LoyaltyDiscount": {
+        "csioCode": "csio:DISRN",
+        "constantName": "CompanyCoverageCsioCode.LoyaltyDiscount",
+        "frameworkMapping": "DiscountCode.Renewal",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Loyalty / Renewal Discount"
+      },
+      "TrailPermitDiscount": {
+        "csioCode": "csio:DISTP",
+        "constantName": "CompanyCoverageCsioCode.TrailPermitDiscount",
+        "frameworkMapping": "DiscountCode.TrailPermit",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Trail Permit Discount"
+      },
+      "NoCommuteDiscount": {
+        "csioCode": "csio:DISLC",
+        "constantName": "CompanyCoverageCsioCode.NoCommuteDiscount",
+        "frameworkMapping": "DiscountCode.LowCommuteDistance",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "No Commute / Low Commute Distance Discount"
+      },
+      "FarmAutoDiscount": {
+        "csioCode": "csio:DISFR",
+        "constantName": "CompanyCoverageCsioCode.FarmAutoDiscount",
+        "frameworkMapping": "DiscountCode.Farm",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Farm Auto Discount"
+      },
+      "ConvictionFreeDiscount": {
+        "csioCode": "csio:DISCF",
+        "constantName": "CompanyCoverageCsioCode.ConvictionFreeDiscount",
+        "frameworkMapping": "DiscountCode.ConvictionFree",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Conviction-Free Discount"
+      },
+      "StudentAwayFromHome": {
+        "csioCode": "csio:DISAS",
+        "constantName": "CompanyCoverageCsioCode.StudentAwayFromHome",
+        "frameworkMapping": "DiscountCode.AwayAtSchool",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Student Away From Home Discount"
+      }
+    },
+    "autoSurcharges": {
+      "RadiusSurcharge": {
+        "csioCode": "csio:SURRA",
+        "constantName": "CompanyCoverageCsioCode.RadiusSurcharge",
+        "frameworkMapping": "SurchargeCode.RadiusOfOperation",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Radius of Operation Surcharge"
+      },
+      "SnowPloughBladesSurcharge": {
+        "csioCode": "csio:SURCE",
+        "constantName": "CompanyCoverageCsioCode.SnowPloughBladesSurcharge",
+        "frameworkMapping": "SurchargeCode.Miscellaneous",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Snow Plough/Blades Surcharge (mapped to Miscellaneous)"
+      },
+      "UnderageSurcharge": {
+        "csioCode": "csio:SURAT",
+        "constantName": "CompanyCoverageCsioCode.UnderageSurcharge",
+        "frameworkMapping": "SurchargeCode.Miscellaneous",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Underage Surcharge (mapped to Miscellaneous)"
+      },
+      "StandAloneSurcharge": {
+        "csioCode": "csio:SURML",
+        "constantName": "CompanyCoverageCsioCode.StandAloneSurcharge",
+        "frameworkMapping": "SurchargeCode.StandAlone",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Stand-Alone Policy Surcharge"
+      },
+      "AtFaultClaimSurcharge": {
+        "csioCode": "csio:SURCL",
+        "constantName": "CompanyCoverageCsioCode.AtFaultClaimSurcharge",
+        "frameworkMapping": "SurchargeCode.Claims",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "At-Fault Claim Surcharge"
+      },
+      "ConvictionSurcharge": {
+        "csioCode": "csio:SURCN",
+        "constantName": "CompanyCoverageCsioCode.ConvictionSurcharge",
+        "frameworkMapping": "SurchargeCode.Convictions",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Conviction Surcharge"
+      },
+      "HighTheftRiskSurcharge": {
+        "csioCode": "csio:SURHT",
+        "constantName": "CompanyCoverageCsioCode.HighTheftRiskSurcharge",
+        "frameworkMapping": "SurchargeCode.HighTheft",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "High Theft Risk Surcharge"
+      }
+    },
+    "habDiscounts": {
+      "SecuritySystem": {
+        "csioCode": "(dynamic: PremisesAlarmFireorIntrusionSystem from HabitationalDiscountAndSurchargeCodes)",
+        "frameworkMapping": "DiscountCode.SecuritySystem",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Premises Alarm / Fire or Intrusion System Discount"
+      },
+      "AssociationMembership": {
+        "csioCode": "(dynamic: DiscountAssociationMembership from AutomobileDiscountAndSurchargeCodes)",
+        "frameworkMapping": "DiscountCode.AssociationMembership",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Association Membership Discount"
+      },
+      "EmployeeDiscount": {
+        "csioCode": "csio:DISEM",
+        "constantName": "CompanyCoverageCsioCode.EmployeeDiscount",
+        "frameworkMapping": "DiscountCode.Occupation",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Employee / Occupation Discount (hab)"
+      },
+      "Female": {
+        "csioCode": "(dynamic: DiscountFemale from AutomobileDiscountAndSurchargeCodes)",
+        "frameworkMapping": "DiscountCode.Female",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Female Discount"
+      },
+      "Professional": {
+        "csioCode": "(dynamic: DiscountProfessional from AutomobileDiscountAndSurchargeCodes)",
+        "frameworkMapping": "DiscountCode.Professional",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Professional Discount"
+      },
+      "NorthernTerritoryDiscount": {
+        "csioCode": "csio:DISTR",
+        "constantName": "CompanyCoverageCsioCode.NorthernTerritoryDiscount",
+        "frameworkMapping": "DiscountCode.Territory",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Northern Territory Discount (hab)"
+      },
+      "Loyalty": {
+        "csioCode": "(dynamic: Renewal from HabitationalDiscountAndSurchargeCodes)",
+        "frameworkMapping": "DiscountCode.Loyalty",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Renewal / Loyalty Discount (hab)"
+      }
+    },
+    "habSurcharges": {
+      "ClaimsSurcharge": {
+        "csioCode": "(dynamic: SurchargeClaims from AutomobileDiscountAndSurchargeCodes)",
+        "frameworkMapping": "SurchargeCode.Claims",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Claims Surcharge (hab)"
+      }
+    },
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "Earthquake, SewerBackup, BylawsEndorsement, GlassDeductibleEndorsement, GuaranteedReplacementCostBuilding, ClaimFreeProtection, HomeownersSingleLimit (all inherited from v043/Generic CoverageCodeConverter)"
+    ],
+    "homeLiabilities": [
+      "LegalLiabilityHomeownersTenantandCondominium, AllRiskUnitOwnersAdditionalProtection, AllRiskLossAssessmentCoverage, AdditionalLivingExpense, PersonalPropertyHomeownersForm (all inherited)"
+    ],
+    "homeDiscounts": [
+      "Inherited from v043.Generic base CoverageCodeConverter via V134.Generic"
+    ],
+    "homeSurcharges": [
+      "Inherited from v043.Generic base CoverageCodeConverter via V134.Generic"
+    ],
+    "autoEndorsementsOntario": [
+      "All standard OPCF endorsements inherited from V134.Generic CoverageCodeConverter (OPCF 1-44 etc.)"
+    ],
+    "autoEndorsementsNonOntario": [
+      "Standard non-Ontario endorsements inherited from V134.Generic CoverageCodeConverter"
+    ],
+    "autoDiscounts": [
+      "Inherited standard CSIO discount codes from v043.Generic CoverageCodeConverter via V134.Generic"
+    ],
+    "autoSurcharges": [
+      "Inherited standard CSIO surcharge codes from v043.Generic CoverageCodeConverter via V134.Generic"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "HomeCompPlus": {
+        "frameworkValue": "Comp. Plus",
+        "csioMapping": "HomeownersComprehensiveForm",
+        "source": "dynamic"
+      },
+      "HomePlus": {
+        "frameworkValue": "Plus",
+        "csioMapping": "HomeownersBroadForm",
+        "source": "dynamic"
+      },
+      "HomeVIPPlus": {
+        "frameworkValue": "VIP Plus",
+        "csioMapping": "HomeownersComprehensiveExpandedForm",
+        "source": "dynamic"
+      },
+      "HomeDefault": {
+        "frameworkValue": "(all others)",
+        "csioMapping": "HomeownersBroadExpandedForm",
+        "source": "dynamic"
+      },
+      "CondoAllRisk": {
+        "frameworkValue": "AllRisks/AllRisk",
+        "csioMapping": "ComprehensiveCondominiumForm",
+        "source": "dynamic"
+      },
+      "CondoVipPlus": {
+        "frameworkValue": "VipPlus",
+        "csioMapping": "CondominiumComprehensiveExpandedForm",
+        "source": "dynamic"
+      },
+      "CondoNamedPerils": {
+        "frameworkValue": "NamedPerils",
+        "csioMapping": "CondominiumPackageLimitedForm",
+        "source": "dynamic"
+      },
+      "TenantAllRisk": {
+        "frameworkValue": "AllRisks/AllRisk",
+        "csioMapping": "TenantsComprehensiveForm",
+        "source": "dynamic"
+      },
+      "TenantVIPPlus": {
+        "frameworkValue": "VIP Plus",
+        "csioMapping": "TenantsComprehensiveExpandedForm",
+        "source": "dynamic"
+      },
+      "SeasonalBasic": {
+        "frameworkValue": "Basic",
+        "csioMapping": "SeasonalDwellingStandardForm",
+        "source": "dynamic"
+      },
+      "SeasonalFourSeasonsSuperior": {
+        "frameworkValue": "FourSeasonsSuperior",
+        "csioMapping": "SeasonalDwellingBroadForm",
+        "source": "dynamic"
+      },
+      "SeasonalFourSeasonsUltimate": {
+        "frameworkValue": "4 Seasons Ultimate",
+        "csioMapping": "SeasonalDwellingComprehensiveForm",
+        "source": "dynamic"
+      },
+      "FEC_AllRisk_NamedPerils_FireEC": {
+        "frameworkValue": "AllRisk/NamedPerils/Fire & E.C.",
+        "csioMapping": "csio:61",
+        "source": "constant"
+      },
+      "RentedDwellingAllRisk": {
+        "frameworkValue": "AllRisk/AllRisks",
+        "csioMapping": "csio:61",
+        "source": "constant"
+      },
+      "RentedDwellingNamedPerils": {
+        "frameworkValue": "NamedPerils",
+        "csioMapping": "csio:62",
+        "source": "constant"
+      },
+      "RentedDwellingFEC": {
+        "frameworkValue": "Fire & E.C.",
+        "csioMapping": "csio:69",
+        "source": "constant"
+      },
+      "RentedCondo": {
+        "frameworkValue": "NamedPerils/Form5263/AllRisk/AllRisks",
+        "csioMapping": "CondomimiumFormOther (dynamic)",
+        "source": "dynamic"
+      }
+    },
+    "vehicleBodyTypes": {
+      "MotorHome": {
+        "frameworkValue": "(all motor homes)",
+        "csioCode": "csio:MH",
+        "description": "Motor Home - Recreational Use"
+      },
+      "DeepSnowMountain": {
+        "frameworkValue": "DeepSnowMountain",
+        "csioCode": "csio:36",
+        "description": "Deep Snow/Mountain Snowmobile"
+      },
+      "JuniorSnowmobile": {
+        "frameworkValue": "Junior",
+        "csioCode": "csio:41",
+        "description": "Junior Snowmobile"
+      },
+      "FifthWheelTrailer": {
+        "frameworkValue": "FifthWheel",
+        "csioCode": "csio:31",
+        "description": "Fifth Wheel Trailer"
+      },
+      "Antique": {
+        "csioCode": "csio:AA",
+        "description": "Antique Vehicle (declared in CsioConstants but not directly used in converter code)"
+      },
+      "Classic": {
+        "csioCode": "csio:CL",
+        "description": "Classic Vehicle (declared in CsioConstants but not directly used in converter code)"
+      },
+      "ATV_4Wheel": {
+        "frameworkValue": "AllTerrainVehicle/UtilityTerrainVehicle (4 wheels)",
+        "csioMapping": "AllTerrainVehicleFourWheel (dynamic)",
+        "description": "ATV - Four Wheel variant"
+      },
+      "ATV_General": {
+        "frameworkValue": "LiteVehicle/RecreationalVehicle/SportVehicle/Buggy/etc",
+        "csioMapping": "AllTerrainVehicle (dynamic)",
+        "description": "ATV - General variant"
+      }
+    },
+    "constructionTypes": {
+      "BrickSolid": { "csioCode": "csio:B", "frameworkValue": "ConstructionBrickSolid" },
+      "CementConcrete": { "csioCode": "csio:D", "frameworkValue": "ConstructionCementConcrete" },
+      "FrameWood": { "csioCode": "csio:F", "frameworkValue": "ConstructionFrameWood" },
+      "Log": { "csioCode": "csio:1", "frameworkValue": "ConstructionLog" },
+      "Masonry": { "csioCode": "csio:M", "frameworkValue": "ConstructionMasonrySolid" },
+      "Steel": { "csioCode": "csio:T", "frameworkValue": "ConstructionSteel" },
+      "Stone": { "csioCode": "csio:N", "frameworkValue": "ConstructionStoneSolid" },
+      "Other": { "csioCode": "csio:9 ", "frameworkValue": "(default)" }
+    },
+    "fireProtectionClass": {},
+    "convictionCodes": {
+      "notes": "InsurCloud inherits the full conviction code table from v043.Generic.EnumConverters.ConvictionCodeConverter"
+    },
+    "lapseReasons": {
+      "NonPaymentOfPremium": { "csioCode": "csio:NP", "frameworkValue": "LapseReason.NonPaymentOfPremium" },
+      "LicenseSuspension": { "csioCode": "csio:CS", "frameworkValue": "LapseReason.LicenseSuspension" },
+      "FraudOrMaterialMisrepresentation": { "csioCode": "csio:CM", "frameworkValue": "LapseReason.FraudOrMaterialMisrepresentation" },
+      "OperatingWithoutInsurance": { "csioCode": "csio:DW", "frameworkValue": "LapseReason.OperatingWithoutInsurance" },
+      "Other": { "csioCode": "csio:OT", "frameworkValue": "LapseReason.Other (and default)" }
+    },
+    "occupationCodes": {
+      "LandSurveyor": { "csioCode": "csio:L04", "frameworkValue": "Occupation.Surveyor" },
+      "Unknown": { "csioCode": "csio:997", "frameworkValue": "Occupation.Unknown" },
+      "Dermatologist": { "csioCode": "csio:D11", "frameworkValue": "Occupation.Dermatologist" }
+    },
+    "genderCodes": {
+      "GenderX": { "csioCode": "csio:X", "frameworkValue": "X", "description": "Non-binary/Other gender" }
+    },
+    "propertyScheduleCodes": {
+      "Typewriter": { "csioCode": "csio:PR", "description": "Typewriter scheduled property" },
+      "VideoEquipment": { "csioCode": "csio:VE", "description": "Video Equipment" },
+      "Televisions": { "csioCode": "csio:TV", "description": "Televisions" },
+      "TombstoneGraveMarker": { "csioCode": "csio:TS", "description": "Tombstone/Grave Marker" },
+      "MedicalEquipment": { "csioCode": "csio:ME", "description": "Medical Equipment" },
+      "AudioVideoMedia": { "csioCode": "csio:AV", "description": "Audio/Video Media" },
+      "MusicalInstrument": { "csioCode": "csio:MI", "description": "Musical Instrument" }
+    },
+    "employerCodes": {
+      "RCMP": { "csioCode": "csio:C0013" },
+      "Telus": { "csioCode": "csio:C0012" },
+      "TrustCompany": { "csioCode": "csio:C0016" }
+    },
+    "deliveryFrequency": {
+      "Seasonal": { "csioCode": "csio:S", "frameworkValue": "DeliveryFrequency.Seasonal" }
+    },
+    "companyCodeMappings": {
+      "GrenvilleMutual": { "csioCode": "GMI" },
+      "Dufferin": { "csioCode": "DUF" },
+      "Dumfries": { "csioCode": "DMI" },
+      "KentandEssex": { "csioCode": "KE" },
+      "LAMutual": { "csioCode": "LA" },
+      "SouthEastMutual": { "csioCode": "SEM" },
+      "TownCountry": { "csioCode": "TOWC" },
+      "WestWawanosh": { "csioCode": "WESW" },
+      "GermaniaMutual": { "csioCode": "GERM" },
+      "Halwell": { "csioCode": "HALW" },
+      "Howick": { "csioCode": "HOW" }
+    },
+    "exteriorWallMaterials": {
+      "MetalSiding": { "csioCode": "4", "frameworkValue": "OutsideWallCoveringMetalClad" },
+      "StoneVeneer": { "csioCode": "S", "frameworkValue": "OutsideWallCoveringStoneVeneer" },
+      "Wood": { "csioCode": "U", "frameworkValue": "OutsideWallCoveringWood/HardboardSiding" }
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": [
+      "csio:DIS* (all standard CSIO discount codes)",
+      "Hab: PremisesAlarmFireorIntrusionSystem, DiscountAssociationMembership, DiscountFemale, DiscountProfessional, Renewal (from standard enum values)"
+    ],
+    "isSurchargePatterns": [
+      "csio:SUR* (all standard CSIO surcharge codes)",
+      "Hab: SurchargeClaims (from standard enum values)"
+    ],
+    "specialPatterns": {
+      "habDiscountPrefixFix": "If hab discount code does not start with 'csio:', the SGICanadaGIS CsioPrifix is prepended before lookup",
+      "sewerBackupPolicyLimit": "If csio:SEWER limit is not in [6000, 10000, 20000, 30000], it is treated as Policy Limit"
+    }
+  },
+  "zCodeInventory": {
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": [],
+    "notes": "InsurCloud uses exclusively standard CSIO codes (csio:DIS*, csio:SUR*, csio:NEB, etc.). No Z-codes (carrier-proprietary codes starting with csio:Z) were found."
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 84,
+    "totalGenericInheritedCodes": "Many (inherits full v043.Generic + V134.Generic base)",
+    "orphanCodes": [
+      {
+        "code": "csio:AA",
+        "constant": "CsioConstants.VehicleBodyType.Antique",
+        "reason": "Declared in CsioConstants but not referenced in any converter Select Case"
+      },
+      {
+        "code": "csio:CL",
+        "constant": "CsioConstants.VehicleBodyType.Classic",
+        "reason": "Declared in CsioConstants but not referenced in any converter Select Case"
+      }
+    ],
+    "undeclaredCodes": [
+      {
+        "code": "csio:SEWER",
+        "file": "CsioToFramework/Unrated/EndorsementConverters/_DefaultEndorsementConverter.vb",
+        "reason": "Hardcoded string literal, not in CompanyConstants or CsioConstants. Used for sewer backup policy limit detection."
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V134only": 84,
+      "notes": "All codes exist only in V134 as InsurCloud has no other version folders"
+    },
+    "fileBreakdown": {
+      "CompanyConstants": 1,
+      "CsioConstants": 1,
+      "EnumConverters": 26,
+      "FrameworkToCsio_Unrated": 39,
+      "FrameworkToCsio_Rated": 1,
+      "CsioToFramework_Rated": 6,
+      "CsioToFramework_Unrated": 12,
+      "CommonConverters": 2,
+      "BaseTypeConverters": 1,
+      "Helpers": 1,
+      "ConverterFactoryFactory": 1,
+      "total": 91
+    }
+  }
+}

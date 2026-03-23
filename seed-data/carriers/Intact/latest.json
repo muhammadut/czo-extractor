@@ -1,0 +1,900 @@
+{
+  "_metadata": {
+    "carrier": "Intact",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V134", "V145", "V146"],
+    "latestVersion": "V146",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 231,
+    "description": "Complete CZO mapping for Intact Insurance",
+    "versionRoles": {
+      "V146": "Latest (factory stubs only, inherits V145 converters)",
+      "V145": "Current active service (full converter overrides)",
+      "V134": "Legacy base (original Intact implementation)"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "End19A": {
+        "csioCode": "csio:19A",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 19A (Limitation of Amount Payable)"
+      },
+      "DeductibleWaiver": {
+        "csioCode": "via enumValuesFactory WaiverOfDeductible (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Waiver of Deductible (Ontario only)"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "OPCF 49 - Agreement Not to Rely on Exclusion for Automobile Used to Carry Explosives"
+      },
+      "DeletionOfHailCoverageWithoutPreexistingDamage": {
+        "csioCode": "via enumValuesFactory DeletionOfHailCoverageWithoutPreexistingDamage (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Deletion of Hail Coverage Without Pre-existing Damage (non-Ontario)"
+      },
+      "HailDeductible": {
+        "csioCode": "via enumValuesFactory HailDeductible (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Hail Deductible (non-Ontario)"
+      },
+      "End8A": {
+        "csioCode": "csio:8A",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 8A - Property Damage Reimbursement"
+      },
+      "End4A": {
+        "csioCode": "csio:4A",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 4A - Permission to Rent"
+      },
+      "End8B": {
+        "csioCode": "csio:8",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 8B (maps to End8 CZO code)"
+      },
+      "End19B": {
+        "csioCode": "csio:19",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 19B (maps to End19 CZO code)"
+      },
+      "End28C": {
+        "csioCode": "csio:28",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 28C (maps to End28 CZO code)"
+      },
+      "End39A": {
+        "csioCode": "csio:39",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Endorsement 39A (maps to End39 CZO code)"
+      },
+      "Pak01": {
+        "csioCode": "csio:PAK01",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Package 01"
+      },
+      "Pak04": {
+        "csioCode": "csio:PAK04",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Package 04"
+      },
+      "Pak08_PAK16": {
+        "csioCode": "csio:PAK16",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "PAK16 (Intact-specific code for Pak08)"
+      },
+      "Pak09_PAK17": {
+        "csioCode": "csio:PAK17",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "PAK17 (Intact-specific code for Pak09)"
+      },
+      "RoadsideAssistance": {
+        "csioCode": "csio:SRAP",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Roadside Assistance (maps to Opcf35/End35, used for calc dates >= 2021-06-16)",
+        "dateCondition": "If calculationDate >= 2021-06-16, sends csio:SRAP; otherwise sends standard End35 code"
+      },
+      "DrivingRecordProtectorConvictions": {
+        "csioCode": "via enumValuesFactory DrivingRecordProtector + MinorConvictionProtectionForOccasionalDriver (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Driving Record Protector - Convictions (occasional operator variant also available)"
+      },
+      "DRPOccasional": {
+        "csioCode": "MCPOD",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Driving Record Protector - Occasional Operator companion code (sent alongside DRP when Principal + Occasional selected)"
+      }
+    },
+    "homeEndorsements": {
+      "WaterCoverage": {
+        "csioCode": "csio:PAWAT",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Peril Adjustment - Water Coverage",
+        "provinceSpecific": {
+          "Seasonal+FEC": "Uses WaterDamageDeductible code instead of PAWAT for Seasonal FEC, FEC (FEC+Comprehensive), and Condo policy types",
+          "Condo": "Uses WaterDamageDeductible code"
+        }
+      },
+      "EnhancedWaterDamage": {
+        "csioCode": "csio:ZEWDP",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Enhanced Water Damage Protection (Z-code, Intact proprietary)"
+      },
+      "WindHailCoverage": {
+        "csioCode": "csio:PAWIN",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Wind Coverage (Peril Adjustment - Wind). Also sends csio:PAHAI as companion Hail coverage."
+      },
+      "HailCoverage": {
+        "csioCode": "csio:PAHAI",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Hail Coverage (Peril Adjustment - Hail). Sent as companion to Wind coverage."
+      },
+      "DeductibleWaiverAndClaimsProtector": {
+        "csioCode": "via enumValuesFactory LifestyleAdvantage (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Lifestyle Advantage (Deductible Waiver + Claims Protector bundle)"
+      },
+      "FloodEndorsement": {
+        "csioCode": "via enumValuesFactory OverlandWaterCoverage (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Flood / Overland Water Coverage"
+      },
+      "ClaimsProtector": {
+        "csioCode": "via enumValuesFactory ClaimsAdvantage (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Claims Advantage / Claims Protector"
+      },
+      "CondoExtension": {
+        "csioCode": "via enumValuesFactory AllRiskUnitOwnersAdditionalProtection (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "All Risk Unit Owner's Additional Protection (Condo Extension)"
+      },
+      "LogEndorsement": {
+        "csioCode": "via enumValuesFactory LogConstructionSettlementLimitation (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Log Construction Settlement Limitation"
+      },
+      "DentClause": {
+        "csioCode": "csio:HLDNT",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Dent Clause (Hold Harmless - Dent)"
+      },
+      "AdditionalLivingExpense": {
+        "csioCode": "via enumValuesFactory AdditionalLivingExpense (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Additional Living Expense"
+      },
+      "Earthquake": {
+        "csioCode": "csio:ERQK",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Earthquake Coverage (inherited from generic base, detected in CoverageConverterHelper)"
+      },
+      "SewerBackup": {
+        "csioCode": "via enumValuesFactory ActualCashValueForSewerBackUp (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Sewer Backup - ACV valuation method variant. Also sends standard sewer backup code."
+      },
+      "SolarEnergySystem": {
+        "csioCode": "via enumValuesFactory AllRiskSolarPanel (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "All Risk Solar Panel Coverage"
+      },
+      "PersonalArticlesBlanket": {
+        "csioCode": "csio:PROS",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Personal Articles Blanket (Property Scheduled)"
+      }
+    },
+    "homeLiabilities": {
+      "Horses": {
+        "csioCode": "via enumValuesFactory AnimalLiabilityExtension",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Animal Liability Extension (Horses)"
+      },
+      "BusinessUseOfHome": {
+        "csioCode": "csio:HBBLI",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Home Based Business Liability"
+      },
+      "IncidentalOfficeUse": {
+        "csioCode": "via enumValuesFactory IncidentalBusinessPursuitsEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Incidental Business Pursuits Endorsement"
+      },
+      "PremisesLiabilityRestriction": {
+        "csioCode": "via enumValuesFactory PremisesCoverageLimitation",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Premises Coverage Limitation"
+      },
+      "BabySitting": {
+        "csioCode": "csio:Daycare",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Babysitting / Daycare Liability"
+      },
+      "HabLiability": {
+        "csioCode": "csio:HABL",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Habitational Liability"
+      }
+    },
+    "scheduledPropertyItems": {
+      "JewelleryInVault": {
+        "csioCode": "csio:JV",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Jewellery In Vault (property floater risk code)"
+      },
+      "SportingEquipment": {
+        "csioCode": "csio:SE",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Sporting Equipment (property floater risk code)"
+      },
+      "BusinessPersonalProperty": {
+        "csioCode": "csio:BUSPR",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Business Personal Property (property floater risk code)"
+      }
+    },
+    "policyTypeCodes": {
+      "RentedCondominiumForm": {
+        "csioCode": "csio:2F",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Rented Condominium Form"
+      },
+      "SecondaryCondominiumForm": {
+        "csioCode": "csio:2G",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Secondary Condominium Form"
+      },
+      "SeasonalDwellingFireEC": {
+        "csioCode": "csio:4E",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Seasonal Dwelling - Fire & Extended Coverage"
+      },
+      "RentedDwellingFireEC": {
+        "csioCode": "csio:6E",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Rented Dwelling - Fire & Extended Coverage"
+      }
+    },
+    "miscCodes": {
+      "SolidFuelHeatingUnit": {
+        "csioCode": "csio:2",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Solid Fuel Heating Unit (heating appliance type code)"
+      },
+      "UnderRenovation": {
+        "csioCode": "csio:D",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Under Renovation (occupancy type code)"
+      },
+      "Domino": {
+        "csioCode": "csio:3B",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Domino anti-theft device type code"
+      },
+      "Atv": {
+        "csioCode": "csio:AT",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V145", "V146"],
+        "description": "ATV / Buggy (recreational vehicle type). V146 renamed constant from Atv to Buggy but same code.",
+        "notes": "V145 names constant 'Atv', V146 renames to 'Buggy'"
+      },
+      "SnowMobile": {
+        "csioCode": "csio:SM",
+        "source": "intact",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Snowmobile (recreational vehicle type). Only in V145, dropped from V146."
+      },
+      "GenderX": {
+        "csioCode": "csio:X",
+        "source": "intact",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Non-binary gender code (X)"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "AwayAtSchool": {
+        "csioCode": "DISAS",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Away at University / School Discount",
+        "frameworkCode": "DiscountCode.AwayAtSchool"
+      },
+      "Renewal": {
+        "csioCode": "DISRN",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Claims-Free Renewal Discount",
+        "frameworkCode": "DiscountCode.Renewal"
+      },
+      "RenewalOccasional": {
+        "csioCode": "DISRO",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Claims-Free Renewal Discount - Occasional Operator",
+        "frameworkCode": "DiscountCode.RenewalOccasional"
+      },
+      "GoodStudent": {
+        "csioCode": "DISGS",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Good Student Discount",
+        "frameworkCode": "DiscountCode.GoodStudent"
+      },
+      "GraduatedLicense": {
+        "csioCode": "DISGR",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Graduated Licensing Discount",
+        "frameworkCode": "DiscountCode.GraduatedLicense"
+      },
+      "GraduatedLicenseOccasional": {
+        "csioCode": "DISGO",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Graduated Licensing Discount - Occasional Operator",
+        "frameworkCode": "DiscountCode.GraduatedLicenseOccasional"
+      },
+      "Hybrid": {
+        "csioCode": "DISHY",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Hybrid Vehicle Discount",
+        "frameworkCode": "DiscountCode.Hybrid"
+      },
+      "MultiLine": {
+        "csioCode": "DISMP",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Multi-Policy Discount",
+        "frameworkCode": "DiscountCode.MultiLine"
+      },
+      "PreferredCustomer": {
+        "csioCode": "DISVC",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "My Home and Auto / Preferred Customer Discount",
+        "frameworkCode": "DiscountCode.PreferredCustomer"
+      },
+      "DriverTraining": {
+        "csioCode": "csio:DISTE",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V145", "V146"],
+        "description": "My Driving Discount Program (Usage-Based Insurance Telematics)",
+        "frameworkCode": "DiscountCode.DriverTraining",
+        "notes": "V134 used 'DISTE' without csio: prefix; V145+ uses 'csio:DISTE'"
+      },
+      "LoyaltyBroker": {
+        "csioCode": "DISNB",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "New Business / Loyalty Discount",
+        "frameworkCode": "DiscountCode.LoyaltyBroker"
+      },
+      "SinglePay": {
+        "csioCode": "DISON",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "One-Pay Discount",
+        "frameworkCode": "DiscountCode.SinglePay"
+      },
+      "AntiTheft": {
+        "csioCode": "DISAL",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Theft Alarm Discount",
+        "frameworkCode": "DiscountCode.AntiTheft"
+      },
+      "ConvictionFree": {
+        "csioCode": "DISCF",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Conviction-Free Discount",
+        "frameworkCode": "DiscountCode.ConvictionFree"
+      },
+      "ConvictionFreeOccasional": {
+        "csioCode": "DISCO",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Conviction-Free Discount - Occasional Operator",
+        "frameworkCode": "DiscountCode.ConvictionFreeOccasional"
+      },
+      "WinterTire": {
+        "csioCode": "DISSN",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Winter Tires Discount",
+        "frameworkCode": "DiscountCode.WinterTire"
+      },
+      "Retiree": {
+        "csioCode": "DISRD",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Retiree Discount",
+        "frameworkCode": "DiscountCode.Retiree"
+      },
+      "MultiVehicle": {
+        "csioCode": "DISMV",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Multi-Vehicle Discount",
+        "frameworkCode": "DiscountCode.MultiVehicle"
+      },
+      "Electric": {
+        "csioCode": "DISEL",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Electric Vehicle Discount",
+        "frameworkCode": "DiscountCode.Electric"
+      },
+      "GroupRate": {
+        "csioCode": "DISGD",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Group Discount",
+        "frameworkCode": "DiscountCode.GroupRate"
+      },
+      "Occupation": {
+        "csioCode": "DISOC",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Occupation Discount",
+        "frameworkCode": "DiscountCode.Occupation"
+      },
+      "WebDiscount": {
+        "csioCode": "csio:ZINTD",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Web/Internet Discount (Z-code, Intact proprietary). Sent as vehicle-level coverage when WebDiscount field = Yes.",
+        "frameworkCode": "WebDiscount field",
+        "notes": "Uses Coverages.WinterTire constant (csio:ZINTD) -- despite the constant name, this is the web discount code"
+      }
+    },
+    "autoSurcharges": {
+      "Convictions": {
+        "csioCode": "SURCN",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Conviction Surcharge",
+        "frameworkCode": "SurchargeCode.Convictions"
+      },
+      "ConvictionsOccasional": {
+        "csioCode": "SURCD",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Conviction Surcharge - Occasional Operator",
+        "frameworkCode": "SurchargeCode.ConvictionsOccasional"
+      },
+      "HighTheft": {
+        "csioCode": "SURHT",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "High Theft Surcharge",
+        "frameworkCode": "SurchargeCode.HighTheft"
+      }
+    },
+    "habDiscounts": {
+      "PreferredCustomer": {
+        "csioCode": "via enumValuesFactory ValuedPreferredCustomer (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Valued Preferred Customer Discount (Hab)",
+        "frameworkCode": "DiscountCode.PreferredCustomer"
+      },
+      "SecuritySystemMonitored": {
+        "csioCode": "via enumValuesFactory Tenants24HourVideoSurveillance (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "24-Hour Video Surveillance / Monitored Security System Discount",
+        "frameworkCode": "DiscountCode.SecuritySystemMonitored"
+      },
+      "TanklessWaterHeater": {
+        "csioCode": "via enumValuesFactory TanklessWaterHeater (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Tankless Water Heater Discount",
+        "frameworkCode": "DiscountCode.TanklessWaterHeater"
+      },
+      "WaterLeakDetectionWithWaterSensor": {
+        "csioCode": "via enumValuesFactory WaterLeakDetectionSystem (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Water Leak Detection System (with sensor)",
+        "frameworkCode": "DiscountCode.WaterLeakDetectionWithWaterSensor"
+      },
+      "WaterLeakDetectionSystem": {
+        "csioCode": "via enumValuesFactory DiscountWaterFlowDevice (V134 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Water Flow Device / Water Leak Detection System",
+        "frameworkCode": "DiscountCode.WaterLeakDetectionSystem"
+      },
+      "HotWaterTank": {
+        "csioCode": "via enumValuesFactory NewHotWaterTank (V118 interface)",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "New Hot Water Tank Discount",
+        "frameworkCode": "DiscountCode.HatWaterTank"
+      }
+    },
+    "habSurcharges": {
+      "SecondaryResidence": {
+        "csioCode": "SURSO",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Secondary Residence Surcharge",
+        "frameworkCode": "SurchargeCode.SecondaryResidence"
+      },
+      "Miscellaneous": {
+        "csioCode": "SURMC",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Miscellaneous Surcharge",
+        "frameworkCode": "SurchargeCode.Miscellaneous"
+      },
+      "NoPreviousInsurance": {
+        "csioCode": "SURPN",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "No Previous Insurance Surcharge",
+        "frameworkCode": "SurchargeCode.NoPreviousInsurance"
+      }
+    },
+    "tierCodes": {
+      "GroupDiscountHalPrefix": {
+        "csioCode": "ZHAL{tier}",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Group discount tier prefix for HAL provinces (MB, ON, NB, NS, PE, NL). Sent as GroupId = ZHAL + tier number.",
+        "provinces": ["MB", "ON", "NB", "NS", "PE", "NL"]
+      },
+      "GroupDiscountWuPrefix": {
+        "csioCode": "ZWU{tier}",
+        "source": "intact",
+        "version": "V146",
+        "availableIn": ["V134", "V145", "V146"],
+        "description": "Group discount tier prefix for WU provinces (BC, AB, YT, NT). Sent as GroupId = ZWU + tier number.",
+        "provinces": ["BC", "AB", "YT", "NT"]
+      }
+    }
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "Earthquake (csio:ERQK)",
+      "Sewer Backup",
+      "Glass Reduced Deductible",
+      "Disappearance Clause",
+      "Residence Burglary",
+      "Malicious Damage on Building",
+      "Condominium Bare Land Loss Assessment",
+      "All Risk Loss Assessment"
+    ],
+    "homeLiabilities": [
+      "Legal Liability (Homeowners/Tenants/Condo)",
+      "Personal Property (Homeowners Form)",
+      "Personal Property (Tenant/Condo Form)",
+      "Other Structures (Homeowners Form)"
+    ],
+    "homeDiscounts": [
+      "Inherited from generic base via MyBase.TryConvertToFrameworkHabDiscount"
+    ],
+    "homeSurcharges": [
+      "Inherited from generic base via MyBase.TryConvertToFrameworkHabSurcharge with csio: prefix normalization"
+    ],
+    "autoEndorsementsOntario": [
+      "Pak08 (csio:PAK08)",
+      "Pak09 (csio:PAK09)",
+      "End35 (standard roadside, pre-2021-06-16)"
+    ],
+    "autoEndorsementsNonOntario": [
+      "End8 (csio:8)",
+      "End8A (csio:8A)",
+      "End19 (csio:19)",
+      "End19A (csio:19A)",
+      "End4A (csio:4A)",
+      "End28 (csio:28)",
+      "End39 (csio:39)",
+      "Pak01 (csio:PAK01)",
+      "Pak04 (csio:PAK04)"
+    ],
+    "autoDiscounts": [
+      "Inherited from generic base via MyBase.TryConvertToCsioAutoDiscount"
+    ],
+    "autoSurcharges": [
+      "Inherited from generic base via MyBase.TryConvertToCsioAutoSurcharge"
+    ],
+    "accidentBenefits": [
+      "AccidentBenefits (csio:AB)",
+      "IncomeReplacement",
+      "Indexation",
+      "CatastrophicImpairment (V130 interface)",
+      "MedicalRehabAttendantCare (V130 interface)",
+      "CatastrophicImpairmentMedicalRehabilitationAndAttendantCare (V130 interface)",
+      "DeathAndFuneralBenefits",
+      "DependantCareBenefits (V130 interface)",
+      "CaregiverHousekeepingHomeMaintenanceBenefits (V118 interface)"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "TownHouse": "RowHouseTownHouseInside (V121 ResidenceType)",
+      "RentedCondo": "csio:2F (RentedCondominiumForm)",
+      "SecondaryCondo": "csio:2G (SecondaryCondominiumForm)",
+      "SeasonalFEC": "csio:4E (SeasonalDwellingFireEC)",
+      "RentedDwellingFEC": "csio:6E (RentedDwellingFireEC)",
+      "AdditionalResidence_House": "Handled by TryConvertAddResiHomeToCsio",
+      "AdditionalResidence_Tenant": "Handled by TryConvertAddResiTenantToCsio",
+      "AdditionalResidence_Condo": "Handled by TryConvertAddResiCondoToCsio"
+    },
+    "exteriorWallMaterials": {
+      "Brick": "B (Intact proprietary)",
+      "Masonite": "I (Intact proprietary)",
+      "Masonry": "M (Intact proprietary)",
+      "MasonryVeneer": "BrickVeneer (standard)",
+      "Steel": "T (Intact proprietary)",
+      "Stone": "N (Intact proprietary)",
+      "Log": "1 (Intact proprietary)",
+      "Aggregate": "standard",
+      "Aluminium": "standard",
+      "BrickVeneer": "standard",
+      "Cement": "standard",
+      "StoneVeneer": "standard",
+      "Stucco": "standard",
+      "Wood": "standard (WoodExterior)",
+      "Vinyl": "standard",
+      "CementFiberBoard": "standard",
+      "CementFiberShingles": "standard (CementFiberShingle)",
+      "CustomLog": "standard (LogSiding)"
+    },
+    "genderCodes": {
+      "X": "csio:X (non-binary, Intact-specific addition)"
+    },
+    "fuelTypes": {
+      "Solar": "maps to Electric (standard)",
+      "GroundSource": "maps to Other (standard)"
+    },
+    "roofMaterials": {
+      "Other": "Other (standard)",
+      "AluminumShingle": "Aluminium",
+      "CeramicTile": "ClayTile",
+      "FiberglassShingle": "AsphaltShingles",
+      "Metal/MetalPanel/Tin": "MetalTile",
+      "Steel/SteelDeck": "CorrugatedSteel",
+      "Enviroshake": "GreenRoof (V127)",
+      "WoodDeck": "WoodShingles",
+      "Duroid": "skipped (returns True without setting code)"
+    },
+    "antiTheftDeviceCodes": {
+      "Tag": "1Q (Intact proprietary, FieldOptions.Tag = 'Tag', CompanyCsioCode.Tag = '1Q')",
+      "KYCS": "3A (Intact proprietary, FieldOptions.KYCS = 'KYCS Global Inc.', CompanyCsioCode.KYCS = '3A')",
+      "Domino": "csio:3B (Intact proprietary, FieldOptions.Domino = 'Domino', CompanyCsioCode.Domino = 'csio:3B')"
+    },
+    "claimHistoryReportStatus": {
+      "ConsentGiven": "csio:2",
+      "ConsentNotGiven": "csio:1",
+      "Default": "csio:0"
+    },
+    "causeOfLoss": {
+      "VoluntaryPropertyDamage": "616",
+      "PersonalAccident": "651"
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": [
+      "DISAS (Away at School)",
+      "DISRN (Claims-Free Renewal)",
+      "DISRO (Claims-Free Renewal Occ)",
+      "DISGS (Good Student)",
+      "DISGR (Graduated Licensing)",
+      "DISGO (Graduated Licensing Occ)",
+      "DISHY (Hybrid Vehicles)",
+      "DISMP (Multi-Policy)",
+      "DISVC (My Home and Auto)",
+      "csio:DISTE (My Driving Discount Program)",
+      "DISNB (New Business Loyalty)",
+      "DISON (One-Pay)",
+      "DISAL (Theft Alarm)",
+      "DISCF (Conviction Free)",
+      "DISCO (Conviction Free Occ)",
+      "DISSN (Winter Tires)",
+      "DISRD (Retiree)",
+      "DISMV (Multi-Vehicle)",
+      "DISEL (Electric Vehicle)",
+      "DISGD (Group Discount)",
+      "DISOC (Occupation)",
+      "csio:ZINTD (Web Discount / Winter Tire coverage code)"
+    ],
+    "isSurchargePatterns": [
+      "SURCN (Conviction Surcharge)",
+      "SURCD (Conviction Surcharge Occ)",
+      "SURHT (High Theft Surcharge)",
+      "SURSO (Secondary Residence)",
+      "SURMC (Miscellaneous)",
+      "SURPN (No Previous Insurance)"
+    ],
+    "habDiscountPrefixHandling": "Hab discounts received without 'csio:' prefix are auto-prefixed before lookup. Also, ZHAL* and ZWU* prefix codes are recognized as hab surcharges."
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      {"code": "csio:ZINTD", "version": "V146", "availableIn": ["V134", "V145", "V146"], "description": "Web/Internet Discount (sent as vehicle coverage)"}
+    ],
+    "habCoverage": [
+      {"code": "csio:ZEWDP", "version": "V146", "availableIn": ["V134", "V145", "V146"], "description": "Enhanced Water Damage Protection"}
+    ],
+    "discountsSurcharges": [],
+    "groupTierPrefixes": [
+      {"code": "ZHAL{n}", "version": "V146", "availableIn": ["V134", "V145", "V146"], "description": "Group Discount HAL tier prefix (Eastern provinces)"},
+      {"code": "ZWU{n}", "version": "V146", "availableIn": ["V134", "V145", "V146"], "description": "Group Discount WU tier prefix (Western provinces)"}
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 98,
+    "totalGenericInheritedCodes": 45,
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {
+        "code": "csio:ERQK",
+        "foundIn": "CsioToFramework/Rated/CoverageConverterHelper.vb",
+        "note": "Earthquake code used in response parsing but not declared in CompanyConstants. Inherited from generic base."
+      },
+      {
+        "code": "csio:PAHAI",
+        "foundIn": "FrameworkToCsio/Unrated/PcCoverageCollectionConverter.vb (line 343)",
+        "note": "Hail coverage code used as string literal instead of CompanyConstants.CompanyCsioCode.HailCoverage"
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V146only": 0,
+      "V145only": 2,
+      "V134only": 0,
+      "sharedAcrossAllVersions": 96,
+      "notes": {
+        "V145only_codes": ["csio:SM (SnowMobile - dropped in V146)", "csio:DISTE with csio: prefix (V134 had it without prefix)"],
+        "V146_renames": ["Atv -> Buggy (same csio:AT code)"],
+        "V134_differences": ["MyDrivingDiscountProgram was 'DISTE' without csio: prefix"]
+      }
+    }
+  }
+}

@@ -1,0 +1,724 @@
+{
+  "_metadata": {
+    "carrier": "PeaceHillsDirectRating",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V143", "V144", "V145"],
+    "latestVersion": "V145",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 225,
+    "description": "Complete CZO mapping for Peace Hills Direct Rating",
+    "versionRoles": {
+      "V145": "Latest (current active service)",
+      "V144": "Intermediate override layer",
+      "V143": "Base version for PeaceHillsDirectRating"
+    },
+    "inheritanceChain": "V145 -> V144 -> V143 -> V141/Generic -> v043/Generic"
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "End5B": {
+        "csioCode": "standard:End5B",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Permission to Carry Passengers for Compensation (SEF 5B)"
+      },
+      "End8B": {
+        "csioCode": "standard:End8",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Property Damage Reimbursement (SEF 8)"
+      },
+      "End19B": {
+        "csioCode": "standard:End19",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Limitation of Amount Paid by Insurer (SEF 19)"
+      },
+      "End21B": {
+        "csioCode": "standard:End21B",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Blanket Fleet (SEF 21B)"
+      },
+      "End28C": {
+        "csioCode": "standard:End28",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Excluded Driver (SEF 28)"
+      },
+      "End30B": {
+        "csioCode": "standard:End30",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Suspension of Coverage (SEF 30)"
+      },
+      "End39A": {
+        "csioCode": "standard:End39",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Accident Rating Waiver (SEF 39)"
+      },
+      "End39X_AccidentRatingWaiver": {
+        "csioCode": "csio:ZP39X",
+        "source": "peacehills",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Accident Rating Waiver - carrier-proprietary variant (End39X)",
+        "zCode": true
+      },
+      "AccessoriesExtension": {
+        "csioCode": "csio:ZPMAP",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Accessories Extension (SEF 37 equivalent)",
+        "zCode": true,
+        "notes": "In V144/V145, maps to standard End37 instead"
+      },
+      "AccessoriesExtension_V145": {
+        "csioCode": "standard:End37",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V144", "V145"],
+        "description": "Accessories Extension (SEF 37) - uses standard code in later versions"
+      },
+      "SparePartsCoverage_CAE6": {
+        "csioCode": "csio:ZPUAE",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "CAE 6 - Unattached Automobile Parts and Equipment for Collector Vehicles",
+        "zCode": true
+      },
+      "BelongingsMotorhome_CAE7": {
+        "csioCode": "csio:CCMVT",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "CAE 7 - Contents Coverage for Motorhomes"
+      },
+      "EmergencyAssistancePackage": {
+        "csioCode": "csio:MOVAE",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Emergency Assistance Package (Roadside)"
+      },
+      "End43R": {
+        "csioCode": "standard:End43R",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Removing Depreciation Deduction (SEF 43R)"
+      },
+      "End43RL": {
+        "csioCode": "standard:End43Rl",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Removing Depreciation Deduction Limited (SEF 43RL)"
+      }
+    },
+    "homeEndorsements": {
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "standard:HomeEquipmentProtection",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Equipment Breakdown / Home Equipment Protection"
+      },
+      "CondoDeductibleAssessment": {
+        "csioCode": "csio:CECCE",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Condominium Deductible Assessment (Earthquake Excluded) - V143 uses carrier code",
+        "notes": "In V144/V145, changed to standard CommonElementsCondominiumCorporationExtensionEndorsement"
+      },
+      "CondoDeductibleAssessment_V145": {
+        "csioCode": "standard:CommonElementsCondominiumCorporationExtensionEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V144", "V145"],
+        "description": "Condominium Deductible Assessment - standard code in later versions"
+      },
+      "WindHailCoverage": {
+        "csioCode": "standard:WindHailDeductible",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Wind/Hail Deductible Coverage"
+      },
+      "GlassReducedDeductible": {
+        "csioCode": "standard:GlassBreakage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Glass Breakage / Reduced Deductible"
+      },
+      "RentalIncome": {
+        "csioCode": "standard:RentorRentalValue",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Rent or Rental Value (Commercial Property code)"
+      },
+      "WaterCoverage": {
+        "csioCode": "csio:OVWAT",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Water Plus Endorsement - V143 code",
+        "notes": "Changed to csio:ZPWPE in V144/V145"
+      },
+      "WaterCoverage_V145": {
+        "csioCode": "csio:ZPWPE",
+        "source": "peacehills",
+        "version": "V145",
+        "availableIn": ["V144", "V145"],
+        "description": "Water Plus Endorsement - carrier proprietary code",
+        "zCode": true
+      },
+      "HotTub": {
+        "csioCode": "csio:SPDAM",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Hot Tub / Spa Coverage - V143 code",
+        "notes": "Changed to csio:ZPOHTE in V144/V145"
+      },
+      "HotTub_V145": {
+        "csioCode": "csio:ZPOHTE",
+        "source": "peacehills",
+        "version": "V145",
+        "availableIn": ["V144", "V145"],
+        "description": "Hot Tub / Spa Coverage - carrier proprietary code",
+        "zCode": true
+      },
+      "ComputerHardwareSoftwareCellphones": {
+        "csioCode": "csio:ZPCSCI",
+        "source": "peacehills",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Computer Hardware, Software, and Cellphones Coverage",
+        "zCode": true,
+        "coversFrameworkCodes": ["ComputerHardware", "ComputerSoftware", "ComputerSoftwareIncreasedLimits", "CellularPhone"]
+      },
+      "DeductibleAssessmentBuydownEarthquake": {
+        "csioCode": "csio:CDEDA",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Deductible Assessment Buydown (Earthquake) - V143 code",
+        "notes": "Changed to csio:ZPECC in V144/V145"
+      },
+      "DeductibleAssessmentBuydownEarthquake_V145": {
+        "csioCode": "csio:ZPECC",
+        "source": "peacehills",
+        "version": "V145",
+        "availableIn": ["V144", "V145"],
+        "description": "Deductible Assessment Buydown (Earthquake) - carrier proprietary code",
+        "zCode": true
+      },
+      "LimitedRoofCoverage": {
+        "csioCode": "csio:ROOFW",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Limited Roof Coverage - V143 code",
+        "notes": "Changed to csio:ZRLE in V144/V145"
+      },
+      "LimitedRoofCoverage_V145": {
+        "csioCode": "csio:ZRLE",
+        "source": "peacehills",
+        "version": "V145",
+        "availableIn": ["V144", "V145"],
+        "description": "Limited Roof Coverage - carrier proprietary code",
+        "zCode": true
+      },
+      "WineAndSpirits": {
+        "csioCode": "standard:WineSpiritsEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Wine and Spirits Endorsement"
+      },
+      "BelongingsStorage": {
+        "csioCode": "standard:PropertyInStorage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Property in Storage / Belongings Storage"
+      },
+      "BelongingsHolidayTrailer": {
+        "csioCode": "standard:TravelTrailersContentsAllRisks/TravelTrailersContentsNamedPerils",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Belongings in Holiday Trailer (matches either All Risks or Named Perils)"
+      },
+      "WindTurbine": {
+        "csioCode": "WINDTURB",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Wind Turbine / Wind Energy System (non-csio-prefixed constant)"
+      },
+      "SolarEnergySystem": {
+        "csioCode": "csio:SolarPanel",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Solar Energy System / Solar Panel Coverage"
+      },
+      "VandalismTheftByTenantsAndGuest": {
+        "csioCode": "standard:VandalismTheftByTenantsAndGuest",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Vandalism/Theft by Tenants and Guests (returns False in converter - suppressed)"
+      },
+      "PropertyLossAssessment": {
+        "csioCode": "standard:PropertyLossAssessment",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Property Loss Assessment (hab coverage, not endorsement)"
+      },
+      "AllRiskUnitOwnersAdditionalProtection": {
+        "csioCode": "standard:AllRiskUnitOwnersAdditionalProtection",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "All Risk Unit Owner's Additional Protection (Contingent)"
+      },
+      "ImprovementsAndBetterments": {
+        "csioCode": "standard:CondominiumUnitOwnersUnitImprovementsandBetterments",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Condominium Unit Owner's Improvements and Betterments"
+      }
+    },
+    "homeLiabilities": {
+      "AdditionalResidence": {
+        "csioCode": "standard:AdditionalResidencesPropertiesAcreage",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Additional Residence/Properties/Acreage liability",
+        "coversFrameworkCodes": ["AdditionalResidenceHouse", "AdditionalResidenceCondo", "AdditionalResidenceTenant", "AdditionalResidence", "SeasonalDwelling", "RentedCondo", "RentedDwelling"]
+      },
+      "BusinessUseOfHome": {
+        "csioCode": "standard:ProfessionalUseResPremises",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Professional Use of Residential Premises"
+      },
+      "Horses": {
+        "csioCode": "standard:ExhibitionofAnimals",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Exhibition of Animals (Horses)"
+      },
+      "DayCareInHome": {
+        "csioCode": "csio:DAYC",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Day Care in Home Liability"
+      },
+      "RentedRoomSuite": {
+        "csioCode": "standard:AdditionalLocationsRented",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Additional Locations Rented (Room/Suite)"
+      },
+      "TouristRoomSuites": {
+        "csioCode": "standard:BedBreakfast",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Bed and Breakfast / Tourist Room Suites"
+      },
+      "BoatAndMotor": {
+        "csioCode": "csio:WALI2",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Boat and Motor Liability"
+      },
+      "DocksOrWharves": {
+        "csioCode": "csio:WHADO",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Wharves and Docks Liability"
+      },
+      "Atv_AmphibiousVehicle": {
+        "csioCode": "csio:AMPHL",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Amphibious Vehicle / ATV Liability"
+      },
+      "JetSki": {
+        "csioCode": "standard:WaterjetPropulsionPersonalWatercraftBasic",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Waterjet/PWC Personal Watercraft - Basic Liability"
+      }
+    },
+    "watercraftCoverage": {
+      "WatercraftComprehensive": {
+        "csioCode": "csio:CCWT",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Watercraft Comprehensive Coverage (rated response)"
+      },
+      "WatercraftHullLiability": {
+        "csioCode": "csio:HLLAR",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Watercraft Hull/Legal Liability All Risks"
+      },
+      "WatercraftATV": {
+        "csioCode": "csio:ATVAR",
+        "source": "standard",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "ATV All Risks Coverage"
+      }
+    },
+    "scheduledPropertyItems": {
+      "BooksAndBusiness": {
+        "csioCode": "standard:BooksToolsandInstrumentsPertainingtoaBusiness",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Books, Tools and Instruments Pertaining to a Business"
+      },
+      "Furs": {
+        "csioCode": "standard:Furs",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Furs - Special Limits"
+      },
+      "JewelleryWatchesGems": {
+        "csioCode": "standard:JewelleryWatchesGems",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Jewellery, Watches, and Gems - Special Limits"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "MoreAutosThanOperators": {
+        "csioCode": "standard:DiscountVehicleToOperatorRatio",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Vehicle to Operator Ratio Discount"
+      },
+      "Loyalty": {
+        "csioCode": "standard:DiscountRenewal",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Renewal / Loyalty Discount",
+        "notes": "V143 also matches DiscountRenewalOccasional"
+      },
+      "MultipleLineDiscount": {
+        "csioCode": "standard:DiscountMultipleLine",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Multi Line Discount (auto + hab with same carrier)",
+        "notes": "Added via PersPolicyConverter when supporting hab/auto policy is with PeaceHills"
+      }
+    },
+    "autoSurcharges": {
+      "TowsNonOwnedTrailer": {
+        "csioCode": "standard:SurchargeTowsNonOwnedTrailer",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Tows Non-Owned Trailer Surcharge"
+      },
+      "AntiqueVehicle": {
+        "csioCode": "standard:SurchargeAntiqueVehicle",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Antique Vehicle Surcharge"
+      },
+      "RightHandDriveVehicle": {
+        "csioCode": "csio:SURRH",
+        "source": "peacehills",
+        "version": "V143",
+        "availableIn": ["V143"],
+        "description": "Right Hand Drive Vehicle Surcharge"
+      }
+    },
+    "habDiscounts": {
+      "AssociationMembership": {
+        "csioCode": "standard:DiscountAssociationMembership",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V143", "V144", "V145"],
+        "description": "Association Membership Discount (Hab)",
+        "notes": "Uses csio: prefix fix for codes missing the prefix"
+      }
+    },
+    "habSurcharges": {}
+  },
+  "otherCodes": {
+    "outbuildings": {
+      "csioCode": "csio:EO",
+      "source": "peacehills",
+      "version": "V143",
+      "availableIn": ["V143"],
+      "description": "Outbuildings (used as earthquake option for outbuildings coverage)"
+    },
+    "deductiblePerilWater": {
+      "csioCode": "csio:PAWAT",
+      "source": "peacehills",
+      "version": "V143",
+      "availableIn": ["V143"],
+      "description": "Deductible Peril Water (rated response parsing)"
+    },
+    "vehicleUseFallback": {
+      "csioCode": "csio:P",
+      "source": "peacehills",
+      "version": "V145",
+      "availableIn": ["V143", "V144", "V145"],
+      "description": "Pleasure use - fallback vehicle use code for unknown types"
+    }
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "CondoComprehensive": "standard:ComprehensiveCondominiumForm",
+      "TenantSeniors": "standard:TenantsSeniorsPackage",
+      "FecComprehensive": "standard:RentedDwellingComprehensiveForm",
+      "FecFireAndExtendedCoverage": "standard:RentedDwellingFireECForm (V143 custom)",
+      "FecPackage": "standard:RentedDwellingComprehensiveForm",
+      "RentedCondoComprehensive": "standard:RentedCondominiumForm (V143 custom)",
+      "SeasonalFireAndExtendedCoverage": "standard:SeasonalDwellingFireECForm (V143 custom)",
+      "SeasonalNamedPerils": "standard:SeasonalDwellingBroadForm",
+      "SeasonalPlus": "standard:SeasonalDwellingComprehensiveForm"
+    },
+    "vehicleUse": {
+      "Business": "standard:Business",
+      "UsedForPleasureTouring": "standard:UsedforPleasureTouringOnroadMotorcycle",
+      "OffRoadMotorcycle": "standard:OffroadMotorcycle",
+      "Clergy": "standard:Clergy",
+      "Farming": "standard:Farming",
+      "Pleasure": "standard:Pleasure",
+      "WorkCommute": "standard:Commuting",
+      "Commercial": "standard:Commercial",
+      "Else/Unknown": "csio:P (Pleasure fallback)"
+    },
+    "vehicleBodyType": {
+      "overrides": "TryConvertToCsioPrivatePassenger and TryConvertToCsioMotorHome add custom body type mappings via V134 enum values"
+    },
+    "vehicleType": {
+      "overrides": "TryConvertToCsioOther handles custom mapping including trailers via V143 enum values"
+    },
+    "occupancyType": {
+      "Owner+PrimaryItem": "standard:PrimaryResidence",
+      "Owner+SeasonalDwelling": "standard:SecondarySeasonal",
+      "Owner+RentedCondo/RentedDwelling": "standard:Rental",
+      "Owner+Tenant": "standard:PrimaryResidence",
+      "Owner+Other": "standard:SecondaryNonSeasonal",
+      "Tenant+Primary": "standard:PrimaryResidence",
+      "Tenant+RentedCondo/RentedDwelling": "standard:Rental",
+      "Tenant+Other": "standard:SecondaryNonSeasonal",
+      "Unoccupied": "standard:Unoccupied"
+    },
+    "garageType": {
+      "None": "standard:None (V143 GarageTypeValues)"
+    },
+    "exteriorWallMaterial": {
+      "overrides": "Custom mapping for wall material codes via V132 enum values"
+    },
+    "maritalStatus": {
+      "overrides": "Custom mapping via standard enum values"
+    },
+    "backflowValveType": {
+      "Other": "standard:Other",
+      "Flapper": "standard:Flapper",
+      "Gate": "standard:Gate",
+      "None": "standard:None"
+    },
+    "propulsionType": {
+      "JetSki": "standard:PWCPersonalWatercraft",
+      "TrailerBoat": "standard:WatercraftTrailer",
+      "Sailboat": "standard:Sail",
+      "Canoe/Kayak/Rowboat/Windsurfer": "standard:NonPowerCraft",
+      "JetBoat": "standard:Waterjet",
+      "Other": "standard:Other"
+    },
+    "creditInfoConsent": {
+      "ConsentYes": "standard:SignedForm",
+      "ConsentNo": "standard:Denied",
+      "AuthorizationAudio": "standard:VerbalOK",
+      "AuthorizationImplied": "standard:ConsentNoMailings",
+      "Else/NotAsked": "standard:NotAsked"
+    },
+    "itemDefinitionType": {
+      "Boat/Motor": "standard:Motor",
+      "BoatAccessories": "standard:BoatEquipment",
+      "OtherWatercraft": "standard:Watercraft",
+      "TrailerBoat/TrailerHoliday/TrailerUtility": "standard:Trailer",
+      "Other": "standard:ScheduledProperty"
+    },
+    "riskConverter_propertyFloater": {
+      "BusinessPersonalProperty": "standard:BusinessProperty (HabPackageAndOtherForms)",
+      "ComputerSoftware/IncreasedLimits": "standard:PersonalComputer",
+      "FursIncreasedLimits": "standard:Furs",
+      "JewelleryIncreasedLimits": "standard:Jewellery",
+      "WaterSportsEquipment": "standard:ScubaEquipment",
+      "Radio": "standard:PortableRadiosTypewriters",
+      "MusicalInstruments": "standard:MusicalInstrumentsProfessionalCommercial",
+      "Miscellaneous": "standard:MiscellaneousProperty",
+      "MediaPlayerPortable": "standard:ElectronicEquipment",
+      "ComicBookCollection": "standard:CollectingCardsArtistSportetc",
+      "Tools": "standard:ToolsNonprofessional (V143 custom)",
+      "TrailerBoat/TrailerUtility/TrailerHoliday": "standard:Other",
+      "WindEnergySystem": "WINDTURB (company constant)",
+      "SolarEnergySystem": "csio:SolarPanel (company constant)"
+    }
+  },
+  "csioConstants": {
+    "watercraftAccessoryCoverageItemCodes": [715, 713, 714],
+    "watercraftCoverageItemCodes": [29, 99, 334],
+    "propertyScheduleAsCoverage": [4451, 136, 335, 1498, 1577],
+    "csioEquipmentType_Boat": "Boat"
+  },
+  "companyConstants": {
+    "kitchenQuality": {
+      "None": "None",
+      "BuildersGrade": "Builder's Grade",
+      "Custom": "Custom",
+      "Economy": "Economy",
+      "Luxury": "Luxury",
+      "Standard": "Standard",
+      "Other": "Other"
+    },
+    "fieldOptions": {
+      "BuildingOnly": "Building Only",
+      "ContentsOnly": "Contents Only",
+      "CombinationSpaceWater_V143": "Combination Space-Water",
+      "HeatPump_V143": "Heat Pump",
+      "StorageTank_V143": "Storage Tank",
+      "Other_V143": "Other",
+      "Solar_V143": "Solar",
+      "TanklessOnDemand_V143": "Tankless (On-Demand)"
+    },
+    "companyCoverageType_V143": {
+      "PolicyLimit": "Policy Limit"
+    },
+    "fenceConstructionCodes_V143": {
+      "Other": "9"
+    },
+    "creditScore": {
+      "AuthorizationAudio": "Audio",
+      "AuthorizationImplied": "Implied",
+      "AuthorizationNotAsked": "NotAsked"
+    }
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      {"code": "csio:ZP39X", "name": "AccidentRatingWaiver", "version": "V145", "availableIn": ["V143", "V144", "V145"]},
+      {"code": "csio:ZPMAP", "name": "AccessoriesExtension", "version": "V143", "availableIn": ["V143"]},
+      {"code": "csio:ZPUAE", "name": "CAE6UnattachedAutomobilePartsAndEquipmentForCollectorVehicles", "version": "V143", "availableIn": ["V143"]}
+    ],
+    "habCoverage": [
+      {"code": "csio:ZPOHTE", "name": "HotTub", "version": "V145", "availableIn": ["V144", "V145"]},
+      {"code": "csio:ZPCSCI", "name": "ComputerHardwareSoftwareCellphones", "version": "V145", "availableIn": ["V143", "V144", "V145"]},
+      {"code": "csio:ZPWPE", "name": "WaterPlusEndorsement", "version": "V145", "availableIn": ["V144", "V145"]},
+      {"code": "csio:ZPECC", "name": "DeductibleAssessmentBuydownEarthquake", "version": "V145", "availableIn": ["V144", "V145"]},
+      {"code": "csio:ZRLE", "name": "LimitedRoofCoverage", "version": "V145", "availableIn": ["V144", "V145"]}
+    ],
+    "discountsSurcharges": []
+  },
+  "versionDifferences": {
+    "V143_to_V144": {
+      "codesChanged": [
+        {"constant": "HotTub", "from": "csio:SPDAM", "to": "csio:ZPOHTE"},
+        {"constant": "WaterPlusEndorsement", "from": "csio:OVWAT", "to": "csio:ZPWPE"},
+        {"constant": "DeductibleAssessmentBuydownEarthquake", "from": "csio:CDEDA", "to": "csio:ZPECC"},
+        {"constant": "LimitedRoofCoverage", "from": "csio:ROOFW", "to": "csio:ZRLE"},
+        {"constant": "CondoDeductibleAssessment", "from": "csio:CECCE", "to": "standard:CommonElementsCondominiumCorporationExtensionEndorsement"},
+        {"constant": "AccessoriesExtension", "from": "csio:ZPMAP (company)", "to": "standard:End37"}
+      ],
+      "codesRemoved": [
+        "csio:MOVAE (EmergencyAssistancePackage)",
+        "csio:ZPUAE (CAE6UnattachedAutomobilePartsAndEquipmentForCollectorVehicles)",
+        "csio:CCMVT (CAE7ContentsCoverageForMotorhomes)",
+        "csio:EO (Outbuildings)",
+        "csio:PAWAT (DeductiblePerilWater)",
+        "csio:SURRH (RightHandDriveVehicle)",
+        "csio:CECCE (CondominiumDeductibleAssessmentEarthquakeExcluded)",
+        "csio:SolarPanel (SolarEnergySystem)",
+        "WINDTURB (WindTurbine)",
+        "csio:AMPHL (AmphibiousVehicleLiability)",
+        "csio:DAYC (DayCareInHome)",
+        "csio:WALI2 (BoatAndMotor)",
+        "csio:WHADO (WharvesAndDocks)"
+      ],
+      "codesAdded": [],
+      "notes": "V144 significantly simplified CompanyConstants from 71 lines to 34 lines. Many carrier-specific codes were replaced with standard CSIO values or removed entirely. The CsioConstants.vb file was removed in V144."
+    },
+    "V144_to_V145": {
+      "codesChanged": [],
+      "codesRemoved": [],
+      "codesAdded": [],
+      "notes": "V145 CompanyConstants.vb is identical to V144. V145 adds new Generic EnumConverters (CompanyCodeConverter, CoverageCodeConverter, VehicleSpecialUseConverter) and Generic FrameworkToCsio converters."
+    }
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 25,
+    "totalGenericInheritedCodes": "Inherits from V141/Generic -> v043/Generic base (1400+ standard codes)",
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {"code": "csio:P", "location": "VehicleUseConverter.vb", "notes": "Inline string literal for Pleasure use fallback, not in CompanyConstants"},
+      {"code": "csio:CCWT", "location": "CsioToFramework/Rated/PcCoverageConverter.vb (V143)", "notes": "Inline watercraft code, not in CompanyConstants"},
+      {"code": "csio:HLLAR", "location": "CsioToFramework/Rated/PcCoverageConverter.vb (V143)", "notes": "Inline watercraft code, not in CompanyConstants"},
+      {"code": "csio:ATVAR", "location": "CsioToFramework/Rated/PcCoverageConverter.vb (V143)", "notes": "Inline ATV code, not in CompanyConstants"}
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V143_CompanyConstants": "19 csio: codes (full set)",
+      "V144_CompanyConstants": "6 csio: codes (trimmed)",
+      "V145_CompanyConstants": "6 csio: codes (same as V144)",
+      "V143only": 13,
+      "V144and145": 5,
+      "sharedAcrossAllVersions": 2
+    },
+    "filesByVersion": {
+      "V143": 88,
+      "V144": 60,
+      "V145": 57,
+      "V143_Generic": 11,
+      "V144_Generic": 11,
+      "V145_Generic": 17
+    }
+  }
+}

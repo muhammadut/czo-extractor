@@ -1,0 +1,691 @@
+{
+  "_metadata": {
+    "carrier": "Travelers",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V141"],
+    "latestVersion": "V141",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 59,
+    "description": "Complete CZO mapping for Travelers (Dominion). Single-version carrier in V141 inheriting from V141/Generic and v043/Generic base.",
+    "versionRoles": {
+      "V141": "Current production service (single version)"
+    },
+    "notes": "Travelers uses InsuranceCompanyCode.Dominion as their company identifier. They have zero proprietary Z-codes -- all CZO codes are standard CSIO codes resolved via enumValuesFactory. The carrier relies heavily on factory-resolved values rather than hardcoded csio: strings."
+  },
+  "coverageCodes": {
+    "autoEndorsements": {},
+    "homeEndorsements": {
+      "FloodEndorsement": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().OverlandWaterCoverage",
+        "resolvedCode": "standard CSIO OverlandWaterCoverage value",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Overland Water / Flood Coverage endorsement. Also accepts SurfaceWater inbound."
+      },
+      "LimitedHiddenWaterDamage": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().LimitedHiddenWaterDamage",
+        "resolvedCode": "standard CSIO LimitedHiddenWaterDamage value",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Limited Hidden Water Damage endorsement"
+      },
+      "MatchingOfUndamagedRoofSurfacing": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().MatchingOfUndamagedRoofSurfacingAdditionalCoverage",
+        "resolvedCode": "standard CSIO MatchingOfUndamagedRoofSurfacingAdditionalCoverage value",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Matching of Undamaged Roof Surfacing Additional Coverage"
+      },
+      "MatchingOfUndamagedSiding": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().MatchingOfUndamagedSidingAdditionalCoverage",
+        "resolvedCode": "standard CSIO MatchingOfUndamagedSidingAdditionalCoverage value",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Matching of Undamaged Siding Additional Coverage"
+      },
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().HomeEquipmentProtection",
+        "resolvedCode": "standard CSIO HomeEquipmentProtection value",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Home Equipment Protection (Equipment Breakdown Coverage)"
+      },
+      "WindHailCoverage": {
+        "csioCode": "csio:PAHAI",
+        "source": "travelers",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Wind/Hail Coverage endorsement. Hardcoded in CompanyConstants.CompanyCsioCode.HailCoverage."
+      },
+      "PersonalRecordsAndDataReplacement": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().PersonalRecordsandDataReplacement",
+        "resolvedCode": "standard CSIO PersonalRecordsandDataReplacement value",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Personal Records and Data Replacement endorsement"
+      },
+      "Earthquake": {
+        "csioCode": "csio:ERQK",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Earthquake Coverage. Hardcoded as csio:ERQK in CoverageConverterHelper for deductible parsing.",
+        "deductibleOptions": {
+          "BuildingAndContents": "BuildingandContents option code",
+          "BuildingOnly": "BuildingandOutbuilding option code",
+          "ContentsOnly": "Contents option code"
+        }
+      },
+      "SewerBackup": {
+        "csioCode": "inherited from Generic base",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Sewer Backup endorsement. Limit conversion handles 'Policy Limit' and numeric amounts."
+      },
+      "GroundWaterEndorsement": {
+        "csioCode": "inherited from Generic base",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Ground Water endorsement. Uses custom field name GroundWaterEndorsement from CompanyConstants.FieldName."
+      },
+      "ServiceLineCoverage": {
+        "csioCode": "inherited from Generic base",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Service Line Coverage endorsement"
+      }
+    },
+    "homeAdditionalCoverages": {
+      "AllRiskLossAssessmentCoverage": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().AllRiskLossAssessmentCoverage",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "All Risk Loss Assessment Coverage. Sent when LossAssessment field > 0."
+      },
+      "ReplacementCostContentsBasic": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().ReplacementCostContentsBasic",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Replacement Cost Contents Basic. Sent when Replacement field is true and not Condo. Excluded from framework endorsement mapping (returns false). Also returned as false for LegalLiabilityLossAssessment."
+      },
+      "CondominiumContingentLegalLiability": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_LiabilityExtensions().CondominiumContingentLegalLiability",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Condominium Contingent Legal Liability. Handled specially in rated PcCoverageConverter."
+      },
+      "LegalLiabilityLossAssessment": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_LiabilityExtensions().LegalLiabilityLossAssessment",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Legal Liability Loss Assessment. Excluded from home endorsement framework mapping (returns false). Handled specially in rated coverage."
+      },
+      "AllRiskBuildingImprovementsIncreasedLimits": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().AllRiskUnitOwnersBuildingImprovementsandBettermentsIncreasedLimits",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "All Risk Unit Owners Building Improvements and Betterments Increased Limits. Premium mapped to PremiumBetterments field."
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {},
+    "travelTrailer": {
+      "TravelTrailersAllRisks": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_VacationTravelTrailerCoverageForms().TravelTrailersAllRisks",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Travel Trailers All Risks coverage form"
+      }
+    },
+    "renewableEnergy": {
+      "AllRiskPersonalArticlesEndorsement": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_ScheduledPersonalPropertyForms.AllRiskPersonalArticlesEndorsement",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "All Risk Personal Articles Endorsement - used for renewable energy coverage"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {},
+    "autoSurcharges": {},
+    "habDiscounts": {
+      "WaterLeakDetectionSystem": {
+        "csioCode": "enumValuesFactory.GetCoveragesValues_HabitationalDiscountAndSurchargeCodes().DiscountWaterFlowDevice",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Water Leak Detection System / Water Flow Device Discount. Response-side only (CoverageCodeConverter.TryConvertToFrameworkHabDiscount). Also prefixes incoming codes with csio: if missing."
+      }
+    },
+    "habSurcharges": {},
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "All standard endorsements from v043/Generic/EnumConverters/CoverageCodeConverter.vb inheritance chain",
+      "Travelers CoverageCodeConverter inherits from V141/Generic which inherits from V137/Generic which chains back to v043/Generic",
+      "The carrier adds 7 custom endorsement mappings on top of the full Generic base"
+    ],
+    "homeLiabilities": [
+      "GardenTypeTractor (V141 Generic addition)",
+      "LeakageorOverflowofDomesticFuelOil (V141 Generic addition)",
+      "All standard liability codes from v043/Generic base"
+    ],
+    "homeDiscounts": [
+      "All standard hab discount codes from v043/Generic base",
+      "WaterFlowDevice discount (Travelers-specific mapping to WaterLeakDetectionSystem)"
+    ],
+    "homeSurcharges": [
+      "StandAlone surcharge (V141 Generic addition)",
+      "AgeOfHome surcharge (V141 Generic addition)",
+      "All standard hab surcharge codes from v043/Generic base"
+    ],
+    "autoEndorsementsOntario": [
+      "All standard Ontario auto endorsements from v043/Generic base"
+    ],
+    "autoEndorsementsNonOntario": [
+      "All standard non-Ontario auto endorsements from v043/Generic base"
+    ],
+    "autoDiscounts": [
+      "YoungDriver discount (V141 Generic addition - maps YoungDriver, YoungDriver05, YoungDriver06)",
+      "AntiTheftDeviceAutomaticallyActivatedNonAlarms (V141 Generic addition)",
+      "All standard auto discount codes from v043/Generic base"
+    ],
+    "autoSurcharges": [
+      "All standard auto surcharge codes from v043/Generic base"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "RentedDwelling_Broad": {
+        "frameworkValue": "HabCoverageType.Broad",
+        "csioValue": "RentedDwellingBroadForm",
+        "source": "standard",
+        "description": "Rented Dwelling Broad Form"
+      },
+      "RentedDwelling_Basic": {
+        "frameworkValue": "HabCoverageType.Basic",
+        "csioValue": "RentedDwellingStandardForm",
+        "source": "standard",
+        "description": "Rented Dwelling Standard/Basic Form"
+      },
+      "RentedCondominium_Basic": {
+        "frameworkValue": "HabCoverageType.Basic",
+        "csioValue": "csio:2F (RentedCondominiumForm via V141 PolicyTypeValues)",
+        "source": "travelers",
+        "description": "Rented Condominium Form. Uses V141 PolicyTypeValues which resolves to csio:2F from CompanyConstants."
+      },
+      "AdditionalResidenceHome_Broad": {
+        "frameworkValue": "HabCoverageType.Broad",
+        "csioValue": "SecondaryHomeownersBroadForm",
+        "source": "standard",
+        "description": "Secondary Homeowners Broad Form"
+      },
+      "AdditionalResidenceHome_Comprehensive": {
+        "frameworkValue": "HabCoverageType.ComprehensiveLongForm",
+        "csioValue": "SecondaryHomeownersComprehensiveForm",
+        "source": "standard",
+        "description": "Secondary Homeowners Comprehensive Form"
+      },
+      "Home_ComprehensiveLongForm": {
+        "frameworkValue": "HabCoverageType.ComprehensiveLongForm",
+        "csioValue": "HomeownersComprehensiveExpandedForm",
+        "source": "standard",
+        "description": "Homeowners Comprehensive Expanded Form"
+      },
+      "Condo_ComprehensiveLongForm": {
+        "frameworkValue": "HabCoverageType.ComprehensiveLongForm",
+        "csioValue": "ComprehensiveCondominiumForm",
+        "source": "standard",
+        "description": "Comprehensive Condominium Form"
+      },
+      "Condo_Basic": {
+        "frameworkValue": "HabCoverageType.Basic",
+        "csioValue": "CondominiumPackageStandardForm",
+        "source": "standard",
+        "description": "Condominium Package Standard Form"
+      },
+      "Tenant_ComprehensiveLongForm": {
+        "frameworkValue": "HabCoverageType.ComprehensiveLongForm",
+        "csioValue": "TenantsComprehensiveForm",
+        "source": "standard",
+        "description": "Tenants Comprehensive Form"
+      },
+      "Tenant_Basic": {
+        "frameworkValue": "HabCoverageType.Basic",
+        "csioValue": "TenantsPackageStandardForm",
+        "source": "standard",
+        "description": "Tenants Package Standard Form"
+      },
+      "FEC": {
+        "frameworkValue": "(delegates to RentedDwelling mapping)",
+        "csioValue": "(same as RentedDwelling)",
+        "source": "travelers",
+        "description": "Farm Equipment Coverage uses the same policy type mapping as Rented Dwelling"
+      }
+    },
+    "causeOfLoss": {
+      "SurfaceWater_Hab": {
+        "frameworkValue": "ClaimPeril.SurfaceWater",
+        "csioValue": "643",
+        "source": "travelers",
+        "description": "Surface Water cause of loss for hab claims (from CompanyConstants.CauseOfLoss.LossSurfaceWater)"
+      },
+      "GroundWater_Hab": {
+        "frameworkValue": "ClaimPeril.GroundWater",
+        "csioValue": "646",
+        "source": "travelers",
+        "description": "Ground Water cause of loss for hab claims (from CompanyConstants.CauseOfLoss.LossGroundWater)"
+      }
+    },
+    "companyCode": {
+      "DufferinMutualInsurance": {
+        "frameworkValue": "InsuranceCompanyCode.DufferinMutualInsurance",
+        "csioValue": "DUF",
+        "source": "travelers",
+        "description": "Dufferin Mutual Insurance company code (from CompanyConstants)"
+      },
+      "SEMutualInsurance": {
+        "frameworkValue": "InsuranceCompanyCode.SEMutualInsurance",
+        "csioValue": "SEM",
+        "source": "travelers",
+        "description": "SE Mutual Insurance company code (from CompanyConstants)"
+      },
+      "GermaniaMutual": {
+        "frameworkValue": "InsuranceCompanyCode.GermaniaMutual",
+        "csioValue": "enumValuesFactory.GetCompanyValues().Germania",
+        "source": "standard",
+        "description": "Germania Mutual company code (standard value)"
+      },
+      "AMCMutualFire": {
+        "frameworkValue": "InsuranceCompanyCode.AMCMutualFire",
+        "csioValue": "enumValuesFactory.GetCompanyValues().MutualFire",
+        "source": "standard",
+        "description": "AMC Mutual Fire company code (standard value)"
+      },
+      "NorthBlenheimMutual": {
+        "frameworkValue": "InsuranceCompanyCode.NorthBlenheimMutual",
+        "csioValue": "NBM",
+        "source": "travelers",
+        "description": "North Blenheim Mutual company code (from CompanyConstants)"
+      },
+      "MutualONEInsuranceCompany": {
+        "frameworkValue": "InsuranceCompanyCode.MutualONEInsuranceCompany",
+        "csioValue": "enumValuesFactory.GetCompanyValues().Other",
+        "source": "standard",
+        "description": "Mutual ONE Insurance Company mapped to 'Other'"
+      }
+    },
+    "residenceType": {
+      "Fourplex": {
+        "frameworkValue": "BuildingAttachmentType.Fourplex",
+        "csioValue": "HighRise",
+        "source": "travelers",
+        "description": "Fourplex mapped to HighRise residence type"
+      },
+      "Fiveplex": {
+        "frameworkValue": "BuildingAttachmentType.Fiveplex",
+        "csioValue": "HighRise",
+        "source": "travelers",
+        "description": "Fiveplex mapped to HighRise residence type"
+      },
+      "Sixplex": {
+        "frameworkValue": "BuildingAttachmentType.Sixplex",
+        "csioValue": "HighRise",
+        "source": "travelers",
+        "description": "Sixplex mapped to HighRise residence type"
+      }
+    },
+    "numberOfStories": {
+      "OneStory": { "csioValue": "OneStorey" },
+      "OnePointFiveStories": { "csioValue": "OnePointFiveStoreys" },
+      "TwoStories": { "csioValue": "TwoStoreys" },
+      "TwoPointFiveStories": { "csioValue": "TwoPointFiveStoreys" },
+      "ThreeStories": { "csioValue": "ThreeStoreys" },
+      "BiLevel": { "csioValue": "BiLevel" },
+      "TriLevel": { "csioValue": "TriLevel" },
+      "GreaterThan6": { "csioValue": "HighRise", "description": "More than 6 stories maps to HighRise" },
+      "Other": { "csioValue": "Other", "description": "Any other numeric or non-numeric value" }
+    },
+    "heatingUnitType": {
+      "ElectricFurnace220Watt": {
+        "frameworkValue": "HeatingSystemType.ElectricFurnace220Watt",
+        "csioValue": "FurnaceCentral",
+        "source": "travelers",
+        "description": "Electric Furnace 220 Watt mapped to Furnace Central"
+      }
+    },
+    "natureOfInterest": {
+      "CoOwner": {
+        "frameworkValue": "MortgageeType.CoOwner",
+        "csioValue": "AdditionalInsured",
+        "source": "travelers",
+        "description": "Co-Owner mapped to Additional Insured"
+      },
+      "LineOfCredit": {
+        "frameworkValue": "MortgageeType.LineofCredit",
+        "csioValue": "LineofCredit",
+        "source": "standard",
+        "description": "Line of Credit nature of interest"
+      }
+    },
+    "paymentPlan": {
+      "ThreePayments_NonBrokerBilled": {
+        "frameworkValue": "Framework.PaymentPlan.Three",
+        "csioValue": "ThreePayments403030",
+        "source": "travelers",
+        "description": "Three payment plan (40/30/30 split) for non-Broker/Agent billing method"
+      },
+      "ThreeEqualPayments_Response": {
+        "frameworkValue": "Framework.PaymentPlan.Three",
+        "csioValue": "ThreeEqualPayments",
+        "source": "travelers",
+        "description": "Three equal payments (response/inbound mapping)"
+      }
+    },
+    "postalInstallation": {
+      "Station": {
+        "frameworkValue": "InstallationType.Station",
+        "csioValue": "S",
+        "source": "travelers",
+        "description": "Postal station (from CompanyConstants)"
+      },
+      "RetailPostOffice": {
+        "frameworkValue": "InstallationType.RetailPostOffice",
+        "csioValue": "R",
+        "source": "travelers",
+        "description": "Retail postal outlet (from CompanyConstants)"
+      }
+    },
+    "creditInfoConsent": {
+      "Yes": {
+        "frameworkValue": "ConsentCode.Yes",
+        "csioValue": "ConsentNoMailings",
+        "source": "travelers",
+        "description": "Credit info consent 'Yes' mapped to ConsentNoMailings"
+      },
+      "No": {
+        "frameworkValue": "ConsentCode.No",
+        "csioValue": "Denied",
+        "source": "travelers",
+        "description": "Credit info consent 'No' mapped to Denied"
+      },
+      "NotProvided": {
+        "frameworkValue": "null / not asked",
+        "csioValue": "NotAsked",
+        "source": "travelers",
+        "description": "No consent value defaults to NotAsked"
+      }
+    },
+    "riskConverter": {
+      "FineArts_WithBreakage": {
+        "frameworkValue": "MiscPropertyCodes.FineArts (with BreakageOption=true)",
+        "csioValue": "FineArtsProfessionalCommercial",
+        "source": "travelers",
+        "description": "Fine Arts with Breakage option mapped to FineArtsProfessionalCommercial"
+      },
+      "FineArts_WithoutBreakage": {
+        "frameworkValue": "MiscPropertyCodes.FineArts (no BreakageOption)",
+        "csioValue": "FineArts",
+        "source": "standard",
+        "description": "Fine Arts without Breakage option mapped to standard FineArts"
+      },
+      "ElectronicEquipment_Response": {
+        "frameworkValue": "MiscPropertyCodes.Equipment",
+        "csioValue": "ElectronicEquipment",
+        "source": "standard",
+        "description": "Electronic Equipment risk (response/inbound mapping)"
+      }
+    },
+    "valuationProduct": {
+      "ProfessionalAppraisal": {
+        "frameworkValue": "EvaluatorType.ProfessionalAppraisal",
+        "csioValue": "ProfessionalAppraisal (V141 version)",
+        "source": "standard",
+        "description": "Professional Appraisal valuation product"
+      }
+    },
+    "exteriorWallMaterial": {
+      "HardboardSiding": { "csioValue": "WoodExterior" },
+      "Masonite": { "csioValue": "BrickVeneer" },
+      "Masonry": { "csioValue": "BrickVeneer" },
+      "MasonryVeneer": { "csioValue": "BrickVeneer" },
+      "Brick": { "csioValue": "BrickVeneer" },
+      "BrickVeneer": { "csioValue": "BrickVeneer" },
+      "Log": { "csioValue": "LogSiding" },
+      "CustomLog": { "csioValue": "LogSiding" },
+      "Wood": { "csioValue": "WoodExterior" },
+      "WoodShake": { "csioValue": "WoodExterior" },
+      "MetalClad": { "csioValue": "MetalSiding" },
+      "Stone": { "csioValue": "StoneVeneer" },
+      "AsphaltShingle": { "csioValue": "Other" },
+      "Clapboard": { "csioValue": "Other" },
+      "ICFConstruction": { "csioValue": "Other" }
+    },
+    "constructionTypes": {
+      "CementConcrete": { "csioValue": "ConcreteBlockMasonryFrame" },
+      "Log": { "csioValue": "Log" },
+      "LogHandHewn": { "csioValue": "Log" },
+      "LogManufactured": { "csioValue": "Log" },
+      "PostBeamWood": { "csioValue": "Log" },
+      "Sectional": { "csioValue": "Frame" },
+      "Modular": { "csioValue": "Log" },
+      "Panabode": { "csioValue": "Log" },
+      "StoneSolid": { "csioValue": "Stone" },
+      "Steel": { "csioValue": "Steel" },
+      "BrickSolid": { "csioValue": "Brick" },
+      "FrameWood": { "csioValue": "Frame" },
+      "MasonrySolid": { "csioValue": "Masonry" }
+    },
+    "fuelType": {
+      "HeatPump_GroundSource": {
+        "frameworkValue": "HeatingSystemType.HeatPump + HeatingSystemFuel.GroundSource",
+        "csioValue": "Electric",
+        "source": "travelers",
+        "description": "Heat Pump with Ground Source fuel mapped to Electric"
+      }
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": [
+      "Inherited from Generic base (v043 -> V141 chain)",
+      "DiscountWaterFlowDevice maps to WaterLeakDetectionSystem (Travelers-specific)"
+    ],
+    "isSurchargePatterns": [
+      "Inherited from Generic base (v043 -> V141 chain)"
+    ],
+    "excludedFromEndorsementMapping": [
+      "LegalLiabilityLossAssessment - explicitly returns false in TryConvertToFrameworkHomeEndorsement",
+      "ReplacementCostContentsBasic - explicitly returns false in TryConvertToFrameworkHomeEndorsement"
+    ],
+    "specialResponseHandling": {
+      "EarthquakeDeductible": "csio:ERQK deductible parsed specially -- checks FormatCurrencyAmt first, then FormatPct, appends '%' suffix",
+      "CompanyCdDefaulting": "If response has no CompanyCd, defaults to Dominion company code",
+      "ExtendedStatusDefaulting": "If response has no ExtendedStatusCd, defaults to VerifyData",
+      "CoveragePrefixFixup": "Inbound hab discount codes prefixed with 'csio:' if missing"
+    }
+  },
+  "companyConstants": {
+    "PolicyTypes": {
+      "RentedCondominiumForm": {
+        "value": "csio:2F",
+        "description": "Rented Condominium Form policy type code"
+      }
+    },
+    "HabCoverageType": {
+      "NamedPerils656": {
+        "value": "656 Named Perils",
+        "description": "656 Named Perils coverage type string"
+      },
+      "AllRiskNamedPerils653": {
+        "value": "653 All Risk/Named Perils",
+        "description": "653 All Risk/Named Perils coverage type string"
+      },
+      "NamedPerils653": {
+        "value": "653 Named Perils/Named Perils",
+        "description": "653 Named Perils/Named Perils coverage type string"
+      }
+    },
+    "CompanyCsioCode": {
+      "HailCoverage": {
+        "value": "csio:PAHAI",
+        "description": "Hail/Wind Hail Coverage CSIO code"
+      },
+      "Dufferin": {
+        "value": "DUF",
+        "description": "Dufferin Mutual Insurance company code"
+      },
+      "SEMutual": {
+        "value": "SEM",
+        "description": "SE Mutual Insurance company code"
+      },
+      "NorthBlenheimMutual": {
+        "value": "NBM",
+        "description": "North Blenheim Mutual company code"
+      }
+    },
+    "CompanyValue": {
+      "GalvanizedIron": {
+        "value": "C",
+        "description": "Galvanized iron plumbing value sent as 'C'"
+      }
+    },
+    "CauseOfLoss": {
+      "LossSurfaceWater": {
+        "value": "643",
+        "description": "Surface water cause of loss code"
+      },
+      "LossGroundWater": {
+        "value": "646",
+        "description": "Ground water cause of loss code"
+      }
+    },
+    "CreditScoreConsent": {
+      "StringZero": {
+        "value": "0",
+        "description": "Credit score consent No / Not asked"
+      },
+      "StringOne": {
+        "value": "1",
+        "description": "Credit score consent Yes"
+      }
+    },
+    "FieldName": {
+      "GroundWaterEndorsement": {
+        "value": "GroundWaterEndorsement",
+        "description": "Custom field name for Ground Water Endorsement limit"
+      }
+    },
+    "PostalInstallationConstants": {
+      "Station": {
+        "value": "S",
+        "description": "Postal station type"
+      },
+      "RetailPostalOutlet": {
+        "value": "R",
+        "description": "Retail postal outlet type"
+      }
+    }
+  },
+  "zCodeInventory": {
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": [],
+    "_note": "Travelers has ZERO proprietary Z-codes. All CZO codes are standard CSIO codes."
+  },
+  "hardcodedCsioCodes": [
+    {
+      "code": "csio:2F",
+      "location": "CompanyConstants.PolicyTypes.RentedCondominiumForm",
+      "description": "Rented Condominium Form",
+      "version": "V141",
+      "availableIn": ["V141"]
+    },
+    {
+      "code": "csio:PAHAI",
+      "location": "CompanyConstants.CompanyCsioCode.HailCoverage",
+      "description": "Wind/Hail Coverage",
+      "version": "V141",
+      "availableIn": ["V141"]
+    },
+    {
+      "code": "csio:ERQK",
+      "location": "CsioToFramework/Rated/CoverageConverterHelper.vb (hardcoded string comparison)",
+      "description": "Earthquake Coverage (used in deductible parsing logic)",
+      "version": "V141",
+      "availableIn": ["V141"]
+    }
+  ],
+  "inheritanceChain": {
+    "CoverageCodeConverter": "V141.Companies.Travelers -> V141.Generic -> V137.Generic -> (chain to v043.Generic)",
+    "PolicyTypeConverter": "V141.Companies.Travelers -> V118.Generic -> (chain to v043.Generic)",
+    "CauseOfLossConverter": "V141.Companies.Travelers -> V130.Generic -> (chain to v043.Generic)",
+    "RiskConverter": "V141.Companies.Travelers -> V127.Generic -> (chain to v043.Generic)",
+    "ResidenceTypeConverter": "V141.Companies.Travelers -> V121.Generic -> (chain to v043.Generic)",
+    "PaymentPlanConverter": "V141.Companies.Travelers -> V043.Generic",
+    "CompanyCodeConverter": "V141.Companies.Travelers -> V134.Generic -> (chain to v043.Generic)",
+    "CreditInfoConsentConverter": "V141.Companies.Travelers -> V125.Generic -> (chain to v043.Generic)",
+    "ExteriorWallMaterialCodeConverter": "V141.Companies.Travelers -> V132.Generic -> (chain to v043.Generic)",
+    "HeatingUnitTypeConverter": "V141.Companies.Travelers -> V135.Generic -> (chain to v043.Generic)",
+    "NatureOfInterestConverter": "V141.Companies.Travelers -> V043.Generic",
+    "NumberOfStoriesConverter": "V141.Companies.Travelers -> V043.Generic",
+    "PostalInstallationConverter": "V141.Companies.Travelers -> V043.Generic",
+    "ValuationProductConverter": "V141.Companies.Travelers -> V125.Generic -> (chain to v043.Generic)",
+    "PcCoverageConverter_F2C": "V141.Companies.Travelers -> V136.Generic -> (chain to v043.Generic)",
+    "PcCoverageCollectionConverter_F2C": "V141.Companies.Travelers -> V136.Generic -> (chain to v043.Generic)",
+    "PcCoverageConverter_C2FR": "V141.Companies.Travelers -> V136.Generic -> (chain to v043.Generic)",
+    "PcCoverageConverter_C2FU": "V141.Companies.Travelers -> V130.Generic -> (chain to v043.Generic)",
+    "ConverterFactoryFactory": "V141.Companies.Travelers -> V141.Generic -> (chain to v043.Generic)"
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 3,
+    "totalGenericInheritedCodes": "All standard CSIO codes from v043-V141 Generic chain",
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {
+        "code": "csio:ERQK",
+        "location": "CsioToFramework/Rated/CoverageConverterHelper.vb:15",
+        "note": "Hardcoded string comparison not in CompanyConstants, but is a standard CSIO earthquake code"
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V141only": 3,
+      "sharedAcrossVersions": 0,
+      "note": "Travelers exists only in V141 -- no multi-version comparison needed"
+    },
+    "carrierCharacteristics": [
+      "Single-version carrier (V141 only)",
+      "Zero proprietary Z-codes",
+      "Only 3 hardcoded csio: strings (csio:2F, csio:PAHAI, csio:ERQK)",
+      "Heavy reliance on factory-resolved standard CSIO values",
+      "Uses InsuranceCompanyCode.Dominion as primary company identifier",
+      "Supports mutual insurance company subsidiaries (Dufferin, SE Mutual, North Blenheim, Germania, AMC Mutual Fire, MutualONE)",
+      "Custom credit score handling with person-specific consent",
+      "Swimming pool conversion requires non-empty/non-None value",
+      "Property schedule IsSummaryInd always sent as True",
+      "CompanyCd swapped to NAICCd in outbound policy",
+      "Loss location references tied to coverage item IDs",
+      "Galvanized iron plumbing sent as value 'C'",
+      "Three-payment plan uses 40/30/30 split for non-broker billing"
+    ]
+  }
+}

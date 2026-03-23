@@ -1,0 +1,651 @@
+{
+  "_metadata": {
+    "carrier": "SGICanadaQuote",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043", "V126", "V133", "V134", "V135"],
+    "latestVersion": "V135",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 335,
+    "description": "Complete CZO mapping for SGI Canada (Quote service)",
+    "versionRoles": {
+      "V135": "Latest (current service)",
+      "V134": "Previous iteration",
+      "V133": "Earlier iteration with major refactor",
+      "V126": "Intermediate version with limited overrides",
+      "v043": "Base version with foundational constants and converters"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "DrivingRecordProtectorClaims": {
+        "csioCode": "csio:ZAFW",
+        "source": "sgicanada",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Driving Record Protector (Accident Forgiveness/Waiver) - Ontario auto endorsement"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V135"],
+        "description": "OPCF 49 - Agreement Not to Recover from Lessees or Borrowers"
+      },
+      "End19A": {
+        "csioCode": "csio:19A",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "Endorsement 19A (via V134 ICoveragesValues interface)"
+      },
+      "End19B": {
+        "csioCode": "csio:19",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "Endorsement 19 (mapped from framework End19B)"
+      },
+      "End5B": {
+        "csioCode": "csio:5",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "Endorsement 5 (Permission to Rent or Lease, mapped from End5B)"
+      },
+      "End28C": {
+        "csioCode": "csio:28",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "Endorsement 28 (mapped from End28C)"
+      },
+      "End39A": {
+        "csioCode": "csio:39",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "Endorsement 39 (mapped from End39A)"
+      },
+      "End30B": {
+        "csioCode": "csio:30",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "Endorsement 30 (mapped from End30B)"
+      },
+      "AccidentBenefitsOccasionalDriver": {
+        "csioCode": "csio:ABODO",
+        "source": "sgicanada",
+        "version": "V135",
+        "availableIn": ["v043", "V134", "V135"],
+        "description": "Accident Benefits for Occasional Driver"
+      },
+      "UninsuredMotoristOccasionalDriver": {
+        "csioCode": "csio:UAODO",
+        "source": "sgicanada",
+        "version": "V135",
+        "availableIn": ["v043", "V134", "V135"],
+        "description": "Uninsured Motorist coverage for Occasional Driver"
+      }
+    },
+    "homeEndorsements": {
+      "LifestyleOptionA": {
+        "csioCode": "csio:ZLIFA",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option A (Business) - Prestige coverage special limits enhancement"
+      },
+      "LifestyleOptionB": {
+        "csioCode": "csio:ZLIFB",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option B (Collectibles & Treasures) - Prestige coverage special limits enhancement"
+      },
+      "LifestyleOptionC": {
+        "csioCode": "csio:ZLIFC",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option C (Family & Security) - Prestige coverage special limits enhancement"
+      },
+      "LifestyleOptionD": {
+        "csioCode": "csio:ZLIFD",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option D (Home & Recreation) - Prestige coverage special limits enhancement"
+      },
+      "SolidFuelWarranty": {
+        "csioCode": "csio:ZSFW",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Solid Fuel Warranty endorsement"
+      },
+      "ServiceLineCoverage": {
+        "csioCode": "csio:SLEXT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Service Line Coverage extension"
+      },
+      "CondoDeductibleAssessment": {
+        "csioCode": "csio:ZDBU",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Condominium Deductible Assessment (Unit Deductible Buy-Up)"
+      },
+      "Earthquake": {
+        "csioCode": "ERQK",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Earthquake Coverage (code stored without csio: prefix)",
+        "coverageOptions": {
+          "Earthquake100dwellling100property": "100% dwelling, 100% personal property",
+          "Earthquake100dwellling75property": "100% dwelling, 75% personal property",
+          "Earthquake100dwellling50property": "100% dwelling, 50% personal property",
+          "Earthquake100dwellling25property": "100% dwelling, 25% personal property",
+          "Earthquake100dwellling0property": "100% dwelling, 0% personal property"
+        }
+      },
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "standard:PowerFluctuation",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Equipment Breakdown Coverage (mapped to standard PowerFluctuation code)"
+      },
+      "BearDamage": {
+        "csioCode": "standard:DamageCausedbyWildLife",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Bear/Wildlife Damage (mapped to standard DamageCausedbyWildLife code)"
+      },
+      "WaterCoverage": {
+        "csioCode": "standard:FloodDamage",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Water/Flood Coverage (mapped to standard FloodDamage code)"
+      },
+      "ClaimsProtector": {
+        "csioCode": "standard:ClaimFreeProtection",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Claims Protector (mapped to standard ClaimFreeProtection code)"
+      },
+      "LegalExpense": {
+        "csioCode": "standard:LegalAssistance",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Legal Expense Coverage (mapped to standard LegalAssistance code). Note: present in v043 only, removed from later versions."
+      }
+    },
+    "homeLiabilities": {
+      "AdditionalResidence": {
+        "csioCode": "standard:AdditionalResidencesPropertiesAcreage",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Additional Residence liability extension. Covers: AdditionalResidenceCondo, AdditionalResidenceHouse, AdditionalResidenceTenant, RentedCondo, RentedDwelling.",
+        "frameworkCodes": ["AdditionalResidenceCondo", "AdditionalResidenceHouse", "AdditionalResidenceTenant", "RentedCondo", "RentedDwelling"]
+      }
+    },
+    "habCoverageTypes": {
+      "Dwell": {
+        "csioCode": "DWELL",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Dwelling coverage type value"
+      },
+      "PersonalLiability": {
+        "csioCode": "PL",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Personal Liability coverage type"
+      },
+      "PersonalProperty": {
+        "csioCode": "PP",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Personal Property coverage type"
+      },
+      "OtherStructures": {
+        "csioCode": "OS",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Other Structures coverage type"
+      },
+      "HomeSitters": {
+        "csioCode": "HSL",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Home Sitters Liability / Contents coverage type"
+      },
+      "LossAssessmentLiability": {
+        "csioCode": "LLLA",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Loss Assessment Liability coverage type"
+      },
+      "AllRiskImprovements": {
+        "csioCode": "ARIB",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "All Risk Improvements/Betterments coverage type"
+      },
+      "NamedPerilsImprovements": {
+        "csioCode": "NPIB",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Named Perils Improvements/Betterments coverage type"
+      },
+      "AllRiskAdditionalProtection": {
+        "csioCode": "ARAP",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "All Risk Additional Protection coverage type"
+      },
+      "AllRiskLossAssessment": {
+        "csioCode": "ARLA",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "All Risk Loss Assessment coverage type"
+      },
+      "AdditionalLivingExpense": {
+        "csioCode": "ALVE",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Additional Living Expense coverage type"
+      },
+      "NamedPerilsLossAssessment": {
+        "csioCode": "NPLA",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Named Perils Loss Assessment coverage type"
+      },
+      "IdentityTheft": {
+        "csioCode": "IDTFT",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Identity Theft coverage type"
+      },
+      "FalseDeclarationCoverage": {
+        "csioCode": "FDC",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "False Declaration Coverage type"
+      }
+    },
+    "scheduledPropertyItems": {},
+    "watercraftLiability": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "CreditScore": {
+        "csioCode": "csio:DISCR",
+        "source": "sgicanada",
+        "version": "V135",
+        "availableIn": ["V135"],
+        "description": "Credit Score Discount (auto)"
+      },
+      "IPromiseProgram": {
+        "csioCode": "standard:DiscountIPromiseProgramParentTeenMutualSafeDrivingContract",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "iPromise Program (Parent/Teen Mutual Safe Driving Contract)"
+      }
+    },
+    "autoSurcharges": {
+      "SurchargeConvictionClaim": {
+        "csioCode": "csio:SURC2",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Surcharge for Conviction/Claim"
+      },
+      "RightHandDriveVehicle": {
+        "csioCode": "csio:SURRH",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Right-Hand Drive Vehicle Surcharge"
+      },
+      "USExposure": {
+        "csioCode": "standard:SurchargeUsNonCanadianExposure",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["V134", "V135"],
+        "description": "US/Non-Canadian Exposure Surcharge"
+      }
+    },
+    "habDiscounts": {
+      "SecuritySystem": {
+        "csioCode": "standard:PremisesAlarmFireorIntrusionSystem",
+        "source": "standard",
+        "version": "V135",
+        "availableIn": ["v043", "V133", "V134", "V135"],
+        "description": "Premises Alarm (Fire or Intrusion System) Discount"
+      },
+      "PreventativeMeasures": {
+        "csioCode": "csio:ZPMSB",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Preventative Measures Discount (Sewer Backup Prevention)"
+      }
+    },
+    "habSurcharges": {
+      "CommercialExposureLow": {
+        "csioCode": "csio:SUREL",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Commercial Exposure Surcharge - Low (Bank, Office)"
+      },
+      "CommercialExposureMedium": {
+        "csioCode": "csio:SUREM",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Commercial Exposure Surcharge - Medium (Store)"
+      },
+      "CommercialExposureHigh": {
+        "csioCode": "csio:SUREH",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Commercial Exposure Surcharge - High (Garage, Restaurant)"
+      }
+    },
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "EquipmentBreakdownCoverage (PowerFluctuation)",
+      "BearDamage (DamageCausedbyWildLife)",
+      "WaterCoverage (FloodDamage)",
+      "ClaimsProtector (ClaimFreeProtection)",
+      "EnhancedInternalLimits (SpecialLimitsEnhancement fallback)",
+      "LegalExpense (LegalAssistance) - v043 only",
+      "Earthquake (standard ERQK)",
+      "SewerBackup (standard)",
+      "SingleLimitEndorsement (standard)"
+    ],
+    "homeLiabilities": [
+      "AdditionalResidencesPropertiesAcreage (standard)"
+    ],
+    "homeDiscounts": [
+      "PremisesAlarmFireorIntrusionSystem (standard SecuritySystem)",
+      "Occupancy (standard, family member indicator)"
+    ],
+    "homeSurcharges": [],
+    "autoEndorsementsOntario": [
+      "Standard OPCF endorsements inherited from Generic (44, 27, 28, etc.)",
+      "DrivingRecordProtectorClaims (csio:ZAFW)",
+      "OPCF49 (csio:49) - V135 only"
+    ],
+    "autoEndorsementsNonOntario": [
+      "End19A (csio:19A)",
+      "End19B (csio:19)",
+      "End5B (csio:5)",
+      "End28C (csio:28)",
+      "End39A (csio:39)",
+      "End30B (csio:30)"
+    ],
+    "autoDiscounts": [
+      "IPromiseProgram (standard)",
+      "MultiPolicyDiscount (ImmediateDiscount - inherited from generic)"
+    ],
+    "autoSurcharges": [
+      "RightHandDriveVehicle (csio:SURRH)",
+      "USExposure (SurchargeUsNonCanadianExposure - standard)",
+      "SurchargeConvictionClaim (csio:SURC2)"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "homeowner": {
+        "PakA": "HomeownersLimitedForm",
+        "PakB": "HomeownersBroadForm (or BroadExpanded if limit increased & not MB)",
+        "PakI": "HomeownersStandardForm (or StandardExpanded if limit increased)",
+        "PakII_ON": "HomeownersBroadForm (or BroadExpanded if limit increased)",
+        "PakII_Other": "HomeownersBroadReverseForm (or BroadReverseExpanded if limit increased & not MB)",
+        "PakIII_ON": "HomeownersComprehensiveForm (or ComprehensiveExpanded if limit increased)",
+        "PakIII_Other": "HomeownersComprehensiveForm (or ComprehensiveExpanded if limit increased & not MB)",
+        "PakBPlus": "HomeownersBroadExpandedForm",
+        "PakIPlus": "HomeownersStandardExpandedForm",
+        "PakIIPlus": "HomeownersBroadReverseExpandedForm",
+        "PakIIIPlus": "HomeownersComprehensiveExpandedForm",
+        "CodeA": "csio:72 (Basic Residential Standard Form)",
+        "CodeAE": "BasicResidentialFireECForm",
+        "CodeB": "BasicResidentialForm",
+        "CodeC": "csio:75 (Basic Residential Comprehensive Form)",
+        "CodeH": "csio:75 (Basic Residential Comprehensive Form)",
+        "Prestige": "HomeownersInsuranceMinimumProtection"
+      },
+      "condo": {
+        "PakA": "CondominiumPackageLimitedForm",
+        "PakI": "CondominiumPackageBroadForm (or CondominiumBroadExpanded if limit increased)",
+        "PakII": "ComprehensiveCondominiumForm (or CondominiumComprehensiveExpanded if limit increased)"
+      },
+      "tenant": {
+        "PakA": "TenantsPackageLimitedForm",
+        "PakI": "TenantsPackageBroadForm (or csio:1A TenantsBroadExpanded if limit increased & not MB)",
+        "PakII": "TenantsComprehensiveForm (or TenantsComprehensiveExpanded if limit increased & not MB)",
+        "SpecialSeniorsPak": "TenantsSeniorsPackage"
+      },
+      "seasonal": {
+        "CodeA": "csio:72",
+        "CodeB": "BasicResidentialForm",
+        "CodeC": "csio:75",
+        "PakA": "SeasonalDwellingLimitedForm",
+        "PakB": "SeasonalDwellingBroadForm",
+        "PakI": "SeasonalDwellingStandardForm",
+        "PakII": "SeasonalDwellingBroadReverseForm",
+        "PakIII": "SeasonalDwellingComprehensiveForm"
+      },
+      "fec": {
+        "CodeA": "RentedDwellingStandardForm",
+        "CodeB": "RentedDwellingBroadForm",
+        "CodeC": "RentedDwellingComprehensiveForm"
+      }
+    },
+    "residenceTypes": {
+      "EndRowHouse": "csio:RE",
+      "InsideRowHouse": "csio:RI",
+      "Fourplex": "csio:MX",
+      "Fiveplex": "csio:MX",
+      "Sixplex": "csio:MX"
+    },
+    "causeOfLoss": {
+      "auto": {
+        "AccidentBenefits_CollisionDirectComp_ChargeableAccident_etc": "8 (CollisionOther)",
+        "Earthquake_Explosion_FallingObjects_Other": "999 (Other)",
+        "Fire": "16",
+        "GlassStoneChipRepair": "18 (GlassRepair)",
+        "Smoke": "999 (Other)",
+        "Theft": "standard:TheftEntireVehicle",
+        "Liability": "103 (LiabilityAccidentCircumstances)",
+        "MinorAtFaultCollision_ON": "38",
+        "CollisionWildlife": "3 (V135 override)"
+      },
+      "hab": {
+        "SurfaceWater": "643",
+        "GroundWater": "646",
+        "ExteriorSewerLineBreakage": "645",
+        "ExteriorWaterLineBreakage": "644",
+        "FloodWater": "647"
+      }
+    },
+    "occupancyTypes": {
+      "Tenant_Condo": "RentedToThirdParty",
+      "Tenant_Other": "Rental",
+      "FamilyMember_Condo": "C (FamilyMemberOccupied) in v043, FamilyOccupied (V128 enum) in V134+",
+      "UnderConstruction": "UnderConstruction",
+      "DwellingTenant": "Rental"
+    },
+    "fuelTypes": {
+      "OtherSolidFuels": "Pellet",
+      "GroundSource": "Electric"
+    },
+    "numberOfStories": {
+      "OneStory": "OneStorey",
+      "OnePointFiveStories": "OnePointFiveStoreys",
+      "TwoStories": "TwoStoreys",
+      "TwoPointFiveStories": "TwoPointFiveStoreys",
+      "ThreeStories": "ThreeStoreys",
+      "BiLevel": "BiLevel",
+      "TriLevel": "TriLevel"
+    },
+    "gender": {
+      "X": "csio:X (non-binary, added V134+)"
+    },
+    "maritalStatus": {
+      "PartnerSameSex": "Married"
+    },
+    "classification": {
+      "Superior": "Select"
+    },
+    "companyProduct": {
+      "SGICanada": "standard:SGICanada",
+      "CoachmanInsurance": "standard:CoachmanInsurance"
+    },
+    "postalInstallation": {
+      "Station": "S",
+      "RetailPostOffice": "R"
+    },
+    "natureOfInterest": {
+      "Assignee": "Lienholder (V135+)"
+    },
+    "riskConverter": {
+      "BelongingsMotorhome_HolidayTrailer_OtherLocation_Storage_Outbuildings_SkidSteer": "standard:PersonalEffectsFloater",
+      "Tools": "standard:ToolFloater",
+      "MusicalInstruments_PersonalUse": "standard:MusicalInstruments",
+      "MusicalInstruments_ProfessionalUse": "standard:MusicalInstrumentsProfessionalCommercial",
+      "Tools_PersonalUse": "csio:TN",
+      "Tools_ProfessionalUse": "standard:ToolFloater",
+      "MusicalInstruments_Response_csioMC": "MusicalInstruments (framework)",
+      "Tools_Response_csioTN_or_csioTF": "Tools (framework)"
+    },
+    "cancellationReasons": {
+      "LicenseSuspension_related": "CancelledDueToLicenseSuspension (V128 enum)",
+      "AccidentRelated": "NoVehicleNoInsuranceRequired (V128 enum)",
+      "FraudOrMaterialMisrepresentation": "CancelledForMaterialMisrepresentation",
+      "NonPaymentOfPremium": "NonPayment",
+      "OperatingWithoutInsurance": "DrivingWithoutInsurance (V128 enum)",
+      "Other": "Other"
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": [
+      "StartsWith 'DIS'",
+      "StartsWith 'csio:DIS'"
+    ],
+    "isSurchargePatterns": [
+      "StartsWith 'SUR'",
+      "StartsWith 'csio:SUR'"
+    ],
+    "increasedAccidentBenefits": {
+      "csio:ACB": "AttendantCare",
+      "csio:DCB": "DependantCare",
+      "csio:MEDRH": "MedicalRehabilitation"
+    },
+    "occasionalDriverCodes": {
+      "csio:ABODO": "Accident Benefits Occasional Driver",
+      "csio:UAODO": "Uninsured Motorist Occasional Driver"
+    },
+    "questionResponseCode": {
+      "RegisteredAndActualOwner": "csio:126"
+    }
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      { "code": "csio:ZAFW", "name": "DrivingRecordProtectorClaims", "version": "v043", "availableIn": ["v043", "V133", "V134", "V135"] }
+    ],
+    "habCoverage": [
+      { "code": "csio:ZLIFA", "name": "LifestyleOptionA", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ZLIFB", "name": "LifestyleOptionB", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ZLIFC", "name": "LifestyleOptionC", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ZLIFD", "name": "LifestyleOptionD", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ZSFW", "name": "SolidFuelWarranty", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ZDBU", "name": "CondoDeductibleAssessment", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ZPMSB", "name": "PreventativeMeasures", "version": "v043", "availableIn": ["v043"] }
+    ],
+    "discountsSurcharges": [
+      { "code": "csio:DISCR", "name": "CreditScoreDiscount", "version": "V135", "availableIn": ["V135"] },
+      { "code": "csio:SURC2", "name": "SurchargeConvictionClaim", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:SURRH", "name": "RightHandDriveVehicle", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:SUREL", "name": "CommercialExposureLow", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:SUREM", "name": "CommercialExposureMedium", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:SUREH", "name": "CommercialExposureHigh", "version": "v043", "availableIn": ["v043"] }
+    ],
+    "otherCsioCodes": [
+      { "code": "csio:49", "name": "OPCF49", "version": "V135", "availableIn": ["V135"] },
+      { "code": "csio:126", "name": "RegisteredAndActualOwner", "version": "V134", "availableIn": ["V134", "V135"] },
+      { "code": "csio:X", "name": "GenderNonBinary", "version": "V134", "availableIn": ["V134", "V135"] },
+      { "code": "csio:TN", "name": "ToolsPersonalUse", "version": "V134", "availableIn": ["V134", "V135"] },
+      { "code": "csio:MC", "name": "MusicalInstruments", "version": "V134", "availableIn": ["V134", "V135"] },
+      { "code": "csio:TF", "name": "ToolFloater", "version": "V134", "availableIn": ["V134", "V135"] },
+      { "code": "csio:PE", "name": "PersonalEffects_PropertySchedule", "version": "V134", "availableIn": ["V134", "V135"] },
+      { "code": "csio:TP", "name": "ThirdPartyLiability_VehCoverage", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:RE", "name": "BuildingTypeRowHouseEnd", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:RI", "name": "BuildingTypeRowHouseInside", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:MX", "name": "BuildingTypeMultiplex", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:ACB", "name": "AttendantCare", "version": "V135", "availableIn": ["v043", "V133", "V134", "V135"] },
+      { "code": "csio:DCB", "name": "DependantCare", "version": "V135", "availableIn": ["v043", "V133", "V134", "V135"] },
+      { "code": "csio:MEDRH", "name": "MedicalRehabilitation", "version": "V135", "availableIn": ["v043", "V133", "V134", "V135"] },
+      { "code": "csio:ABODO", "name": "AccidentBenefitsOccasionalDriver", "version": "v043", "availableIn": ["v043", "V134", "V135"] },
+      { "code": "csio:UAODO", "name": "UninsuredMotoristOccasionalDriver", "version": "v043", "availableIn": ["v043", "V134", "V135"] },
+      { "code": "csio:SLEXT", "name": "ServiceLineCoverage", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:72", "name": "BasicResidentialStandardForm", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:75", "name": "BasicResidentialComprehensiveForm", "version": "v043", "availableIn": ["v043"] },
+      { "code": "csio:1A", "name": "TenantsPackageBroadExpanded", "version": "v043", "availableIn": ["v043"] }
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 34,
+    "totalGenericInheritedCodes": 42,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V135only": 3,
+      "V134only": 0,
+      "v043only": 18,
+      "sharedAcrossVersions": 13
+    },
+    "notes": [
+      "SGICanadaQuote has a relatively small set of Z-codes (7 unique Z-prefixed codes).",
+      "Most coverage codes use standard CSIO values resolved from the enumValuesFactory (generic base).",
+      "The carrier has extensive policy type mapping logic with province-specific and limit-expanded branching.",
+      "V135 added CreditScoreDiscount (csio:DISCR), OPCF49 (csio:49), CollisionWildlife cause-of-loss override, CauseOfLossConverter override, NatureOfInterestConverter, and PhoneInfoCollectionConverter.",
+      "V134 added GenderConverter (csio:X), RiskConverter (csio:TN, csio:MC, csio:TF), PropertyScheduleConverter, multiple auto endorsement mappings (End19A, End19B, End5B, End28C, End39A, End30B), and OccupancyTypeConverter V128 FamilyOccupied.",
+      "V133 added CompanyProductConverter, MaritalStatusConverter, MsgStatusCdConverter, CancellationReasonCodeConverter, and major FrameworkToCsio refactoring.",
+      "V126 is minimal (mostly factory overrides, new DwellInspectionValuation, PlumbingInfo, SewerBackupPrevention converters).",
+      "v043 contains the foundational constants and all Lifestyle (ZLIF*), SolidFuelWarranty (ZSFW), CondoDeductibleAssessment (ZDBU), commercial exposure surcharges, and cause-of-loss mappings."
+    ]
+  }
+}

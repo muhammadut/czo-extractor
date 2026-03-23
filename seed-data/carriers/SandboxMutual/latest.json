@@ -1,0 +1,472 @@
+{
+  "_metadata": {
+    "carrier": "SandboxMutual",
+    "carrierFolderName": "Sandbox",
+    "companyCode": "SKM",
+    "insuranceCompanyCodeEnum": "InsuranceCompanyCode.SandboxMutualInsurance",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V141"],
+    "latestVersion": "V141",
+    "extractionDate": "2026-03-20",
+    "filesProcessed": 57,
+    "description": "Complete CZO mapping for SandboxMutual (Sandbox). Single version carrier with home/hab focus, no auto-specific overrides.",
+    "versionRoles": {
+      "V141": "Primary service (only version)"
+    },
+    "inheritanceChain": {
+      "ConverterFactoryFactory": "V141.Generic.ConverterFactoryFactory",
+      "CsioConstants": "V043.Generic.CsioConstants",
+      "CoverageCodeConverter": "V141.Generic.EnumConverters.CoverageCodeConverter -> V137 -> V134 -> V133 -> V043",
+      "PolicyTypeConverter": "V118.Generic.EnumConverters.PolicyTypeConverter -> V043",
+      "OccupancyTypeConverter": "V043.Generic.EnumConverters.OccupancyTypeConverter",
+      "ResidenceTypeConverter": "V121.Generic.EnumConverters.ResidenceTypeConverter",
+      "RiskConverter": "V127.Generic.EnumConverters.RiskConverter",
+      "ExteriorWallMaterialCodeConverter": "V132.Generic.EnumConverters.ExteriorWallMaterialCodeConverter",
+      "CauseOfLossConverter": "V130.Generic.EnumConverters.CauseOfLossConverter",
+      "ClassSpecificRatedIndicatorConverter": "V043.Generic.EnumConverters.ClassSpecificRatedIndicatorConverter",
+      "NumberOfStoriesConverter": "V043.Generic.EnumConverters.NumberOfStoriesConverter",
+      "ValuationProductConverter": "V125.Generic.EnumConverters.ValuationProductConverter",
+      "WaterUnitTypeConverter": "V043.Generic.EnumConverters.WaterUnitTypeConverter",
+      "MsgStatusCdConverter": "V043.Generic.EnumConverters.MsgStatusCdConverter"
+    }
+  },
+  "coverageCodes": {
+    "homeEndorsements": {
+      "CondoDeductibleAssessmentEarthquakeExcluded": {
+        "csioCode": "csio:CDEDA",
+        "source": "sandbox",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Condominium Deductible Assessment (Earthquake Excluded)",
+        "frameworkCode": "EndorsementCodes.CondoDeductibleAssessment",
+        "definedIn": "CsioConstants.vb"
+      },
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "csio:HOEQP",
+        "source": "sandbox",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Equipment Breakdown Coverage",
+        "frameworkCode": "EndorsementCodes.EquipmentBreakdownCoverage",
+        "definedIn": "CsioConstants.vb"
+      },
+      "ReplacementCostPlus": {
+        "csioCode": "GuaranteedReplacementCostBuilding (standard enum)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Replacement Cost Plus / Guaranteed Replacement Cost Building",
+        "frameworkCode": "EndorsementCodes.ReplacementCostPlus",
+        "note": "Resolved via _enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().GuaranteedReplacementCostBuilding"
+      },
+      "GlassBreakage": {
+        "csioCode": "GlassBreakage (standard enum)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Glass Breakage endorsement",
+        "frameworkCode": "EndorsementCodes.Glass"
+      },
+      "AdditionalNamedInsuredProperty": {
+        "csioCode": "AdditionalNamedInsured (standard enum - LiabilityExtensions)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Additional Named Insured (Property endorsement)",
+        "frameworkCode": "EndorsementCodes.AdditionalNamedInsuredProperty"
+      },
+      "WaterCoverageAndSewerBackup": {
+        "csioCode": "SurfaceWater (standard enum - V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Water Coverage and Sewer Backup - uses V134 SurfaceWater enum value",
+        "frameworkCode": "EndorsementCodes.WaterCoverageAndSewerBackup"
+      }
+    },
+    "homeLiabilities": {
+      "AdditionalResidence": {
+        "csioCode": "AdditionalResidencesPropertiesAcreage (standard enum)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Additional Residence liability - maps multiple framework codes to single CSIO code",
+        "frameworkCodes": [
+          "LiabilityCodes.AdditionalResidenceHouse",
+          "LiabilityCodes.AdditionalResidenceCondo",
+          "LiabilityCodes.AdditionalResidenceTenant",
+          "LiabilityCodes.AdditionalResidenceMobileHome",
+          "LiabilityCodes.AdditionalResidence",
+          "LiabilityCodes.SeasonalDwelling",
+          "LiabilityCodes.RentedCondo",
+          "LiabilityCodes.RentedDwelling"
+        ]
+      },
+      "VoluntaryPropertyDamage": {
+        "csioCode": "VoluntaryPropertyDamage (standard enum - HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Voluntary Property Damage Increase",
+        "frameworkCode": "LiabilityCodes.VoluntaryPropertyDamageInc"
+      },
+      "AdditionalNamedInsured": {
+        "csioCode": "AdditionalNamedInsured (standard enum - LiabilityExtensions)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Additional Named Insured liability",
+        "frameworkCode": "LiabilityCodes.AdditionalNamedInsured"
+      },
+      "AnimalLiabilityExtension": {
+        "csioCode": "AnimalLiabilityExtension (standard enum - LiabilityExtensions)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Horses / Animal Liability Extension",
+        "frameworkCode": "LiabilityCodes.Horses"
+      },
+      "AdditionalUnits": {
+        "csioCode": "AdditionalUnits (standard enum - V134 LiabilityExtensions)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Rented Room/Suite - Additional Units",
+        "frameworkCode": "LiabilityCodes.RentedRoomSuite"
+      },
+      "JetSkiLiability": {
+        "csioCode": "csio:JPPWB",
+        "source": "sandbox",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "JetSki / Personal Watercraft Liability",
+        "frameworkCode": "MiscPropertyCodes.JetSki",
+        "definedIn": "CompanyConstants.vb"
+      }
+    },
+    "watercraftCoverage": {
+      "WatercraftLiabilityA": {
+        "csioCode": "WatercraftLiabilityA (standard enum - LiabilityExtensions)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Watercraft Liability (non-JetSki boats)",
+        "note": "Used for BoatAndMotor; JetSki uses csio:JPPWB instead"
+      },
+      "WatercraftHullAllRisks": {
+        "csioCode": "Inherited from generic base",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Watercraft Hull All Risks coverage"
+      }
+    },
+    "habAdditionalCoverages": {
+      "TheftAndBurglary": {
+        "csioCode": "TheftandBurglary (standard enum - HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Theft and Burglary coverage - added when Burglary field is true",
+        "frameworkTrigger": "DynamicFieldNameConstants.Burglary = True"
+      },
+      "VandalismTheftByTenantsAndGuest": {
+        "csioCode": "VandalismTheftByTenantsAndGuest (V134 HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Vandalism / Theft by Tenants and Guests coverage",
+        "frameworkTrigger": "DynamicFieldNameConstants.Vandalism = True",
+        "note": "Excluded from inbound conversion (TryConvertToFrameworkHomeEndorsement returns False for this code)"
+      },
+      "GuaranteedReplacementCostBuilding": {
+        "csioCode": "GuaranteedReplacementCostBuilding (standard enum)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Replacement Cost coverage added as additional hab coverage",
+        "frameworkTrigger": "DynamicFieldNameConstants.Replacement = True",
+        "note": "Sent as 'Replacement Cost Plus' description"
+      },
+      "AllRiskLossAssessmentCoverage": {
+        "csioCode": "AllRiskLossAssessmentCoverage (standard enum - HabPackageAndOtherForms)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Loss Assessment - Property coverage",
+        "frameworkTrigger": "DynamicFieldNameConstants.LossAssessment > 0"
+      },
+      "PersonalPropertySeasonalForm": {
+        "csioCode": "PersonalPropertyOtherThanHomeownersTenantAndCondominiumForm (standard enum)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Contents coverage for Seasonal policies uses different code than standard",
+        "note": "Seasonal policy contents use this code instead of the standard personal property code"
+      },
+      "SeniorTenantOverride": {
+        "csioCode": "PersonalPropertyHomeownersForm (standard enum)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Senior Tenant on Tenant policy - overrides coverage code from PersonalPropertyTenantAndCondo to PersonalPropertyHomeowners",
+        "note": "Triggered when coverage type is Senior Tenant, Senior's Tenant, or Senior's Tenant Pak on a Tenant policy"
+      }
+    }
+  },
+  "discountCodes": {
+    "habDiscounts": {
+      "CreditScoreDiscount": {
+        "csioCode": "DiscountCreditConsentReceived (V137 AutomobileDiscountAndSurchargeCodes)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Credit Score Discount (uses auto discount code for hab)",
+        "frameworkCode": "DiscountCode.CreditScore"
+      },
+      "HigherFloorUnit": {
+        "csioCode": "DiscountHigherFloorUnit (V137 HabitationalDiscountAndSurchargeCodes)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Higher Floor Unit Discount (Above Third Floor)",
+        "frameworkCode": "DiscountCode.AboveThirdFloor"
+      },
+      "MiscellaneousDiscount": {
+        "csioCode": "MiscellaneousDiscount (V137 HabitationalDiscountAndSurchargeCodes)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Miscellaneous Discount mapped to Fire Resistive",
+        "frameworkCode": "DiscountCode.FireResistive"
+      },
+      "UnfinishedBasement": {
+        "csioCode": "DiscountUnfinishedBasement (V137 HabitationalDiscountAndSurchargeCodes)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Unfinished Basement Discount mapped to Under Construction",
+        "frameworkCode": "DiscountCode.UnderConstruction"
+      },
+      "LifeLeaseDiscount": {
+        "csioCode": "ValuedPreferredCustomer (standard enum - HabitationalDiscountAndSurchargeCodes)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Life Lease Discount - sent when LifeLease field is true",
+        "frameworkTrigger": "DynamicFieldNameConstants.LifeLease = True",
+        "note": "Uses ValuedPreferredCustomer code as carrier, description is 'Life Lease Dis.'"
+      }
+    },
+    "habSurcharges": {
+      "CommercialExposure": {
+        "csioCode": "CommercialExposure (V137 HabitationalDiscountAndSurchargeCodes)",
+        "source": "standard",
+        "version": "V141",
+        "availableIn": ["V141"],
+        "description": "Commercial Occupancies Surcharge - Tenant/Condo with Commercial Occupancy",
+        "frameworkCode": "SurchargeCode.TenantCondoWithCommercialOccupancy",
+        "frameworkTrigger": "BuildingType = 'Commercial Building' AND CommercialBuildingType != 'None'"
+      }
+    },
+    "autoDiscounts": {
+      "note": "No auto-specific discount overrides in Sandbox. All auto discounts inherited from generic V141/V137 base.",
+      "inheritedFromGeneric": {
+        "AntiTheft": "DiscountAntiTheftDeviceAutomaticallyActivatedNonAlarms",
+        "YoungDriver": "DiscountYoungDriver (V137)"
+      }
+    },
+    "autoSurcharges": {
+      "note": "No auto-specific surcharge overrides in Sandbox. All auto surcharges inherited from generic base.",
+      "inheritedFromGeneric": {
+        "StandAlone": "SurchargeStandaloneDwelling (V137)",
+        "AgeOfHome": "AgeOfStructure (V118)"
+      }
+    }
+  },
+  "companyConstants": {
+    "CompanyValue": {
+      "SpeedMPH": "MPH",
+      "StringZero": "0",
+      "StringOne": "1",
+      "CommercialBuilding": "Commercial Building",
+      "None": "None",
+      "House": "House"
+    },
+    "CreditScoreConsent": {
+      "No": "0",
+      "Yes": "1"
+    },
+    "HabCoverageType": {
+      "SeniorTenant": "Senior Tenant",
+      "SeniorsTenant": "Seniors Tenant",
+      "FormE": "Form E",
+      "FormF": "Form F",
+      "SeniorsTenantPak": "Senior's Tenant Pak",
+      "FormDCR": "Form DCR"
+    },
+    "Classification": {
+      "Standard": "Standard",
+      "Preferred": "Preferred",
+      "PreferredPlus": "Preferred Plus"
+    },
+    "LiabilityCoverageCode": {
+      "JetSkiLiability": "csio:JPPWB"
+    },
+    "FieldNameConstants": {
+      "UsedOutsideOfHome": "UsedOutsideOfHome",
+      "Floater": "Floater",
+      "NumUnits": "NumOfUnits",
+      "ReplacementCostPlus": "ReplacementCostPlus"
+    }
+  },
+  "csioConstants": {
+    "FireProtection": {
+      "FireHallProtected": "P",
+      "FireHallUnprotected": "U"
+    },
+    "CoverageCd": {
+      "CondominiumDeductibleAssessmentEarthquakeExcluded": "csio:CDEDA",
+      "EquipmentBreakdownCoverage": "csio:HOEQP"
+    },
+    "inheritedFrom": "V043.Generic.CsioConstants"
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "Home_FormB": "HomeownersBroadReverseForm",
+      "Home_FormD_Comprehensive": "HomeownersComprehensiveForm",
+      "Home_FormK_Broad": "HomeownersBroadForm",
+      "Home_NamedPerils_Basic": "HomeownersStandardForm",
+      "Home_FormDCR": "Other",
+      "Condo_FormCNF_FormF_Comprehensive": "ComprehensiveCondominiumForm",
+      "Condo_FormCNE_FormE_NamedPerils_Basic": "CondominiumPackageStandardForm",
+      "Tenant_FormTNE_FormE_NamedPerils_Basic": "TenantsPackageStandardForm",
+      "Tenant_FormTNF_FormF_Comprehensive": "TenantsComprehensiveForm",
+      "Tenant_Seniors": "TenantsSeniorsPackage",
+      "Seasonal_NamedPerils_Basic": "SecondaryHomeownersLimitedForm",
+      "Seasonal_FormB": "SecondaryHomeownersFormOther",
+      "Seasonal_Broad_FormK": "SecondaryHomeownersBroadForm",
+      "Seasonal_FormD_Comprehensive": "SecondaryHomeownersComprehensiveForm",
+      "Seasonal_FEC": "SeasonalDwellingFireECForm (V141)",
+      "Seasonal_AllRisk": "SeasonalDwellingComprehensiveForm",
+      "RentedDwelling_Comprehensive": "RentedDwellingComprehensiveForm",
+      "RentedDwelling_FEC": "RentedDwellingFireECForm (V141)",
+      "RentedCondo_CNF_Comprehensive": "RentedCondominiumForm (V141)",
+      "RentedCondo_CNE_NamedPerils_Basic": "CondomimiumFormOther",
+      "FEC": "Routes to RentedDwelling conversion"
+    },
+    "classification": {
+      "Standard": "Standard (ClassSpecificRatedIndicator)",
+      "Preferred": "Preferred (ClassSpecificRatedIndicator)",
+      "PreferredPlus": "Superior (ClassSpecificRatedIndicator)"
+    },
+    "occupancyTypes": {
+      "Owner_Primary": "PrimaryResidence",
+      "Owner_Seasonal": "SecondarySeasonal",
+      "Owner_FEC": "SecondaryNonSeasonal",
+      "Owner_AdditionalResidence": "SecondaryNonSeasonal",
+      "Owner_SeasonalDwelling": "SecondarySeasonal",
+      "FamilyMember_Primary": "FamilyOccupied (V128)",
+      "FamilyMember_Seasonal": "SecondarySeasonal",
+      "Tenant_RentedToThirdParty": "RentedToThirdParty (V128)",
+      "Unoccupied": "Other (V128)",
+      "UnderConstruction": "UnderConstruction"
+    },
+    "residenceType": {
+      "House": "Dwelling (standard enum)"
+    },
+    "exteriorWallMaterials": {
+      "CementFiberBoard": "CementFiberBoard",
+      "CementFiberShingles": "CementFiberShingle",
+      "Brick": "BrickVeneer",
+      "MetalClad": "MetalSiding",
+      "Stone": "StoneVeneer",
+      "WoodShake": "WoodExterior",
+      "CustomLog": "LogSiding",
+      "HardboardSiding_Masonite_Masonry_MasonryVeneer": "Other"
+    },
+    "constructionTypes": {
+      "CementConcrete": "ConcreteBlockMasonryFrame (V132)",
+      "Log_LogHandHewn_LogManufactured_PostBeamWood": "Log",
+      "Sectional_Modular_Panabode": "Other",
+      "StoneSolid": "Stone",
+      "Steel": "Steel",
+      "BrickSolid": "Brick",
+      "FrameWood": "Frame",
+      "MasonrySolid": "Other"
+    },
+    "causeOfLoss": {
+      "SurfaceWater": "SurfaceWater (V130)",
+      "GroundWater": "GroundWater (V130)",
+      "WaterDamageInfiltration": "WaterDamageInfiltration (V130)",
+      "ImpactByVehicle": "ImpactLandVehicleInsuredOperator (V130)",
+      "ExteriorSewerLineBreakage": "ExteriorSewerLine (V130)",
+      "ExteriorWaterLineBreakage": "ExteriorWaterLine (V130)"
+    },
+    "riskTypes": {
+      "SportingEquipment": "SportsEquipment (V141 PropertyFloater)"
+    },
+    "waterUnitType": {
+      "TrailerHoliday": "CabinTrailer"
+    },
+    "valuationProduct": {
+      "BVS_ExactWare360_SquareFootageMobileModular": "Other (V125)"
+    },
+    "fireProtectionClass": {
+      "Protected": "P (distance <= 13km or urban or hydrant within 300m)",
+      "Unprotected": "U (otherwise)"
+    }
+  },
+  "responseClassification": {
+    "habCoveragesTreatedAsParentItems": [
+      "CondominiumContingentLegalLiability",
+      "AllRiskUnitOwnersAdditionalProtection",
+      "TheftandBurglary",
+      "VandalismTheftByTenantsAndGuest",
+      "GuaranteedReplacementCostBuilding",
+      "AllRiskPersonalProperty (V121)"
+    ],
+    "specialResponseRules": {
+      "GuaranteedReplacementOnSecondarySeasonal": "If coverage desc is 'Replacement Cost Plus' AND code is GuaranteedReplacementCostBuilding AND PrincipalUnitAtRiskInd is False -> treated as parent coverage, not endorsement",
+      "GlassReducedDeductibleOnSeasonal": "If endorsement is GlassReducedDeductible on seasonal/FEC residence -> code changed to GlassBreakage"
+    },
+    "premiumFieldMappings": {
+      "AllRiskPersonalProperty": "PremiumContents",
+      "OtherStructuresHomeownersForms": "PremiumOutbuildings",
+      "AdditionalLivingExpense": "PremiumAdditionalLivingExpense",
+      "AllRiskUnitOwnersAdditionalProtection": "PremiumLossAssessmentLiability",
+      "TheftandBurglary": "PremiumBurglary",
+      "VandalismTheftByTenantsAndGuest": "PremiumVandalism"
+    }
+  },
+  "zCodeInventory": {
+    "habCoverage": [
+      {"code": "csio:CDEDA", "name": "CondominiumDeductibleAssessmentEarthquakeExcluded", "version": "V141", "availableIn": ["V141"], "definedIn": "CsioConstants.vb"},
+      {"code": "csio:HOEQP", "name": "EquipmentBreakdownCoverage", "version": "V141", "availableIn": ["V141"], "definedIn": "CsioConstants.vb"},
+      {"code": "csio:JPPWB", "name": "JetSkiLiability", "version": "V141", "availableIn": ["V141"], "definedIn": "CompanyConstants.vb"}
+    ],
+    "autoCoverage": [],
+    "discountsSurcharges": [],
+    "note": "SandboxMutual has only 3 explicitly declared csio: codes. All other coverage/endorsement/discount codes are resolved through standard CSIO enum factories at runtime."
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 3,
+    "totalStandardEnumMappings": 42,
+    "totalGenericInheritedCodes": "All standard codes from V043 generic base via inheritance chain",
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "grepVerification": "All 3 csio: string literals in Sandbox folder verified: csio:JPPWB (CompanyConstants.vb:29), csio:CDEDA (CsioConstants.vb:13), csio:HOEQP (CsioConstants.vb:14)",
+    "filesScanned": 57,
+    "versionBreakdown": {
+      "V141only": 3,
+      "sharedAcrossVersions": 0
+    },
+    "notes": [
+      "SandboxMutual is a single-version carrier (V141 only). No multi-version comparisons needed.",
+      "Most coverage codes are resolved dynamically via _enumValuesFactory and _enumFactory interface calls rather than hardcoded csio: strings.",
+      "The carrier inherits the full generic CoverageCodeConverter chain (V141 -> V137 -> V134 -> V133 -> V043) which provides all standard CSIO codes.",
+      "No auto-specific overrides exist - all auto handling falls through to generic base."
+    ]
+  }
+}

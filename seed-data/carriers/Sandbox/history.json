@@ -1,0 +1,17 @@
+{
+  "carrier": "Sandbox",
+  "extractions": [
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22.json",
+      "rulesFile": "2026-03-22-rules.md",
+      "totalCodes": 48,
+      "zCodeCount": 0,
+      "csioCodeCount": 3,
+      "filesProcessed": 57,
+      "versions": ["V141"],
+      "durationSeconds": 120,
+      "status": "complete"
+    }
+  ]
+}

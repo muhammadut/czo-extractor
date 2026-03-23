@@ -1,0 +1,184 @@
+{
+  "lastUpdated": "2026-03-22",
+  "carriers": {
+    "Aviva": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-20",
+      "totalCodes": 322,
+      "latestFile": "carriers/Aviva/latest.json"
+    },
+    "SandboxMutual": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-20",
+      "totalCodes": 3,
+      "totalMappings": 42,
+      "latestFile": "carriers/SandboxMutual/latest.json"
+    },
+    "Dominion": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 18,
+      "latestFile": "carriers/Dominion/latest.json"
+    },
+    "Economical": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 24,
+      "latestFile": "carriers/Economical/latest.json"
+    },
+    "Echelon": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 7,
+      "latestFile": "carriers/Echelon/latest.json"
+    },
+    "Commonwell": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 3,
+      "totalGenericInherited": 250,
+      "latestFile": "carriers/Commonwell/latest.json"
+    },
+    "Gore": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 8,
+      "totalGenericInherited": 120,
+      "latestFile": "carriers/Gore/latest.json"
+    },
+    "InsurCloud": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 84,
+      "zCodeCount": 0,
+      "latestFile": "carriers/InsurCloud/latest.json"
+    },
+    "Edge": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 0,
+      "totalGenericInherited": 250,
+      "totalCarrierOverrides": 2,
+      "latestFile": "carriers/Edge/latest.json"
+    },
+    "ICPEI": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 0,
+      "zCodeCount": 0,
+      "totalGenericInherited": 152,
+      "latestFile": "carriers/ICPEI/latest.json"
+    },
+    "Intact": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 143,
+      "zCodeCount": 4,
+      "latestFile": "carriers/Intact/latest.json"
+    },
+    "PeaceHillsDirectRating": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 25,
+      "zCodeCount": 7,
+      "latestFile": "carriers/PeaceHillsDirectRating/latest.json"
+    },
+    "PeaceHills": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 0,
+      "zCodeCount": 0,
+      "totalGenericInherited": 165,
+      "totalConstants": 2,
+      "latestFile": "carriers/PeaceHills/latest.json"
+    },
+    "Jevco": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 0,
+      "zCodeCount": 0,
+      "totalGenericInherited": 105,
+      "latestFile": "carriers/Jevco/latest.json"
+    },
+    "PortageMutual": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 16,
+      "zCodeCount": 15,
+      "totalGenericInherited": 150,
+      "latestFile": "carriers/PortageMutual/latest.json"
+    },
+    "SGICanada": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 7,
+      "zCodeCount": 5,
+      "totalGenericInherited": 200,
+      "latestFile": "carriers/SGICanada/latest.json"
+    },
+    "RoyalSunAlliance": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 322,
+      "zCodeCount": 168,
+      "totalGenericInherited": 55,
+      "latestFile": "carriers/RoyalSunAlliance/latest.json"
+    },
+    "Sandbox": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 3,
+      "zCodeCount": 0,
+      "totalGenericInherited": 45,
+      "latestFile": "carriers/Sandbox/latest.json"
+    },
+    "Travelers": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 3,
+      "zCodeCount": 0,
+      "totalGenericInherited": 250,
+      "latestFile": "carriers/Travelers/latest.json"
+    },
+    "SGICanadaDirectRating": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 55,
+      "zCodeCount": 4,
+      "totalGenericInherited": 30,
+      "latestFile": "carriers/SGICanadaDirectRating/latest.json"
+    },
+    "SGICanadaQuote": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 34,
+      "zCodeCount": 7,
+      "totalGenericInherited": 42,
+      "latestFile": "carriers/SGICanadaQuote/latest.json"
+    },
+    "SGICanadaGIS": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 85,
+      "zCodeCount": 8,
+      "totalGenericInherited": 200,
+      "latestFile": "carriers/SGICanadaGIS/latest.json"
+    },
+    "Wawanesa": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 41,
+      "zCodeCount": 30,
+      "totalGenericInherited": 48,
+      "latestFile": "carriers/Wawanesa/latest.json"
+    },
+    "Trillium": {
+      "status": "extracted",
+      "lastExtraction": "2026-03-22",
+      "totalCodes": 22,
+      "zCodeCount": 0,
+      "totalGenericInherited": 200,
+      "latestFile": "carriers/Trillium/latest.json"
+    }
+  }
+}

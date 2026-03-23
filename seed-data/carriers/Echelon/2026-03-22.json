@@ -1,0 +1,648 @@
+{
+  "_metadata": {
+    "carrier": "Echelon",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043"],
+    "latestVersion": "v043",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 25,
+    "description": "Complete CZO mapping for Echelon. Auto-only carrier with v043 base version only. All endorsement, discount, and surcharge codes are inherited from v043/Generic. Company-specific overrides are limited to accident benefits (Ontario SABS) coverage codes.",
+    "versionRoles": {
+      "v043": "Base version (only version for Echelon)"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "Opcf02": {
+        "csioCode": "csio:2",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 2 - Permission to Rent or Lease"
+      },
+      "Opcf03": {
+        "csioCode": "csio:3",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 3 - Permission to Carry Explosives"
+      },
+      "Opcf05": {
+        "csioCode": "csio:5",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 5 - Permission to Drive in USA or Mexico"
+      },
+      "Opcf05C": {
+        "csioCode": "csio:5C",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 5C - Permission to Drive in USA (Certificate)"
+      },
+      "Opcf05D": {
+        "csioCode": "csio:5D",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 5D - Permission to Drive in USA (Declaration)"
+      },
+      "Opcf06A": {
+        "csioCode": "csio:6A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 6A - Permission for Vehicle to be Driven by Named Persons"
+      },
+      "Opcf06D": {
+        "csioCode": "csio:6D",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 6D - Permission for Persons Other than Named to Drive"
+      },
+      "Opcf07": {
+        "csioCode": "csio:7",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 7 - Business Use"
+      },
+      "Opcf08": {
+        "csioCode": "csio:8",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 8 - Property Damage Reimbursement"
+      },
+      "Opcf08A": {
+        "csioCode": "csio:8A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 8A - Property Damage Reimbursement (Alternative)"
+      },
+      "Opcf09": {
+        "csioCode": "csio:9",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 9 - Accident Rating Waiver"
+      },
+      "Opcf13C": {
+        "csioCode": "csio:13C",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 13C - Excluding Operation by Named Person(s)"
+      },
+      "Opcf16": {
+        "csioCode": "csio:16",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 16 - Agreement Not to Defend"
+      },
+      "Opcf17": {
+        "csioCode": "csio:17",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 17 - Reinstatement of SEF"
+      },
+      "Opcf19": {
+        "csioCode": "csio:19",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 19 - Limitation of Amount Payable"
+      },
+      "Opcf19A": {
+        "csioCode": "csio:19A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 19A - Limitation of Amount Payable (Alternative)"
+      },
+      "Opcf20": {
+        "csioCode": "csio:20",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 20 - Loss of Use"
+      },
+      "Opcf23A": {
+        "csioCode": "csio:23A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 23A - Rented or Leased Automobile"
+      },
+      "Opcf25A": {
+        "csioCode": "csio:25A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 25A - Alteration or Use of Vehicle"
+      },
+      "Opcf27": {
+        "csioCode": "csio:27",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 27 - Liability for Damage to Non-Owned Automobiles"
+      },
+      "Opcf27B": {
+        "csioCode": "csio:27B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 27B - Liability for Damage to Non-Owned Automobiles (Broad)"
+      },
+      "Opcf28": {
+        "csioCode": "csio:28",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 28 - Accident Benefits"
+      },
+      "Opcf28A": {
+        "csioCode": "csio:28A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 28A - Accident Benefits (Alternative)"
+      },
+      "Opcf29": {
+        "csioCode": "csio:29",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 29 - Accident Benefits (Excess)"
+      },
+      "Opcf30": {
+        "csioCode": "csio:30",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 30 - Accident Benefits (Spouse)"
+      },
+      "Opcf31": {
+        "csioCode": "csio:31",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 31 - Accident Benefits (Dependent)"
+      },
+      "Opcf32": {
+        "csioCode": "csio:32",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 32 - Specific Parts and Accessories"
+      },
+      "Opcf35": {
+        "csioCode": "csio:35",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 35 - Emergency Assistance Package"
+      },
+      "Opcf37": {
+        "csioCode": "csio:37",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 37 - Agreement not to Cover Named Drivers"
+      },
+      "Opcf38": {
+        "csioCode": "csio:38",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 38 - Agricultural Use"
+      },
+      "Opcf40": {
+        "csioCode": "csio:40",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 40 - Vehicle Sharing Endorsement"
+      },
+      "Opcf43": {
+        "csioCode": "csio:43",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 43 - Removing Depreciation Deduction"
+      },
+      "Opcf43A": {
+        "csioCode": "csio:43A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 43A - Removing Depreciation Deduction (Alternative)"
+      },
+      "Opcf44": {
+        "csioCode": "csio:44R",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 44R - Family Protection Coverage",
+        "note": "Ontario sends csio:44R; non-Ontario sends csio:44. Echelon PcCoverageConverter sets limit from parent Liability field for Opcf44/End44."
+      },
+      "End44": {
+        "csioCode": "csio:44",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "SEF 44 - Family Protection Coverage (non-Ontario)"
+      },
+      "Opcf46": {
+        "csioCode": "csio:46",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 46 - Permission for Vehicle Sharing"
+      },
+      "Opcf47": {
+        "csioCode": "csio:47",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 47 - Agreement for Insurer Not to Set Off"
+      },
+      "Opcf48": {
+        "csioCode": "csio:48",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 48 - Agreement for Automobile Coverage Extension"
+      },
+      "Pak05": {
+        "csioCode": "csio:PAK05",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "PAK 05 - Bundle Package"
+      },
+      "Pak06": {
+        "csioCode": "csio:PAK06",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "PAK 06 - Bundle Package"
+      },
+      "DrivingRecordProtectorClaims": {
+        "csioCode": "csio:CPP",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Claims Protection Plan",
+        "note": "Ontario maps to csio:CPP; non-Ontario maps to csio:39 (Claims free protection)"
+      },
+      "LossOfUseBroadForm": {
+        "csioCode": "csio:20A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 20A - Loss of Use Broad Form"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "csio:26",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 26 - Disappearing Deductible"
+      },
+      "PermissionToCarryRadioactiveMaterial": {
+        "csioCode": "csio:4B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 4B - Permission to Carry Radioactive Material"
+      },
+      "PetAccidentWordingEndorsement": {
+        "csioCode": "csio:ANILE",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Animal Liability Extension"
+      },
+      "Pak08": {
+        "csioCode": "csio:PAK08",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "PAK 08 - Bundle Package"
+      },
+      "Pak09": {
+        "csioCode": "csio:PAK09",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "PAK 09 - Bundle Package"
+      }
+    },
+    "autoAccidentBenefitsOntario": {
+      "MedicalAttendantCatastrophic": {
+        "csioCode": "csio:CATIM",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Catastrophic Impairment - Medical, Rehabilitation and Attendant Care Benefits",
+        "limit": 1000000,
+        "appliesWhen": "calcDate >= June 1, 2016 AND input.MedicalAttendantCatastrophic = True"
+      },
+      "MedicalAttendantNonCatastrophic": {
+        "csioCode": "csio:MRB",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Non-Catastrophic Medical, Rehabilitation and Attendant Care Benefits",
+        "limit": 130000,
+        "appliesWhen": "calcDate >= June 1, 2016 AND input.MedicalAttendantNonCatastrophic = True"
+      },
+      "MedicalAttendantNonCatastrophic1M": {
+        "csioCode": "csio:CIMRB",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Non-Catastrophic Medical, Rehabilitation and Attendant Care Benefits ($1M option)",
+        "limit": 1000000,
+        "appliesWhen": "calcDate >= June 1, 2016 AND input.MedicalAttendantNonCatastrophic1M = True"
+      },
+      "AttendantCare": {
+        "csioCode": "csio:ACB",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Attendant Care Benefits (pre-June 2016 SABS)",
+        "appliesWhen": "calcDate < June 1, 2016 AND input.AttendantCare = True"
+      },
+      "MedicalRehabilitation": {
+        "csioCode": "csio:MEDRH",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical Rehabilitation Benefits (pre-June 2016 SABS)",
+        "appliesWhen": "calcDate < June 1, 2016 AND input.MedicalRehabilitation = True"
+      },
+      "MedicalRehabilitationAndAttendantCare": {
+        "csioCode": "csio:MRAC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical Rehabilitation and Attendant Care Combined (pre-June 2016 SABS)",
+        "appliesWhen": "calcDate < June 1, 2016 AND input.MedicalRehabilitationAndAttendantCare = True",
+        "note": "Uses standard enum value from _enumValuesFactory (not a company constant)"
+      },
+      "Caregiver": {
+        "csioCode": "csio:CHHMB",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Caregiver, Housekeeping and Home Maintenance Benefits",
+        "appliesWhen": "input.Caregiver = True (applies regardless of date)"
+      },
+      "DependantCare": {
+        "csioCode": "csio:DCB",
+        "source": "echelon",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Dependant Care Benefits",
+        "appliesWhen": "input.DependantCare = True (applies regardless of date)"
+      },
+      "IncomeReplacement": {
+        "csioCode": "csio:IR",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Income Replacement Benefits (increased above $400/week)",
+        "appliesWhen": "input.IncomeReplacementCoverage > 400",
+        "note": "Uses standard enum value from _enumValuesFactory. Limit set to actual coverage amount."
+      },
+      "Indexation": {
+        "csioCode": "csio:INDX",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Indexation Benefit",
+        "appliesWhen": "input.IndexationBenefit = True",
+        "note": "Uses standard enum value from _enumValuesFactory"
+      },
+      "DeathAndFuneral": {
+        "csioCode": "csio:DFNRL",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Death and Funeral Benefits",
+        "appliesWhen": "input.DeathAndFuneral = True",
+        "note": "Uses standard enum value from _enumValuesFactory"
+      }
+    },
+    "homeEndorsements": {},
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "_note": "Echelon inherits ALL auto discount mappings from v043/Generic CoverageCodeConverter. No company-specific discount overrides exist. The following are the standard codes inherited.",
+      "Age": { "csioCode": "csio:DISAG", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Driver Age Discount" },
+      "AssociationMembership": { "csioCode": "csio:DISAM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Association Membership Discount" },
+      "AwayAtSchool": { "csioCode": "csio:DISAS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Away at School Discount" },
+      "ClaimForgiveness": { "csioCode": "csio:DISCF", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Claims Forgiveness Discount" },
+      "ClaimsFree": { "csioCode": "csio:DISNC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "No Claims Discount" },
+      "ConvictionFree": { "csioCode": "csio:DISCV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Conviction Free Discount" },
+      "ConvictionFreeOccasional": { "csioCode": "csio:DISCO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Conviction Free Occasional Driver Discount" },
+      "DriverTraining": { "csioCode": "csio:DISDT", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Driver Training Discount" },
+      "Experience": { "csioCode": "csio:DISEX", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Experienced Driver Discount" },
+      "Farm": { "csioCode": "csio:DISFM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Farm Discount" },
+      "Female": { "csioCode": "csio:DISFE", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Female Discount" },
+      "GoodStudent": { "csioCode": "csio:DISGS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Good Student Discount" },
+      "GraduatedLicense": { "csioCode": "csio:DISGL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Graduated License Holder Discount" },
+      "GraduatedLicenseOccasional": { "csioCode": "csio:DISGO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Graduated License for Occasional Driver Discount" },
+      "GroupRate": { "csioCode": "csio:DISGR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Group Rate Applied Discount" },
+      "Hybrid": { "csioCode": "csio:DISHY", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Hybrid Vehicle Discount" },
+      "IPromiseProgram": { "csioCode": "csio:DISIP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "I Promise Program / Parent-Teen Safe Driving Contract" },
+      "InsuredsDrivingRecord": { "csioCode": "csio:DISID", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Insured's Driving Record Discount" },
+      "LowAnnualMileage": { "csioCode": "csio:DISLM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Low Annual Mileage Discount" },
+      "LowCommuteDistance": { "csioCode": "csio:DISCD", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Low Commute Distance Discount" },
+      "MaritalStatus": { "csioCode": "csio:DISMS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Marital Status Discount" },
+      "Miscellaneous": { "csioCode": "csio:DISMI", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Miscellaneous Discount" },
+      "MultiLine": { "csioCode": "csio:DISML", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multiple Line Discount" },
+      "MultiVehicle": { "csioCode": "csio:DISMV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multi-Vehicle Discount" },
+      "NewDriver": { "csioCode": "csio:DISND", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "New Driver Discount" },
+      "NewVehicle": { "csioCode": "csio:DISNV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "New Vehicle Discount" },
+      "NonSmoker": { "csioCode": "csio:DISNS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Non-Smoker Discount" },
+      "OccasionalDriver": { "csioCode": "csio:DISOD", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Occasional Driver Discount" },
+      "Occupation": { "csioCode": "csio:DISOC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Occupation Discount" },
+      "OutOfProvince": { "csioCode": "csio:DISOP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Out of Province Discount" },
+      "OwnerOfVehicle": { "csioCode": "csio:DISOV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Owner of Vehicle Discount" },
+      "PreferredCustomer": { "csioCode": "csio:DISPC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Valued/Preferred Customer Discount" },
+      "Professional": { "csioCode": "csio:DISPF", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Professional Discount" },
+      "RecreationalVehicle": { "csioCode": "csio:DISMR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multi Recreational Vehicle Discount" },
+      "ReligiousClerical": { "csioCode": "csio:DISRC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Religious/Clerical Discount" },
+      "Renewal": { "csioCode": "csio:DISRN", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Renewal Discount" },
+      "Retiree": { "csioCode": "csio:DISRT", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Retiree Discount" },
+      "AntiTheft": { "csioCode": "csio:DISAL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Alarm System / Anti-Theft Discount" },
+      "Stability": { "csioCode": "csio:DISST", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Stability Discount" },
+      "WinterTire": { "csioCode": "csio:DISSN", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Snow/Winter Tire Discount" }
+    },
+    "autoSurcharges": {
+      "_note": "Echelon inherits ALL auto surcharge mappings from v043/Generic CoverageCodeConverter. No company-specific surcharge overrides exist.",
+      "BusinessUse": { "csioCode": "csio:SURBU", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Business Use Surcharge" },
+      "Carpooling": { "csioCode": "csio:SURCP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Car Pooling Surcharge" },
+      "Claims": { "csioCode": "csio:SURCL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Claims Surcharge" },
+      "ClaimsOccasional": { "csioCode": "csio:SURCO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Claims for Occasional Driver Surcharge" },
+      "CommercialExposure": { "csioCode": "csio:SURCE", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Commercial Exposure Surcharge" },
+      "Convictions": { "csioCode": "csio:SURCV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Convictions Surcharge" },
+      "ConvictionsOccasional": { "csioCode": "csio:SURVO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Convictions for Occasional Driver Surcharge" },
+      "ExplosiveMaterial": { "csioCode": "csio:SUREM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Explosive/Radioactive Material Surcharge" },
+      "HighKilometersDriven": { "csioCode": "csio:SURHK", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "High Kilometres Driven Surcharge" },
+      "HighPerformance": { "csioCode": "csio:SURHP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "High Performance Surcharge" },
+      "Miscellaneous": { "csioCode": "csio:SURMI", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Miscellaneous Surcharge" },
+      "MultipleOperator": { "csioCode": "csio:SURMO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multiple Operators Surcharge" },
+      "OutOfProvince": { "csioCode": "csio:SUROP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Out of Province Surcharge" },
+      "OversizeEngine": { "csioCode": "csio:SUROE", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Oversize Engine Surcharge" },
+      "USExposure": { "csioCode": "csio:SURUS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "US/Non-Canadian Exposure Surcharge" },
+      "ClaimsFree": { "csioCode": "csio:SURCC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Number of Comprehensive Claims Surcharge" }
+    },
+    "habDiscounts": {},
+    "habSurcharges": {},
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [],
+    "homeLiabilities": [],
+    "homeDiscounts": [],
+    "homeSurcharges": [],
+    "autoEndorsementsOntario": [
+      "csio:CPP", "csio:2", "csio:3", "csio:5", "csio:5C", "csio:5D",
+      "csio:6A", "csio:6D", "csio:7", "csio:8", "csio:8A", "csio:9",
+      "csio:13C", "csio:16", "csio:17", "csio:19", "csio:19A", "csio:20",
+      "csio:23A", "csio:23B", "csio:25A", "csio:27", "csio:27B",
+      "csio:28", "csio:28A", "csio:29", "csio:30", "csio:31", "csio:32",
+      "csio:35", "csio:37", "csio:38", "csio:40", "csio:43", "csio:43A",
+      "csio:44R", "csio:46", "csio:47", "csio:48",
+      "csio:PAK05", "csio:PAK06",
+      "csio:20A", "csio:4B", "csio:26", "csio:ANILE",
+      "csio:PAK08", "csio:PAK09"
+    ],
+    "autoEndorsementsNonOntario": [
+      "csio:39", "csio:2", "csio:3", "csio:4A", "csio:4B", "csio:5",
+      "csio:5A", "csio:6A", "csio:6B", "csio:6C", "csio:6D",
+      "csio:7", "csio:8", "csio:8A", "csio:9",
+      "csio:13C", "csio:13D", "csio:13H", "csio:16", "csio:17",
+      "csio:19", "csio:19A", "csio:20", "csio:20A",
+      "csio:22", "csio:23A", "csio:23B", "csio:24", "csio:25", "csio:25A",
+      "csio:26", "csio:27", "csio:27B", "csio:28", "csio:28A",
+      "csio:30", "csio:30A", "csio:31", "csio:32",
+      "csio:35", "csio:36", "csio:37", "csio:38", "csio:39", "csio:40",
+      "csio:43", "csio:43R", "csio:43RL", "csio:44", "csio:48",
+      "csio:PAK03", "csio:PAK05", "csio:PAK06",
+      "csio:PAK08", "csio:PAK09",
+      "csio:ANILE"
+    ],
+    "autoDiscounts": [
+      "csio:DISAG", "csio:DISAL", "csio:DISAM", "csio:DISAS",
+      "csio:DISCD", "csio:DISCF", "csio:DISCV", "csio:DISCO",
+      "csio:DISDT", "csio:DISEX", "csio:DISFM", "csio:DISFE",
+      "csio:DISGL", "csio:DISGO", "csio:DISGR", "csio:DISGS",
+      "csio:DISHY", "csio:DISID", "csio:DISIP", "csio:DISLM",
+      "csio:DISMI", "csio:DISML", "csio:DISMS", "csio:DISMR",
+      "csio:DISMV", "csio:DISND", "csio:DISNC", "csio:DISNS",
+      "csio:DISNV", "csio:DISOC", "csio:DISOD", "csio:DISOP",
+      "csio:DISOV", "csio:DISPC", "csio:DISPF", "csio:DISRC",
+      "csio:DISRN", "csio:DISRT", "csio:DISSN", "csio:DISST"
+    ],
+    "autoSurcharges": [
+      "csio:SURBU", "csio:SURCC", "csio:SURCE", "csio:SURCL",
+      "csio:SURCO", "csio:SURCV", "csio:SUREM", "csio:SURHK",
+      "csio:SURHP", "csio:SURMI", "csio:SURMO", "csio:SUROP",
+      "csio:SUROE", "csio:SURUS", "csio:SURVO"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {},
+    "companyProduct": {
+      "InsuranceCompanyCode.Echelon": {
+        "csioCode": "ECHE",
+        "description": "Echelon company product code"
+      }
+    },
+    "driverRecordRatingCoverages": {
+      "_note": "Echelon overrides GetDriverRecordRatingCoverages to always return TPLBI, TPLPD, Coll regardless of vehicle code or rating region.",
+      "coverages": ["TPLBI", "TPLPD", "Coll"]
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["Inherited from v043/Generic - standard DIS* prefix detection"],
+    "isSurchargePatterns": ["Inherited from v043/Generic - standard SUR* prefix detection"],
+    "note": "Echelon has no company-specific CsioToFramework overrides. Both Rated and Unrated ConverterFactory classes inherit directly from Generic without any method overrides."
+  },
+  "zCodeInventory": {
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": [],
+    "_note": "Echelon uses NO Z-codes (carrier-proprietary codes). All 7 codes in CompanyConstants are standard CSIO codes (ACB, CATIM, CHHMB, CIMRB, DCB, MEDRH, MRB) used for Ontario accident benefits. These are standard CSIO coverage codes, not Z-prefixed proprietary codes."
+  },
+  "companySpecificBehavior": {
+    "accidentBenefitsConversion": {
+      "description": "Echelon overrides ConvertAccidentBenefits in PcCoverageCollectionConverter to split accident benefits between post-June-2016 SABS reform codes and pre-June-2016 codes.",
+      "dateBoundary": "2016-06-01",
+      "postJune2016Codes": ["csio:CATIM", "csio:MRB", "csio:CIMRB"],
+      "preJune2016Codes": ["csio:ACB", "csio:MEDRH", "csio:MRAC"],
+      "dateIndependentCodes": ["csio:CHHMB", "csio:DCB", "csio:IR", "csio:INDX", "csio:DFNRL"]
+    },
+    "ratedCoverageMigration": {
+      "description": "In the Rated direction, PersAutoLineBusinessConverter migrates accident benefits coverages from line-of-business level down to the first vehicle. This moves premium amounts (CurrentTermAmt) to the vehicle-level coverage.",
+      "migratedCodes": ["csio:ACB", "csio:CHHMB", "csio:DCB", "csio:MEDRH", "csio:CATIM", "csio:MRB", "csio:CIMRB", "csio:IR", "csio:INDX", "csio:MRAC", "csio:DFNRL"]
+    },
+    "tplSplitting": {
+      "description": "Echelon overrides TPL conversion to split TPL into Bodily Injury and Property Damage when separate premiums exist. If only a combined TPL premium is provided, it sends TPL as one coverage. If split premiums exist, it sends BI and PD separately and suppresses the combined TPL."
+    },
+    "opcf44LimitOverride": {
+      "description": "For OPCF 44 and End 44 endorsements, Echelon sets the limit from the parent vehicle's Liability field instead of using the default endorsement limit logic."
+    },
+    "unratedPersAutoLineBusinessOverride": {
+      "description": "In the Unrated direction, PersAutoLineBusinessConverter initializes an empty Coverage collection on the output but does not call MyBase.ConvertCoverage. This prevents the generic policy-level coverage conversion from running."
+    },
+    "addressConversion": {
+      "description": "Echelon overrides AddrConverter to null out DetailAddr and convert addresses using ConvertSimpleAddress instead. This produces a flat address format rather than the structured detail address."
+    },
+    "nameConversion": {
+      "description": "NameInfoConverter combines NamedInsured1 and NamedInsured2 into a single CommercialName field with ' & ' separator, rather than using structured PersonName."
+    },
+    "paymentOptions": {
+      "description": "PaymentOptionCollectionConverter splits the first payment option into two: PMTINFO (payment info without deposit) and PMTDOWN (deposit amount only)."
+    },
+    "insuredOrPrincipal": {
+      "description": "InsuredOrPrincipalCollectionConverter uses custom primary/secondary insured logic with CSC_FLDS and ADD_INS IDs. Sets PrimaryPrincipal address type on all insured addresses."
+    },
+    "driverRecordRating": {
+      "description": "DriverRecordRatingInfoConverter uses a custom ID format: '{driverId}-{coverageType}'. DriverRecordRatingInfoCollectionConverter always returns TPLBI, TPLPD, Coll coverages regardless of vehicle code or region."
+    }
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 7,
+    "totalGenericInheritedCodes": 100,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "v043only": 7,
+      "sharedAcrossVersions": 0
+    },
+    "notes": [
+      "Echelon is an auto-only carrier with a single version (v043).",
+      "All 7 company-specific constants are standard CSIO codes for Ontario accident benefits, NOT Z-codes.",
+      "Zero Z-codes (carrier-proprietary codes) exist for Echelon.",
+      "CsioToFramework (response) direction has NO company-specific overrides -- both Rated and Unrated factories inherit entirely from Generic.",
+      "The carrier has significant FrameworkToCsio customization focused on: accident benefits splitting (SABS reform date boundary), TPL splitting, OPCF 44 limit override, address flattening, name concatenation, and payment option splitting.",
+      "25 VB files processed across v043/Companies/Echelon/."
+    ]
+  }
+}

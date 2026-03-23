@@ -1,0 +1,1578 @@
+{
+  "_metadata": {
+    "carrier": "ICPEI",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V146"],
+    "latestVersion": "V146",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 54,
+    "description": "Complete CZO mapping for ICPEI (Insurance Company of Prince Edward Island). ICPEI has zero proprietary Z-codes; all CSIO codes are standard, resolved through the XML enum factory interfaces. The carrier inherits heavily from the V145/V137/V136/V133/V128/V043 Generic base.",
+    "versionRoles": {
+      "V146": "Active service (only version)"
+    }
+  },
+  "coverageCodes": {
+    "autoCoverages": {
+      "AccidentBenefits": {
+        "csioCode": "csio:AB",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Accident Benefits"
+      },
+      "UninsuredAutomobile": {
+        "csioCode": "csio:UA",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Uninsured Automobile"
+      },
+      "AllPerils": {
+        "csioCode": "csio:AP",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "All Perils - uses Flat deductible type"
+      },
+      "Collision": {
+        "csioCode": "csio:COL",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Collision - uses Flat deductible type"
+      },
+      "Comprehensive": {
+        "csioCode": "csio:CMP",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Comprehensive - uses Flat deductible type"
+      },
+      "SpecifiedPerils": {
+        "csioCode": "csio:SP",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Specified Perils - uses Flat deductible type"
+      }
+    },
+    "autoEndorsements": {
+      "End5B": {
+        "csioCode": "csio:5B",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 5B - Permission to Rent or Lease (ICPEI override maps to End5B framework code)"
+      },
+      "End21B": {
+        "csioCode": "csio:21B",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 21B - Blanket Basis Fleet Policy (ICPEI override maps to End21B framework code)"
+      },
+      "End8B": {
+        "csioCode": "csio:8",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 8 - Property Damage Reimbursement (ICPEI maps End8 to End8B framework code)"
+      },
+      "End19B": {
+        "csioCode": "csio:19",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 19 - Limited Waiver of Depreciation (ICPEI maps End19 to End19B framework code)"
+      },
+      "End28C": {
+        "csioCode": "csio:28",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 28 - Excluded Operator (ICPEI maps End28 to End28C framework code)"
+      },
+      "End30B": {
+        "csioCode": "csio:30",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 30 - Suspension of Coverage (ICPEI maps End30 to End30B framework code)"
+      },
+      "AccessoriesExtension": {
+        "csioCode": "csio:37",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 37 - Accessories Extension (ICPEI maps AccessoriesExtension to End37)"
+      },
+      "End39": {
+        "csioCode": "csio:39",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 39 - Agreed Value"
+      }
+    },
+    "autoEndorsementsOntario": {
+      "_note": "These are inherited from v043/V145 Generic base and available to ICPEI in Ontario province context",
+      "DrivingRecordProtectorClaims": {
+        "csioCode": "csio:CPP",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Claims Protection Plan"
+      },
+      "Opcf02": {
+        "csioCode": "csio:2",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 2 - Change of Automobile"
+      },
+      "Opcf03": {
+        "csioCode": "csio:3",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 3 - Permission to Drive Named Automobile"
+      },
+      "Opcf05": {
+        "csioCode": "csio:5",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 5 - Permission to Rent or Lease"
+      },
+      "Opcf05C": {
+        "csioCode": "csio:5C",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 5C - Permission to Rent or Lease (Specified Lessee)"
+      },
+      "Opcf05D": {
+        "csioCode": "csio:5D",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 5D - Permission to Rent or Lease (Government)"
+      },
+      "Opcf06A": {
+        "csioCode": "csio:6A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 6A - Permission to Carry Passengers for Compensation"
+      },
+      "Opcf06D": {
+        "csioCode": "csio:6D",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 6D - Permission to Carry Passengers for Compensation (School)"
+      },
+      "Opcf07": {
+        "csioCode": "csio:7",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 7 - Permission to Carry Explosives"
+      },
+      "Opcf08A": {
+        "csioCode": "csio:8A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 8A - Property Damage Reimbursement (Single Automobile)"
+      },
+      "Opcf09": {
+        "csioCode": "csio:9",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 9 - Accident Rating Waiver"
+      },
+      "Opcf13C": {
+        "csioCode": "csio:13C",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 13C - Comprehensive Cover Deletion of Glass"
+      },
+      "Opcf16": {
+        "csioCode": "csio:16",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 16 - Agreement Not to Defend"
+      },
+      "Opcf17": {
+        "csioCode": "csio:17",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 17 - Permission to Carry Radioactive Material"
+      },
+      "Opcf19": {
+        "csioCode": "csio:19",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 19 - Limited Waiver of Depreciation"
+      },
+      "Opcf19A": {
+        "csioCode": "csio:19A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 19A - Limited Waiver of Depreciation (Leased)"
+      },
+      "Opcf20": {
+        "csioCode": "csio:20",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 20 - Loss of Use"
+      },
+      "Opcf23A": {
+        "csioCode": "csio:23A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 23A - Rented or Leased Automobile"
+      },
+      "Opcf25A": {
+        "csioCode": "csio:25A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 25A - Alteration of Statutory Conditions"
+      },
+      "Opcf27": {
+        "csioCode": "csio:27",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 27 - Liability for Damage to Non-Owned Automobile"
+      },
+      "Opcf27B": {
+        "csioCode": "csio:27B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 27B - Liability for Damage to Non-Owned Automobile (Blanket)"
+      },
+      "Opcf28": {
+        "csioCode": "csio:28",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 28 - Excluded Operator"
+      },
+      "Opcf28A": {
+        "csioCode": "csio:28A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 28A - Excluded Operator (Named)"
+      },
+      "Opcf29": {
+        "csioCode": "csio:29",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 29 - Physical Damage Coverage on Described Snowmobiles"
+      },
+      "Opcf30": {
+        "csioCode": "csio:30",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 30 - Suspension of Coverage"
+      },
+      "Opcf31": {
+        "csioCode": "csio:31",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 31 - Reduction of Coverage"
+      },
+      "Opcf32": {
+        "csioCode": "csio:32",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 32 - Additional Automobile"
+      },
+      "Opcf35": {
+        "csioCode": "csio:35",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 35 - Waiver of Subrogation Rights"
+      },
+      "Opcf37": {
+        "csioCode": "csio:37",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 37 - Accessories and Equipment"
+      },
+      "Opcf38": {
+        "csioCode": "csio:38",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 38 - Agreed Value"
+      },
+      "Opcf40": {
+        "csioCode": "csio:40",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 40 - Damage to Non-Owned Automobile"
+      },
+      "Opcf43": {
+        "csioCode": "csio:43",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 43 - Removing Depreciation Deduction"
+      },
+      "Opcf43A": {
+        "csioCode": "csio:43A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 43A - Removing Depreciation Deduction (Fleet)"
+      },
+      "Opcf44": {
+        "csioCode": "csio:44R",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 44R - Family Protection Coverage (also mapped from csio:44)"
+      },
+      "Opcf47": {
+        "csioCode": "csio:47",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 47 - Agreement Not to Recover from Named Persons"
+      },
+      "Opcf48": {
+        "csioCode": "csio:48",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "OPCF 48 - Accident Rating Protection"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "OPCF 49 - Accident Benefits (added in V145)"
+      },
+      "Pak05": {
+        "csioCode": "csio:PAK05",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "PAK 05 Package"
+      },
+      "Pak06": {
+        "csioCode": "csio:PAK06",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "PAK 06 Package"
+      },
+      "Pak08": {
+        "csioCode": "csio:PAK08",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "PAK 08 - Disappearing Deductible"
+      },
+      "Pak09": {
+        "csioCode": "csio:PAK09",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "PAK 09 Package"
+      },
+      "LossOfUseBroadForm": {
+        "csioCode": "csio:20A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 20A - Loss of Use Broad Form"
+      },
+      "PetAccidentWordingEndorsement": {
+        "csioCode": "csio:PETAW",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Pet Accident Wording Endorsement"
+      },
+      "PermissionToCarryRadioactiveMaterial": {
+        "csioCode": "csio:17",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Permission to Carry Radioactive Material"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "csio:26",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Disappearing Deductible (All Perils or Collision)"
+      }
+    },
+    "autoEndorsementsNonOntario": {
+      "_note": "These are inherited from v043 Generic base and available to ICPEI in non-Ontario provinces. ICPEI overrides some mappings in TryConvertToFrameworkAutoEndorsement and TryConvertToCsioAutoEndorsement.",
+      "End2": {
+        "csioCode": "csio:2",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 2 - Change of Automobile"
+      },
+      "End3": {
+        "csioCode": "csio:3",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 3 - Permission to Drive Named Automobile"
+      },
+      "End5": {
+        "csioCode": "csio:5",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 5 - Permission to Rent or Lease"
+      },
+      "End5A": {
+        "csioCode": "csio:5A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 5A"
+      },
+      "End6A": {
+        "csioCode": "csio:6A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 6A - Permission to Carry Passengers"
+      },
+      "End6B": {
+        "csioCode": "csio:6B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 6B"
+      },
+      "End6D": {
+        "csioCode": "csio:6D",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 6D"
+      },
+      "End7": {
+        "csioCode": "csio:7",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 7 - Permission to Carry Explosives"
+      },
+      "End8": {
+        "csioCode": "csio:8",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 8 - Property Damage Reimbursement"
+      },
+      "End8A": {
+        "csioCode": "csio:8A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 8A - Property Damage Reimbursement (Single)"
+      },
+      "End9": {
+        "csioCode": "csio:9",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 9 - Accident Rating Waiver"
+      },
+      "End13C": {
+        "csioCode": "csio:13C",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 13C - Comprehensive Cover Deletion of Glass"
+      },
+      "End13D": {
+        "csioCode": "csio:13D",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 13D - Comprehensive Cover Limited Glass"
+      },
+      "End13H": {
+        "csioCode": "csio:13H",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 13H"
+      },
+      "End16": {
+        "csioCode": "csio:16",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 16 - Agreement Not to Defend"
+      },
+      "End17": {
+        "csioCode": "csio:17",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 17 - Radioactive Material"
+      },
+      "End19": {
+        "csioCode": "csio:19",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 19 - Limited Waiver of Depreciation"
+      },
+      "End19A": {
+        "csioCode": "csio:19A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 19A - Limited Waiver (Leased)"
+      },
+      "End20": {
+        "csioCode": "csio:20",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 20 - Loss of Use"
+      },
+      "End20A": {
+        "csioCode": "csio:20A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 20A - Loss of Use Broad Form"
+      },
+      "End22": {
+        "csioCode": "csio:22",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 22"
+      },
+      "End23A": {
+        "csioCode": "csio:23A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 23A - Rented or Leased Automobile"
+      },
+      "End23B": {
+        "csioCode": "csio:23B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 23B"
+      },
+      "End24": {
+        "csioCode": "csio:24",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 24"
+      },
+      "End25": {
+        "csioCode": "csio:25",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 25"
+      },
+      "End25A": {
+        "csioCode": "csio:25A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 25A"
+      },
+      "End27": {
+        "csioCode": "csio:27",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 27 - Liability for Damage to Non-Owned Automobile"
+      },
+      "End27B": {
+        "csioCode": "csio:27B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 27B - Blanket"
+      },
+      "End28": {
+        "csioCode": "csio:28",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 28 - Excluded Operator"
+      },
+      "End28A": {
+        "csioCode": "csio:28A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 28A - Excluded Operator Named"
+      },
+      "End30": {
+        "csioCode": "csio:30",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 30 - Suspension of Coverage"
+      },
+      "End30A": {
+        "csioCode": "csio:30A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 30A"
+      },
+      "End31": {
+        "csioCode": "csio:31",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 31 - Reduction of Coverage"
+      },
+      "End32": {
+        "csioCode": "csio:32",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 32 - Additional Automobile"
+      },
+      "End36": {
+        "csioCode": "csio:36",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 36"
+      },
+      "End37": {
+        "csioCode": "csio:37",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 37 - Accessories and Equipment"
+      },
+      "End38": {
+        "csioCode": "csio:38",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 38 - Agreed Value"
+      },
+      "End39": {
+        "csioCode": "csio:39",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 39 - Agreed Value"
+      },
+      "End40": {
+        "csioCode": "csio:40",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 40 - Damage to Non-Owned Automobile"
+      },
+      "End43": {
+        "csioCode": "csio:43",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 43"
+      },
+      "End43R": {
+        "csioCode": "csio:43R",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 43R"
+      },
+      "End43RL": {
+        "csioCode": "csio:43RL",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 43RL"
+      },
+      "End44": {
+        "csioCode": "csio:44",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 44 - Family Protection"
+      },
+      "End48": {
+        "csioCode": "csio:48",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 48 - Accident Rating Protection"
+      },
+      "End4A": {
+        "csioCode": "csio:4A",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 4A"
+      },
+      "End4B": {
+        "csioCode": "csio:4B",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 4B"
+      },
+      "End6C": {
+        "csioCode": "csio:6C",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "SEF/NBEF 6C"
+      },
+      "EmergencyAssistancePackage": {
+        "csioCode": "csio:EAP",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Emergency Assistance Package"
+      },
+      "Pak03": {
+        "csioCode": "csio:PAK03",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "PAK 03 Package"
+      }
+    },
+    "homeEndorsements": {
+      "_note": "All inherited from v043 Generic base, with V145 additions for GardenTypeTractor and EscapeOfFuelOil override",
+      "BooksToolsAndInstruments": {
+        "csioCode": "csio:BUSBT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Books, Tools and Instruments Pertaining to Business"
+      },
+      "BuildingBylawsExtension": {
+        "csioCode": "csio:BYLW",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Building Bylaws Extension"
+      },
+      "Earthquake": {
+        "csioCode": "csio:ERQK",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Earthquake Coverage"
+      },
+      "SpecialLimitsEnhancement": {
+        "csioCode": "csio:SLE",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Special Limits Enhancement"
+      },
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "csio:EBC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Equipment Breakdown Coverage"
+      },
+      "FloodEndorsement": {
+        "csioCode": "csio:FLOOD",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Flood Endorsement"
+      },
+      "FireFightingCoverage": {
+        "csioCode": "csio:FIREFC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Fire Fighting Coverage"
+      },
+      "GlassReducedDeductible": {
+        "csioCode": "csio:GLARB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Glass Reduced Deductible"
+      },
+      "GlassBreakage": {
+        "csioCode": "csio:GLAB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Glass Breakage"
+      },
+      "GuaranteedReplacementCost": {
+        "csioCode": "csio:GURC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Guaranteed Replacement Cost"
+      },
+      "SingleLimitEndorsement": {
+        "csioCode": "csio:SNGL",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Single Limit Endorsement"
+      },
+      "IdentityTheft": {
+        "csioCode": "csio:IDTHF",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Identity Theft"
+      },
+      "MassEvacuation": {
+        "csioCode": "csio:EVAC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Mass Evacuation"
+      },
+      "BettermentsAndImprovements": {
+        "csioCode": "csio:BETI",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Betterments and Improvements"
+      },
+      "PowerInterruptionCoverage": {
+        "csioCode": "csio:PWINT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Power Interruption Coverage"
+      },
+      "RentalIncome": {
+        "csioCode": "csio:RNTLI",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Rental Income"
+      },
+      "SewerBackup": {
+        "csioCode": "csio:SEWBK",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Sewer Backup"
+      },
+      "WindHailCoverage": {
+        "csioCode": "csio:WNDHL",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Wind/Hail Coverage"
+      },
+      "LegalExpense": {
+        "csioCode": "csio:LGEXP",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Legal Expense"
+      },
+      "CondoDeductibleAssessment": {
+        "csioCode": "csio:CDDA",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Condo Deductible Assessment"
+      },
+      "CreditCardFraud": {
+        "csioCode": "csio:CCFRD",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Credit Card Fraud"
+      },
+      "LimitedRoofCoverage": {
+        "csioCode": "csio:ROOF",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Limited Roof Coverage"
+      },
+      "TheftfromVehicle": {
+        "csioCode": "csio:THFTV",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Theft from Vehicle"
+      },
+      "VacancyPermit": {
+        "csioCode": "csio:VACPM",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Vacancy Permit"
+      },
+      "AccidentalDeathandDismemberment": {
+        "csioCode": "csio:ADATH",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Accidental Death and Dismemberment"
+      },
+      "ClaimsProtector": {
+        "csioCode": "csio:CLPRT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Claims Protector"
+      },
+      "FoodFreezerFoodSpoilage": {
+        "csioCode": "csio:FDSPL",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Food/Freezer Food Spoilage"
+      },
+      "InflationProtectionEndorsement": {
+        "csioCode": "csio:INFLP",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Inflation Protection Endorsement"
+      },
+      "GolfCart": {
+        "csioCode": "csio:GLFCT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Golf Cart"
+      },
+      "VandalismByTenantExclusion": {
+        "csioCode": "csio:VNDLT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Vandalism by Tenant Exclusion"
+      },
+      "HomeBasedBusiness": {
+        "csioCode": "csio:HBB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Home Based Business"
+      },
+      "PersonalPropertyReplacementExtension": {
+        "csioCode": "csio:PPRCE",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Personal Property Replacement Extension"
+      },
+      "ReplacementCostOnContents": {
+        "csioCode": "csio:RPLCC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Replacement Cost on Contents"
+      },
+      "TravelInsurance": {
+        "csioCode": "csio:TRVLI",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["V146"],
+        "description": "Travel Insurance"
+      },
+      "EscapeOfFuelOil": {
+        "csioCode": "csio:LEAKF",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "Leakage or Overflow of Domestic Fuel Oil (V145 override maps to LEAKF)"
+      },
+      "GardenTractor": {
+        "csioCode": "csio:GARTT",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "Garden Type Tractor liability extension (V145 addition)"
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "_note": "ICPEI overrides 5 auto discounts in CoverageCodeConverter.vb; rest inherited from v043 Generic",
+      "MoreAutosThanOperators": {
+        "csioCode": "csio:DISVO",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Vehicle to Operator Ratio Discount (ICPEI override)"
+      },
+      "Renewal": {
+        "csioCode": "csio:DISRN",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Renewal Discount (ICPEI override)"
+      },
+      "ClaimsFree": {
+        "csioCode": "csio:DISNC",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "No Claims Discount (ICPEI override)"
+      },
+      "Experience": {
+        "csioCode": "csio:DISED",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Experienced Driver Discount (ICPEI override)"
+      },
+      "PreferredCustomer": {
+        "csioCode": "csio:DISVC",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Valued/Preferred Customer Discount (ICPEI override)"
+      },
+      "YoungDriver": {
+        "csioCode": "csio:DISYD",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "Young Driver Discount (V145 Generic addition)"
+      },
+      "AntiTheft": {
+        "csioCode": "csio:DISAD",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "Anti-Theft Device Discount (V145/V137 Generic addition)"
+      }
+    },
+    "autoSurcharges": {
+      "_note": "ICPEI overrides 4 auto surcharges in CoverageCodeConverter.vb; rest inherited from v043 Generic",
+      "TowsNonOwnedTrailer": {
+        "csioCode": "csio:SURTN",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Tows Non-Owned Trailer Surcharge (ICPEI override)"
+      },
+      "AntiqueVehicle": {
+        "csioCode": "csio:SURAV",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Antique Vehicle Surcharge (ICPEI override)"
+      },
+      "RightHandDriveVehicle": {
+        "csioCode": "csio:SURRH",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "Right Hand Drive Surcharge (ICPEI override)"
+      },
+      "HighKilometersDriven": {
+        "csioCode": "csio:SURHK",
+        "source": "standard",
+        "version": "V146",
+        "availableIn": ["V146"],
+        "description": "High Kilometres Driven Surcharge (ICPEI override)"
+      }
+    },
+    "habDiscounts": {
+      "_note": "All inherited from v043 Generic base - no ICPEI overrides for hab discounts"
+    },
+    "habSurcharges": {
+      "_note": "Inherited from V145/v043 Generic base",
+      "StandAlone": {
+        "csioCode": "csio:SURSD",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "Standalone Dwelling Surcharge (V145 addition)"
+      },
+      "AgeOfHome": {
+        "csioCode": "csio:SURAS",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V146"],
+        "description": "Age of Structure Surcharge (V145 addition from V118)"
+      }
+    },
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "_note": "ICPEI inherits ALL generic codes unchanged except where overridden above. The following are the generic auto discount and surcharge codes from v043.",
+    "autoDiscountsInherited": [
+      "csio:DISAN (AntiTheft)",
+      "csio:DISAM (AssociationMembership)",
+      "csio:DISAS (AwayAtSchool)",
+      "csio:DISCF (ClaimForgiveness)",
+      "csio:DISCV (ConvictionFree)",
+      "csio:DISCO (ConvictionFreeOccasional)",
+      "csio:DISDT (DriverTraining)",
+      "csio:DISEX (Experience)",
+      "csio:DISFM (Farm)",
+      "csio:DISFE (Female)",
+      "csio:DISGS (GoodStudent)",
+      "csio:DISGL (GraduatedLicense)",
+      "csio:DISGO (GraduatedLicenseOccasional)",
+      "csio:DISGR (GroupRate)",
+      "csio:DISHY (Hybrid)",
+      "csio:DISIP (IPromiseProgram)",
+      "csio:DISIR (InsuredsDrivingRecord)",
+      "csio:DISLM (LowAnnualMileage)",
+      "csio:DISCD (LowCommuteDistance)",
+      "csio:DISMA (MaritalStatus)",
+      "csio:DISMF (MortgageeFree)",
+      "csio:DISMV (MultiVehicle)",
+      "csio:DISML (MultiLine)",
+      "csio:DISNB (NewDriver)",
+      "csio:DISNV (NewVehicle)",
+      "csio:DISNC (ClaimsFree)",
+      "csio:DISNS (NonSmoker)",
+      "csio:DISOC (OccasionalDriver)",
+      "csio:DISOP (Occupation)",
+      "csio:DISOU (OutOfProvince)",
+      "csio:DISOV (OwnerOfVehicle)",
+      "csio:DISPF (Professional)",
+      "csio:DISRC (ReligiousClerical)",
+      "csio:DISRN (Renewal)",
+      "csio:DISRT (Retiree)",
+      "csio:DISST (Stability)",
+      "csio:DISTR (TrailPermit)",
+      "csio:DISVC (PreferredCustomer)"
+    ],
+    "autoSurchargesInherited": [
+      "csio:SURBU (BusinessUse)",
+      "csio:SURCP (Carpooling)",
+      "csio:SURCL (Claims)",
+      "csio:SURCO (ClaimsOccasional)",
+      "csio:SURCE (CommercialExposure)",
+      "csio:SURCC (ClaimConvictionOccasional)",
+      "csio:SURCN (Convictions)",
+      "csio:SURNO (ConvictionsOccasional)",
+      "csio:SUREX (ExplosiveMaterial)",
+      "csio:SURHK (HighKilometersDriven)",
+      "csio:SURHP (HighPerformance)",
+      "csio:SURMS (Miscellaneous)",
+      "csio:SURMO (MultipleOperator)",
+      "csio:SUROP (OutOfProvince)",
+      "csio:SUROS (OversizeEngine)",
+      "csio:SURUS (USExposure)",
+      "csio:SURFC (ClaimsFree)"
+    ],
+    "habDiscountsInherited": [
+      "csio:DHBU (BusinessUse)",
+      "csio:DHCF (ClaimForgiveness)",
+      "csio:DHCC (CooperativeComplex)",
+      "csio:DHEV (Evaluator)",
+      "csio:DHGR (GroupRate)",
+      "csio:DHHR (HailResistant)",
+      "csio:DHHT (Heating)",
+      "csio:DHSM (SecuritySystem)",
+      "csio:DHLO (LongTermOccupancy)",
+      "csio:DHMC (MatureCitizen)",
+      "csio:DHMS (Miscellaneous)",
+      "csio:DHMH (MobileHomeTiedDown)",
+      "csio:DHMF (MortgageeFree)",
+      "csio:DHMM (MultiFamily)",
+      "csio:DHML (MultiLine)",
+      "csio:DHMR (MultiResidence)",
+      "csio:DHNW (NeighbourhoodWatch)",
+      "csio:DHNH (NewHome)",
+      "csio:DHNB (NewBusiness)",
+      "csio:DHNC (ClaimsFree)",
+      "csio:DHNS (NonSmoker)",
+      "csio:DHOC (Occupation)",
+      "csio:DHCN (Construction)",
+      "csio:DHRN (Renewal)",
+      "csio:DHRT (Retiree)",
+      "csio:DHSD (SmokeDetector)",
+      "csio:DHSP (Sprinklered)",
+      "csio:DHTS (TankerShuttleService)",
+      "csio:DHLY (Loyalty)",
+      "csio:DHAG (AgeOfHome)",
+      "csio:DHWL (WaterLeakDetectionSystem)",
+      "csio:DHFB (CombinedFireAndBurglaryAlarm)"
+    ],
+    "habSurchargesInherited": [
+      "csio:SHAL (AbsenteeLandlord)",
+      "csio:SHAS (AgeOfHome)",
+      "csio:SHBU (BusinessUse)",
+      "csio:SHCL (Claims)",
+      "csio:SHCE (CommercialExposure)",
+      "csio:SHHD (HailDamage)",
+      "csio:SHLH (LogHome)",
+      "csio:SHMS (Miscellaneous)",
+      "csio:SHMF (MultiFamily)",
+      "csio:SHNP (NonPayment)",
+      "csio:SHNI (NoPreviousInsurance)",
+      "csio:SHOC (Occupancy)",
+      "csio:SHPH (PrimaryHeating)",
+      "csio:SHLO (Location)",
+      "csio:SHAH (AuxiliaryHeating)"
+    ]
+  },
+  "enumMappings": {
+    "vehicleBodyTypes": {
+      "_note": "ICPEI overrides VehicleBodyTypeConverter (inherits V128.Generic)",
+      "PrivatePassenger_Antique": {
+        "csioCode": "csio:AH",
+        "frameworkValue": "TypeOfVehicle.Antique",
+        "description": "Antique Auto Historic Plate"
+      },
+      "PrivatePassenger_Classic": {
+        "csioCode": "csio:CL",
+        "frameworkValue": "TypeOfVehicle.Classic",
+        "description": "Classic/Customized Auto Rated by Price"
+      },
+      "MotorHome": {
+        "csioCode": "csio:MH",
+        "frameworkValue": "all",
+        "description": "Motor Home Recreational Use (always sent for motor homes)"
+      },
+      "Trailer_FifthWheel": {
+        "csioCode": "csio:FW",
+        "frameworkValue": "VehicleBodyType.FifthWheel, FifthWheelCabinTrailer",
+        "description": "Cabin/Home Fifth Wheel (V128 type)"
+      },
+      "Trailer_Utility": {
+        "csioCode": "csio:UT",
+        "frameworkValue": "VehicleBodyType.Utility, Snowmobile",
+        "description": "Utility Trailer"
+      },
+      "Trailer_TentTrailer": {
+        "csioCode": "csio:17",
+        "frameworkValue": "VehicleBodyType.TentTrailer",
+        "description": "Tank Trailer Hauled As Train (maps TentTrailer)"
+      },
+      "Trailer_BikeMiniBike": {
+        "csioCode": "csio:MK",
+        "frameworkValue": "VehicleBodyType.BikeMiniBike",
+        "description": "Minibike/Trail Bike Off Road"
+      },
+      "Trailer_CabinHome": {
+        "csioCode": "csio:NT",
+        "frameworkValue": "VehicleBodyType.Cabin, Home",
+        "description": "Common Trailer Uses Tongue and/or Hitch (V135 type)"
+      },
+      "Trailer_Gooseneck": {
+        "csioCode": "csio:8",
+        "frameworkValue": "VehicleBodyType.Gooseneck",
+        "description": "Gooseneck Trailer"
+      },
+      "Motorcycle_Adventurer": {
+        "csioCode": "csio:30",
+        "frameworkValue": "VehicleBodyType.Adventurer",
+        "description": "Adventure motorcycle"
+      },
+      "Motorcycle_Cruiser": {
+        "csioCode": "csio:35",
+        "frameworkValue": "VehicleBodyType.Cruiser",
+        "description": "Cruiser motorcycle"
+      },
+      "Motorcycle_DualPurpose": {
+        "csioCode": "csio:37",
+        "frameworkValue": "VehicleBodyType.DualPurpose",
+        "description": "Dual Purpose motorcycle"
+      },
+      "Motorcycle_Enduro": {
+        "csioCode": "csio:38",
+        "frameworkValue": "VehicleBodyType.Enduro",
+        "description": "Enduro motorcycle"
+      },
+      "Motorcycle_NakedSport": {
+        "csioCode": "csio:45",
+        "frameworkValue": "VehicleBodyType.NakedSport, EntryNakedSport, NakedSuperSportRoadster",
+        "description": "Naked Sport motorcycle (also maps EntryNakedSport and NakedSuperSportRoadster)"
+      },
+      "Motorcycle_SportTouring": {
+        "csioCode": "csio:53",
+        "frameworkValue": "VehicleBodyType.SportTouring",
+        "description": "Sport Touring motorcycle"
+      },
+      "Motorcycle_Standard": {
+        "csioCode": "csio:54",
+        "frameworkValue": "VehicleBodyType.Standard",
+        "description": "Standard motorcycle"
+      },
+      "Motorcycle_Trike": {
+        "csioCode": "csio:28",
+        "frameworkValue": "VehicleBodyType.Trike, ThreeWheelMotorcycle",
+        "description": "Three Wheel Motorcycle Excludes 2 Rear Wheels"
+      },
+      "Motorcycle_EntrySport": {
+        "csioCode": "csio:52",
+        "frameworkValue": "VehicleBodyType.EntrySport, SuperSport",
+        "description": "Sport motorcycle (also maps SuperSport)"
+      },
+      "Motorcycle_MotardSupermotard": {
+        "csioCode": "csio:44",
+        "frameworkValue": "VehicleBodyType.MotardSupermotard",
+        "description": "Motard/SuperMotard motorcycle"
+      },
+      "Motorcycle_StandardSidecar": {
+        "csioCode": "csio:55",
+        "frameworkValue": "VehicleBodyType.StandardSidecar",
+        "description": "Standard Sidecar motorcycle"
+      },
+      "Motorcycle_ThreeWheelScooter": {
+        "csioCode": "csio:29",
+        "frameworkValue": "VehicleBodyType.ThreeWheelScooter",
+        "description": "Three Wheel Scooter Excludes 2 Rear Wheels"
+      },
+      "Motorcycle_CustomSidecar": {
+        "csioCode": "csio:MC",
+        "frameworkValue": "VehicleBodyType.CustomSidecar",
+        "description": "Motorcycles over 50cc"
+      },
+      "ATV_FourWheel": {
+        "csioCode": "csio:A4",
+        "frameworkValue": "VehicleBodyType.AllTerrainVehicle (4 wheels)",
+        "description": "All Terrain Vehicle Four Wheel"
+      },
+      "ATV_Other": {
+        "csioCode": "csio:AT",
+        "frameworkValue": "VehicleBodyType.AllTerrainVehicle (other wheels)",
+        "description": "All Terrain Vehicle (non-four-wheel)"
+      },
+      "ATV_Utility": {
+        "csioCode": "csio:59",
+        "frameworkValue": "VehicleBodyType.UtilityTerrainVehicle (second case)",
+        "description": "Utility (V128 type)"
+      }
+    },
+    "vehicleTypes": {
+      "_note": "ICPEI overrides VehicleTypeConverter (inherits V044.Generic)",
+      "ATV": {
+        "csioCode": "csio:22",
+        "frameworkValue": "VehicleCodes.ATV",
+        "description": "Unlicensed Recreational Vehicle"
+      },
+      "Snowmobile": {
+        "csioCode": "csio:20",
+        "frameworkValue": "VehicleCodes.Snowmobile",
+        "description": "Unlicensed Auto"
+      },
+      "Motorcycle": {
+        "csioCode": "(not sent)",
+        "frameworkValue": "VehicleCodes.Motorcycle",
+        "description": "No vehicle type code sent for motorcycles"
+      },
+      "MotorHome": {
+        "csioCode": "(not sent)",
+        "frameworkValue": "VehicleCodes.MotorHome",
+        "description": "No vehicle type code sent for motor homes"
+      },
+      "Trailer": {
+        "csioCode": "csio:23",
+        "frameworkValue": "all trailers",
+        "description": "Unlicensed Trailer (always sent for personal trailers)"
+      },
+      "CommercialTrailer": {
+        "csioCode": "csio:10",
+        "frameworkValue": "all commercial trailers",
+        "description": "Trailer Open"
+      },
+      "CommercialVehicle": {
+        "csioCode": "csio:26",
+        "frameworkValue": "all commercial vehicles",
+        "description": "Commercial Vehicle (V044 type)"
+      }
+    },
+    "legalEntity": {
+      "_note": "ICPEI overrides LegalEntityConverter (inherits V043.Generic)",
+      "Individual": {
+        "csioCode": "csio:IN",
+        "frameworkValue": "AccountType.Individual",
+        "description": "Individual"
+      },
+      "Corporation": {
+        "csioCode": "csio:CP",
+        "frameworkValue": "AccountType.Corporation",
+        "description": "Corporation"
+      },
+      "Partnership": {
+        "csioCode": "csio:PT",
+        "frameworkValue": "AccountType.Partnership",
+        "description": "Partnership"
+      },
+      "Other": {
+        "csioCode": "csio:OT",
+        "frameworkValue": "default",
+        "description": "Other (default for unknown account types)"
+      }
+    },
+    "maritalStatus": {
+      "_note": "ICPEI overrides MaritalStatusConverter (inherits V043.Generic)",
+      "PartnerSameSex": {
+        "csioCode": "csio:M",
+        "frameworkValue": "MaritalStatusTypes.PartnerSameSex",
+        "description": "Married (ICPEI maps same-sex partner to Married)"
+      }
+    },
+    "machineryEquipment": {
+      "_note": "ICPEI overrides MachineryEquipmentConverter (inherits V043.Generic)",
+      "SnowPlowWinches": {
+        "csioCode": "S6",
+        "frameworkValue": "AttachedEquipmentType.SnowPlowWinches",
+        "description": "Snowplough"
+      },
+      "RefrigerationSystem": {
+        "csioCode": "R1",
+        "frameworkValue": "CsioConstants.AttachedEquipmentType.RefrigerationSystem",
+        "description": "Refrigeration System"
+      }
+    }
+  },
+  "companyConstants": {
+    "_note": "ICPEI has minimal company constants, none are csio: codes",
+    "CreditScoreConsent": {
+      "StringZero": "0",
+      "StringOne": "1"
+    },
+    "CompanyValue": {
+      "Yes": "Yes",
+      "No": "No",
+      "primaryInsuredID": "Desktop",
+      "additionalInsuredID": "COAPP",
+      "primaryCorporationID": "COMPANY"
+    }
+  },
+  "csioConstants": {
+    "AttachedEquipmentType": {
+      "RefrigerationSystem": "RefrigerationSystem"
+    }
+  },
+  "responseClassification": {
+    "_note": "ICPEI does not override IsDiscount/IsSurcharge patterns - uses Generic base classification from v043",
+    "isDiscountPatterns": "Inherited from v043 Generic base - all standard csio:DIS* auto discount codes and csio:DH* hab discount codes",
+    "isSurchargePatterns": "Inherited from v043 Generic base - all standard csio:SUR* auto surcharge codes and csio:SH* hab surcharge codes"
+  },
+  "zCodeInventory": {
+    "_note": "ICPEI has ZERO proprietary Z-codes. All CSIO codes used are standard CSIO specification codes resolved through the XML enum factory interfaces.",
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": []
+  },
+  "businessRules": {
+    "deductibleType": {
+      "description": "ICPEI uses Flat deductible type for AllPerils, Collision, Comprehensive, and SpecifiedPerils coverages. No deductible type is sent for other coverages.",
+      "flatDeductibleCoverages": ["csio:AP", "csio:COL", "csio:CMP", "csio:SP"]
+    },
+    "endorsementLimitOverride": {
+      "description": "For OPCF44/End44 endorsements, the limit is taken from the Liability company field instead of the standard limit field."
+    },
+    "endorsementEffectiveDate": {
+      "description": "ICPEI sends a CalculationDate as the endorsement effective date if present in the coverage item fields."
+    },
+    "tplSuppression": {
+      "description": "ICPEI suppresses TPL (Third Party Liability) output for both personal and commercial vehicles. TPL is not sent as a separate coverage."
+    },
+    "vehicleLiabilityEligibility": {
+      "description": "A vehicle is only eligible for liability coverages if the Liability field has a value greater than 0."
+    },
+    "accidentBenefitsSimplified": {
+      "description": "ICPEI sends Accident Benefits (csio:AB) as a simple coverage with no amount or deductible (unlike Generic base which may include more detail)."
+    },
+    "uninsuredAutomobileSimplified": {
+      "description": "ICPEI sends Uninsured Automobile (csio:UA) as a simple coverage with no amount."
+    },
+    "costNewAmtFromOPCF19": {
+      "description": "ICPEI gets CostNewAmt from the StatedValue field of the OPCF19/End19 endorsement attached to the vehicle, rather than the standard vehicle price."
+    },
+    "territoryCdSuppressed": {
+      "description": "ICPEI does not send TerritoryCd for vehicles on outbound (it is suppressed in PcVehConverter)."
+    },
+    "outsideCountryExposure": {
+      "description": "ICPEI calculates LengthTimeVehOutsideCountry by summing all province exposure percentages and converting to days (percent/100 * 365)."
+    },
+    "driverClassification": {
+      "description": "ICPEI classifies occasional drivers as: Occasional05 (female/GenderX) or Occasional06 (male). Drivers become Secondary if they have 8+ years experience or the vehicle is commercial."
+    },
+    "licenseClassMapping_NB": {
+      "description": "For New Brunswick province, ICPEI maps G1/7-1 license class to 'LN' and G2/7-2 to 'PR'. Other provinces use standard mapping."
+    },
+    "foreignLicenseFiltering": {
+      "description": "ICPEI removes foreign licenses from the license collection output (removes licenses with class 'FL')."
+    },
+    "creditScoreConsent": {
+      "description": "ICPEI uses custom consent codes: '1' for Yes consent, '0' for No or default. Consent is only sent when a matching person with explicit consent is found."
+    },
+    "insuredPrincipalIDs": {
+      "description": "ICPEI uses custom InsuredOrPrincipal IDs: 'Desktop' for primary individual insured, 'COMPANY' for primary corporation, 'COAPP' for additional insured."
+    },
+    "contractTermWithTimes": {
+      "description": "ICPEI sends both start and end times (not just dates) on the contract term."
+    },
+    "addressValidation": {
+      "description": "ICPEI sends AddrValidationdInd (true/false) based on the address validation status."
+    },
+    "remarksPrioritySeverityMapping": {
+      "description": "ICPEI maps remark priority to severity: 1=Critical, 2=Exclamation, 3=Information, default=Information."
+    }
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 0,
+    "totalGenericInheritedCodes": 152,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "notes": [
+      "ICPEI has zero proprietary Z-codes. All CSIO codes are standard specification codes.",
+      "ICPEI CompanyConstants.vb contains only operational values (Yes/No/IDs), no csio: code constants.",
+      "ICPEI CsioConstants.vb adds only AttachedEquipmentType.RefrigerationSystem (not a csio: code).",
+      "ICPEI exists only in V146 - single version, no multi-version complexity.",
+      "Inheritance chain: V146 ICPEI -> V145 Generic -> V137 Generic -> V136 Generic -> V133 Generic -> V128 Generic -> V043 Generic",
+      "54 VB files processed in V146/Companies/ICPEI/",
+      "ICPEI CoverageCodeConverter inherits from V145.Generic.EnumConverters.CoverageCodeConverter"
+    ],
+    "versionBreakdown": {
+      "V146only": 54,
+      "inheritedFromGeneric": "All base codes"
+    }
+  }
+}

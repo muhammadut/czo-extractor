@@ -1,0 +1,577 @@
+{
+  "_metadata": {
+    "carrier": "PeaceHills",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043", "V128", "V131"],
+    "latestVersion": "V131",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 45,
+    "description": "Complete CZO mapping for PeaceHills. This carrier has ZERO proprietary Z-codes and relies entirely on the Generic base for all CSIO coverage, endorsement, discount, and surcharge mappings. Company-specific overrides are behavioral only (name matching, phone formatting, sewer backup limit logic, End27/Opcf27 policy-level handling, valuation product mapping, Mass Evacuation filtering).",
+    "versionRoles": {
+      "V131": "Current production service (latest active version)",
+      "V128": "Intermediate version with DwellConverter, HeatingUnitInfo, LossPayment overrides",
+      "v043": "Legacy base with foundational PeaceHills overrides"
+    },
+    "inheritanceChain": {
+      "CoverageCodeConverter": "V131.Companies.PeaceHills -> V129.Generic -> V127.Generic -> V126.Generic -> ... -> v043.Generic",
+      "PcCoverageConverter_Unrated": "V131.Companies.PeaceHills -> V130.Generic",
+      "PcCoverageConverter_Rated": "V131.Companies.PeaceHills -> V130.Generic",
+      "DwellConverter": "V128.Companies.PeaceHills -> V128.Generic",
+      "ConverterFactoryFactory": "V131.Companies.PeaceHills -> V131.Generic"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "_note": "PeaceHills has NO carrier-specific auto endorsements. All auto endorsements are inherited from the Generic base via V129.Generic.EnumConverters.CoverageCodeConverter. See 'genericBaseCodes.autoEndorsementsOntario' and 'genericBaseCodes.autoEndorsementsNonOntario' for the full inherited list."
+    },
+    "homeEndorsements": {
+      "_note": "PeaceHills has NO carrier-specific home endorsements. All home endorsements are inherited from the Generic base. The only company-specific behavior is: (1) MassEvacuationEndorsement is explicitly filtered out (returns False) in TryConvertToFrameworkHomeEndorsement, and (2) SewerBackup endorsement limit is set to 'PolicyLimit' when it matches the dwelling coverage limit."
+    },
+    "homeLiabilities": {
+      "_note": "All home liabilities are inherited from the Generic base. No carrier-specific overrides."
+    },
+    "watercraftLiability": {
+      "_note": "Inherited from Generic base. No carrier-specific overrides."
+    },
+    "scheduledPropertyItems": {
+      "_note": "Inherited from Generic base. No carrier-specific overrides."
+    },
+    "directCsioCodes": {
+      "ACB": {
+        "csioCode": "csio:ACB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043", "V128", "V131"],
+        "description": "Attendant Care Benefits (Increased Accident Benefits Ontario). Used in PcCoverageConverter.ConvertFromLineBusiness to set output.AttendantCare = True.",
+        "usedIn": "CsioToFramework/Unrated/PcCoverageConverter.vb"
+      },
+      "DCB": {
+        "csioCode": "csio:DCB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043", "V128", "V131"],
+        "description": "Dependant Care Benefits (Increased Accident Benefits Ontario). Used in PcCoverageConverter.ConvertFromLineBusiness to set output.DependantCare = True.",
+        "usedIn": "CsioToFramework/Unrated/PcCoverageConverter.vb"
+      },
+      "MEDRH": {
+        "csioCode": "csio:MEDRH",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043", "V128", "V131"],
+        "description": "Medical Rehabilitation (Increased Accident Benefits Ontario). Used in PcCoverageConverter.ConvertFromLineBusiness to set output.MedicalRehabilitation = True.",
+        "usedIn": "CsioToFramework/Unrated/PcCoverageConverter.vb"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "_note": "PeaceHills has NO carrier-specific auto discount codes. All auto discounts are inherited from the Generic base. See 'genericBaseCodes.autoDiscounts' for the full inherited list."
+    },
+    "autoSurcharges": {
+      "_note": "PeaceHills has NO carrier-specific auto surcharge codes. All auto surcharges are inherited from the Generic base. See 'genericBaseCodes.autoSurcharges' for the full inherited list."
+    },
+    "habDiscounts": {
+      "_note": "PeaceHills has NO carrier-specific hab discount codes. All hab discounts are inherited from the Generic base. See 'genericBaseCodes.homeDiscounts' for the full inherited list."
+    },
+    "habSurcharges": {
+      "_note": "PeaceHills has NO carrier-specific hab surcharge codes. All hab surcharges are inherited from the Generic base. See 'genericBaseCodes.homeSurcharges' for the full inherited list."
+    },
+    "tierCodes": {}
+  },
+  "companyConstants": {
+    "_note": "PeaceHills has only 2 company-specific constants, both for valuation product mapping. No CSIO coverage/endorsement/discount constants.",
+    "ValuationEZITV": {
+      "constantName": "CompanyConstants.CompanyCsioCode.ValuationEZITV",
+      "value": "7",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product code for EZITV evaluator type. Used in outbound TryConvertToCsio to map EvaluatorType.EZITV to valuation product value '7'."
+    },
+    "ValuationiClarify": {
+      "constantName": "CompanyConstants.CompanyCsioCode.ValuationiClarify",
+      "value": "8",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product code for iClarify evaluator type. Used in outbound TryConvertToCsio to map EvaluatorType.IClarify to valuation product value '8'."
+    }
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "BuildingBylawsExtension (BylawsEndorsement)",
+      "Earthquake (Earthquake)",
+      "SpecialLimitsEnhancement (EnhancedInternalLimits)",
+      "EquipmentBreakdownCoverage (EquipmentBreakdown)",
+      "FloodEndorsement (FloodDamage)",
+      "FireFightingCoverage (FireDepartmentServiceCharge)",
+      "GlassReducedDeductible (GlassDeductibleEndorsement)",
+      "GlassBreakage (GlassBreakage)",
+      "GuaranteedReplacementCost (GuaranteedReplacementCostBuilding)",
+      "SingleLimitEndorsement (HomeownersSingleLimit)",
+      "IdentityTheft (IdentityTheft)",
+      "MassEvacuation (MassEvacuationEndorsement) -- NOTE: FILTERED OUT by PeaceHills CoverageCodeConverter",
+      "BettermentsAndImprovements (NamedPerilsUnitOwnersBuildingImprovementsAndBetterments)",
+      "PowerInterruptionCoverage (PowerFluctuation)",
+      "RentalIncome (RentalIncome)",
+      "SewerBackup (SewerBackupCoverage)",
+      "WindHailCoverage (WindstormHail)",
+      "LegalExpense (LegalFees)",
+      "CondoDeductibleAssessment (DeductibleAssessmentBuydown)",
+      "CreditCardFraud (CreditCardForgeryAndCounterfeitMoneyCoverage)",
+      "BooksToolsAndInstrumentsPertainingToBusiness (BooksToolsandInstruments)",
+      "LimitedRoofCoverage (RoofLimitedtoCashValue)",
+      "TheftfromVehicle (TheftfromVehicle)",
+      "VacancyPermit (VacancyPermit)",
+      "AccidentalDeathandDismemberment (AccidentalDeathandDismemberment)",
+      "ClaimsProtector (ClaimFreeProtection)",
+      "FoodFreezerFoodSpoilage (HomeFreezer)",
+      "InflationProtectionEndorsement (InflationGuardEndorsement)",
+      "AdditionalNamedInsuredLiability (AdditionalNamedInsured)",
+      "GolfCart (GolfCart)",
+      "VandalismByTenantExclusion (VandalismbyTenantsExclusion)",
+      "DebrisRemoval (DebrisRemoval)",
+      "EscapeOfFuelOil (LeakageOrOverflowOfDomesticFuelOil)",
+      "ExtendedCareEndorsement (CareFacilityContentsExtension)",
+      "HomeBasedBusiness (HomeBusinessCoverage)",
+      "LeaseholdCondoCorpEndorsement (LegalLiabilityLossAssessment)",
+      "PersonalPropertyReplacementExtension (ReplacementCostContentsExtended)",
+      "ReplacementCostOnContents (ReplacementCostContentsBasic)",
+      "TravelInsurance (EmergencyMedicalTravelInsurance)",
+      "VandalismMaliciousActsExclusionTenantsGuests (VandalismbyTenantsExclusion)",
+      "PetAccidentWordingSupplement (AnimalLiabilityExtension)",
+      "CollectivelyOwnedLifeLeasePropertyCoverage (NamedPerilsLossAssessmentCoverage)",
+      "LifeLeasePropertyCoverage (NamedPerilsUnitOwnersAdditionalProtection)",
+      "AdditionalInsuredEndorsement (AdditionalInsureds)",
+      "AdditionalNamedInsuredCooccupant (AdditionalNamedInsured)",
+      "ServiceLineCoverage (ServiceLineExtensionEndorsement) -- added in V127",
+      "WaterCoverageAndSewerBackup (WaterAndSewerLinesCoverage) -- added in V129"
+    ],
+    "homeLiabilities": [
+      "BusinessUseOfHome (IncidentalBusinessPursuitsEndorsement)",
+      "RentedRoomSuite (Roomer)",
+      "DayCareInHome (DayCareExtension)",
+      "Horses (Horse)",
+      "SwimmingPool (SwimmingPoolOrPond)",
+      "ResidenceEmployees (ResidenceEmployeesLiability)",
+      "BedAndBreakfast (BedBreakfast)",
+      "AdditionalResidence (AdditionalResidencesPropertiesAcreage)",
+      "ElevatorEscalatorsInclinators (Elevator)",
+      "PremisesExtension (PremisesExtension)",
+      "ForestAndPrairieProtectionEndorsement (ForestandPrairieProtectionAct)",
+      "LiabilityRestriction (LimitedLiabilityExtension)",
+      "VoluntaryCompensation (ResidenceVoluntaryCompensationResidentEmployee)",
+      "BoatAndMotor (WatercraftLiabilityA)",
+      "AnimalShows (ExhibitionOfAnimals)",
+      "IncidentalOfficeUse (ProfessionalUseResPremises)",
+      "LandRealEstate (VacantLand)",
+      "PersonalInjury (PersonalInjuryEndorsement)",
+      "LiquorLiabilityEndorsement (HostLiquorLiability)",
+      "SeasonalDwelling (SeasonalResidence)",
+      "SolarEnergySystem (SolarPanel) -- added in V127"
+    ],
+    "homeDiscounts": [
+      "BusinessUse (BusinessUseDiscount)",
+      "ClaimForgiveness (ClaimsForgiveness)",
+      "CooperativeComplex (CooperativeCoop)",
+      "Evaluator (EvaluatorBased)",
+      "GroupRate (GroupRateApplied)",
+      "HailResistant (HailResistant)",
+      "Heating (Heating)",
+      "SecuritySystem (HomeSecurity)",
+      "LongTermOccupancy (LongTermOccupancy)",
+      "MatureCitizen (MatureCitizen)",
+      "Miscellaneous (MiscellaneousDiscount)",
+      "MobileHomeTiedDown (MobileHomeTiedDown)",
+      "MortgageeFree (MortgageFree)",
+      "MultiFamily (MultipleFamilyDiscount)",
+      "MultiLine (MultipleLine)",
+      "MultiResidence (MultiplePropertyRisks)",
+      "NeighbourhoodWatch (NeighbourhoodWatchCrimePreventionProgramme)",
+      "NewHome (NewHome)",
+      "NewBusiness (NewPolicy)",
+      "ClaimsFree (NoClaims)",
+      "NonSmoker (Nonsmoker)",
+      "Occupation (Occupation)",
+      "Construction (PreferredConstruction)",
+      "Renewal (Renewal)",
+      "Retiree (Retiree)",
+      "Age (SeniorCitizenAgeRelated)",
+      "SmokeDetector (SmokeDetector)",
+      "Sprinklered (Sprinklered)",
+      "TankerShuttleService (TankerShuttleServiceFireFightingService)",
+      "Loyalty (ValuedPreferredCustomer)",
+      "AgeOfHome (YearBuiltOtherThanNewHome)",
+      "WaterLeakDetectionSystem (WaterLeakDetectionSystem)",
+      "CombinedFireAndBurglaryAlarm (DiscountAlarmSystem)"
+    ],
+    "homeSurcharges": [
+      "AbsenteeLandlord (AbsenteeLandlordRentedDwelling)",
+      "AgeOfHome (AgeConditionOfHome)",
+      "BusinessUse (BusinessUseSurcharge)",
+      "Claims (Claims)",
+      "CommercialExposure (CommercialExposure)",
+      "HailDamage (HailDamageSusceptibility)",
+      "LogHome (LogHome)",
+      "Miscellaneous (MiscellaneousSurcharge)",
+      "MultiFamily (MultipleFamilySurcharge)",
+      "NonPayment (Nonpayment)",
+      "NoPreviousInsurance (NoPreviousInsurance)",
+      "Occupancy (Occupancy)",
+      "PrimaryHeating (PrimaryHeating)",
+      "Location (RiskLocation)",
+      "AuxiliaryHeating (SecondaryAuxiliaryHeating)"
+    ],
+    "autoEndorsementsOntario": [
+      "DrivingRecordProtectorClaims (ClaimsProtectionPlan)",
+      "Opcf02 (End2)",
+      "Opcf05 (End5)",
+      "Opcf05C (End5C)",
+      "Opcf05D (End5D)",
+      "Opcf06A (End6A)",
+      "Opcf06D (End6D)",
+      "Opcf07 (End7)",
+      "Opcf08 (End8)",
+      "Opcf08A (End8A)",
+      "Opcf09 (End9)",
+      "Opcf13C (End13C)",
+      "Opcf16 (End16)",
+      "Opcf17 (End17)",
+      "Opcf19 (End19)",
+      "Opcf19A (End19A)",
+      "Opcf20 (End20)",
+      "Opcf23A (End23A)",
+      "Opcf25A (End25A)",
+      "Opcf27 (End27) -- PeaceHills: treated as policy-level (no vehicle ID)",
+      "Opcf27B (End27B)",
+      "Opcf28 (End28)",
+      "Opcf28A (End28A)",
+      "Opcf29 (End29)",
+      "Opcf30 (End30)",
+      "Opcf31 (End31)",
+      "Opcf32 (End32)",
+      "Opcf35 (End35)",
+      "Opcf37 (End37)",
+      "Opcf38 (End38)",
+      "Opcf40 (End40)",
+      "Opcf43 (End43)",
+      "Opcf43A (End43A)",
+      "Opcf44 (End44R and End44)",
+      "Opcf46 (End46)",
+      "Opcf47 (End47)",
+      "Opcf48 (End48)",
+      "Pak05 (Pak05)",
+      "Pak06 (Pak06)",
+      "Opcf03 (End3)",
+      "LossOfUseBroadForm (End20A)",
+      "PetAccidentWordingEndorsement (AnimalLiabilityExtension)",
+      "PermissionToCarryRadioactiveMaterial (End4B)",
+      "DissapearingDeductible (End26)",
+      "Pak08 (Pak08)",
+      "Pak09 (Pak09)"
+    ],
+    "autoEndorsementsNonOntario": [
+      "DrivingRecordProtectorClaims (End39)",
+      "EmergencyAssistancePackage (End35)",
+      "End2 (End2)",
+      "End3 (End3)",
+      "End4A (End4A)",
+      "End4B (End4B)",
+      "End5 (End5)",
+      "End5A (End5A)",
+      "End6A (End6A)",
+      "End6B (End6B)",
+      "End6C (End6C)",
+      "End6D (End6D)",
+      "End7 (End7)",
+      "End8 (End8)",
+      "End8A (End8A)",
+      "End9 (End9)",
+      "End13C (End13C)",
+      "End13D (End13D)",
+      "End13H (End13H)",
+      "End16 (End16)",
+      "End17 (End17)",
+      "End19 (End19)",
+      "End19A (End19A)",
+      "End20 (End20)",
+      "End20A (End20A)",
+      "End22 (End22)",
+      "End23A (End23A)",
+      "End23B (End23B)",
+      "End24 (End24)",
+      "End25 (End25)",
+      "End25A (End25A)",
+      "End27 (End27) -- PeaceHills: treated as policy-level (no vehicle ID)",
+      "End27B (End27B)",
+      "End28 (End28)",
+      "End28A (End28A)",
+      "End30 (End30)",
+      "End30A (End30A)",
+      "End31 (End31)",
+      "End32 (End32)",
+      "End35 (End35)",
+      "End36 (End36)",
+      "End37 (End37)",
+      "End38 (End38)",
+      "End39 (End39)",
+      "End40 (End40)",
+      "End43 (End43)",
+      "End43R (End43R)",
+      "End43RL (End43Rl)",
+      "End44 (End44)",
+      "End48 (End48)",
+      "Pak03 (Pak03)",
+      "Pak05 (Pak05)",
+      "Pak06 (Pak06)",
+      "Pak08 (Pak08)",
+      "Pak09 (Pak09)",
+      "DissapearingDeductible (End26)",
+      "PetAccidentWordingEndorsement (AnimalLiabilityExtension)",
+      "DeductibleWaiver (WaiverOfDeductible) -- added in V129",
+      "DeletionOfHailCoverageWithoutPreexistingDamage -- added in V129"
+    ],
+    "autoDiscounts": [
+      "AntiTheft (DiscountAlarmSystem)",
+      "AssociationMembership (DiscountAssociationMembership)",
+      "AwayAtSchool (DiscountAwayatSchool)",
+      "ClaimForgiveness (DiscountClaimsForgiveness)",
+      "ConvictionFree (DiscountConvictionFree)",
+      "ConvictionFreeOccasional (DiscountConvictionFreeOccasionalDriver)",
+      "Age (DiscountDriverAge)",
+      "DriverTraining (DiscountDriverTraining)",
+      "Experience (DiscountExperiencedDriver)",
+      "Farm (DiscountFarm)",
+      "Female (DiscountFemale)",
+      "GoodStudent (DiscountGoodStudent)",
+      "GraduatedLicense (DiscountGraduatedLicenseHolder)",
+      "GraduatedLicenseOccasional (DiscountGraduatedLicenseForAnOccasionalDriver)",
+      "GroupRate (DiscountGroupRateApplied)",
+      "Hybrid (DiscountHybrid)",
+      "IPromiseProgram (DiscountIPromiseProgram)",
+      "InsuredsDrivingRecord (DiscountInsuredsDrivingRecord)",
+      "LowAnnualMileage (DiscountLowAnnualMileage)",
+      "LowCommuteDistance (DiscountLowCommuteDistance)",
+      "MaritalStatus (DiscountMaritalStatus)",
+      "MortgageeFree (DiscountMortgageFreeHomeCondominium)",
+      "MultiVehicle (DiscountMultiVehicle)",
+      "MultiLine (DiscountMultipleLine)",
+      "NewDriver (DiscountNewDriver)",
+      "NewVehicle (DiscountNewVehicle)",
+      "ClaimsFree (DiscountNoClaims)",
+      "NonSmoker (DiscountNonsmoker)",
+      "OccasionalDriver (DiscountOccasionalDriver)",
+      "Occupation (DiscountOccupation)",
+      "OutOfProvince (DiscountOutOfProvince)",
+      "OwnerOfVehicle (DiscountOwnerOfVehicle)",
+      "Professional (DiscountProfessional)",
+      "ReligiousClerical (DiscountReligiousClerical)",
+      "Renewal (DiscountRenewal)",
+      "Retiree (DiscountRetiree)",
+      "Age (DiscountSeniorCitizenAgeRelated)",
+      "Stability (DiscountStability)",
+      "TrailPermit (DiscountTrailPermit)",
+      "PreferredCustomer (DiscountValuedPreferredCustomer)",
+      "WinterTire (DiscountSnowTires)"
+    ],
+    "autoSurcharges": [
+      "BusinessUse (SurchargeBusinessUse)",
+      "Carpooling (SurchargeCarPooling)",
+      "Claims (SurchargeClaims)",
+      "ClaimsOccasional (SurchargeClaimsForOccasionalDriver)",
+      "CommercialExposure (SurchargeCommercialExposure)",
+      "ClaimConvictionOccasional (SurchargeConvictionClaimForOccasionalDriver)",
+      "Convictions (SurchargeConvictions)",
+      "ConvictionsOccasional (SurchargeConvictionsForOccasionalDriver)",
+      "ExplosiveMaterial (SurchargeExplosiveRadioactiveMaterial)",
+      "HighKilometersDriven (SurchargeHighKilometresDriven)",
+      "HighPerformance (SurchargeHighPerformance)",
+      "Miscellaneous (SurchargeMiscellaneous)",
+      "MultipleOperator (SurchargeMultipleOperators)",
+      "OutOfProvince (SurchargeOutOfProvince)",
+      "OversizeEngine (SurchargeOversizeEngine)",
+      "USExposure (SurchargeUsNonCanadianExposure)",
+      "ClaimsFree (SurchargeNoOfComprehensiveClaims)"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "_note": "PeaceHills filters out PackagePolicy and CommercialMisc line of business codes (returns False). All others delegated to Generic base. Additionally, DwellConverter normalizes policy type values by stripping leading zeros from numeric csio: codes."
+    },
+    "valuationProducts": {
+      "EvaluatorType.EZITV": {
+        "csioValue": "7",
+        "direction": "bidirectional",
+        "version": "v043",
+        "description": "EZITV evaluator mapped to valuation product code 7"
+      },
+      "EvaluatorType.IClarify": {
+        "csioValue": "8",
+        "direction": "bidirectional",
+        "version": "v043",
+        "description": "iClarify evaluator mapped to valuation product code 8"
+      }
+    },
+    "rateClasses": {
+      "66": {
+        "mapsTo": "TypeOfRating.PurchasePrice",
+        "version": "v043",
+        "description": "Rate class 66 maps to Purchase Price type of rating"
+      },
+      "67": {
+        "mapsTo": "TypeOfRating.PurchasePrice",
+        "version": "v043",
+        "description": "Rate class 67 maps to Purchase Price type of rating"
+      },
+      "_default": {
+        "mapsTo": "TypeOfRating.Vicc",
+        "version": "v043",
+        "description": "All other rate classes map to VICC type of rating"
+      }
+    },
+    "vehicleBodyTypes": {
+      "_note": "Inherited from Generic base. No carrier-specific overrides."
+    },
+    "constructionTypes": {
+      "_note": "Inherited from Generic base. No carrier-specific overrides."
+    },
+    "convictionCodes": {
+      "_note": "Inherited from Generic base. No carrier-specific overrides."
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["Inherited from Generic base - uses standard CSIO discount code lookups via TryConvertToFrameworkAutoDiscount and TryConvertToFrameworkHabDiscount"],
+    "isSurchargePatterns": ["Inherited from Generic base - uses standard CSIO surcharge code lookups via TryConvertToFrameworkAutoSurcharge and TryConvertToFrameworkHabSurcharge"]
+  },
+  "companySpecificBehaviors": {
+    "End27Opcf27PolicyLevel": {
+      "description": "End27 and Opcf27 endorsements are treated as policy-level by PeaceHills. When converting rated or unrated auto endorsements, the vehicle ID is passed as Nothing for these endorsement codes.",
+      "affectedFiles": [
+        "CsioToFramework/Rated/PcCoverageConverter.vb (v043, V131)",
+        "CsioToFramework/Unrated/EndorsementConverters/_DefaultEndorsementConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "sewerBackupLimitLogic": {
+      "description": "For SewerBackup endorsement on primary dwelling and additional residence, if the endorsement limit equals the dwelling coverage limit, the endorsement coverage field is set to 'PolicyLimit' instead of the dollar amount.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/EndorsementConverters/_DefaultEndorsementConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "sewerBackupCoverageLimitAsString": {
+      "description": "When converting sewer backup coverage limits inbound, the limit is converted to an integer and set as a string value, rather than the standard currency conversion.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/CoverageConverterHelper.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "massEvacuationFiltered": {
+      "description": "The MassEvacuationEndorsement CSIO code is explicitly filtered out by the PeaceHills CoverageCodeConverter (returns False). This means PeaceHills does not support Mass Evacuation as a home endorsement even though the Generic base does.",
+      "affectedFiles": [
+        "EnumConverters/CoverageCodeConverter.vb (v043, V128, V131)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "driverNameMatching": {
+      "description": "PeaceHills has a custom driver name matching system (PeaceHillsDriverNameMatcher) that matches driver names to insured names using: (1) perfect name match, (2) family name match (handles 'and'/'&' separated names), and (3) supplementary name match. When matched, address, phone, email, and occupation data are copied from the insured record to the driver.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/PeaceHillsDriverNameMatcher.vb (v043)",
+        "CsioToFramework/Unrated/PersDriverConverter.vb (v043)",
+        "CsioToFramework/Unrated/PersDriverCollectionConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "phoneFormatting": {
+      "description": "Phone numbers are reformatted to ###-###-#### format using regex pattern matching. Applied to broker phones, person phones, policy phones, and fax numbers.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/PhoneInfoCollectionConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "policyTypeNormalization": {
+      "description": "In DwellConverter.GetPolicyTypeOverride, numeric policy type values have leading zeros stripped. For example 'csio:01' becomes 'csio:1'. This normalizes PeaceHills policy type codes.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/DwellConverter.vb (V128)"
+      ],
+      "versions": ["V128", "V131"]
+    },
+    "otherPolicyCompanyFix": {
+      "description": "PHI-454: When converting supporting auto/hab/misc auto policies, if the company code comes back as None or Unknown, it is forced to PeaceHills.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/OtherPolicyConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "lossPaymentNullCoverage": {
+      "description": "When a loss payment has no coverage code (null or empty), the amount is still extracted as AmountPaid directly, bypassing the standard coverage-based routing.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/LossPaymentConverter.vb (v043, V128)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "chargeableIndCompanyMapping": {
+      "description": "In LossConverter, the chargeable indicator is mapped to the PeaceHills claim company record. Creates a new claim company entry for PeaceHills if one doesn't exist.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/LossConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "heatingUnitNoneFilter": {
+      "description": "Heating units with HeatingUnitCd value of 'None' are filtered out and not added to the output collection.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/HeatingUnitInfoCollectionConverter.vb (V128)"
+      ],
+      "versions": ["V128", "V131"]
+    },
+    "supplementaryBusinessInsured": {
+      "description": "In PersDriverCollectionConverter, supplementary name info records are processed as additional 'persons' (business insureds). The 'and'/'&' keywords are stripped from names. Duplicate matching prevents adding a person who already exists.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/PersDriverCollectionConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "mvrDateCleared": {
+      "description": "MVR (Motor Vehicle Report) date is always set to Nothing, forcing the broker to re-set it.",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/PersDriverConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    },
+    "licenseClassConcatenation": {
+      "description": "When a motorcycle license class is encountered and a license class already exists, the motorcycle class is concatenated to the existing class (e.g., '5M' instead of replacing '5' with 'M').",
+      "affectedFiles": [
+        "CsioToFramework/Unrated/LicenseConverter.vb (v043)"
+      ],
+      "versions": ["v043", "V128", "V131"]
+    }
+  },
+  "zCodeInventory": {
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": [],
+    "_note": "PeaceHills has ZERO proprietary Z-codes. All CSIO codes used are standard CSIO codes resolved through the enum values factory."
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 0,
+    "totalCarrierSpecificConstants": 2,
+    "totalGenericInheritedCodes": 165,
+    "totalDirectCsioCodes": 3,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "v043only": 0,
+      "V128only": 0,
+      "V131only": 0,
+      "sharedAcrossVersions": 3
+    },
+    "notes": [
+      "PeaceHills is one of the simplest carriers in the codebase.",
+      "All coverage/endorsement/discount/surcharge mappings are inherited from the Generic base without modification.",
+      "The only company-specific constants are for valuation product mapping (EZITV=7, iClarify=8).",
+      "No FrameworkToCsio (outbound request) overrides exist at all - PeaceHills uses the Generic outbound converters entirely.",
+      "All company-specific overrides are behavioral (response parsing logic), not code-mapping overrides.",
+      "No CsioConstants.vb file exists for PeaceHills.",
+      "Total unique VB files across all versions: 45 (26 in v043, 10 in V128, 9 in V131)."
+    ]
+  }
+}
