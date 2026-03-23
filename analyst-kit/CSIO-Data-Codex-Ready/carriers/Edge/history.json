@@ -1,0 +1,17 @@
+{
+  "carrier": "Edge",
+  "extractions": [
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22.json",
+      "rulesFile": "2026-03-22-rules.md",
+      "totalCodes": 0,
+      "totalGenericInherited": 250,
+      "totalCarrierOverrides": 2,
+      "zCodeCount": 0,
+      "filesProcessed": 18,
+      "versions": ["v043", "V128"],
+      "status": "complete"
+    }
+  ]
+}

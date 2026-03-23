@@ -1,0 +1,754 @@
+{
+  "_metadata": {
+    "carrier": "Dominion",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043"],
+    "latestVersion": "v043",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 91,
+    "description": "Complete CZO mapping for Dominion (Dominion of Canada General Insurance / Travelers Canada)",
+    "versionRoles": {
+      "v043": "Base version (only version for Dominion)"
+    },
+    "notes": "Dominion only exists in v043. All generic base codes are inherited from v043/Generic/EnumConverters/CoverageCodeConverter.vb. Dominion shares infrastructure with Intact (uses IntactQuebec=GC, IntactAtlantic=HAL, IntactWestern=WU company codes by region)."
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "DrivingRecordProtectorClaims_Ontario": {
+        "csioCode": "csio:39",
+        "constantName": "CompanyCsioCode.DRPZAFW",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Driving Record Protector (Claims) - OPCF 39 override, sent for Ontario only",
+        "provinceSpecific": {
+          "ON": "Maps DrivingRecordProtectorClaims to csio:39 (overrides generic ClaimsProtectionPlan)"
+        }
+      },
+      "DrivingRecordProtectorClaims_NonOntario": {
+        "csioCode": "csio:39",
+        "constantName": "CompanyCsioCode.DRPZAFW",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Driving Record Protector (Claims) - sent as OPCF 39 for non-Ontario too"
+      },
+      "End39": {
+        "csioCode": "csio:39",
+        "constantName": "CompanyCsioCode.DRPZAFW",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "SEF 39 Endorsement mapped to csio:39 (same as DRP)"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "constantName": "CompanyCsioCode.OPCF49",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "OPCF 49 Endorsement - Ontario only"
+      },
+      "End8B": {
+        "csioCode": "standard:End8",
+        "source": "dominion-override",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "End8B mapped to standard End8 (AutoCoverageAndEndorsement.End8)"
+      },
+      "End19B": {
+        "csioCode": "standard:End19",
+        "source": "dominion-override",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "End19B mapped to standard End19 (AutoCoverageAndEndorsement.End19)"
+      },
+      "End28C": {
+        "csioCode": "standard:End28",
+        "source": "dominion-override",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "End28C mapped to standard End28 (AutoCoverageAndEndorsement.End28)"
+      },
+      "End30B": {
+        "csioCode": "standard:End30",
+        "source": "dominion-override",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "End30B mapped to standard End30 (AutoCoverageAndEndorsement.End30)"
+      }
+    },
+    "homeEndorsements": {
+      "GlassReducedDeductible": {
+        "csioCode": "standard:GlassBreakage",
+        "source": "dominion-override",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Glass Reduced Deductible mapped to GlassBreakage (overrides generic GlassDeductibleEndorsement)"
+      },
+      "GroundWaterEndorsement": {
+        "csioCode": "csio:GRNDW",
+        "constantName": "CompanyCsioCode.GroundWater",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Ground Water Endorsement"
+      },
+      "FloodEndorsement": {
+        "csioCode": "csio:OVWAT",
+        "constantName": "CompanyCsioCode.OverlandWaterFlood",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Overland Water / Flood Endorsement"
+      },
+      "SepticSystem": {
+        "csioCode": "csio:ZSEPS",
+        "constantName": "CompanyCsioCode.SepticSystem",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Septic System coverage - added when SepticTank field is true on dwelling"
+      },
+      "SewerBackup_SEWER": {
+        "csioCode": "SEWER",
+        "source": "dominion-inline",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Sewer Backup coverage code (when SewerBackupLimit field > 0) - no csio: prefix"
+      },
+      "SewerBackup_ZCWAT": {
+        "csioCode": "ZCWAT",
+        "source": "dominion-inline",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Comprehensive Water coverage code (when SewerBackup field has numeric value) - no csio: prefix but related to csio:ZCWAT"
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {},
+    "accidentBenefits": {
+      "MedicalAttendantCatastrophic": {
+        "csioCode": "csio:CATIM",
+        "constantName": "CompanyCsioCode.MdicalAttendantCatastrophic",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical/Attendant Catastrophic Impairment (post June 2016). Limit: $1,000,000"
+      },
+      "MedicalAttendantNonCatastrophic": {
+        "csioCode": "csio:MRB",
+        "constantName": "CompanyCsioCode.MedicalAttendantNonCatastrophic",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical/Attendant Non-Catastrophic. Limit: $130,000"
+      },
+      "MedicalAttendantNonCatastrophic1M": {
+        "csioCode": "csio:CIMRB",
+        "constantName": "CompanyCsioCode.MedicalAttendantNonCatastrophic1M",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical/Attendant Non-Catastrophic $1M. Limit: $1,000,000"
+      },
+      "AttendantCare": {
+        "csioCode": "csio:ACB",
+        "constantName": "CompanyCsioCode.AttendantCare",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Attendant Care Benefit (pre June 2016)"
+      },
+      "MedicalRehabilitation": {
+        "csioCode": "csio:MEDRH",
+        "constantName": "CompanyCsioCode.MedicalRehabilitation",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical Rehabilitation (pre June 2016)"
+      },
+      "Caregiver": {
+        "csioCode": "csio:CHHMB",
+        "constantName": "CompanyCsioCode.Caregiver",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Caregiver Benefit"
+      },
+      "DependantCare": {
+        "csioCode": "csio:DCB",
+        "constantName": "CompanyCsioCode.DependantCare",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Dependant Care Benefit"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "UsageBasedInsurance": {
+        "csioCode": "csio:DISTE",
+        "constantName": "CompanyCsioCode.DiscountUsageBasedInsurance",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Usage-Based Insurance / Telematics Discount"
+      },
+      "WinterTire_FromFramework": {
+        "csioCode": "csio:DISSN",
+        "constantName": "CompanyCsioCode.DiscountSnowTires",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Snow/Winter Tires Discount (response only - converts csio:DISSN to DiscountCode.WinterTire)"
+      }
+    },
+    "autoSurcharges": {},
+    "habDiscounts": {
+      "SecuritySystem": {
+        "csioCode": "standard:PremisesAlarmFireorIntrusionSystem",
+        "source": "dominion-override",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Security System mapped to PremisesAlarmFireorIntrusionSystem (overrides generic HomeSecurity)"
+      }
+    },
+    "habSurcharges": {},
+    "tierCodes": {
+      "GroupDiscountDOC5": {
+        "groupId": "DOC5",
+        "displayValue": "Group Discount 5%",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Group Discount 5% tier"
+      },
+      "GroupDiscountDOC10": {
+        "groupId": "DOC10",
+        "displayValue": "Group Discount 10%",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Group Discount 10% tier"
+      },
+      "GroupDiscountDOC15": {
+        "groupId": "DOC15",
+        "displayValue": "Group Discount 15%",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Group Discount 15% tier"
+      },
+      "GroupDiscountDOC20": {
+        "groupId": "DOC20",
+        "displayValue": "Group Discount 20%",
+        "source": "dominion",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Group Discount 20% tier"
+      }
+    }
+  },
+  "companyProductCodes": {
+    "Dominion": {
+      "productCode": "DOC",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Dominion of Canada product code"
+    },
+    "TravelersEssential": {
+      "productCode": "CIC",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Travelers Essential (CIC) product code"
+    }
+  },
+  "companyCodes": {
+    "IntactQuebec": {
+      "companyCode": "GC",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Intact company code for Quebec region"
+    },
+    "IntactAtlantic": {
+      "companyCode": "HAL",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Intact company code for Atlantic provinces (PE, NS, NL, NB)"
+    },
+    "IntactWestern": {
+      "companyCode": "WU",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Intact company code for Western/Other provinces (default)"
+    }
+  },
+  "antiTheftProductCodes": {
+    "Tag": {
+      "csioCode": "csio:1Q",
+      "constantName": "CompanyCsioCode.Tag",
+      "fieldOption": "Tag",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Anti-theft product: Tag"
+    },
+    "Domino": {
+      "csioCode": "csio:3B",
+      "constantName": "CompanyCsioCode.Domino",
+      "fieldOption": "Domino",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Anti-theft product: Domino"
+    }
+  },
+  "questionAnswerCodes": {
+    "UnlicensedRecreationalVehicles": {
+      "csioCode": "csio:140",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Question: Unlicensed Recreational Vehicles"
+    },
+    "MotorizedWheelChairs": {
+      "csioCode": "csio:141",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Question: Motorized Wheel Chairs"
+    },
+    "OwnTrampoline": {
+      "csioCode": "csio:137",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Question: Own Trampoline"
+    },
+    "OwnWaterCraft": {
+      "csioCode": "csio:142",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Question: Own Water Craft"
+    },
+    "GardenTractor": {
+      "csioCode": "csio:138",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Question: Garden Tractor"
+    },
+    "GolfCart": {
+      "csioCode": "csio:139",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Question: Golf Cart"
+    }
+  },
+  "causeOfLossCodes": {
+    "SurfaceWater": {
+      "csioCode": "643",
+      "constantName": "CompanyCsioCode.LossSurfaceWater",
+      "frameworkValue": "CauseOfLoss.SurfaceWater",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Cause of loss: Surface Water (hab claims only)"
+    },
+    "ExteriorSewerLineBreakage": {
+      "csioCode": "645",
+      "constantName": "CompanyCsioCode.LossExteriorSewerLineBreakage",
+      "frameworkValue": "CauseOfLoss.ExteriorSewerLineBreakage",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Cause of loss: Exterior Sewer Line Breakage (hab claims only)"
+    },
+    "ExteriorWaterLineBreakage": {
+      "csioCode": "644",
+      "constantName": "CompanyCsioCode.LossExteriorWaterLineBreakage",
+      "frameworkValue": "CauseOfLoss.ExteriorWaterLineBreakage",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Cause of loss: Exterior Water Line Breakage (hab claims only)"
+    },
+    "GroundWater": {
+      "csioCode": "646",
+      "constantName": "CompanyCsioCode.LossGroundWater",
+      "frameworkValue": "CauseOfLoss.GroundWater",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Cause of loss: Ground Water (hab claims only)"
+    },
+    "FloodWater": {
+      "csioCode": "647",
+      "constantName": "CompanyCsioCode.LossFloodWater",
+      "frameworkValue": "CauseOfLoss.FloodWater",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Cause of loss: Flood Water (hab claims only)"
+    }
+  },
+  "otherCodes": {
+    "CSIONone": {
+      "csioCode": "csio:NONE",
+      "constantName": "CompanyCsioCode.CSIONone",
+      "source": "dominion",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Used for Previous Policy CompanyCd when no previous insurance exists"
+    },
+    "PolicyTerminatedRestricted": {
+      "csioCode": "csio:6",
+      "source": "dominion-inline",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Reason Terminated code 6, used when PreviousRestrictedCoverage is true"
+    }
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "BettermentsAndImprovements", "BuildingBylawsExtension", "Earthquake",
+      "EquipmentBreakdownCoverage", "FireFightingCoverage", "GlassReducedDeductible",
+      "GuaranteedReplacementCost", "IdentityTheft", "MassEvacuation",
+      "RentalIncome", "ReplacementOrRepairCost", "SewerBackup",
+      "SingleLimitEndorsement", "SpecialLimitsEnhancement", "VacancyPermit",
+      "GlassBreakage", "WindHailCoverage", "LegalExpense",
+      "PowerInterruptionCoverage", "FoodFreezerFoodSpoilage", "CreditCardFraud",
+      "WaterCoverage", "ServiceLineCoverage", "CondoDeductibleAssessment",
+      "LimitedRoofCoverage", "TheftfromVehicle", "AccidentalDeathandDismemberment",
+      "ClaimsProtector", "InflationProtectionEndorsement", "VandalismByTenantExclusion",
+      "AdditionalInsuredEndorsement", "AdditionalNamedInsuredCooccupant",
+      "DebrisRemoval", "EscapeOfFuelOil", "ExtendedCareEndorsement",
+      "FloodEndorsement", "HomeBasedBusiness", "LeaseholdCondoCorpEndorsement",
+      "PersonalPropertyReplacementExtension", "ReplacementCostOnContents",
+      "TravelInsurance", "VandalismMaliciousActsExclusionTenantsGuests",
+      "PetAccidentWordingSupplement", "CollectivelyOwnedLifeLeasePropertyCoverage",
+      "LifeLeasePropertyCoverage", "BooksToolsAndInstrumentsPertainingToBusiness"
+    ],
+    "homeLiabilities": [
+      "DayCareInHome", "ResidenceEmployees", "RentedRoomSuite",
+      "DwellingUnderConstruction", "BusinessUseOfHome", "BedAndBreakfast",
+      "AdditionalResidence", "SwimmingPool", "BoatAndMotor",
+      "SeasonalDwelling", "Atv", "AdditionalNamedInsured",
+      "ElevatorEscalatorsInclinators", "PremisesExtension", "JetSki",
+      "GolfCart", "ForestAndPrairieProtectionEndorsement", "VoluntaryCompensation",
+      "LiabilityRestriction", "Horses", "AnimalShows",
+      "IncidentalOfficeUse", "LandRealEstate", "PersonalInjury",
+      "LiquorLiabilityEndorsement"
+    ],
+    "homeDiscounts": [
+      "BusinessUse", "ClaimForgiveness", "CooperativeComplex", "Evaluator",
+      "GroupRate", "HailResistant", "Heating", "SecuritySystem",
+      "LongTermOccupancy", "MatureCitizen", "Miscellaneous", "MobileHomeTiedDown",
+      "MortgageeFree", "MultiFamily", "MultiLine", "MultiResidence",
+      "NeighbourhoodWatch", "NewHome", "NewBusiness", "ClaimsFree",
+      "NonSmoker", "Occupation", "Construction", "Renewal",
+      "Retiree", "Age", "SmokeDetector", "Sprinklered",
+      "TankerShuttleService", "Loyalty", "AgeOfHome", "WaterLeakDetectionSystem",
+      "CombinedFireAndBurglaryAlarm"
+    ],
+    "homeSurcharges": [
+      "AbsenteeLandlord", "AgeOfHome", "BusinessUse", "Claims",
+      "CommercialExposure", "HailDamage", "LogHome", "Miscellaneous",
+      "MultiFamily", "NonPayment", "NoPreviousInsurance", "Occupancy",
+      "PrimaryHeating", "Location", "AuxiliaryHeating"
+    ],
+    "autoEndorsementsOntario": [
+      "DrivingRecordProtectorClaims", "Opcf02", "Opcf03", "Opcf05",
+      "Opcf05C", "Opcf05D", "Opcf06A", "Opcf06D", "Opcf07",
+      "Opcf08", "Opcf08A", "Opcf09", "Opcf13C", "Opcf16",
+      "Opcf17", "Opcf19", "Opcf19A", "Opcf20", "Opcf23A",
+      "Opcf23B", "Opcf25A", "Opcf27", "Opcf27B", "Opcf28",
+      "Opcf28A", "Opcf29", "Opcf30", "Opcf31", "Opcf32",
+      "Opcf35", "Opcf37", "Opcf38", "Opcf40", "Opcf43",
+      "Opcf43A", "Opcf44", "Opcf46", "Opcf47", "Opcf48",
+      "Pak20and27", "LossOfUseBroadForm", "PermissionToCarryRadioactiveMaterial",
+      "DissapearingDeductible", "PetAccidentWordingEndorsement", "Pak08", "Pak09"
+    ],
+    "autoEndorsementsNonOntario": [
+      "DrivingRecordProtectorClaims", "EmergencyAssistancePackage", "End2",
+      "End3", "End4A", "End4B", "End5", "End5A", "End6A",
+      "End6B", "End6C", "End6D", "End8", "End8A", "End9",
+      "End13C", "End13D", "End13H", "End16", "End17",
+      "End19", "End19A", "End20", "End20A", "End22",
+      "End23A", "End23B", "End24", "End25", "End25A",
+      "End27", "End27B", "End28", "End28A", "End30",
+      "End30A", "End31", "End32", "End35", "End36",
+      "End37", "End38", "End39", "End40", "End43",
+      "End43R", "End43RL", "End44", "End48",
+      "Pak03", "Pak05", "Pak06", "Pak08", "Pak09",
+      "DissapearingDeductible", "PetAccidentWordingEndorsement", "End7"
+    ],
+    "autoDiscounts": [
+      "NotIdentified", "Age", "AntiTheft", "AssociationMembership",
+      "AwayAtSchool", "TwentyFourHourGuard", "ClaimForgiveness", "ClaimsFree",
+      "ConvictionFree", "ConvictionFreeOccasional", "DriverTraining",
+      "Farm", "Female", "GoodStudent", "GraduatedLicense",
+      "GraduatedLicenseOccasional", "GroupRate", "HailResistant",
+      "Heating", "IPromiseProgram", "InsuredsDrivingRecord",
+      "LongTermOccupancy", "LowAnnualMileage", "LowCommuteDistance",
+      "MaritalStatus", "Miscellaneous", "MobileHomeTiedDown",
+      "MortgageeFree", "MultiLine", "MultiFamily", "MultiVehicle",
+      "NeighbourhoodWatch", "NewDriver", "NewDriverOccasional",
+      "NewHome", "NewVehicle", "NonSmoker", "OccasionalDriver",
+      "Occupation", "OutOfProvince", "OwnerOfVehicle",
+      "PreferredCustomer", "Professional", "RecreationalVehicle",
+      "ReligiousClerical", "Renewal", "Retiree", "SecuritySystem",
+      "SmokeDetector", "Sprinklered", "TankerShuttleService",
+      "TrailPermit", "Experience", "ShortCommute", "Stability",
+      "Evaluator", "CooperativeComplex", "SecuritySystemPlus",
+      "NewBusiness", "AdditionalMultiVehicle", "Construction",
+      "Hybrid", "GroupRateOccasional", "MultiLine05", "MultiLine06",
+      "AntiLockBrakes", "WinterTire"
+    ],
+    "autoSurcharges": [
+      "NotIdentified", "AbsenteeLandlord", "AgeOfHome", "AuxiliaryHeating",
+      "BusinessUse", "Carpooling", "Claims", "ClaimsOccasional",
+      "CommercialExposure", "Convictions", "ConvictionsOccasional",
+      "ExplosiveMaterial", "HailDamage", "HighKilometersDriven",
+      "HighPerformance", "LogHome", "Miscellaneous", "MultiFamily",
+      "NoPreviousInsurance", "NonPayment", "Occupancy",
+      "OutOfProvince", "OversizeEngine", "PrimaryHeating",
+      "USExposure", "Location", "MultipleOperator", "ClaimsFree"
+    ]
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "Home": {
+        "CanadianClassic": "HomeownersComprehensiveExpandedForm",
+        "_fallback": "inherits generic"
+      },
+      "Condo": {
+        "Canadian|CanadianClassic": "ComprehensiveCondominiumForm",
+        "Standard": "CondominiumPackageStandardForm",
+        "_fallback": "inherits generic"
+      },
+      "FEC": {
+        "Standard": "BasicResidentialFireECForm",
+        "Broad": "BasicResidentialForm",
+        "_fallback": "inherits generic"
+      },
+      "Seasonal": {
+        "HomeownersStandard": "HomeownersStandardForm",
+        "HomeownersSpecial": "BasicResidentialFireECForm",
+        "HomeownersBroad": "HomeownersBroadForm",
+        "ResidenceStandard": "SeasonalDwellingStandardForm",
+        "Special|ResidenceSpecial|SpecialPackage": "SeasonalDwellingBroadForm",
+        "Standard|StandardPackage": "SeasonalDwellingStandardForm",
+        "_fallback": "inherits generic"
+      },
+      "Tenant": {
+        "Canadian|CanadianClassic": "TenantsComprehensiveForm",
+        "Standard": "TenantsPackageStandardForm",
+        "_fallback": "inherits generic"
+      }
+    },
+    "companyProducts": {
+      "Dominion": "DOC",
+      "TravelersEssential": "CIC"
+    },
+    "companyCodes": {
+      "IntactInsurance_QC": "GC",
+      "IntactInsurance_Atlantic": "HAL",
+      "IntactInsurance_Other": "WU",
+      "UnicaInsurance": "standard:YorkFire"
+    },
+    "residenceTypes": {
+      "ApartmentBuilding_Dominion": "Apartment",
+      "ApartmentBuilding_TravelersEssential": "HighRise",
+      "Fourplex|Fiveplex|Sixplex": "Multiplex4unitsormore",
+      "EndRowHouse|InsideRowHouse": "RowHouseUnspecified"
+    },
+    "billingMethods": {
+      "MAC": "DirectBill",
+      "BillingCodes.Mac": "DirectBill"
+    },
+    "paymentPlans": {
+      "AmericanExpress|CreditCard|MasterCard|Visa": "Monthly"
+    },
+    "occupancyTypes": {
+      "RentedToThirdParty": "Rental (override)",
+      "_fallback": "falls back to Owner if no match"
+    },
+    "vehicleBodyTypes": {
+      "MinibikeTrailBikeOffRoad": "Motorcyclesover50cc (override for motorcycles)"
+    },
+    "genderCodes": {
+      "X": "X"
+    },
+    "valuationProducts": {
+      "EZITV": "7"
+    },
+    "classSpecificRatedIndicator": {
+      "SeasonalDwellingStandard|SeasonalDwellingBroad|BasicResidentialFireEC|BasicResidential": "Standard",
+      "HomeownersBroad|HomeownersComprehensiveExpanded|HomeownersFormOther|TenantsPackageStandard|TenantsComprehensive|CondominiumPackageStandard|ComprehensiveCondominium|MobileHomeBroad": "Preferred"
+    },
+    "causeOfLoss_Auto": {
+      "AccidentBenefits": "empty (no code sent)",
+      "CollisionDirectCompensation": "empty (no code sent)",
+      "ChargeableAccidentNotSpecified": "standard:CollisionOther"
+    },
+    "causeOfLoss_Hab": {
+      "SurfaceWater": "643",
+      "ExteriorSewerLineBreakage": "645",
+      "ExteriorWaterLineBreakage": "644",
+      "GroundWater": "646",
+      "FloodWater": "647"
+    },
+    "lapseReasons": {
+      "AccidentRelated": "A",
+      "CriminalCodeConviction": "C",
+      "DrivingWhileUnderTheInfluenceOfDrugsOrAlcohol": "D",
+      "OperatingWithoutInsuranceLicenseLapse": "I",
+      "OperatingWithoutALicense": "L",
+      "Speeding": "S",
+      "NonPaymentOfPremiumInsuranceLapse": "3",
+      "OperatingWithoutInsurance": "5",
+      "FraudOrMaterialMisrepresentation": "6",
+      "OtherInsuranceLapse": "9",
+      "OtherLicenseLapse": "X",
+      "LicenseSuspension": "15",
+      "Other": "O"
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["Value after colon starts with 'DIS' (e.g., csio:DISSN, csio:DISTE)"],
+    "isSurchargePatterns": ["Value after colon starts with 'SUR'"],
+    "notes": "Dominion uses simple prefix matching: IsDiscount checks if the part after ':' starts with 'DIS', IsSurcharge checks if it starts with 'SUR'"
+  },
+  "skipEndorsementRules": {
+    "alwaysSkipped": ["Opcf47", "CondoExtension"],
+    "provinceSpecific": {
+      "AB": { "skip28A": true },
+      "NS": { "skipPak": true },
+      "NB": { "skipPak": true, "skip28A": true },
+      "ON": { "skipPak": true },
+      "PE": { "skipPak": true, "skip28A": true }
+    },
+    "masEvacuationAndSingleLimit": "Excluded from dwell payload (assumed included by Dominion)"
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      { "code": "csio:39", "constantName": "DRPZAFW", "version": "v043", "availableIn": ["v043"], "description": "Driving Record Protector / OPCF 39" },
+      { "code": "csio:49", "constantName": "OPCF49", "version": "v043", "availableIn": ["v043"], "description": "OPCF 49" },
+      { "code": "csio:ACB", "constantName": "AttendantCare", "version": "v043", "availableIn": ["v043"], "description": "Attendant Care Benefit" },
+      { "code": "csio:MEDRH", "constantName": "MedicalRehabilitation", "version": "v043", "availableIn": ["v043"], "description": "Medical Rehabilitation" },
+      { "code": "csio:CHHMB", "constantName": "Caregiver", "version": "v043", "availableIn": ["v043"], "description": "Caregiver Benefit" },
+      { "code": "csio:DCB", "constantName": "DependantCare", "version": "v043", "availableIn": ["v043"], "description": "Dependant Care Benefit" },
+      { "code": "csio:CATIM", "constantName": "MdicalAttendantCatastrophic", "version": "v043", "availableIn": ["v043"], "description": "Medical/Attendant Catastrophic" },
+      { "code": "csio:MRB", "constantName": "MedicalAttendantNonCatastrophic", "version": "v043", "availableIn": ["v043"], "description": "Medical/Attendant Non-Catastrophic" },
+      { "code": "csio:CIMRB", "constantName": "MedicalAttendantNonCatastrophic1M", "version": "v043", "availableIn": ["v043"], "description": "Medical/Attendant Non-Catastrophic $1M" },
+      { "code": "csio:1Q", "constantName": "Tag", "version": "v043", "availableIn": ["v043"], "description": "Anti-theft: Tag" },
+      { "code": "csio:3B", "constantName": "Domino", "version": "v043", "availableIn": ["v043"], "description": "Anti-theft: Domino" }
+    ],
+    "habCoverage": [
+      { "code": "csio:ZCWAT", "constantName": "SbuZCWAT", "version": "v043", "availableIn": ["v043"], "description": "Comprehensive Water (SBU)" },
+      { "code": "csio:GRNDW", "constantName": "GroundWater", "version": "v043", "availableIn": ["v043"], "description": "Ground Water Endorsement" },
+      { "code": "csio:ZSEPS", "constantName": "SepticSystem", "version": "v043", "availableIn": ["v043"], "description": "Septic System" },
+      { "code": "csio:OVWAT", "constantName": "OverlandWaterFlood", "version": "v043", "availableIn": ["v043"], "description": "Overland Water / Flood" },
+      { "code": "csio:NONE", "constantName": "CSIONone", "version": "v043", "availableIn": ["v043"], "description": "No Previous Insurance marker" }
+    ],
+    "discountsSurcharges": [
+      { "code": "csio:DISSN", "constantName": "DiscountSnowTires", "version": "v043", "availableIn": ["v043"], "description": "Snow/Winter Tires Discount" },
+      { "code": "csio:DISTE", "constantName": "DiscountUsageBasedInsurance", "version": "v043", "availableIn": ["v043"], "description": "Usage-Based Insurance / Telematics Discount" }
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 18,
+    "totalGenericInheritedCodes": 180,
+    "orphanCodes": [
+      {
+        "code": "csio:ZCWAT",
+        "constantName": "SbuZCWAT",
+        "notes": "Declared in CompanyConstants but referenced only via inline string 'ZCWAT' (without csio: prefix) in PcCoverageConverter.vb line 195. The constant itself appears unused."
+      }
+    ],
+    "undeclaredCodes": [
+      {
+        "code": "SEWER",
+        "file": "FrameworkToCsio/Unrated/PcCoverageConverter.vb",
+        "line": 188,
+        "notes": "Inline string 'SEWER' used for sewer backup coverage code when SewerBackupLimit > 0. Not in CompanyConstants."
+      },
+      {
+        "code": "ZCWAT",
+        "file": "FrameworkToCsio/Unrated/PcCoverageConverter.vb",
+        "line": 195,
+        "notes": "Inline string 'ZCWAT' (no csio: prefix) used for comprehensive water coverage. Related to CompanyCsioCode.SbuZCWAT but not using the constant."
+      },
+      {
+        "code": "csio:6",
+        "file": "FrameworkToCsio/Unrated/OtherOrPriorPolicyConverter.vb",
+        "line": 29,
+        "notes": "Inline csio:6 used as PolicyTerminatedCd when PreviousRestrictedCoverage is true."
+      },
+      {
+        "code": "csio:137",
+        "file": "FrameworkToCsio/Unrated/QuestionAnswerConverter.vb",
+        "line": 24,
+        "notes": "Inline question code for OwnTrampoline"
+      },
+      {
+        "code": "csio:138",
+        "file": "FrameworkToCsio/Unrated/QuestionAnswerConverter.vb",
+        "line": 32,
+        "notes": "Inline question code for GardenTractor"
+      },
+      {
+        "code": "csio:139",
+        "file": "FrameworkToCsio/Unrated/QuestionAnswerConverter.vb",
+        "line": 36,
+        "notes": "Inline question code for GolfCart"
+      },
+      {
+        "code": "csio:140",
+        "file": "FrameworkToCsio/Unrated/QuestionAnswerConverter.vb",
+        "line": 16,
+        "notes": "Inline question code for UnlicensedRecreationalVehicles"
+      },
+      {
+        "code": "csio:141",
+        "file": "FrameworkToCsio/Unrated/QuestionAnswerConverter.vb",
+        "line": 20,
+        "notes": "Inline question code for MotorizedWheelChairs"
+      },
+      {
+        "code": "csio:142",
+        "file": "FrameworkToCsio/Unrated/QuestionAnswerConverter.vb",
+        "line": 28,
+        "notes": "Inline question code for OwnWaterCraft"
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "v043only": 18,
+      "notes": "Dominion only exists in v043. All 18 carrier-specific codes are in this single version."
+    },
+    "csioCodeSummary": {
+      "totalCsioCodesInConstants": 18,
+      "zCodesCount": 2,
+      "standardCodesCount": 16,
+      "zCodes": ["csio:ZCWAT", "csio:ZSEPS"],
+      "standardCodes": [
+        "csio:GRNDW", "csio:39", "csio:OVWAT", "csio:49",
+        "csio:CATIM", "csio:MRB", "csio:CIMRB", "csio:ACB",
+        "csio:MEDRH", "csio:CHHMB", "csio:DCB", "csio:NONE",
+        "csio:DISSN", "csio:DISTE", "csio:1Q", "csio:3B"
+      ]
+    }
+  }
+}

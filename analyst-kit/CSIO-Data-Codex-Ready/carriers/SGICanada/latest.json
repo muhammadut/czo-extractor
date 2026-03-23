@@ -1,0 +1,493 @@
+{
+  "_metadata": {
+    "carrier": "SGICanada",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043"],
+    "latestVersion": "v043",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 66,
+    "description": "Complete CZO mapping for SGICanada. Single-version carrier (v043 only), inherits from v043/Generic for all base codes. No CsioToFramework overrides -- uses Generic response parsing.",
+    "versionRoles": {
+      "v043": "Only version (base)"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "AttendantCare": {
+        "csioCode": "csio:ACB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Attendant Care Benefit (Ontario auto reform 2010)",
+        "notes": "Used in both Unrated and Rated PcCoverageCollectionConverter"
+      },
+      "Caregiver": {
+        "csioCode": "csio:CHHMB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Caregiver, Housekeeping and Home Maintenance Benefit"
+      },
+      "DependantCare": {
+        "csioCode": "csio:DCB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Dependant Care Benefit"
+      },
+      "MedicalRehabilitation": {
+        "csioCode": "csio:MEDRH",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical and Rehabilitation Benefits"
+      },
+      "IncomeReplacement": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().IncomeReplacement",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Income Replacement (when amount > $400)"
+      },
+      "Indexation": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().Indexation",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Indexation Benefit"
+      },
+      "MedicalRehabAttendantCare": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().MedicalRehabAttendantCare",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Combined Medical Rehab and Attendant Care"
+      },
+      "DeathAndFuneralBenefits": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().DeathAndFuneralBenefits",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Death and Funeral Benefits"
+      },
+      "HealthServicesLevy": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().HealthServicesLevy",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Health Services Levy (always sent for New Brunswick)"
+      }
+    },
+    "homeEndorsements": {
+      "LifestyleOptionA": {
+        "csioCode": "csio:ZLIFA",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option A (Business)",
+        "coverageOption": "Option A (Business)"
+      },
+      "LifestyleOptionB": {
+        "csioCode": "csio:ZLIFB",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option B (Collectibles & Treasures)",
+        "coverageOption": "Option B (Collectibles & Treasures)"
+      },
+      "LifestyleOptionC": {
+        "csioCode": "csio:ZLIFC",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option C (Family & Security)",
+        "coverageOption": "Option C (Family & Security)"
+      },
+      "LifestyleOptionD": {
+        "csioCode": "csio:ZLIFD",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option D (Home & Recreation)",
+        "coverageOption": "Option D (Home & Recreation)"
+      },
+      "SolidFuelWarranty": {
+        "csioCode": "csio:ZSFW",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Solid Fuel Warranty",
+        "notes": "Skipped in endorsement output (SkipEndorsements), but code set via CoverageCodeConverter"
+      },
+      "ServiceLineCoverage": {
+        "csioCode": "csio:SLEXT",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Service Line Coverage",
+        "companySpecificFields": ["ServiceLine (limit)", "ServiceLineDeductible (deductible)"]
+      },
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().PowerFluctuation",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Equipment Breakdown Coverage (mapped to PowerFluctuation code)",
+        "companySpecificFields": ["EquipmentBreakdownCoverage (limit)", "EquipmentBreakdownDeductible (deductible)"]
+      },
+      "GlassBreakage": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().GlassDeductibleEndorsement",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Glass Breakage / Glass Deductible Endorsement"
+      },
+      "WaterCoverage": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().FloodDamage",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Water Coverage (Flood Damage)"
+      },
+      "IdentityTheft": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().IdentityTheft",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Identity Theft (additional residence, rented condo only)"
+      },
+      "RentalIncome": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().RentalIncome",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Rental Income coverage (also used for Additional Living Expense override)"
+      },
+      "MassEvacuationEndorsement": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().MassEvacuationEndorsement",
+        "source": "generic",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Mass Evacuation Endorsement (additional residence, rented condo only)"
+      }
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {
+      "notes": "SGICanada watercrafts are always all risk (ConvertToWatercraft -> ConvertWatercraftAllRisks)"
+    },
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "notes": "SGICanada auto discounts are inherited from Generic. Specific discounts SKIPPED in rated output: GraduatedLicense, DriverTraining, NewDriver, NewBusiness."
+    },
+    "autoSurcharges": {
+      "notes": "SGICanada does NOT send auto surcharges (ConvertPersVehSurcharges is a no-op: 'SGICanada does not use our surcharges and our surcharges cause issues if uploaded')"
+    },
+    "habDiscounts": {
+      "SecuritySystem": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabitationalDiscountAndSurchargeCodes().PremisesAlarmFireorIntrusionSystem",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Security System Discount (maps SecuritySystem -> PremisesAlarmFireorIntrusionSystem)"
+      },
+      "Age": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabitationalDiscountAndSurchargeCodes().ValuedPreferredCustomer",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Age Discount (maps Age -> ValuedPreferredCustomer)"
+      },
+      "WaterLeakDetectionSystem": {
+        "csioCode": "resolved via enumValuesFactory.GetCoveragesValues_HabitationalDiscountAndSurchargeCodes().WaterLeakDetectionSystem",
+        "source": "sgicanada",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Water Leak Detection System Discount"
+      },
+      "skippedInRated": {
+        "NoReplacementCost": "Skipped in rated hab discount output",
+        "Deductible": "Skipped in rated hab discount output",
+        "AboveThirdFloor": "Skipped in rated hab discount output"
+      }
+    },
+    "habSurcharges": {},
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "All standard endorsements inherited from v043/Generic/EnumConverters/CoverageCodeConverter.vb (GlassBreakage -> GlassDeductibleEndorsement, WaterCoverage -> FloodDamage, etc.)",
+      "The carrier falls through to MyBase.TryConvertToCsioHomeEndorsement for all endorsement codes not explicitly overridden"
+    ],
+    "homeLiabilities": [
+      "All standard liabilities inherited from Generic (TPL, DayCareInHome, ResidenceEmployees, etc.)"
+    ],
+    "homeDiscounts": [
+      "All standard hab discounts inherited from Generic for codes not overridden (SecuritySystem, Age, WaterLeakDetectionSystem are overridden)"
+    ],
+    "homeSurcharges": [
+      "All standard hab surcharges inherited from Generic"
+    ],
+    "autoEndorsementsOntario": [
+      "All standard Ontario auto endorsements inherited from Generic"
+    ],
+    "autoEndorsementsNonOntario": [
+      "All standard non-Ontario auto endorsements inherited from Generic"
+    ],
+    "autoDiscounts": [
+      "All standard auto discounts from Generic; GraduatedLicense, DriverTraining, NewDriver, NewBusiness are SKIPPED in rated output"
+    ],
+    "autoSurcharges": [
+      "ALL auto surcharges suppressed -- ConvertPersVehSurcharges is a no-op"
+    ],
+    "skippedEndorsements": {
+      "Opcf47": "Always skipped (unrated and rated)",
+      "SolidFuelWarranty": "Always skipped from endorsement output (code set separately via CoverageCodeConverter)",
+      "Pak03_Pak05_Pak06": "Skipped in Nova Scotia (NS) -- send child endorsements instead of parent pak",
+      "ZeroPremiumEndorsements": "Any endorsement with $0 term premium and $0 premium is skipped in rated output (except SingleLimitEndorsement)"
+    }
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "homeowners": {
+        "PakA": "HomeownersLimitedForm",
+        "PakB": "HomeownersBroadForm (or HomeownersBroadExpandedForm if limitIncreased and not MB)",
+        "PakI": "HomeownersStandardForm (or HomeownersStandardExpandedForm if limitIncreased and not MB)",
+        "PakII": "HomeownersBroadReverseForm (or HomeownersBroadReverseExpandedForm if limitIncreased and not MB)",
+        "PakIII": "HomeownersComprehensiveForm (or HomeownersComprehensiveExpandedForm if limitIncreased and not MB)",
+        "PakBPlus": "HomeownersBroadExpandedForm",
+        "PakIPlus": "HomeownersStandardExpandedForm",
+        "PakIIPlus": "HomeownersBroadReverseExpandedForm",
+        "PakIIIPlus": "HomeownersComprehensiveExpandedForm",
+        "CodeA": "csio:72 (Basic Residential Standard Form)",
+        "CodeAE": "BasicResidentialFireECForm",
+        "CodeB": "BasicResidentialForm",
+        "CodeC": "csio:75 (Basic Residential Comprehensive Form)",
+        "CodeH": "csio:75 (Basic Residential Comprehensive Form)",
+        "Prestige": "HomeownersInsuranceMinimumProtection"
+      },
+      "condo": {
+        "PakA": "CondominiumPackageLimitedForm",
+        "PakI": "CondominiumPackageBroadForm (or CondominiumBroadExpandedForm if limitIncreased)",
+        "PakII": "ComprehensiveCondominiumForm (or CondominiumComprehensiveExpandedForm if limitIncreased)"
+      },
+      "tenant": {
+        "PakA": "TenantsPackageLimitedForm",
+        "PakI": "TenantsPackageBroadForm (or csio:1A Tenants Package Broad Expanded if limitIncreased)",
+        "PakII": "TenantsComprehensiveForm (or TenantsComprehensiveExpandedForm if limitIncreased)",
+        "SpecialSeniorsPak": "TenantsSeniorsPackage"
+      },
+      "seasonal": {
+        "CodeA": "csio:72",
+        "CodeB": "BasicResidentialForm",
+        "CodeC": "csio:75",
+        "PakA": "SeasonalDwellingLimitedForm",
+        "PakB": "SeasonalDwellingBroadForm",
+        "PakI": "SeasonalDwellingStandardForm",
+        "PakII": "SeasonalDwellingBroadReverseForm",
+        "PakIII": "SeasonalDwellingComprehensiveForm"
+      },
+      "fec": {
+        "CodeA": "RentedDwellingStandardForm",
+        "CodeB": "RentedDwellingBroadForm",
+        "CodeC": "RentedDwellingComprehensiveForm",
+        "otherPaks": "Falls through to TryConvertHomeToCsio (same as homeowners)"
+      },
+      "limitIncreased": "Triggered by EndorsementCodes.SpecialLimitsEnhancement endorsement or SpecialLimitsEnhancement = 'Yes' company field"
+    },
+    "billingMethods": {
+      "MAC": "DirectBill",
+      "BillingCodes.Mac": "DirectBill",
+      "others": "Inherited from Generic"
+    },
+    "chimneyTypes": {
+      "MetalHighTemperatureS629M": "FactoryBuiltDoubleWalledMetal",
+      "MetalOther": "Other",
+      "MetalSingleWall": "FactoryBuiltDoubleWalledMetal",
+      "MetalTypeAVent": "FactoryBuiltDoubleWalledMetal",
+      "MetalTypeBVent": "FactoryBuiltDoubleWalledMetal",
+      "MetalUnspecified": "FactoryBuiltDoubleWalledMetal",
+      "None": "Unknown",
+      "DirectVent": "PrefabricatedandCertified",
+      "others": "Inherited from Generic"
+    },
+    "companyProducts": {
+      "Echelon": "ECHE",
+      "others": "Inherited from Generic"
+    },
+    "occupancyTypes": {
+      "Tenant_PrimaryItem_Condo": "RentedToThirdParty",
+      "Tenant_PrimaryItem_Other": "Rental",
+      "FamilyMember_PrimaryItem_Condo": "C (FamilyMemberOccupied company value)",
+      "PrimaryItemTenant_any": "Rental",
+      "others": "Inherited from Generic"
+    },
+    "paymentPlans": {
+      "One": "Annual",
+      "Two": "Semiannual",
+      "Three": "ThreePayments403030",
+      "others": "Inherited from Generic"
+    },
+    "valuationProducts": {
+      "EZITV": "7",
+      "IClarify": "8",
+      "E2Value": "9",
+      "others": "Inherited from Generic"
+    },
+    "vehicleBodyTypes": {
+      "MinibikeTrailBikeOffRoad": "Remapped to Motorcyclesover50cc for SGICanada",
+      "others": "Inherited from Generic"
+    },
+    "wiringTypes": {
+      "Mixed": "Used when multiple wiring types present (aluminum+copper, aluminum+knob, copper+knob)",
+      "None": "Returns False (not sent)",
+      "others": "Inherited from Generic"
+    },
+    "classSpecificRatedIndicator": {
+      "Standard": "For SeasonalDwellingStandardForm, SeasonalDwellingBroadForm, BasicResidentialFireECForm, BasicResidentialForm",
+      "Preferred": "For HomeownersBroadForm, HomeownersComprehensiveExpandedForm, HomeownersFormOther, TenantsPackageStandardForm, TenantsComprehensiveForm, CondominiumPackageStandardForm, ComprehensiveCondominiumForm, MobileHomeBroadForm"
+    },
+    "languageCodes": {
+      "notes": "Inherited from Generic, but SGICanada uppercases the value"
+    },
+    "backflowValveTypes": {
+      "None": "98",
+      "Other": "99",
+      "Flapper": "01",
+      "Gate": "02"
+    }
+  },
+  "questionAnswerCodes": {
+    "dwellQuestions": {
+      "OwnTrampoline": "csio:137",
+      "GardenTractor": "csio:138",
+      "GolfCart": "csio:139",
+      "UnlicensedRecreationalVehicles": "csio:140",
+      "MotorizedWheelChairs": "csio:141",
+      "OwnWaterCraft": "csio:142"
+    },
+    "policyTermination": {
+      "PreviousRestrictedCoverage": "csio:6 (ReasonTerminated)"
+    }
+  },
+  "companySpecificFields": {
+    "HYDRANTDISTANCECODE": {
+      "description": "Distance to fire hydrant",
+      "values": {
+        "0": "Unprotected",
+        "1": "Within 150 Meters",
+        "2": "Within 305 Meters",
+        "3": "Over 305 Meters"
+      },
+      "logic": "hydrantWithin300M = true -> 2 (Within305Meters), false -> 3 (Over305Meters)"
+    },
+    "FIRESTATIONDISTANCECODE": {
+      "description": "Distance to fire station",
+      "values": {
+        "0": "Not Specified",
+        "1": "Within 5 Kilometers",
+        "2": "Within 8 Kilometers",
+        "3": "Over 8 Kilometers",
+        "4": "Within 13 Kilometers",
+        "5": "Over 13 Kilometers"
+      }
+    },
+    "PRIMARY_BACKUP_VALVE": {
+      "description": "Backflow valve type",
+      "values": {
+        "01": "Flapper",
+        "02": "Gate",
+        "98": "None",
+        "99": "Other"
+      }
+    },
+    "PreventativeMeasures": {
+      "code": "ZPMSB",
+      "description": "Preventative Measures company value"
+    }
+  },
+  "responseClassification": {
+    "notes": "SGICanada has no CsioToFramework override -- uses Generic response parsing for all IsDiscount/IsSurcharge patterns"
+  },
+  "zCodeInventory": {
+    "habCoverage": [
+      {
+        "code": "csio:ZLIFA",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option A (Business)"
+      },
+      {
+        "code": "csio:ZLIFB",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option B (Collectibles & Treasures)"
+      },
+      {
+        "code": "csio:ZLIFC",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option C (Family & Security)"
+      },
+      {
+        "code": "csio:ZLIFD",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Lifestyle Option D (Home & Recreation)"
+      },
+      {
+        "code": "csio:ZSFW",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Solid Fuel Warranty"
+      }
+    ],
+    "autoCoverage": [],
+    "discountsSurcharges": [],
+    "companyValues": [
+      {
+        "code": "ZPMSB",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Preventative Measures (company value, not a csio: prefixed code)"
+      }
+    ]
+  },
+  "ratedOutputRules": {
+    "singleLimitEndorsement": {
+      "description": "When SingleLimitEndorsement is present, various condo-related coverages are removed from rated payload",
+      "removedCoverages": [
+        "AllRiskUnitOwnersBuildingImprovementsandBettermentsIncreasedLimits",
+        "PersonalPropertyOtherthanHomeownersTenantandCondominiumForm",
+        "PersonalPropertyHomeownersForm",
+        "NamedPerilsUnitOwnersAdditionalProtection",
+        "AllRiskUnitOwnersAdditionalProtection",
+        "NamedPerilsUnitOwnersBuildingImprovementsandBettermentsIncreasedLimits",
+        "AllRiskLossAssessmentCoverage",
+        "CondominiumBareLandLossAssessment",
+        "NamedPerilsLossAssessmentCoverage"
+      ]
+    },
+    "deviationType": {
+      "description": "SGICanada converts percentage deviations to dollar values (value * 100, type changed to ByDollars)"
+    },
+    "accidentBenefitsCodes": {
+      "description": "Ontario auto reform accident benefit codes are migrated from line-of-business level to the first vehicle",
+      "codes": ["ACB", "CHHMB", "DCB", "MEDRH", "IncomeReplacement", "Indexation", "MedicalRehabAttendantCare", "DeathAndFuneralBenefits"]
+    }
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 7,
+    "totalGenericInheritedCodes": "extensive (inherits full v043/Generic base)",
+    "zCodeCount": 5,
+    "standardCsioCodesUsedDirectly": ["csio:ACB", "csio:CHHMB", "csio:DCB", "csio:MEDRH", "csio:SLEXT", "csio:72", "csio:75", "csio:1A", "csio:6", "csio:137", "csio:138", "csio:139", "csio:140", "csio:141", "csio:142"],
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "v043only": 7,
+      "notes": "SGICanada exists only in v043. All codes are v043-only."
+    }
+  }
+}

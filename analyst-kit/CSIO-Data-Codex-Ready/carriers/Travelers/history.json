@@ -1,0 +1,15 @@
+{
+  "carrier": "Travelers",
+  "extractions": [
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22.json",
+      "totalCodes": 3,
+      "zCodeCount": 0,
+      "filesProcessed": 59,
+      "versions": ["V141"],
+      "durationSeconds": 180,
+      "status": "complete"
+    }
+  ]
+}

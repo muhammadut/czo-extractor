@@ -1,0 +1,18 @@
+{
+  "carrier": "SandboxMutual",
+  "carrierFolderName": "Sandbox",
+  "extractions": [
+    {
+      "date": "2026-03-20",
+      "file": "2026-03-20.json",
+      "rulesFile": "2026-03-20-rules.md",
+      "totalCodes": 3,
+      "totalMappings": 42,
+      "zCodeCount": 3,
+      "filesProcessed": 57,
+      "versions": ["V141"],
+      "durationSeconds": 120,
+      "status": "complete"
+    }
+  ]
+}

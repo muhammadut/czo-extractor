@@ -1,0 +1,15 @@
+{
+  "carrier": "Aviva",
+  "extractions": [
+    {
+      "date": "2026-03-20",
+      "file": "2026-03-20.json",
+      "totalCodes": 322,
+      "zCodeCount": 200,
+      "filesProcessed": 219,
+      "versions": ["V132", "V134", "V148"],
+      "durationSeconds": 180,
+      "status": "complete"
+    }
+  ]
+}

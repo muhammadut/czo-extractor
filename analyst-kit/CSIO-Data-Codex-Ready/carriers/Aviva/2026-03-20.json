@@ -1,0 +1,2377 @@
+{
+  "_metadata": {
+    "carrier": "Aviva",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V132", "V134", "V148"],
+    "latestVersion": "V148",
+    "extractionDate": "2026-03-20",
+    "filesProcessed": 219,
+    "description": "Complete CZO mapping for Aviva across V132 (legacy), V134 (BAU), V148 (Guidewire)",
+    "versionRoles": {
+      "V148": "Guidewire (new service) - inherits from V134 with select overrides",
+      "V134": "BAU (current service) - primary production version",
+      "V132": "Legacy base - original implementation"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "End28C": {
+        "csioCode": "csio:28C",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Endorsement 28C"
+      },
+      "End19B": {
+        "csioCode": "csio:19B",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Endorsement 19B"
+      },
+      "IncomeReplacement400Increase": {
+        "csioCode": "csio:ZIR2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Income Replacement $400 Weekly Increase"
+      },
+      "IncomeReplacement600Increase": {
+        "csioCode": "csio:ZIR3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Income Replacement $600 Weekly Increase"
+      },
+      "MedicalRehabilitationAndAttendantCare": {
+        "csioCode": "csio:ZMRX",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Medical Rehabilitation and Attendant Care"
+      },
+      "MedicalRehabilitationAndAttendantCareCatastrophic1M": {
+        "csioCode": "csio:ZMC2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Medical Rehabilitation and Attendant Care - Catastrophic $1M"
+      },
+      "MedicalRehabilitation": {
+        "csioCode": "csio:ZMRZ",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Medical Rehabilitation"
+      },
+      "NPCF43S": {
+        "csioCode": "csio:43S",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "NPCF 43S (Loss of Use)"
+      },
+      "NPCF43O": {
+        "csioCode": "csio:18",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "NPCF 43O (Loss of Use - Owner)"
+      },
+      "WorryFreeBundle1000": {
+        "csioCode": "csio:ZCS1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle $1,000"
+      },
+      "WorryFreeBundle1200": {
+        "csioCode": "csio:ZCSB",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle $1,200"
+      },
+      "WorryFreeBundle1500": {
+        "csioCode": "csio:ZCSD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle $1,500"
+      },
+      "WorryFreeBundle2000": {
+        "csioCode": "csio:ZCS2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle $2,000"
+      },
+      "WorryFreeBundle2500": {
+        "csioCode": "csio:ZCS3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle $2,500"
+      },
+      "WorryFreeBundle5000": {
+        "csioCode": "csio:ZCS4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle $5,000"
+      },
+      "WorryFreeBundleZCS5": {
+        "csioCode": "csio:ZCS5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle ZCS5"
+      },
+      "WorryFreeBundleZWFB": {
+        "csioCode": "csio:ZWFB",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Worry-Free Bundle ZWFB"
+      },
+      "OccasionalOperatorsCPP": {
+        "csioCode": "csio:ZOCP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Occasional Operators Claims Protector Plan"
+      },
+      "OccasionalOperatorsEnd39": {
+        "csioCode": "csio:ZOCC",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Occasional Operators Endorsement 39"
+      },
+      "ExtendedClaimProtectorPlanEnd39": {
+        "csioCode": "csio:ZPR2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Extended Claim Protector Plan Endorsement 39"
+      },
+      "DrivingRecordProtectorClaims9": {
+        "csioCode": "csio:ZPR9",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Driving Record Protector Claims 9"
+      },
+      "DrivingRecordProtectorClaims8": {
+        "csioCode": "csio:ZPR8",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Driving Record Protector Claims 8"
+      },
+      "TransportationNetwork": {
+        "csioCode": "csio:TNC",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Permission to Carry Passengers for Transportation Network"
+      },
+      "LimitAccessoriesEquip38A": {
+        "csioCode": "csio:Z38A",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Limit Accessories Equipment 38A"
+      },
+      "LimitAccessoriesEquip38B": {
+        "csioCode": "csio:Z38B",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Limit Accessories Equipment 38B"
+      },
+      "LimitAccessoriesEquip38C": {
+        "csioCode": "csio:Z38C",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Limit Accessories Equipment 38C"
+      },
+      "LimitedWaiver43L": {
+        "csioCode": "csio:43L",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Limited Waiver 43L"
+      },
+      "LimitedWaiver43RL": {
+        "csioCode": "csio:43RL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Limited Waiver 43RL"
+      },
+      "SatelliteRoadsideAssistance": {
+        "csioCode": "csio:ZRPP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Satellite Roadside Assistance (primary vehicle)"
+      },
+      "SatelliteRoadsideAssistanceZRPS": {
+        "csioCode": "csio:ZRPS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Satellite Roadside Assistance (subsequent vehicle)"
+      },
+      "SatelliteRoadsideAssistanceSRAP": {
+        "csioCode": "csio:SRAP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Satellite Roadside Assistance Program"
+      },
+      "SatelliteRoadsideAssistanceZRRA": {
+        "csioCode": "csio:ZRRA",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Satellite Roadside Assistance ZRRA"
+      },
+      "ReplacementOrRepairCostZ43S": {
+        "csioCode": "csio:Z43S",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Replacement or Repair Cost Z43S"
+      },
+      "LegalLiabforDamageToNonOwnedAutoZ27F": {
+        "csioCode": "csio:Z27F",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Legal Liability for Damage to Non-Owned Auto Z27F"
+      },
+      "LegalLiabforDamageToNonOwnedAutoZ27G": {
+        "csioCode": "csio:Z27G",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Legal Liability for Damage to Non-Owned Auto Z27G"
+      },
+      "DrivingRecordProtectorConvictionsMCP": {
+        "csioCode": "csio:MCP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Driving Record Protector Convictions MCP"
+      },
+      "DrivingRecordProtectorConvictionsMCPOD": {
+        "csioCode": "csio:MCPOD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Driving Record Protector Convictions MCPOD (Occasional Driver)"
+      },
+      "ShortTermRental90": {
+        "csioCode": "csio:ZSTR1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Short Term Rental 90 days"
+      },
+      "ShortTermRental180": {
+        "csioCode": "csio:ZSTR2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Short Term Rental 180 days"
+      },
+      "ShortTermRental365": {
+        "csioCode": "csio:ZSTR3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Short Term Rental 365 days"
+      },
+      "ClaimsProtectorPlan": {
+        "csioCode": "csio:CPP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Claims Protector Plan"
+      },
+      "FamilyProtection": {
+        "csioCode": "csio:44",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Family Protection OPCF 44"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "OPCF 49"
+      },
+      "OPCF35": {
+        "csioCode": "csio:35",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "OPCF 35 (Motorcycle Emergency Assistance)"
+      },
+      "DissapearingDeductibleAuto": {
+        "csioCode": "csio:26",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Disappearing Deductible (Auto) - AB/NB/ON only"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "csio:LWD",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Disappearing Deductible (Hab)"
+      },
+      "PermissionToParticipateInVehicleSharing": {
+        "csioCode": "csio:5CS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Permission to Participate in Vehicle Sharing (V148 standard CSIO code)",
+        "notes": "V134 uses csio:Z05S proprietary code"
+      },
+      "PermissionToParticipateInVehicleSharingV134": {
+        "csioCode": "csio:Z05S",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Permission to Participate in Vehicle Sharing (V134 proprietary)"
+      },
+      "PersonalEffects_standardCSIO": {
+        "csioCode": "csio:PEPRE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Personal Effects (standard CSIO code)"
+      },
+      "PersonalEffects": {
+        "csioCode": "csio:Z091",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Personal Effects (proprietary code)"
+      },
+      "VacationExpense": {
+        "csioCode": "csio:Z092",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Vacation Expense"
+      },
+      "NPCF096": {
+        "csioCode": "csio:Z096",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "NPCF 096 / Limited Waiver 43R"
+      },
+      "AccessoriesExtension_standardCSIO": {
+        "csioCode": "csio:25A",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Accessories Extension (standard CSIO code)"
+      },
+      "AccessoriesExtension": {
+        "csioCode": "csio:Z098",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Accessories Extension (proprietary code)"
+      },
+      "ExcessLiability": {
+        "csioCode": "csio:ZEXPL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Excess Liability"
+      },
+      "UninsuredAutomobileOccasionalDriver": {
+        "csioCode": "csio:UAOD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Uninsured Automobile Occasional Driver (undeclared - inline code only)",
+        "notes": "Not in CompanyConstants, hardcoded in PcCoverageCollectionConverter.vb line 112"
+      },
+      "Domino": {
+        "csioCode": "csio:3B",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Domino motorcycle body type"
+      },
+      "KYCS": {
+        "csioCode": "csio:3A",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "KYCS motorcycle body type"
+      }
+    },
+    "homeEndorsements": {
+      "HomeRepairEnd50": {
+        "csioCode": "csio:ZREP1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Home Repair Endorsement 50"
+      },
+      "ServiceLine": {
+        "csioCode": "csio:SLEXT",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Service Line Coverage Extension"
+      },
+      "ClaimPrevent": {
+        "csioCode": "csio:ZLPE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claims Prevention"
+      },
+      "HomeProtectBundle1": {
+        "csioCode": "csio:ZHPB1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Home Protect Bundle 1"
+      },
+      "HomeProtectBundle2": {
+        "csioCode": "csio:ZHPB2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Home Protect Bundle 2"
+      },
+      "HomeProtectBundle": {
+        "csioCode": "csio:ZHPB",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Home Protect Bundle (combined)"
+      },
+      "GreenAssureCoverage": {
+        "csioCode": "csio:ZGRNE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Green Assure Coverage"
+      },
+      "GreenAssureCoverageTrader": {
+        "csioCode": "csio:ZGRN1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Green Assure Coverage (Aviva Traders)"
+      },
+      "EarthquakeCoverage": {
+        "csioCode": "csio:ERQK",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Earthquake Coverage",
+        "deductibleOptions": {
+          "EQH2/EQN2/EQT2": "2%",
+          "EQH5/EQN5/EQT5": "5%"
+        },
+        "provinceSpecific": {
+          "BC": "Uses EQ1T/EQ1A/EQ2T/EQ2A/EQ3T/EQ3A/EQ4A/EQ4T/EQ5A/EQ5T codes with 5%/8%/10%/15%/20% deductibles, building/contents/total options via OptionCd"
+        }
+      },
+      "EQEmergencyLivingExpense": {
+        "csioCode": "csio:ZEQLE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Earthquake Emergency Living Expense"
+      },
+      "BuildingByLaw": {
+        "csioCode": "csio:BYLAW",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Law Coverage (base)"
+      },
+      "HomeLineBusiness": {
+        "csioCode": "csio:HOBUS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Home Line of Business"
+      },
+      "HomeBusinessMiscProfessional": {
+        "csioCode": "csio:MiscProfessional",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Home Business - Miscellaneous Professional"
+      },
+      "VacancyPermit": {
+        "csioCode": "csio:VACPR",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Vacancy Permit"
+      },
+      "WaterCoverage": {
+        "csioCode": "csio:OVWAT",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Overland Water Coverage"
+      },
+      "SewerCoveragePolicyLimit": {
+        "csioCode": "csio:SEWLM",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Sewer Coverage - Policy Limit"
+      },
+      "ClaimProtectorCP": {
+        "csioCode": "csio:CLFRE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claims Protector CP"
+      },
+      "ActualCashValueCoverage": {
+        "csioCode": "csio:ZLACV",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Actual Cash Value Coverage"
+      },
+      "RoofEndorsementCoverageA": {
+        "csioCode": "csio:ROOFA",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Roof Endorsement Coverage A"
+      },
+      "RoofEndorsementCoverageB": {
+        "csioCode": "csio:ZACVB",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Roof Endorsement Coverage B"
+      },
+      "CondominiumCorporationDeductible1": {
+        "csioCode": "csio:ZCCD1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Condominium Corporation Deductible 1"
+      },
+      "CondominiumCorporationDeductible2": {
+        "csioCode": "csio:ZCCD2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Condominium Corporation Deductible 2"
+      },
+      "CondominiumCorporationDeductible3": {
+        "csioCode": "csio:ZCCD3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Condominium Corporation Deductible 3"
+      },
+      "CondominiumCorporationDeductible": {
+        "csioCode": "csio:CDEDA",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Condominium Deductible Assessment"
+      },
+      "CondominiumDeductibleAssessmentEarthquakeExcluded": {
+        "csioCode": "csio:CDEDE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Condominium Deductible Assessment - Earthquake Excluded"
+      },
+      "SingleLimitEndorsement6": {
+        "csioCode": "csio:ZCSL6",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Single Limit Endorsement 6"
+      },
+      "SingleLimitEndorsement7": {
+        "csioCode": "csio:ZCSL7",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Single Limit Endorsement 7"
+      },
+      "SingleLimitEndorsement8": {
+        "csioCode": "csio:ZCSL8",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Single Limit Endorsement 8"
+      },
+      "SingleLimitEndorsement9": {
+        "csioCode": "csio:ZCSL9",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Single Limit Endorsement 9"
+      },
+      "SingleLimitEndorsement": {
+        "csioCode": "csio:HSL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Single Limit Endorsement (base)"
+      },
+      "SingleLimitEndorsementBC": {
+        "csioCode": "csio:ZTNE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Single Limit Endorsement (BC)"
+      },
+      "TechEnthusiastEndorsement1": {
+        "csioCode": "csio:ZTEK1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tech Enthusiast Endorsement 1"
+      },
+      "TechEnthusiastEndorsement2": {
+        "csioCode": "csio:ZTEK2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tech Enthusiast Endorsement 2"
+      },
+      "TechEnthusiastEndorsement3": {
+        "csioCode": "csio:ZTEK3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tech Enthusiast Endorsement 3"
+      },
+      "AdditionalNameInsuredPremise": {
+        "csioCode": "csio:ZAICL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Additional Named Insured Premise"
+      },
+      "BelongingsStorage": {
+        "csioCode": "csio:ZSTOR",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Belongings in Storage"
+      },
+      "PropertyLossAssessment": {
+        "csioCode": "csio:zPRAS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Property Loss Assessment"
+      },
+      "RoofandSidingLimitationEndorsement": {
+        "csioCode": "csio:ZRSLE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Roof and Siding Limitation Endorsement"
+      },
+      "DisappearingProtectBundle": {
+        "csioCode": "csio:CLADV",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Disappearing Deductible + Claims Protector Bundle"
+      },
+      "GlassReducedPolicyDeductible": {
+        "csioCode": "csio:GLABR",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Glass - Reduced Policy Deductible"
+      },
+      "Burglary": {
+        "csioCode": "csio:BURG",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Burglary Coverage (Seasonal FEC)"
+      },
+      "Vandalism": {
+        "csioCode": "csio:VMBC",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Vandalism Coverage (Seasonal FEC)"
+      },
+      "RentalIncome": {
+        "csioCode": "csio:RENT",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Rental Income Coverage"
+      },
+      "LossAssessmentEndorsement": {
+        "csioCode": "csio:ZHCEL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Loss Assessment Endorsement"
+      },
+      "AdditionalLivingExpense": {
+        "csioCode": "csio:ALVE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Additional Living Expense"
+      },
+      "GolfCartEndorsement": {
+        "csioCode": "csio:GOLFC",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Golf Cart Endorsement"
+      }
+    },
+    "buildingByLawCodes": {
+      "BuildingByLaws5k": {
+        "csioCode": "csio:ZBYL1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $5,000"
+      },
+      "BuildingByLaws10k": {
+        "csioCode": "csio:ZBYL2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $10,000"
+      },
+      "BuildingByLaws25k": {
+        "csioCode": "csio:ZBYL3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $25,000"
+      },
+      "BuildingByLaws50k": {
+        "csioCode": "csio:ZBYL4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $50,000"
+      },
+      "BuildingByLaws75k": {
+        "csioCode": "csio:ZBYL5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $75,000"
+      },
+      "BuildingByLaws30k": {
+        "csioCode": "csio:ZBYL6",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $30,000"
+      },
+      "BuildingByLaws100k": {
+        "csioCode": "csio:ZBYL7",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Building By-Laws $100,000"
+      },
+      "BYLWDolceVita": {
+        "csioCode": "csio:ZBYLW",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Building By-Laws Dolce Vita W (BC/AB Traders only)"
+      },
+      "BYLSDolceVita": {
+        "csioCode": "csio:ZBYLS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Building By-Laws Dolce Vita S (BC/AB Traders only)"
+      }
+    },
+    "scheduledPropertyItems": {
+      "JewelleryAllRisk": {
+        "csioCode": "csio:JL",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Jewellery All Risk"
+      },
+      "CamerasAllRisk": {
+        "csioCode": "csio:CM",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Cameras All Risk"
+      },
+      "BicyclesAllRisk": {
+        "csioCode": "csio:BY",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Bicycles All Risk"
+      },
+      "FineArtsAllRiskNamedPerils": {
+        "csioCode": "csio:FA",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Fine Arts All Risk/Named Perils"
+      },
+      "FineArtsBreakage": {
+        "csioCode": "csio:FC",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Fine Arts Breakage"
+      },
+      "LawnGardenEquipmentAllRisk": {
+        "csioCode": "csio:LT",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Lawn & Garden Equipment All Risk"
+      },
+      "FursAllRisk": {
+        "csioCode": "csio:FR",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Furs All Risk"
+      },
+      "MusicalInstrumentsNonProfessionalAllRisk": {
+        "csioCode": "csio:MI",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Musical Instruments (Non-Professional) All Risk"
+      },
+      "PersonalComputerAllRisk": {
+        "csioCode": "csio:PC",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Personal Computer All Risk"
+      },
+      "HearingAidAllRisk": {
+        "csioCode": "csio:HA",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Hearing Aid All Risk"
+      },
+      "GolfCartMisc": {
+        "csioCode": "csio:GC",
+        "source": "standard",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Golf Cart (Misc)"
+      },
+      "JewelleryInBankVault": {
+        "csioCode": "csio:ZSAF1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Jewellery in Bank Vault"
+      },
+      "JewelleryOutOfBank": {
+        "csioCode": "csio:ZSAF2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Jewellery Out of Bank"
+      },
+      "JewelleryIncreasedLimit": {
+        "csioCode": "csio:ZINJL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Jewellery Increased Limit"
+      }
+    },
+    "homeLiabilities": {
+      "GreenHomePowerSolarLeasedLandLiability": {
+        "csioCode": "csio:ZGSL",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Green Home Power - Solar Leased Land Liability"
+      },
+      "GreenHomePowerGenerationSolarLiability": {
+        "csioCode": "csio:ZGSR",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Green Home Power Generation - Solar Liability"
+      },
+      "GreenHomePowerGenerationWindTurbineLiability": {
+        "csioCode": "csio:ZGWD",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Green Home Power Generation - Wind Turbine Liability"
+      },
+      "GreenHomePowerWindTurbineLeasedLandLiability": {
+        "csioCode": "csio:ZGWL",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Green Home Power - Wind Turbine Leased Land Liability"
+      },
+      "AccountantOfficeLiability": {
+        "csioCode": "csio:ZACT",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Accountant Office Liability"
+      },
+      "DentistOfficeLiability": {
+        "csioCode": "csio:ZDNT",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Dentist Office Liability"
+      },
+      "DoctorOfficeLiability": {
+        "csioCode": "csio:ZDOC",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Doctor Office Liability"
+      },
+      "InsuranceAgentOfficeLiability": {
+        "csioCode": "csio:ZAGT",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Insurance Agent Office Liability"
+      },
+      "AdditionalResidenceLiabilityExtension": {
+        "csioCode": "csio:ADDRR",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Additional Residence Liability Extension"
+      },
+      "DayCareExtension": {
+        "csioCode": "csio:DAYC",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Day Care In-Home Extension"
+      },
+      "Roomer": {
+        "csioCode": "csio:ZBAP1",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Roomer/Boarder Liability"
+      },
+      "AdditionalNameInsuredPremiseLiability": {
+        "csioCode": "csio:ZAIPL",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Additional Named Insured Premise Liability"
+      },
+      "PersonalExcessLiability": {
+        "csioCode": "csio:ZEXPL",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Personal Excess Liability"
+      },
+      "AtvLiability": {
+        "csioCode": "csio:ZATV",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "ATV Liability"
+      },
+      "JetSkiLiability": {
+        "csioCode": "csio:JPPWB",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Jet Ski/Personal Watercraft Liability"
+      }
+    },
+    "watercraftLiability": {
+      "InboardOutboardLiability0025": {
+        "csioCode": "csio:WALI",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Inboard/Outboard Liability 0-25 HP"
+      },
+      "InboardOutboardLiability2648": {
+        "csioCode": "csio:WALI2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Inboard/Outboard Liability 26-48 HP"
+      },
+      "InboardOutboardLiability48Up": {
+        "csioCode": "csio:WALI3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Inboard/Outboard Liability 48+ HP"
+      },
+      "OutboardMotorLiability2650HP": {
+        "csioCode": "csio:WALI4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Outboard Motor Liability 26-50 HP"
+      },
+      "OutboardMotorLiability5175HP": {
+        "csioCode": "csio:WALI5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Outboard Motor Liability 51-75 HP"
+      },
+      "OutboardMotorLiability76100HP": {
+        "csioCode": "csio:WALI6",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Outboard Motor Liability 76-100 HP"
+      },
+      "OutboardMotorLiability101150HP": {
+        "csioCode": "csio:WALI7",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Outboard Motor Liability 101-150 HP"
+      },
+      "OutboardMotorLiability151200HP": {
+        "csioCode": "csio:WALI8",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Outboard Motor Liability 151-200 HP"
+      },
+      "WatercraftNoPoweredLiability2730F": {
+        "csioCode": "csio:ZBW1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Non-Powered Watercraft Liability 27-30 ft"
+      },
+      "WatercraftNoPoweredLiability3135F": {
+        "csioCode": "csio:ZBW2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Non-Powered Watercraft Liability 31-35 ft"
+      },
+      "WatercraftNoPoweredLiability3640F": {
+        "csioCode": "csio:ZBW3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Non-Powered Watercraft Liability 36-40 ft"
+      },
+      "WatercraftNoPoweredLiability4145F": {
+        "csioCode": "csio:ZBW4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Non-Powered Watercraft Liability 41-45 ft"
+      },
+      "WatercraftNoPoweredLiability4650F": {
+        "csioCode": "csio:ZBW5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Non-Powered Watercraft Liability 46-50 ft"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "WebDiscount": {
+        "csioCode": "csio:ZINTD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Web/Internet Discount"
+      },
+      "TierDiscount0": {
+        "csioCode": "csio:ZT0",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount 0"
+      },
+      "TierDiscount2": {
+        "csioCode": "csio:ZT2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount 2"
+      },
+      "TierDiscount3": {
+        "csioCode": "csio:ZT3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount 3"
+      },
+      "TierDiscountD1": {
+        "csioCode": "csio:ZD1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount D1"
+      },
+      "TierDiscountD2": {
+        "csioCode": "csio:ZD2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount D2"
+      },
+      "TierDiscountD3": {
+        "csioCode": "csio:ZD3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount D3"
+      },
+      "TierDiscountD4": {
+        "csioCode": "csio:ZD4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Discount D4"
+      },
+      "GroupRating35": {
+        "csioCode": "csio:ZE1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Group Rating 3-5%"
+      },
+      "GroupRatingE": {
+        "csioCode": "csio:ZNE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Group Rating E"
+      },
+      "GroupRatingF": {
+        "csioCode": "csio:ZNF",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Group Rating F"
+      },
+      "GroupRatingG": {
+        "csioCode": "csio:ZNG",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Group Rating G"
+      },
+      "GroupRatingH": {
+        "csioCode": "csio:ZNH",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Group Rating H"
+      },
+      "CombinedPolicyDiscount": {
+        "csioCode": "csio:DISCP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Combined Policy Discount"
+      },
+      "CombinedPolicyDiscount1": {
+        "csioCode": "csio:ZCOMB",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Combined Policy Discount (variant)"
+      },
+      "StabilityDiscount": {
+        "csioCode": "csio:DISSV",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Stability Discount"
+      },
+      "StabilityDiscountZSTBL": {
+        "csioCode": "csio:ZSTBL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Stability Discount (variant)"
+      },
+      "NewBusinessDiscount": {
+        "csioCode": "csio:ZNB0",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Business Discount"
+      },
+      "NewBusinessDiscount1": {
+        "csioCode": "csio:ZNBD1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "New Business Discount 1"
+      },
+      "NewBusinessDiscount2": {
+        "csioCode": "csio:ZNBD2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "New Business Discount 2"
+      },
+      "NewBusinessDiscount3": {
+        "csioCode": "csio:ZYR01",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "New Business Discount 3 (Year 1)"
+      },
+      "ClaimFreeDiscountZCFD7": {
+        "csioCode": "csio:ZCFD7",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Free Discount 7"
+      },
+      "ClaimFreeDiscountZCFD8": {
+        "csioCode": "csio:ZCFD8",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Free Discount 8"
+      },
+      "ClaimFreeDiscountZCFD3": {
+        "csioCode": "csio:ZCFD3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Free Discount 3"
+      },
+      "ClaimFreeDiscountZCFD5": {
+        "csioCode": "csio:ZCFD5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Free Discount 5"
+      },
+      "BrokerDiscretionaryDiscount05": {
+        "csioCode": "csio:ZSB05",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Broker Discretionary Discount 5%"
+      },
+      "BrokerDiscretionaryDiscount10": {
+        "csioCode": "csio:ZSB10",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Broker Discretionary Discount 10%"
+      },
+      "BrokerDiscretionaryDiscount15": {
+        "csioCode": "csio:ZSB15",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Broker Discretionary Discount 15%"
+      },
+      "ExperienceDiscountZEXP1": {
+        "csioCode": "csio:ZEXP1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 1"
+      },
+      "ExperienceDiscountZEXP2": {
+        "csioCode": "csio:ZEXP2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 2"
+      },
+      "ExperienceDiscountZEXP3": {
+        "csioCode": "csio:ZEXP3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 3"
+      },
+      "ExperienceDiscountZEXP4": {
+        "csioCode": "csio:ZEXP4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 4"
+      },
+      "ExperienceDiscountZEXP5": {
+        "csioCode": "csio:ZEXP5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 5"
+      },
+      "ExperienceDiscountZEXP6": {
+        "csioCode": "csio:ZEXP6",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 6"
+      },
+      "ExperienceDiscountZEXP9": {
+        "csioCode": "csio:ZEXP9",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 9 / Intermediate Discount"
+      },
+      "ExperienceDiscountZEX10": {
+        "csioCode": "csio:ZEX10",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 10"
+      },
+      "ExperienceDiscountZEX11": {
+        "csioCode": "csio:ZEX11",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 11"
+      },
+      "ExperienceDiscountZEX12": {
+        "csioCode": "csio:ZEX12",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 12"
+      },
+      "ExperienceDiscountZEX13": {
+        "csioCode": "csio:ZEX13",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 13"
+      },
+      "ExperienceDiscountZEX14": {
+        "csioCode": "csio:ZEX14",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount 14"
+      },
+      "ExperienceDiscountZEXPM": {
+        "csioCode": "csio:ZEXPM",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Experience Discount M"
+      },
+      "LoyaltyDiscountZLOYD": {
+        "csioCode": "csio:ZLOYD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Loyalty Discount D"
+      },
+      "LoyaltyDiscountZLOY1": {
+        "csioCode": "csio:ZLOY1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Loyalty Discount 1"
+      },
+      "LoyaltyDiscountZLOY2": {
+        "csioCode": "csio:ZLOY2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Loyalty Discount 2"
+      },
+      "LoyaltyDiscountZLOY3": {
+        "csioCode": "csio:ZLOY3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Loyalty Discount 3"
+      },
+      "EmployeeDiscountZEA": {
+        "csioCode": "csio:ZEA",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Employee Discount A"
+      },
+      "EmployeeDiscountZEE": {
+        "csioCode": "csio:ZEE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Employee Discount E"
+      },
+      "FirstChanceDiscountZFOY3": {
+        "csioCode": "csio:ZFOY3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Discount Full Ontario Year 3"
+      },
+      "FirstChanceDiscountZFOY4": {
+        "csioCode": "csio:ZFOY4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Discount Full Ontario Year 4"
+      },
+      "FirstChanceDiscountZFOY5": {
+        "csioCode": "csio:ZFOY5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Discount Full Ontario Year 5"
+      },
+      "FirstChanceDiscountZFFY3": {
+        "csioCode": "csio:ZFFY3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Discount Full Year 3"
+      },
+      "FirstChanceDiscountZFFY4": {
+        "csioCode": "csio:ZFFY4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Discount Full Year 4"
+      },
+      "FirstChanceDiscountZFFY5": {
+        "csioCode": "csio:ZFFY5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Discount Full Year 5"
+      },
+      "FirstChanceOccDiscountZFON0": {
+        "csioCode": "csio:ZFON0",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Occasional Discount 0"
+      },
+      "FirstChanceOccDiscountZFON1": {
+        "csioCode": "csio:ZFON1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Occasional Discount 1"
+      },
+      "FirstChanceOccDiscountZFON2": {
+        "csioCode": "csio:ZFON2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Occasional Discount 2"
+      },
+      "FirstChanceDiscountZFFN0": {
+        "csioCode": "csio:ZFFN0",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Full Non-Ontario 0"
+      },
+      "FirstChanceDiscountZFFN1": {
+        "csioCode": "csio:ZFFN1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Full Non-Ontario 1"
+      },
+      "FirstChanceDiscountZFFN2": {
+        "csioCode": "csio:ZFFN2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Full Non-Ontario 2"
+      },
+      "FirstChanceDiscountZFMY2": {
+        "csioCode": "csio:ZFMY2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Motorcycle Year 2"
+      },
+      "FirstChanceDiscountZFMY3": {
+        "csioCode": "csio:ZFMY3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Motorcycle Year 3"
+      },
+      "FirstChanceDiscountZFMY4": {
+        "csioCode": "csio:ZFMY4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Motorcycle Year 4"
+      },
+      "FirstChanceDiscountZFMY5": {
+        "csioCode": "csio:ZFMY5",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "First Chance Motorcycle Year 5"
+      },
+      "StaySafeDiscount": {
+        "csioCode": "csio:ZSAFE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Stay Safe Discount"
+      },
+      "PackageDiscountZPKDI": {
+        "csioCode": "csio:ZPKDI",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Package Discount"
+      },
+      "MatureDiscountDISMI": {
+        "csioCode": "csio:DISMI",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Mature Citizen Discount"
+      },
+      "CleanStartDiscountZCLSD": {
+        "csioCode": "csio:ZCLSD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Clean Start / New Driver Discount"
+      },
+      "ShortCommuteDiscountZSHC2": {
+        "csioCode": "csio:ZSHC2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Short Commute Discount"
+      },
+      "ContinuousPriorInsuranceDiscountZCPID": {
+        "csioCode": "csio:ZCPID",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Continuous Prior Insurance Discount (NB only)"
+      },
+      "EmployeeDiscount": {
+        "csioCode": "csio:DISEM",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Employee Discount (Occupation)"
+      },
+      "TelematicsDiscount": {
+        "csioCode": "csio:DISTE",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Telematics / Usage-Based Insurance Discount"
+      },
+      "AutonomousBrakingSystemDiscount": {
+        "csioCode": "csio:DISAB",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Autonomous Braking System Discount"
+      },
+      "AutonomousBrakingSystemDiscountGenerated": {
+        "csioCode": "csio:ZAEBS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Autonomous Braking System Discount (Generated)"
+      },
+      "AdvanceSafetyFeatureDiscount": {
+        "csioCode": "csio:ZASFO",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Advanced Safety Feature Discount (ON anti-theft)"
+      },
+      "AdvanceSafetyFeature": {
+        "csioCode": "csio:ZASFI",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Advanced Safety Feature (anti-lock brakes)"
+      },
+      "HybridDiscount": {
+        "csioCode": "csio:DISHY",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Hybrid Vehicle Discount"
+      },
+      "HybridVehicleDiscount": {
+        "csioCode": "csio:HYDS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Hybrid Vehicle Discount (V148)"
+      },
+      "ElectricDiscount": {
+        "csioCode": "csio:DISEL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Electric Vehicle Discount"
+      },
+      "ElectricVehicleDiscount": {
+        "csioCode": "csio:EVDS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Electric Vehicle Discount (V148 variant)"
+      },
+      "TheftRecoveryDeviceDiscount": {
+        "csioCode": "csio:DISAD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Theft Recovery Device Discount"
+      },
+      "AdvanceRiderTrainingDiscount": {
+        "csioCode": "csio:ZARTD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Advanced Rider Training Discount"
+      },
+      "RiderTrainingDiscountAlberta": {
+        "csioCode": "csio:ZRTDS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Rider Training Discount (Alberta)"
+      },
+      "MultiMotorcycleDiscount": {
+        "csioCode": "csio:DISMM",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Multi-Motorcycle Discount"
+      },
+      "VintageDiscount": {
+        "csioCode": "csio:ZVMDS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Vintage/Miscellaneous Discount"
+      },
+      "Class05_06DriversDiscount": {
+        "csioCode": "csio:ZFOND",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Class 05/06 Drivers Discount (First Chance Occasional)"
+      },
+      "TerritorialDiscount": {
+        "csioCode": "csio:DISTR",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Territorial Discount"
+      }
+    },
+    "autoSurcharges": {
+      "RightHandDriveVehicle": {
+        "csioCode": "csio:SURRH",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V148"],
+        "description": "Right Hand Drive Vehicle Surcharge",
+        "notes": "V134 uses csio:ZRHDS"
+      },
+      "RightHandDriveVehicleV134": {
+        "csioCode": "csio:ZRHDS",
+        "source": "aviva",
+        "version": "V134",
+        "availableIn": ["V132", "V134"],
+        "description": "Right Hand Drive Vehicle Surcharge (V134 proprietary)"
+      },
+      "TierSurcharge1": {
+        "csioCode": "csio:ZT1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Surcharge 1"
+      },
+      "TierSurcharge4": {
+        "csioCode": "csio:ZT4",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Surcharge 4"
+      },
+      "AntiqueVehicleSurcharge": {
+        "csioCode": "csio:ZANT",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Antique Vehicle Surcharge"
+      },
+      "ManufacturerI": {
+        "csioCode": "csio:ZMFS1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Manufacturer Surcharge I"
+      },
+      "ManufacturerII": {
+        "csioCode": "csio:ZMFS2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Manufacturer Surcharge II"
+      },
+      "ManufacturerIII": {
+        "csioCode": "csio:ZMFS3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Manufacturer Surcharge III"
+      },
+      "SportBikeSurcharge": {
+        "csioCode": "csio:ZSBSC",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Sport Bike Surcharge"
+      },
+      "StandAloneSurcharge": {
+        "csioCode": "csio:SURML",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Stand-Alone Surcharge"
+      }
+    },
+    "habDiscounts": {
+      "NewHomeDiscount3": {
+        "csioCode": "csio:ZNH03",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 3 years"
+      },
+      "NewHomeDiscount5": {
+        "csioCode": "csio:ZNH05",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 5 years"
+      },
+      "NewHomeDiscount7": {
+        "csioCode": "csio:ZNH07",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 7 years"
+      },
+      "NewHomeDiscount9": {
+        "csioCode": "csio:ZNH09",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 9 years"
+      },
+      "NewHomeDiscount10": {
+        "csioCode": "csio:ZNH10",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 10 years"
+      },
+      "NewHomeDiscount11": {
+        "csioCode": "csio:ZNH11",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 11 years"
+      },
+      "NewHomeDiscount13": {
+        "csioCode": "csio:ZNH13",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 13 years"
+      },
+      "NewHomeDiscount15": {
+        "csioCode": "csio:ZNH15",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 15 years"
+      },
+      "NewHomeDiscount16": {
+        "csioCode": "csio:ZNH16",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 16 years"
+      },
+      "NewHomeDiscount17": {
+        "csioCode": "csio:ZNH17",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 17 years"
+      },
+      "NewHomeDiscount18": {
+        "csioCode": "csio:ZNH18",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 18 years"
+      },
+      "NewHomeDiscount19": {
+        "csioCode": "csio:ZNH19",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 19 years"
+      },
+      "NewHomeDiscount20": {
+        "csioCode": "csio:ZNH20",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Home Discount 20 years"
+      },
+      "MultiLineDiscount5": {
+        "csioCode": "csio:ZML05",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Multi-Line Discount 5%"
+      },
+      "MultiPolicyDiscount10": {
+        "csioCode": "csio:ZML10",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Multi-Policy Discount 10%"
+      },
+      "NewRoofDiscount": {
+        "csioCode": "csio:ZRDNW",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "New Roof Discount"
+      },
+      "EmployeeDiscountZPV": {
+        "csioCode": "csio:ZPV",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Employee Discount (Hab)"
+      },
+      "SepticSystemDiscount": {
+        "csioCode": "csio:DISSS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Septic System Discount"
+      },
+      "RoofTypeDiscount": {
+        "csioCode": "csio:ZRFDS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Roof Type Discount"
+      },
+      "WaterAlarmDiscount": {
+        "csioCode": "csio:DISWS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Water Alarm Discount"
+      },
+      "CentrallyMonitoredWaterAlarmDiscount": {
+        "csioCode": "csio:ZCWAD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Centrally Monitored Water Alarm Discount"
+      },
+      "BackwaterValveDiscount": {
+        "csioCode": "csio:ZBKUP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Backwater Valve Discount"
+      },
+      "AutomaticSumpPumpDiscount": {
+        "csioCode": "csio:ZASMP",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Automatic Sump Pump Discount"
+      },
+      "NonSmokerDiscount": {
+        "csioCode": "csio:DISNS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Non-Smoker Discount"
+      },
+      "SelectBrokerDiscretionaryDiscount": {
+        "csioCode": "csio:ZSBDD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Select Broker Discretionary Discount"
+      },
+      "HomeAgeDiscount": {
+        "csioCode": "csio:DISMA",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Home Age Discount"
+      },
+      "EvaluatorDiscount": {
+        "csioCode": "csio:DISEV",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Evaluator Discount"
+      },
+      "EvaluatorDiscount1": {
+        "csioCode": "csio:ZHEDR",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Evaluator Discount (variant)"
+      },
+      "GroupDiscount": {
+        "csioCode": "csio:DISGD",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Group Discount (Hab)"
+      }
+    },
+    "habSurcharges": {
+      "ClaimSurcharge30": {
+        "csioCode": "csio:ZCS30",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Surcharge 30%"
+      },
+      "ClaimSurcharge45": {
+        "csioCode": "csio:ZCS45",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Surcharge 45%"
+      },
+      "ClaimSurcharge60": {
+        "csioCode": "csio:ZCS60",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Claim Surcharge 60%"
+      },
+      "ClaimSurcharge": {
+        "csioCode": "csio:SURCL",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V134", "V148"],
+        "description": "Claim Surcharge (general)"
+      },
+      "TierSurchargeS1": {
+        "csioCode": "csio:ZS1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Surcharge S1"
+      },
+      "TierSurchargeS2": {
+        "csioCode": "csio:ZS2",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Surcharge S2"
+      },
+      "TierSurchargeS3": {
+        "csioCode": "csio:ZS3",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Tier Surcharge S3"
+      },
+      "ReverseSlopeDrivewaySurcharge": {
+        "csioCode": "csio:ZRSDS",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Reverse Slope Driveway Surcharge"
+      },
+      "BasementApartmentSurcharge": {
+        "csioCode": "csio:ZBAP1",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Basement Apartment Surcharge"
+      },
+      "UnderConstructionSurcharge": {
+        "csioCode": "csio:SURUC",
+        "source": "aviva",
+        "version": "V148",
+        "availableIn": ["V132", "V134", "V148"],
+        "description": "Under Construction Surcharge"
+      }
+    }
+  },
+  "enumMappings": {
+    "vehicleBodyTypes_motorcycle": {
+      "FifthWheel": { "csioCode": "csio:31", "description": "Fifth Wheel" },
+      "Cruiser": { "csioCode": "csio:35", "description": "Cruiser" },
+      "DualPurpose": { "csioCode": "csio:37", "description": "Dual Purpose" },
+      "Adventurer": { "csioCode": "csio:30", "description": "Adventurer" },
+      "ThreeWheelScooter": { "csioCode": "csio:29", "description": "Three-Wheel Scooter" },
+      "Enduro": { "csioCode": "csio:38", "description": "Enduro" },
+      "NakedSport": { "csioCode": "csio:45", "description": "Naked Sport" },
+      "SportTouring": { "csioCode": "csio:53", "description": "Sport Touring" },
+      "Standard": { "csioCode": "csio:54", "description": "Standard" },
+      "Performance": { "csioCode": "csio:49", "description": "Performance" },
+      "StandardSidecar": { "csioCode": "csio:55", "description": "Standard Sidecar" },
+      "TrailSport": { "csioCode": "csio:57", "description": "Trail Sport" },
+      "DeepSnowMountain": { "csioCode": "csio:36", "description": "Deep Snow/Mountain" },
+      "HybridCrossover": { "csioCode": "csio:40", "description": "Hybrid Crossover" },
+      "Junior": { "csioCode": "csio:41", "description": "Junior" },
+      "Monoski": { "csioCode": "csio:43", "description": "Monoski" },
+      "Trike": { "csioCode": "csio:MT", "description": "Trike" },
+      "AmphibiousOrSportVehicle": { "csioCode": "csio:A4", "description": "Amphibious/Sport Vehicle/ATV" },
+      "UtilityTerrainVehicle": { "csioCode": "csio:51", "description": "Utility Terrain Vehicle" }
+    },
+    "constructionTypes": {
+      "Aggregate": "AG",
+      "AluminumSiding": "AL",
+      "Asbestos": "AT",
+      "BrickVeneer": "BV",
+      "Fireresistive": "FX",
+      "Frame": "FR",
+      "Stucco": "ST",
+      "VinylSiding": "VY"
+    },
+    "fireProtectionClass": {
+      "FireHallProtected": "F",
+      "HydrantProtected": "H",
+      "ExtendedFireHall": "E",
+      "ShuttleTanker": "T",
+      "Unprotected": "U"
+    },
+    "lapseReasons": {
+      "NonPaymentOfPremium": { "csioCode": "csio:NP", "version": "V134", "availableIn": ["V134"] },
+      "FraudOrMaterialMisrepresentation": { "csioCode": "csio:CM", "version": "V134", "availableIn": ["V134"] },
+      "Other": { "csioCode": "csio:OT", "version": "V134", "availableIn": ["V134"] },
+      "LicenseSuspension_framework": "CS"
+    },
+    "convictionCodes": {
+      "FailureToProceedOntoHighwaySafely": "FPHS",
+      "FailToSlowChangeLaneForStationaryEmergencyVehicle": "FSCEV",
+      "InsuranceOffence": "INS"
+    },
+    "sumpPumpTypes": {
+      "Automatic": { "csioCode": "csio:01", "version": "V148", "availableIn": ["V148"] },
+      "BatteryPowered": { "csioCode": "csio:01", "version": "V148", "availableIn": ["V148"] },
+      "GeneratorPowered": { "csioCode": "csio:02", "version": "V148", "availableIn": ["V148"] },
+      "WaterPowered": { "csioCode": "csio:04", "version": "V148", "availableIn": ["V148"] }
+    },
+    "csioConstants": {
+      "OccasionalDriverRecordTPFieldCode": "csio:TPOD",
+      "OccasionalDriverRecordColFieldCode": "csio:COLOD"
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": [
+      "csio:DIS* (DISAB, DISCP, DISSV, DISMI, DISWS, DISEM, DISTE, DISHY, DISSS, DISNS, DISMA, DISEV, DISGD, DISTR, DISMM, DISEL, DISAD)",
+      "csio:Z* discount codes (ZINTD, ZT0, ZT2, ZT3, ZD1-ZD4, ZNE-ZNH, ZE1, ZCOMB, ZSTBL, ZNB0, ZNBD1-2, ZCFD3-8, ZSB05-15, ZEXP1-M, ZLOY1-3, ZLOYD, ZFOY3-5, ZFFY3-5, ZFON0-2, ZFFN0-2, ZFMY2-5, ZSAFE, ZPKDI, ZCLSD, ZSHC2, ZCPID, ZEA, ZEE, ZPV, ZAEBS, ZASFO, ZASFI, ZARTD, ZRTDS, ZVMDS, ZFOND, ZRDNW, ZCWAD, ZBKUP, ZASMP, ZSBDD, ZHEDR, ZML05, ZML10, ZNH03-20, ZYR01)",
+      "csio:HYDS, csio:EVDS (vehicle type discounts)"
+    ],
+    "isSurchargePatterns": [
+      "csio:SUR* (SURCL, SURML, SURUC, SURRH)",
+      "csio:Z* surcharge codes (ZT1, ZT4, ZS1-S3, ZRSDS, ZRHDS, ZBAP1, ZANT, ZCS30, ZCS45, ZCS60, ZMFS1-3, ZSBSC, ZVACP, ZSTAS)"
+    ]
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      { "code": "csio:ZIR2", "name": "IncomeReplacement400Increase", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZIR3", "name": "IncomeReplacement600Increase", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZMRX", "name": "MedicalRehabilitationAndAttendantCare", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZMC2", "name": "MedicalRehabCatastrophic1M", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZMRZ", "name": "MedicalRehabilitation", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS1", "name": "WorryFreeBundle1000", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCSB", "name": "WorryFreeBundle1200", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCSD", "name": "WorryFreeBundle1500", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS2", "name": "WorryFreeBundle2000", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS3", "name": "WorryFreeBundle2500", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS4", "name": "WorryFreeBundle5000", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS5", "name": "WorryFreeBundleZCS5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZWFB", "name": "WorryFreeBundleZWFB", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZOCP", "name": "OccasionalOperatorsCPP", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZOCC", "name": "OccasionalOperatorsEnd39", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZPR2", "name": "ExtendedClaimProtectorPlan", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZPR9", "name": "DrivingRecordProtectorClaims9", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZPR8", "name": "DrivingRecordProtectorClaims8", "availableIn": ["V134", "V148"] },
+      { "code": "csio:Z38A", "name": "LimitAccessoriesEquip38A", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:Z38B", "name": "LimitAccessoriesEquip38B", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:Z38C", "name": "LimitAccessoriesEquip38C", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRPP", "name": "SatelliteRoadsideAssistance", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRPS", "name": "SatelliteRoadsideAssistanceZRPS", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRRA", "name": "SatelliteRoadsideAssistanceZRRA", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:Z43S", "name": "ReplacementOrRepairCostZ43S", "availableIn": ["V132", "V134"] },
+      { "code": "csio:Z27F", "name": "LegalLiabNonOwnedAutoZ27F", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:Z27G", "name": "LegalLiabNonOwnedAutoZ27G", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSTR1", "name": "ShortTermRental90", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSTR2", "name": "ShortTermRental180", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSTR3", "name": "ShortTermRental365", "availableIn": ["V134", "V148"] },
+      { "code": "csio:Z091", "name": "PersonalEffects", "availableIn": ["V134", "V148"] },
+      { "code": "csio:Z092", "name": "VacationExpense", "availableIn": ["V134"] },
+      { "code": "csio:Z096", "name": "NPCF096/LimitedWaiver43R", "availableIn": ["V134", "V148"] },
+      { "code": "csio:Z098", "name": "AccessoriesExtension", "availableIn": ["V134"] },
+      { "code": "csio:Z05S", "name": "VehicleSharing_V134", "availableIn": ["V134"] },
+      { "code": "csio:ZEXPL", "name": "ExcessLiability", "availableIn": ["V134", "V148"] }
+    ],
+    "habCoverage": [
+      { "code": "csio:ZREP1", "name": "HomeRepairEnd50", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZLPE", "name": "ClaimPrevent", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZHPB1", "name": "HomeProtectBundle1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZHPB2", "name": "HomeProtectBundle2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZHPB", "name": "HomeProtectBundle", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZGRNE", "name": "GreenAssureCoverage", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZGRN1", "name": "GreenAssureCoverageTrader", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZEQLE", "name": "EQEmergencyLivingExpense", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZBYL1", "name": "BuildingByLaws5k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYL2", "name": "BuildingByLaws10k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYL3", "name": "BuildingByLaws25k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYL4", "name": "BuildingByLaws50k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYL5", "name": "BuildingByLaws75k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYL6", "name": "BuildingByLaws30k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYL7", "name": "BuildingByLaws100k", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBYLW", "name": "BYLWDolceVita", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZBYLS", "name": "BYLSDolceVita", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZSAF1", "name": "JewelleryInBankVault", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZSAF2", "name": "JewelleryOutOfBank", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZINJL", "name": "JewelleryIncreasedLimit", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZLACV", "name": "ActualCashValueCoverage", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZACVB", "name": "RoofEndorsementCoverageB", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCCD1", "name": "CondoCorporationDed1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCCD2", "name": "CondoCorporationDed2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCCD3", "name": "CondoCorporationDed3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCSL6", "name": "SingleLimitEndorsement6", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCSL7", "name": "SingleLimitEndorsement7", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCSL8", "name": "SingleLimitEndorsement8", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCSL9", "name": "SingleLimitEndorsement9", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZTNE", "name": "SingleLimitEndorsementBC", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZTEK1", "name": "TechEnthusiastEndorsement1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZTEK2", "name": "TechEnthusiastEndorsement2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZTEK3", "name": "TechEnthusiastEndorsement3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZAICL", "name": "AdditionalNameInsuredPremise", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSTOR", "name": "BelongingsStorage", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:zPRAS", "name": "PropertyLossAssessment", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRSLE", "name": "RoofSidingLimitation", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZHCEL", "name": "LossAssessmentEndorsement", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZGSL", "name": "GreenHomePowerSolarLeasedLand", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZGSR", "name": "GreenHomePowerSolar", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZGWD", "name": "GreenHomePowerWindTurbine", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZGWL", "name": "GreenHomePowerWindLeasedLand", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZACT", "name": "AccountantOfficeLiability", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZDNT", "name": "DentistOfficeLiability", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZDOC", "name": "DoctorOfficeLiability", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZAGT", "name": "InsuranceAgentOfficeLiability", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZBAP1", "name": "Roomer/BasementApartment", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZAIPL", "name": "AdditionalNameInsuredPremiseLiab", "availableIn": ["V132", "V134"] },
+      { "code": "csio:ZATV", "name": "AtvLiability", "availableIn": ["V134"] }
+    ],
+    "discountsSurcharges": [
+      { "code": "csio:ZINTD", "name": "WebDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZAEBS", "name": "AutonomousBrakingGenerated", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZT0", "name": "TierDiscount0", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZT2", "name": "TierDiscount2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZT3", "name": "TierDiscount3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZD1", "name": "TierDiscountD1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZD2", "name": "TierDiscountD2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZD3", "name": "TierDiscountD3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZD4", "name": "TierDiscountD4", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZE1", "name": "GroupRating35", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNE", "name": "GroupRatingE", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNF", "name": "GroupRatingF", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNG", "name": "GroupRatingG", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH", "name": "GroupRatingH", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCOMB", "name": "CombinedPolicyDiscount1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSTBL", "name": "StabilityDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNB0", "name": "NewBusinessDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNBD1", "name": "NewBusinessDiscount1", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZNBD2", "name": "NewBusinessDiscount2", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZYR01", "name": "NewBusinessDiscount3", "availableIn": ["V148"] },
+      { "code": "csio:ZCFD7", "name": "ClaimFreeDiscount7", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCFD8", "name": "ClaimFreeDiscount8", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCFD3", "name": "ClaimFreeDiscount3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCFD5", "name": "ClaimFreeDiscount5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSB05", "name": "BrokerDiscretionary5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSB10", "name": "BrokerDiscretionary10", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSB15", "name": "BrokerDiscretionary15", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP1", "name": "ExperienceDiscount1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP2", "name": "ExperienceDiscount2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP3", "name": "ExperienceDiscount3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP4", "name": "ExperienceDiscount4", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP5", "name": "ExperienceDiscount5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP6", "name": "ExperienceDiscount6", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXP9", "name": "ExperienceDiscount9", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEX10", "name": "ExperienceDiscount10", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEX11", "name": "ExperienceDiscount11", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEX12", "name": "ExperienceDiscount12", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEX13", "name": "ExperienceDiscount13", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEX14", "name": "ExperienceDiscount14", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEXPM", "name": "ExperienceDiscountM", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZLOYD", "name": "LoyaltyDiscountD", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZLOY1", "name": "LoyaltyDiscount1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZLOY2", "name": "LoyaltyDiscount2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZLOY3", "name": "LoyaltyDiscount3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFOY3", "name": "FirstChanceOntarioY3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFOY4", "name": "FirstChanceOntarioY4", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFOY5", "name": "FirstChanceOntarioY5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFFY3", "name": "FirstChanceFullY3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFFY4", "name": "FirstChanceFullY4", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFFY5", "name": "FirstChanceFullY5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFON0", "name": "FirstChanceOccasional0", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFON1", "name": "FirstChanceOccasional1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFON2", "name": "FirstChanceOccasional2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFFN0", "name": "FirstChanceFullNonOntario0", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFFN1", "name": "FirstChanceFullNonOntario1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFFN2", "name": "FirstChanceFullNonOntario2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFMY2", "name": "FirstChanceMotorcycleY2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFMY3", "name": "FirstChanceMotorcycleY3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFMY4", "name": "FirstChanceMotorcycleY4", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZFMY5", "name": "FirstChanceMotorcycleY5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSAFE", "name": "StaySafeDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZPKDI", "name": "PackageDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCLSD", "name": "CleanStartDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZSHC2", "name": "ShortCommuteDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCPID", "name": "ContinuousPriorInsurance", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZANT", "name": "AntiqueVehicleSurcharge", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZT1", "name": "TierSurcharge1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZT4", "name": "TierSurcharge4", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZS1", "name": "TierSurchargeS1", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZS2", "name": "TierSurchargeS2", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZS3", "name": "TierSurchargeS3", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRSDS", "name": "ReverseSlopeDriveway", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEA", "name": "EmployeeDiscountA", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZEE", "name": "EmployeeDiscountE", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZPV", "name": "EmployeeDiscountHab", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRFDS", "name": "RoofTypeDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZRDNW", "name": "NewRoofDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZML05", "name": "MultiLineDiscount5", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZML10", "name": "MultiPolicyDiscount10", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH03", "name": "NewHomeDiscount3yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH05", "name": "NewHomeDiscount5yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH07", "name": "NewHomeDiscount7yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH09", "name": "NewHomeDiscount9yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH10", "name": "NewHomeDiscount10yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH11", "name": "NewHomeDiscount11yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH13", "name": "NewHomeDiscount13yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH15", "name": "NewHomeDiscount15yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH16", "name": "NewHomeDiscount16yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH17", "name": "NewHomeDiscount17yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH18", "name": "NewHomeDiscount18yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH19", "name": "NewHomeDiscount19yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZNH20", "name": "NewHomeDiscount20yr", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCWAD", "name": "CentrallyMonitoredWaterAlarm", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZBKUP", "name": "BackwaterValveDiscount", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZASMP", "name": "AutomaticSumpPump", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZSBDD", "name": "SelectBrokerDiscretionary", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZHEDR", "name": "EvaluatorDiscount", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZCS30", "name": "ClaimSurcharge30", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS45", "name": "ClaimSurcharge45", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZCS60", "name": "ClaimSurcharge60", "availableIn": ["V132", "V134", "V148"] },
+      { "code": "csio:ZASFO", "name": "AdvanceSafetyFeature", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZASFI", "name": "AdvanceSafetyFeatureAntiLock", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZMFS1", "name": "ManufacturerI", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZMFS2", "name": "ManufacturerII", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZMFS3", "name": "ManufacturerIII", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZSBSC", "name": "SportBikeSurcharge", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZARTD", "name": "AdvancedRiderTraining", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZRTDS", "name": "RiderTrainingAlberta", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZVMDS", "name": "VintageDiscount", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZFOND", "name": "Class0506DriversDiscount", "availableIn": ["V134", "V148"] },
+      { "code": "csio:ZLOYD", "name": "LoyaltyDiscountD", "availableIn": ["V134", "V148"] }
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 322,
+    "totalGenericInheritedCodes": 55,
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {
+        "code": "csio:UAOD",
+        "file": "V148/FrameworkToCsio/Unrated/PcCoverageCollectionConverter.vb",
+        "line": 112,
+        "description": "Uninsured Automobile Occasional Driver - hardcoded inline, not in CompanyConstants"
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V148only": 8,
+      "V134only": 7,
+      "V132only": 0,
+      "V132andV134only": 15,
+      "sharedAcrossAllVersions": 292
+    }
+  }
+}

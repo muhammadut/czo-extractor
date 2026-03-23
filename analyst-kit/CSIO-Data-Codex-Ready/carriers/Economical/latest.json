@@ -1,0 +1,768 @@
+{
+  "_metadata": {
+    "carrier": "Economical",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043", "V128", "V132", "V133"],
+    "latestVersion": "V133",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 166,
+    "description": "Complete CZO mapping for Economical (Definity)",
+    "versionRoles": {
+      "V133": "Latest active service version",
+      "V132": "Previous version with base constants",
+      "V128": "Earlier override version",
+      "v043": "Foundation base version"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "HitAndRunDeductibleWavier": {
+        "csioCode": "csio:41",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Hit and Run Deductible Waiver (OPCF 41)"
+      },
+      "Opcf47R": {
+        "csioCode": "csio:47R",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "OPCF 47R - Agreement Not to Rely on Breaches of Statutory Conditions Relating to Dwellings"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "OPCF 49 - Agreement to Modify Underinsured Motorist Coverage"
+      }
+    },
+    "autoEndorsementsOntario": {
+      "Opcf47R": {
+        "csioCode": "csio:47R",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "OPCF 47R (Ontario-specific routing)"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "OPCF 49 (Ontario-specific routing)"
+      },
+      "HitAndRunDeductibleWavier": {
+        "csioCode": "csio:41",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "OPCF 41 Hit and Run Deductible Waiver (Ontario-specific routing)"
+      }
+    },
+    "homeEndorsements": {
+      "WaterCoverage": {
+        "csioCode": "standard:OverlandWaterCoverage",
+        "source": "standard",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Overland Water / Flood Water Coverage (uses standard ICoveragesValues OverlandWaterCoverage)"
+      },
+      "WaterDamageDeductible": {
+        "csioCode": "csio:PAWAT",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Peril Adjustment - Water Damage Deductible"
+      },
+      "EnvironmentFriendlyReplacement": {
+        "csioCode": "csio:ENVLS",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Green / Environment Friendly Replacement Coverage"
+      },
+      "WindHailCoverage": {
+        "csioCode": "standard:HailCoverageEndorsement",
+        "source": "standard",
+        "version": "V132",
+        "availableIn": ["V128", "V132", "V133"],
+        "description": "Wind/Hail Coverage Endorsement (uses standard V125 HailCoverageEndorsement value)"
+      },
+      "MatchingOfUndamagedSiding": {
+        "csioCode": "csio:MASDC",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Matching of Undamaged Siding Coverage"
+      },
+      "MatchingOfUndamagedRoofSurfacing": {
+        "csioCode": "csio:MARFC",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Matching of Undamaged Roof Surfacing Coverage"
+      }
+    },
+    "accidentBenefitsOntario": {
+      "MdicalAttendantCatastrophic": {
+        "csioCode": "csio:CATIM",
+        "source": "economical",
+        "version": "V132",
+        "availableIn": ["V132"],
+        "description": "Medical/Attendant Care - Catastrophic Impairment",
+        "limitDefault": 1000000
+      },
+      "MedicalAttendantNonCatastrophic": {
+        "csioCode": "csio:MRB",
+        "source": "economical",
+        "version": "V132",
+        "availableIn": ["V132"],
+        "description": "Medical/Attendant Care - Non-Catastrophic ($130,000)",
+        "limitDefault": 130000
+      },
+      "MedicalAttendantNonCatastrophic1M": {
+        "csioCode": "csio:CIMRB",
+        "source": "economical",
+        "version": "V132",
+        "availableIn": ["V132"],
+        "description": "Medical/Attendant Care - Non-Catastrophic ($1,000,000)",
+        "limitDefault": 1000000
+      },
+      "NonEarnerBenefit": {
+        "csioCode": "csio:NEB",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Non-Earner Benefit (new AB benefits, effective July 1, 2026+)"
+      },
+      "CaregiverBenefitCatastrophic": {
+        "csioCode": "csio:CGCAT",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Caregiver Benefit - Catastrophic (new AB benefits, sent only if CaregiverBenefit is 0)"
+      },
+      "CaregiverBenefit": {
+        "csioCode": "csio:CGB",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Caregiver Benefit (new AB benefits)"
+      },
+      "LostEducationalExpenses": {
+        "csioCode": "csio:LEE",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Lost Educational Expenses (new AB benefits)"
+      },
+      "ExpensesOfVisitors": {
+        "csioCode": "csio:EXV",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Expenses of Visitors (new AB benefits)"
+      },
+      "HousekeepingHomeMaintenanceCatastrophic": {
+        "csioCode": "csio:HHCAT",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Housekeeping/Home Maintenance - Catastrophic (sent only if HousekeepingHomeMaintenance is 0)"
+      },
+      "HousekeepingHomeMaintenance": {
+        "csioCode": "csio:HHM",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Housekeeping/Home Maintenance (new AB benefits)"
+      },
+      "DamageToPersonalItems": {
+        "csioCode": "csio:DPI",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Damage to Personal Items (new AB benefits)"
+      },
+      "DeathBenefit": {
+        "csioCode": "csio:DEA",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Death Benefit (new AB benefits)"
+      },
+      "FuneralBenefit": {
+        "csioCode": "csio:FNB",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "Funeral Benefit (new AB benefits)"
+      }
+    },
+    "autoSurcharges": {
+      "HighTheftSurcharge": {
+        "csioCode": "csio:SURHT",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "High Theft Surcharge"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {},
+    "autoSurcharges": {
+      "HighTheftSurcharge": {
+        "csioCode": "csio:SURHT",
+        "source": "economical",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "description": "High Theft Surcharge"
+      }
+    },
+    "habDiscounts": {},
+    "habSurcharges": {}
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "homeowner": {
+        "HomeownersComprehensiveSingleQuote": {
+          "csioValue": "HomeownersComprehensiveForm",
+          "direction": "outbound",
+          "version": "V133",
+          "notes": "V133 override; v043 mapped this to HomeownersBroadForm via HomeownersEnhanced"
+        },
+        "HomeownersEnhanced": {
+          "csioValue": "HomeownersComprehensiveExpandedForm",
+          "direction": "outbound",
+          "version": "V133",
+          "notes": "V133 override; v043 mapped this to HomeownersBroadForm"
+        },
+        "HomeownersBasicSingleQuote": {
+          "csioValue": "HomeownersStandardForm",
+          "direction": "outbound",
+          "version": "v043"
+        }
+      },
+      "fec": {
+        "LandlordComprehensive": {
+          "csioValue": "RentedDwellingBroadForm",
+          "direction": "outbound",
+          "version": "V133",
+          "notes": "V133 override"
+        },
+        "LandlordEnhanced": {
+          "csioValue": "RentedDwellingComprehensiveForm",
+          "direction": "outbound",
+          "version": "V133",
+          "notes": "V133 override; v043 mapped LandlordEnhanced to RentedDwellingBroadForm"
+        },
+        "HomeownersBasicSingleQuote": {
+          "csioValue": "BasicResidentialFireECForm",
+          "direction": "outbound",
+          "version": "v043"
+        },
+        "LandlordBasic": {
+          "csioValue": "RentedDwellingLimitedForm",
+          "direction": "outbound",
+          "version": "v043"
+        }
+      },
+      "seasonal": {
+        "HomeownersComprehensiveSingleQuote": {
+          "csioValue": "SeasonalDwellingBroadForm",
+          "direction": "outbound",
+          "version": "V133",
+          "notes": "V133 override; v043 mapped HomeownersBasicSingleQuote to SeasonalDwellingStandardForm"
+        },
+        "HomeownersEnhanced": {
+          "csioValue": "SeasonalDwellingComprehensiveForm",
+          "direction": "outbound",
+          "version": "V133",
+          "notes": "V133 override; v043 mapped HomeownersEnhanced to SeasonalDwellingBroadForm"
+        }
+      },
+      "tenant": {
+        "Tenant": {
+          "csioValue": "TenantsPackageBroadForm",
+          "direction": "outbound",
+          "version": "v043"
+        }
+      },
+      "condo": {
+        "Condominium": {
+          "csioValue": "CondominiumPackageBroadForm",
+          "direction": "outbound",
+          "version": "v043"
+        }
+      },
+      "mobileHome": {
+        "Bronze": {
+          "csioValue": "MobileHomeStandardForm",
+          "direction": "outbound",
+          "version": "v043"
+        }
+      },
+      "responseMapping": {
+        "SeasonalDwellingBroadForm": {
+          "frameworkValue": "HomeownersComprehensiveSingleQuote (if effectiveDate >= 2025-04-27) OR HomeownersEnhanced (if before)",
+          "version": "V133",
+          "notes": "Date-dependent mapping introduced in V133"
+        },
+        "RentedDwellingBroadForm": {
+          "frameworkValue": "LandlordComprehensive (if effectiveDate >= 2025-04-27) OR LandlordEnhanced (if before)",
+          "version": "V133",
+          "notes": "Date-dependent mapping introduced in V133"
+        },
+        "SeasonalDwellingComprehensiveForm": {
+          "frameworkValue": "HomeownersEnhanced",
+          "version": "V133"
+        },
+        "RentedDwellingComprehensiveForm": {
+          "frameworkValue": "LandlordEnhanced",
+          "version": "V133"
+        },
+        "HomeownersComprehensiveExpandedForm": {
+          "frameworkValue": "HomeownersEnhanced",
+          "version": "V133"
+        },
+        "HomeownersComprehensiveForm": {
+          "frameworkValue": "HomeownersComprehensiveSingleQuote",
+          "version": "V133"
+        },
+        "CondominiumPackageBroadForm": {
+          "frameworkValue": "Condominium",
+          "version": "V133"
+        },
+        "HomeownersStandardForm": {
+          "frameworkValue": "HomeownersBasicSingleQuote",
+          "version": "V133"
+        },
+        "HomeownersBroadForm": {
+          "frameworkValue": "HomeownersEnhanced",
+          "version": "V133"
+        },
+        "MobileHomeStandardForm": {
+          "frameworkValue": "Bronze",
+          "version": "V133"
+        },
+        "BasicResidentialFireECForm": {
+          "frameworkValue": "HomeownersBasicSingleQuote",
+          "version": "V133"
+        },
+        "SeasonalDwellingStandardForm": {
+          "frameworkValue": "HomeownersBasicSingleQuote",
+          "version": "V133"
+        },
+        "TenantsPackageBroadForm": {
+          "frameworkValue": "Tenant",
+          "version": "V133"
+        },
+        "RentedDwellingLimitedForm": {
+          "frameworkValue": "LandlordBasic",
+          "version": "V133"
+        }
+      }
+    },
+    "genderTypes": {
+      "GenderX": {
+        "csioCode": "csio:X",
+        "frameworkValue": "GenderX",
+        "version": "V133",
+        "availableIn": ["V133"],
+        "direction": "bidirectional"
+      }
+    },
+    "lapseReasons": {
+      "outboundLapseReasonToConvictionCode": {
+        "ThreeMonthBloodAlcoholSuspension": { "csioValue": "SUPLF" },
+        "AccidentRelated": { "csioValue": "SUPLF" },
+        "CriminalCodeConviction": { "csioValue": "SUPLF" },
+        "DrivingWhileUnderTheInfluenceOfDrugsOrAlcohol": { "csioValue": "SUPLF" },
+        "LicenseSuspension": { "csioValue": "SUPLF" },
+        "OffenseRelatedToTheUseOrOperationOfAnAutomobile": { "csioValue": "SUPLF" },
+        "OperatingWithoutALicense": { "csioValue": "SUPLF" },
+        "OperatingWithoutInsurance": { "csioValue": "SUPLF" },
+        "PointsAccumulation": { "csioValue": "SUPLF" },
+        "Speeding": { "csioValue": "SUPLF" },
+        "Other": { "csioValue": "SUP" },
+        "UnpaidTicket": { "csioValue": "SUP" }
+      },
+      "outboundLapseReasonToLapseTypeCd": {
+        "ThreeMonthBloodAlcoholSuspension": { "csioValue": "CSIO:CS" },
+        "FraudOrMaterialMisrepresentation": { "csioValue": "2" },
+        "NonPaymentOfPremium": { "csioValue": "3" },
+        "OperatingWithoutALicense": { "csioValue": "9" },
+        "AccidentRelated": { "csioValue": "1" },
+        "CriminalCodeConviction": { "csioValue": "9" },
+        "LicenseSuspension": { "csioValue": "csio:CS" },
+        "DrivingWhileUnderTheInfluenceOfDrugsOrAlcohol": { "csioValue": "9" },
+        "OffenseRelatedToTheUseOrOperationOfAnAutomobile": { "csioValue": "9" },
+        "OperatingWithoutInsurance": { "csioValue": "9" },
+        "PointsAccumulation": { "csioValue": "9" },
+        "Speeding": { "csioValue": "9" },
+        "UnpaidTicket": { "csioValue": "9" },
+        "Other": { "csioValue": "9" },
+        "AdministrativeSuspension": { "csioValue": "15" },
+        "CourtOrderedSuspension": { "csioValue": "16" },
+        "DemeritPointSuspension": { "csioValue": "17" },
+        "DriverControlBoardSuspension": { "csioValue": "18" },
+        "LegalJudgementSuspension": { "csioValue": "19" },
+        "MedicalSuspension": { "csioValue": "20" },
+        "ZeroAlcoholToleranceSuspension": { "csioValue": "21" }
+      }
+    },
+    "deliveryFrequency": {
+      "None": {
+        "csioValue": "standard:Never",
+        "version": "V132"
+      },
+      "Seasonal": {
+        "csioValue": "csio:S",
+        "version": "V132",
+        "notes": "Hardcoded string value, not from enum values factory"
+      },
+      "Incidental": {
+        "csioValue": "standard:Occasional",
+        "version": "V132"
+      },
+      "Frequent": {
+        "csioValue": "standard:Daily",
+        "version": "V132"
+      }
+    },
+    "billingMethods": {
+      "Mac": {
+        "csioValue": "standard:CompanyAccountBill",
+        "version": "V133",
+        "notes": "TryConvertToFramework returns False (do not map back)"
+      },
+      "DirectBill": {
+        "csioValue": "standard:DirectBill",
+        "version": "V133"
+      },
+      "Agency": {
+        "csioValue": "standard:AgencyBill",
+        "version": "V133"
+      }
+    },
+    "paymentPlans": {
+      "Three": {
+        "csioValue": "standard:ThreePayments403030",
+        "version": "V132",
+        "direction": "bidirectional"
+      },
+      "One": {
+        "csioValue": "standard:Annual",
+        "version": "V132",
+        "direction": "bidirectional"
+      }
+    },
+    "methodOfPayment": {
+      "Cheque_with_Mac_billing": {
+        "csioValue": "standard:ElectronicFundsTransfer",
+        "version": "V133",
+        "notes": "When billingCode=Mac AND paymentType=Cheque, maps to EFT"
+      }
+    },
+    "garageTypes": {
+      "None": {
+        "csioValue": "standard:None (V133 GarageTypeValues)",
+        "version": "V133",
+        "direction": "bidirectional"
+      }
+    },
+    "vehicleBodyTypes": {
+      "trailers": {
+        "FifthWheel": {
+          "csioValue": "standard:CabinHomeFifthWheel (V128)",
+          "version": "V133"
+        },
+        "Home_or_Cabin": {
+          "csioValue": "standard:CabinorHomeTrailer",
+          "version": "V133"
+        },
+        "Tent": {
+          "csioValue": "standard:TentTrailer",
+          "version": "V133"
+        },
+        "default": {
+          "csioValue": "standard:UtilityTrailer",
+          "version": "V132",
+          "notes": "Default for any trailer if body type not empty"
+        }
+      },
+      "motorHome": {
+        "default_empty_body_type": {
+          "csioValue": "standard:MotorHomeRecreationalUse (V128)",
+          "version": "V132"
+        }
+      },
+      "motorcycle": {
+        "any": {
+          "csioValue": "standard:Motorcyclesover50cc",
+          "version": "V132"
+        }
+      },
+      "snowmobile": {
+        "any": {
+          "csioValue": "standard:Snowmobile",
+          "version": "V132"
+        }
+      },
+      "atv": {
+        "wheels_5plus": { "csioValue": "standard:AllTerrainVehicle", "version": "V132" },
+        "wheels_4": { "csioValue": "standard:AllTerrainVehicleFourWheel", "version": "V132" },
+        "wheels_3": { "csioValue": "standard:AllTerrainTricycle", "version": "V132" },
+        "wheels_2": { "csioValue": "standard:AllTerrainCycle", "version": "V132" },
+        "default": { "csioValue": "standard:AllTerrainVehicleFourWheel", "version": "V132" }
+      }
+    },
+    "vehicleTypes": {
+      "commercialVehicle": {
+        "any": {
+          "csioValue": "standard:MediumCommercial",
+          "version": "V132",
+          "notes": "All commercial vehicles map to MediumCommercial regardless of GVW"
+        }
+      },
+      "commercialTrailer": {
+        "any": {
+          "csioValue": "standard:TrailerOpen",
+          "version": "V132"
+        }
+      }
+    },
+    "vehicleSpecialUse": {
+      "outbound_mappings": {
+        "Laundries": "standard:IroningService",
+        "OilTankTrucks": "standard:DangerousGoodsCrudeOil",
+        "OilfieldExploration": "standard:OilfieldEquipmentHauling",
+        "CourierService": "standard:NewspaperDeliveryUrban",
+        "NewspaperDelivery": "standard:NewspaperDeliveryRural",
+        "BatteryOperators": "standard:OilfieldPipeHauling",
+        "ArtisanContractorCarpenter": "standard:ArtisanContractorCarpenterCabinetMakerAndWoodWorker",
+        "ArtisanContractorPainter": "standard:ArtisanContractorPainter",
+        "ArtisanContractorRoofer": "standard:ArtisanContractorRoofer",
+        "SnowPloughsCommercial": "standard:SnowPloughsSaltersSandersCommercial",
+        "SnowPloughsResidential": "standard:SnowPloughsSaltersSandersResidential",
+        "UnlicensedVehiclesNotSpecificallyClassified": "standard:AllCommercialVehiclesNotClassified"
+      },
+      "notRated_uses": [
+        "DrivingSchoolsSeeSpecialRatingRules",
+        "ExplosiveManufacturersDistributors",
+        "FireDeptVehicles",
+        "FuneralDirectorsSeeSpecialRatingRules",
+        "HouseholdMovers",
+        "IndustrialRadiologist",
+        "Locksmith",
+        "MobileShredding",
+        "PoliceDeptVehicles",
+        "PoliceDeptVehiclesOtherTrucks",
+        "PoliceDeptVehiclesPPVPatrolWagon",
+        "PolicyDeptVehiclesPatrolWagon",
+        "PulpwoodTrucks",
+        "RoadConstructionAndMaintenanceExcludingGravelTrucksUnplated",
+        "Welders"
+      ],
+      "version": "V133"
+    },
+    "vehicleUse": {
+      "FuelTruckForContractorsAndFarmers": {
+        "frameworkField": "slipTank = True",
+        "version": "V132",
+        "direction": "bidirectional",
+        "notes": "Maps to slip tank flag, not a vehicle use string"
+      }
+    },
+    "occupancyTypes": {
+      "Owner_RentedCondo_or_RentedDwelling": { "csioValue": "standard:PrimaryResidence", "version": "V132" },
+      "FamilyMember_RentedCondo_or_RentedDwelling": { "csioValue": "standard:FamilyOccupied (V128)", "version": "V132" },
+      "FamilyMember_PrimaryItem_FEC": { "csioValue": "standard:FamilyOccupied (V128)", "version": "V132" },
+      "Tenant": { "csioValue": "standard:Rental", "version": "V132" },
+      "PrimaryItem_Seasonal": { "csioValue": "standard:SecondarySeasonal", "version": "V132", "notes": "Overrides all other occupancy logic for seasonal primary items" }
+    },
+    "roofMaterials": {
+      "AluminumShingle": { "csioValue": "standard:Aluminium", "version": "V132" },
+      "ArchitecturalShingle": { "csioValue": "standard:AsphaltShingles", "version": "V132" },
+      "CeramicTile": { "csioValue": "standard:ClayTile", "version": "V132" },
+      "Duroid": { "csioValue": "standard:AsphaltShingles", "version": "V132" },
+      "FiberglassShingle": { "csioValue": "standard:AsphaltShingles", "version": "V132" },
+      "Metal": { "csioValue": "standard:MetalTile", "version": "V132" },
+      "MetalPanel": { "csioValue": "standard:MetalTile", "version": "V132" },
+      "Tin": { "csioValue": "standard:MetalTile", "version": "V132" },
+      "Steel": { "csioValue": "standard:MetalTile", "version": "V132" },
+      "SteelDeck": { "csioValue": "standard:MetalTile", "version": "V132" },
+      "NA": { "csioValue": "standard:Other", "version": "V132" },
+      "Enviroshake": { "csioValue": "standard:Other", "version": "V132" },
+      "Fabric": { "csioValue": "standard:Other", "version": "V132" },
+      "WoodDeck": { "csioValue": "standard:Other", "version": "V132" },
+      "Other": { "csioValue": "standard:Other", "version": "V132" }
+    },
+    "exteriorWallMaterials": {
+      "Stone": { "csioValue": "standard:StoneVeneer", "version": "V132" },
+      "Masonite": { "csioValue": "standard:WoodExterior", "version": "V132" },
+      "Masonry": { "csioValue": "standard:StoneVeneer", "version": "V132" },
+      "MasonryVeener": { "csioValue": "standard:BrickVeneer", "version": "V132" },
+      "Clapboard": { "csioValue": "standard:WoodExterior", "version": "V132" },
+      "HardboardSiding": { "csioValue": "standard:WoodExterior", "version": "V132" },
+      "MetalClad": { "csioValue": "standard:MetalSiding", "version": "V132" },
+      "Wood": { "csioValue": "standard:WoodExterior", "version": "V132" },
+      "WoodShake": { "csioValue": "standard:WoodExterior", "version": "V132" },
+      "CustomLog": { "csioValue": "standard:LogSiding", "version": "V132" },
+      "ICFConstruction": { "csioValue": "standard:CementFiberBoard", "version": "V132" },
+      "Log": { "csioValue": "standard:LogSiding", "version": "V132" }
+    },
+    "numberOfStories": {
+      "greaterThan11": { "csioValue": "standard:HighRise", "version": "V132" },
+      "greaterThan3": { "csioValue": "standard:Other", "version": "V132" },
+      "OnePointSevenFiveStories": { "csioValue": "standard:TwoStoreys", "version": "V132" },
+      "TwoPointSevenFiveStories": { "csioValue": "standard:ThreeStoreys", "version": "V132" }
+    },
+    "riskPropertyFloater": {
+      "VideoEquipment": { "csioValue": "standard:VideoEquipment (V127)", "version": "V133" },
+      "Television": { "csioValue": "standard:Televisions (V127)", "version": "V133" }
+    },
+    "machineryEquipment": {
+      "SnowPlowWinches": {
+        "csioValue": "standard:Snowplough",
+        "version": "V132",
+        "direction": "bidirectional"
+      }
+    },
+    "propulsionType": {
+      "JetSki": {
+        "csioValue": "standard:Waterjet",
+        "version": "V132"
+      }
+    },
+    "waterUnitType": {
+      "JetSki": {
+        "csioValue": "standard:Other",
+        "version": "V132"
+      }
+    },
+    "plumbing": {
+      "GalvanizedIron": {
+        "csioValue": "C",
+        "version": "V133",
+        "notes": "Custom plumbing code for galvanized iron"
+      }
+    },
+    "causeOfLoss_auto": {
+      "outbound": {
+        "AccidentBenefits": { "csioValue": "standard:MiscType.Other" },
+        "CollisionPhysicalDamageOnly": { "csioValue": "standard:AutomobileType.CollisionOther" },
+        "CollisionLiabilityAndPhysicalDamage_AB": { "csioValue": "standard:AutomobileType.HitPedestrian", "notes": "Alberta only" },
+        "CollisionLiabilityAndPhysicalDamage_other": { "csioValue": "standard:AutomobileType.CollisionOther", "notes": "Non-Alberta" },
+        "CollisionDirectCompensation": { "csioValue": "standard:AutomobileType.CollisionRearended" },
+        "Earthquake_or_FallingObjects": { "csioValue": "standard:AutomobileType.Flood" },
+        "Theft": { "csioValue": "standard:AutomobileType.TheftEntireVehicle" },
+        "Other_fallthrough": { "csioValue": "standard:AutomobileType.RiotCivilCommotion" }
+      },
+      "inbound": {
+        "MiscType.Other": { "frameworkValue": "AccidentBenefits" },
+        "AutomobileType.CollisionOther": { "frameworkValue": "CollisionPhysicalDamageOnly" },
+        "AutomobileType.Flood": { "frameworkValue": "Earthquake" },
+        "AutomobileType.TheftEntireVehicle": { "frameworkValue": "Theft" },
+        "AutomobileType.RiotCivilCommotion": { "frameworkValue": "Other" },
+        "AutomobileType.HitPedestrian_AB": { "frameworkValue": "CollisionLiabilityAndPhysicalDamage" },
+        "AutomobileType.HitPedestrian_other": { "frameworkValue": "CollisionHitAndRun" }
+      },
+      "version": "V133"
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["csio:DIS*"],
+    "isSurchargePatterns": ["csio:SUR*"],
+    "notes": "V132 Economical uses simple prefix matching: Discount codes start with 'DIS' after the colon, Surcharge codes start with 'SUR' after the colon"
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "Inherited from v043/Generic via V133/Generic: Earthquake, SewerBackup, WindstormHail, PersonalLiability, etc.",
+      "All standard home endorsement codes from the generic CoverageCodeConverter chain"
+    ],
+    "autoEndorsementsOntario": [
+      "Inherited from V133/Generic: All standard Ontario endorsements (OPCF 13, 16, 17, 19, 20, 21, 27, 28, 34, 35, 39, 43, 44)"
+    ],
+    "autoEndorsementsNonOntario": [
+      "Inherited from V133/Generic: Standard auto endorsements (SEF13, SEF20, SEF27, SEF43, SEF44)"
+    ],
+    "autoDiscounts": [
+      "Inherited from generic: All standard auto discount codes (DIS* prefix)"
+    ],
+    "autoSurcharges": [
+      "Inherited from generic: All standard auto surcharge codes (SUR* prefix)"
+    ]
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      { "code": "csio:41", "name": "HitAndRunDeductibleWavier", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:47R", "name": "OPCF47R", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:49", "name": "OPCF49", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:CATIM", "name": "MdicalAttendantCatastrophic", "version": "V132", "availableIn": ["V132"] },
+      { "code": "csio:MRB", "name": "MedicalAttendantNonCatastrophic", "version": "V132", "availableIn": ["V132"] },
+      { "code": "csio:CIMRB", "name": "MedicalAttendantNonCatastrophic1M", "version": "V132", "availableIn": ["V132"] },
+      { "code": "csio:NEB", "name": "NonEarnerBenefit", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:CGCAT", "name": "CaregiverBenefitCatastrophic", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:CGB", "name": "CaregiverBenefit", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:LEE", "name": "LostEducationalExpenses", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:EXV", "name": "ExpensesOfVisitors", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:HHCAT", "name": "HousekeepingHomeMaintenanceCatastrophic", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:HHM", "name": "HousekeepingHomeMaintenance", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:DPI", "name": "DamageToPersonalItems", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:DEA", "name": "DeathBenefit", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:FNB", "name": "FuneralBenefit", "version": "V133", "availableIn": ["V133"] }
+    ],
+    "habCoverage": [
+      { "code": "csio:PAWAT", "name": "PerilAdjustmentWater", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:ENVLS", "name": "GreenCoverage", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:MASDC", "name": "MatchingOfUndamagedSiding", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:MARFC", "name": "MatchingOfUndamagedRoofSurfacing", "version": "V133", "availableIn": ["V133"] }
+    ],
+    "discountsSurcharges": [
+      { "code": "csio:SURHT", "name": "HighTheftSurcharge", "version": "V133", "availableIn": ["V133"] }
+    ],
+    "other": [
+      { "code": "csio:X", "name": "GenderX", "version": "V133", "availableIn": ["V133"] },
+      { "code": "csio:CS", "name": "LicenseSuspension (LapseReasonType)", "version": "V133", "availableIn": ["V133"] },
+      { "code": "CSIO:CS", "name": "ThreeMonthAlcoholSuspension (LapseReasonType)", "version": "V133", "availableIn": ["V133"], "notes": "Uppercase CSIO: prefix" },
+      { "code": "csio:S", "name": "SeasonalDeliveryFrequency", "version": "V132", "availableIn": ["V132"], "notes": "Hardcoded in FrequencyConverter, not in CompanyConstants" }
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 24,
+    "totalGenericInheritedCodes": "Many (inherits full generic chain v043 -> V128 -> V129 -> V130 -> V132 -> V133)",
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {
+        "code": "csio:S",
+        "location": "V132/EnumConverters/FrequencyConverter.vb",
+        "notes": "Hardcoded string for Seasonal delivery frequency, not declared in CompanyConstants"
+      }
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V133only_csioConstants": 19,
+      "V132only_csioConstants": 3,
+      "hardcodedInConverters": 1,
+      "totalCsioCodesAcrossAllVersions": 24
+    },
+    "constantsInV132NotInV133": {
+      "notes": "V132 CompanyConstants has MdicalAttendantCatastrophic (csio:CATIM), MedicalAttendantNonCatastrophic (csio:MRB), MedicalAttendantNonCatastrophic1M (csio:CIMRB). V133 shadows CompanyCsioCode with new constants, so V132 codes are still accessible via V132 inheritance chain but V133 has its own set.",
+      "V132_codes": ["csio:CATIM", "csio:MRB", "csio:CIMRB"]
+    },
+    "inheritanceChains": {
+      "CoverageCodeConverter": "V133.Economical -> V133.Generic -> ... -> v043.Generic",
+      "PolicyTypeConverter": "V133.Economical -> v043.Economical -> v043.Generic",
+      "ConvictionCodeConverter": "V133.Economical -> v043.Generic",
+      "VehicleBodyTypeConverter": "V133.Economical -> V132.Economical -> V128.Generic",
+      "VehicleSpecialUseConverter": "V133.Economical -> V127.Generic",
+      "CauseOfLossConverter": "V133.Economical -> V130.Generic",
+      "PcCoverageConverter_Rated": "V133.Economical -> V132.Economical -> V130.Generic",
+      "PcCoverageCollectionConverter_Unrated": "V133.Economical -> V132.Economical -> V130.Generic"
+    }
+  }
+}

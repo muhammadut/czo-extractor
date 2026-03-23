@@ -1,0 +1,792 @@
+{
+  "_metadata": {
+    "carrier": "Wawanesa",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V135", "V136", "V137", "V141", "V145"],
+    "latestVersion": "V145",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 345,
+    "description": "Complete CZO mapping for Wawanesa",
+    "versionRoles": {
+      "V145": "Latest active version (current service)",
+      "V141": "Intermediate version (telematics + AB coverage additions)",
+      "V137": "Intermediate version (watercraft + conviction codes)",
+      "V136": "Intermediate version (billing, LOB, watercraft rated)",
+      "V135": "Base company version (all foundational converters)"
+    },
+    "inheritanceChain": "V145 -> V141 -> V137 -> V136 -> V135 -> v043/Generic"
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "End5CS": {
+        "csioCode": "standard:PermissionToRentOrLeaseTheVehicleForCarsharing",
+        "resolvedFrom": "V141.ICoveragesValues.IAutoCoverageAndEndorsement.PermissionToRentOrLeaseTheVehicleForCarsharing",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Permission to Rent or Lease Vehicle for Carsharing (5CS)"
+      },
+      "OEMReplacementRepair": {
+        "csioCode": "csio:OEMA",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OEM Advantage Coverage"
+      },
+      "EmergencyAssistancePackage": {
+        "csioCode": "standard:EnhancedRoadsideAssistanceProgram",
+        "resolvedFrom": "V141.ICoveragesValues.IAutoCoverageAndEndorsement.EnhancedRoadsideAssistanceProgram",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Enhanced Roadside Assistance Program"
+      },
+      "End35": {
+        "csioCode": "standard:End35",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().End35",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "OPCF 35 - Removing Depreciation Deduction"
+      },
+      "End39B": {
+        "csioCode": "standard:MinorConvictionProtection",
+        "resolvedFrom": "V134.ICoveragesValues.IAutoCoverageAndEndorsement.MinorConvictionProtection",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V141", "V145"],
+        "description": "Minor Conviction Protection (OPCF 39B)"
+      },
+      "DrivingRecordProtectorClaimsPolicyLevel": {
+        "csioCode": "standard:ClaimsProtectionPlan",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().ClaimsProtectionPlan",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V141", "V145"],
+        "description": "Claims Protection Plan / Driving Record Protector"
+      },
+      "PersonalEffectsAndProtectiveEquipment": {
+        "csioCode": "standard:PersonalProtectiveEquipmentExcludingPersonalEffects",
+        "resolvedFrom": "V133.ICoveragesValues.IAutoCoverageAndEndorsement.PersonalProtectiveEquipmentExcludingPersonalEffects",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Personal Protective Equipment (Excluding Personal Effects)"
+      },
+      "DeductibleWaiver": {
+        "csioCode": "standard:WaiverOfDeductible",
+        "resolvedFrom": "V129.ICoveragesValues.IAutoCoverageAndEndorsement.WaiverOfDeductible",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Waiver of Deductible"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "standard:DecreasingDeductibleEndorsement",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.DecreasingDeductibleEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Decreasing/Disappearing Deductible Endorsement"
+      },
+      "OEMEssentials": {
+        "csioCode": "standard:AttachedMachineryPropertyDamageReimbursement",
+        "resolvedFrom": "V133.ICoveragesValues.IAutoCoverageAndEndorsement.AttachedMachineryPropertyDamageReimbursement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OEM Essentials (Attached Machinery Property Damage Reimbursement)"
+      }
+    },
+    "ontarioAutoEndorsements": {
+      "Opcf45W": {
+        "csioCode": "csio:45",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OPCF 45W - Extending Automobile Liability to Watercraft"
+      },
+      "Opcf49": {
+        "csioCode": "csio:49",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V141", "V145"],
+        "description": "OPCF 49 - Agreement Not to Recover"
+      },
+      "Opcf47R": {
+        "csioCode": "csio:47R",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OPCF 47R - Agreement for Suspension of Coverage While Vehicle Not in Use"
+      },
+      "PerilOfCrime": {
+        "csioCode": "standard:End18",
+        "resolvedFrom": "V141.ICoveragesValues.IAutoCoverageAndEndorsement.End18",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Peril of Crime (End18)"
+      },
+      "Opcf44": {
+        "csioCode": "standard:End44",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().End44",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OPCF 44 - Family Protection"
+      },
+      "CommercialAccidentRatingWaiverEndorsement": {
+        "csioCode": "standard:End39",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_AutoCoverageAndEndorsement().End39",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OPCF 39 - Accident Rating Waiver"
+      },
+      "Opcf5CS": {
+        "csioCode": "standard:PermissionToRentOrLeaseTheVehicleForCarsharing",
+        "resolvedFrom": "V141.ICoveragesValues.IAutoCoverageAndEndorsement.PermissionToRentOrLeaseTheVehicleForCarsharing",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "OPCF 5CS - Permission for Carsharing (Ontario)"
+      }
+    },
+    "homeEndorsements": {
+      "HomeBasedBusiness": {
+        "csioCode": "standard:HomeBusinessCoverage",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().HomeBusinessCoverage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Home-Based Business Coverage"
+      },
+      "ShortTermRentalEndorsement": {
+        "csioCode": "standard:RentalEndorsement",
+        "resolvedFrom": "V135.ICoveragesValues.IHabPackageAndOtherForms.RentalEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Short-Term Rental Endorsement"
+      },
+      "InflationProtection": {
+        "csioCode": "standard:InflationGuardEndorsement",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().InflationGuardEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Inflation Guard Endorsement"
+      },
+      "AdditionalNamedInsuredCooccupant": {
+        "csioCode": "standard:AdditionalNamedInsured",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_LiabilityExtensions().AdditionalNamedInsured",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Additional Named Insured (Co-occupant)"
+      },
+      "RoofSurfaceBasisOfSettlement": {
+        "csioCode": "standard:RoofBasisOfSettlementDueToWindstormHail",
+        "resolvedFrom": "V118.ICoveragesValues.IHabPackageAndOtherForms.RoofBasisOfSettlementDueToWindstormHail",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Roof Surface Basis of Settlement Due to Windstorm/Hail"
+      },
+      "EquipmentBreakdownCoverage": {
+        "csioCode": "standard:SmartHomeSystems",
+        "resolvedFrom": "V135.ICoveragesValues.IHabPackageAndOtherForms.SmartHomeSystems",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Smart Home Systems / Equipment Breakdown Coverage",
+        "note": "Limit is NOT converted on response (suppressed in V145 rated converter)"
+      },
+      "CyberCoverage": {
+        "csioCode": "standard:PersonalCyberCoverage",
+        "resolvedFrom": "V135.ICoveragesValues.IHabPackageAndOtherForms.PersonalCyberCoverage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Personal Cyber Coverage"
+      },
+      "PermissionForUnoccupancy": {
+        "csioCode": "standard:EstateOfPermissionForUnoccupancy",
+        "resolvedFrom": "V133.ICoveragesValues.IHabPackageAndOtherForms.EstateOfPermissionForUnoccupancy",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Estate of Permission for Unoccupancy"
+      },
+      "DeductibleAssessmentBuydownEarthquake": {
+        "csioCode": "standard:CondominiumDeductibleAssessmentEarthquake",
+        "resolvedFrom": "V133.ICoveragesValues.IHabPackageAndOtherForms.CondominiumDeductibleAssessmentEarthquake",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Condominium Deductible Assessment - Earthquake"
+      },
+      "FireFollowingEarthquake": {
+        "csioCode": "standard:PostearthquakeDamage",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().PostearthquakeDamage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Post-Earthquake Damage / Fire Following Earthquake"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "standard:DecreasingDeductibleEndorsement",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.DecreasingDeductibleEndorsement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V141", "V145"],
+        "description": "Decreasing/Disappearing Deductible Endorsement (Home)"
+      },
+      "DwellingUnderConstruction": {
+        "csioCode": "standard:Buildingunderconstruction",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_PersonalLiability().Buildingunderconstruction",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Building Under Construction"
+      },
+      "LegalExpense": {
+        "csioCode": "standard:LegalFees",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().LegalFees",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Legal Fees / Legal Expense Coverage"
+      },
+      "TelephoneLegalHelplineCoverage": {
+        "csioCode": "standard:LegalAssistance",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_HabPackageAndOtherForms().LegalAssistance",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Legal Assistance / Telephone Legal Helpline"
+      },
+      "FloodEndorsement": {
+        "csioCode": "standard:OverlandWaterCoverage",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.OverlandWaterCoverage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V141", "V145"],
+        "description": "Overland Water / Flood Coverage"
+      },
+      "EnvironmentFriendlyReplacement": {
+        "csioCode": "csio:ENVLS",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.EnvironmentallyFriendlyHomeReplacementLossSettlement",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Environmentally Friendly Home Replacement Loss Settlement"
+      },
+      "StrongerHomeEndorsement": {
+        "csioCode": "csio:STHE",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Stronger Home Coverage"
+      },
+      "LifeLeasePropertyCoverage": {
+        "csioCode": "standard:LifeLeaseUnitCoverage",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.LifeLeaseUnitCoverage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Life Lease Unit Coverage"
+      },
+      "CollectivelyOwnedLifeLeasePropertyCoverage": {
+        "csioCode": "standard:LifeLeasePropertyCoverage",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.LifeLeasePropertyCoverage",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Collectively Owned Life Lease Property Coverage"
+      },
+      "LifeLeaseDeductibleAssessment": {
+        "csioCode": "standard:LifeLeaseDeductible",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.LifeLeaseDeductible",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Life Lease Deductible Assessment"
+      },
+      "LifeLeaseDeductibleEarthquake": {
+        "csioCode": "standard:LifeLeaseDeductibleEarthquakes",
+        "resolvedFrom": "V141.ICoveragesValues.IHabPackageAndOtherForms.LifeLeaseDeductibleEarthquakes",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Life Lease Deductible - Earthquakes"
+      },
+      "CoverageAlignmentEndorsement": {
+        "csioCode": "csio:SELCL",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Coverage Alignment Endorsement"
+      },
+      "EnhancedHomeowners": {
+        "csioCode": "csio:ACLHV",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Enhanced Homeowner Coverage",
+        "note": "Response-only: mapped to EndorsementCodes.EnhancedHomeowners on inbound"
+      },
+      "DeductibleWaiver_Home": {
+        "csioCode": "standard:WaiverOfDeductible",
+        "resolvedFrom": "V129.ICoveragesValues.IAutoCoverageAndEndorsement.WaiverOfDeductible",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Waiver of Deductible (Home - only when policyType != Auto)",
+        "note": "Shared code with auto DeductibleWaiver, but gated: only sent for non-Auto policy types"
+      }
+    },
+    "homeLiabilities": {
+      "Atv": {
+        "csioCode": "standard:MiscellaneousVehiclesAllRisks",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_WatercraftUtilityBoatTrailerCoverageForms().MiscellaneousVehiclesAllRisks",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "ATV / Miscellaneous Vehicles All Risks"
+      },
+      "RentedDwelling": {
+        "csioCode": "standard:AdditionalLocationsRented",
+        "resolvedFrom": "V134.ICoveragesValues.ILiabilityExtensions.AdditionalLocationsRented",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Additional Locations Rented (Rented Dwelling/Condo)"
+      },
+      "RentedCondo": {
+        "csioCode": "standard:AdditionalLocationsRented",
+        "resolvedFrom": "V134.ICoveragesValues.ILiabilityExtensions.AdditionalLocationsRented",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Additional Locations Rented (Condo)"
+      },
+      "DwellingUnderConstruction": {
+        "csioCode": "csio:CONTR",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V135"],
+        "description": "Insured Acting As Own Contractor (Dwelling Under Construction as Liability)",
+        "note": "V135 CompanyConstants has this as LiabilityCode. In converter, sent instead of standard Buildingunderconstruction"
+      }
+    },
+    "watercraftCodes": {
+      "InflatableBoat": {
+        "csioCode": "csio:17",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Inflatable Boat (Water Unit Type)"
+      },
+      "JetBoat": {
+        "csioCode": "csio:18",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Jet Boat (Water Unit Type)"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "AntiTheftDevice": {
+        "csioCode": "standard:DiscountAntiTheftDeviceAutomaticallyActivatedNonAlarms",
+        "resolvedFrom": "V135.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.DiscountAntiTheftDeviceAutomaticallyActivatedNonAlarms",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Anti-Theft Device Discount (Automatically Activated Non-Alarms)"
+      },
+      "DriverAssist": {
+        "csioCode": "standard:DiscountElectronicStabilityControlSystemFactoryEquipped",
+        "resolvedFrom": "V135.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.DiscountElectronicStabilityControlSystemFactoryEquipped",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Driver Assist / Electronic Stability Control System (Factory Equipped) Discount"
+      },
+      "UsageBasedInsurance": {
+        "csioCode": "standard:DiscountTelematics",
+        "resolvedFrom": "V141.ICoveragesValues.IAutoCoverageAndEndorsement.DiscountTelematics",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Usage-Based Insurance / Telematics Discount"
+      },
+      "NewlyLicensedCredit": {
+        "csioCode": "standard:DiscountNewDriver",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_AutomobileDiscountAndSurchargeCodes().DiscountNewDriver",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Newly Licensed Credit / New Driver Discount"
+      },
+      "NewlyLicensedCreditUnderageOccasional": {
+        "csioCode": "csio:DISOL",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Newly Licensed Credit - Underage Occasional Driver"
+      },
+      "Newcomer": {
+        "csioCode": "csio:DISNU",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Newcomer Discount"
+      },
+      "NewcomerUnderageOccasional": {
+        "csioCode": "csio:DISOU",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Newcomer Discount - Underage Occasional Driver"
+      },
+      "DriverTrainingCredit": {
+        "csioCode": "standard:DiscountDriverTraining",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_AutomobileDiscountAndSurchargeCodes().DiscountDriverTraining",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Driver Training Credit Discount"
+      },
+      "DriverTrainingCreditUnderageOccasional": {
+        "csioCode": "csio:DISOT",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Driver Training Credit - Underage Occasional Driver"
+      }
+    },
+    "autoSurcharges": {
+      "HighTheft": {
+        "csioCode": "csio:SURHT",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V141", "V145"],
+        "description": "High Theft Risk Surcharge"
+      },
+      "Miscellaneous_OperatorExperience": {
+        "csioCode": "standard:SurchargeOperatorExperience",
+        "resolvedFrom": "V136.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.SurchargeOperatorExperience",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - Operator Experience (mapped to SurchargeCode.Miscellaneous)"
+      },
+      "RadiusOfOperation": {
+        "csioCode": "standard:SurchargeRadius",
+        "resolvedFrom": "V136.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.SurchargeRadius",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - Radius of Operation"
+      },
+      "TowsNonOwnedTrailer": {
+        "csioCode": "standard:SurchargeTowsNonOwnedTrailer",
+        "resolvedFrom": "V137.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.SurchargeTowsNonOwnedTrailer",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - Tows Non-Owned Trailer"
+      },
+      "Telematics": {
+        "csioCode": "standard:SurchargeTelematics",
+        "resolvedFrom": "V144.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.SurchargeTelematics",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - Telematics"
+      },
+      "LicenseSuspension": {
+        "csioCode": "standard:SurchargeLicenseSuspension",
+        "resolvedFrom": "V126.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.SurchargeLicenseSuspension",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - License Suspension"
+      },
+      "LicenseSuspensionUnderageOccasional": {
+        "csioCode": "csio:SUROS",
+        "source": "wawanesa",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - License Suspension (Underage Occasional Driver)"
+      },
+      "AccidentUnderageOccasional": {
+        "csioCode": "standard:SurchargeConvictionClaimOccasionalDriverClass06And05",
+        "resolvedFrom": "V126.ICoveragesValues.IAutomobileDiscountAndSurchargeCodes.SurchargeConvictionClaimOccasionalDriverClass06And05",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Surcharge - Conviction/Claim for Occasional Driver (Class 06/05)"
+      },
+      "Miscellaneous_V135": {
+        "csioCode": "csio:SUREO",
+        "source": "wawanesa",
+        "version": "V135",
+        "availableIn": ["V135"],
+        "description": "Miscellaneous Auto Surcharge (V135 only, superseded by SurchargeOperatorExperience in V145)",
+        "note": "Only in V135 TryConvertToFrameworkAutoSurcharge, mapped to SurchargeCode.Miscellaneous"
+      }
+    },
+    "habDiscounts": {
+      "ExteriorWall": {
+        "csioCode": "standard:PreferredConstruction",
+        "resolvedFrom": "_enumValuesFactory.GetCoveragesValues_HabitationalDiscountAndSurchargeCodes().PreferredConstruction",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Preferred Construction / Exterior Wall Discount"
+      },
+      "PreventativeMeasures": {
+        "csioCode": "standard:DiscountProtectionDevice",
+        "resolvedFrom": "V118.ICoveragesValues.IHabitationalDiscountAndSurchargeCodes.DiscountProtectionDevice",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V145"],
+        "description": "Protection Device Discount (Response only: mapped to PreventativeMeasures)"
+      }
+    },
+    "habSurcharges": {
+      "Vacancy": {
+        "csioCode": "standard:VacancyPermit",
+        "resolvedFrom": "V135.ICoveragesValues.IHabPackageAndOtherForms.VacancyPermit",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V135", "V136", "V137", "V141", "V145"],
+        "description": "Vacancy Permit Surcharge"
+      },
+      "UnderConstruction": {
+        "csioCode": "standard:SurchargeUnderConstruction",
+        "resolvedFrom": "V137.ICoveragesValues.IHabitationalDiscountAndSurchargeCodes.SurchargeUnderConstruction",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Surcharge - Under Construction"
+      },
+      "Rental": {
+        "csioCode": "standard:SurchargeShortTermRental",
+        "resolvedFrom": "V137.ICoveragesValues.IHabitationalDiscountAndSurchargeCodes.SurchargeShortTermRental",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Surcharge - Short-Term Rental"
+      },
+      "StandAlone": {
+        "csioCode": "standard:SurchargeStandaloneDwelling",
+        "resolvedFrom": "V137.ICoveragesValues.IHabitationalDiscountAndSurchargeCodes.SurchargeStandaloneDwelling",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Surcharge - Standalone Dwelling"
+      },
+      "AgeOfHome": {
+        "csioCode": "standard:AgeOfStructure",
+        "resolvedFrom": "V137.ICoveragesValues.IHabitationalDiscountAndSurchargeCodes.AgeOfStructure",
+        "source": "standard",
+        "version": "V145",
+        "availableIn": ["V137", "V141", "V145"],
+        "description": "Age of Structure Surcharge"
+      }
+    }
+  },
+  "companyCsioConstants": {
+    "CompanyCsioCode": {
+      "Wawa1": {"value": "wawa:1", "versions": ["V135", "V141", "V145"]},
+      "Wawa02": {"value": "wawa:2", "versions": ["V135", "V141", "V145"]},
+      "CompanyNone": {"value": "NONE", "versions": ["V135", "V141", "V145"]},
+      "NonEarnerBenefit": {"value": "csio:NEB", "versions": ["V145"]},
+      "CaregiverBenefitCatastrophic": {"value": "csio:CGCAT", "versions": ["V145"]},
+      "CaregiverBenefit": {"value": "csio:CGB", "versions": ["V145"]},
+      "LostEducationalExpenses": {"value": "csio:LEE", "versions": ["V145"]},
+      "ExpensesOfVisitors": {"value": "csio:EXV", "versions": ["V145"]},
+      "HousekeepingHomeMaintenanceCatastrophic": {"value": "csio:HHCAT", "versions": ["V145"]},
+      "HousekeepingHomeMaintenance": {"value": "csio:HHM", "versions": ["V145"]},
+      "DamageToPersonalItems": {"value": "csio:DPI", "versions": ["V145"]},
+      "DeathBenefit": {"value": "csio:DEA", "versions": ["V145"]},
+      "FuneralBenefit": {"value": "csio:FNB", "versions": ["V145"]}
+    },
+    "CoverageCode": {
+      "EnvironmentallyFriendlyHomeReplacementLossSettlement": {"value": "csio:ENVLS", "versions": ["V135", "V141", "V145"]},
+      "OPCF49": {"value": "csio:49", "versions": ["V141", "V145"]},
+      "OPCF45W": {"value": "csio:45", "versions": ["V145"]},
+      "OEMAdvantageCoverage": {"value": "csio:OEMA", "versions": ["V145"]},
+      "StrongerHomeCoverage": {"value": "csio:STHE", "versions": ["V145"]},
+      "InflatableBoat": {"value": "csio:17", "versions": ["V145"]},
+      "JetBoat": {"value": "csio:18", "versions": ["V145"]},
+      "EnhancedHomeowner": {"value": "csio:ACLHV", "versions": ["V145"]},
+      "CoverageAlignmentEndorsement": {"value": "csio:SELCL", "versions": ["V145"]},
+      "OPCF47R": {"value": "csio:47R", "versions": ["V145"]}
+    },
+    "CompanyValue": {
+      "TelematicsStartDate": {"value": "#10/01/2023#", "versions": ["V141", "V145"]},
+      "CollisionNotAtFault": {"value": "41", "versions": ["V145"]},
+      "NatureInterestAssignee": {"value": "csio:AS", "versions": ["V145"]},
+      "KYCS": {"value": "csio:3A", "versions": ["V145"]},
+      "DOMINO_Commercial": {"value": "csio:3B", "versions": ["V145"]}
+    },
+    "SurchargeCode": {
+      "HighTheftRisk": {"value": "csio:SURHT", "versions": ["V141", "V145"]},
+      "LicenseSuspensionUnderageOccasional": {"value": "csio:SUROS", "versions": ["V145"]}
+    },
+    "DiscountCode": {
+      "DriverTrainingCreditUnderageOccasional": {"value": "csio:DISOT", "versions": ["V145"]},
+      "NewcomerUnderageOccasional": {"value": "csio:DISOU", "versions": ["V145"]},
+      "Newcomer": {"value": "csio:DISNU", "versions": ["V145"]},
+      "NewlyLicensedCreditUnderageOccasional": {"value": "csio:DISOL", "versions": ["V145"]}
+    },
+    "LiabilityCode": {
+      "InsuredActingAsOwnContractor": {"value": "csio:CONTR", "versions": ["V135"]}
+    }
+  },
+  "enumMappings": {
+    "lapseReasons": {
+      "NonPaymentOfPremium": {"csioCode": "csio:NP", "version": "V137"},
+      "FraudOrMaterialMisrepresentation": {"csioCode": "csio:CM", "version": "V137"}
+    },
+    "constructionTypes": {
+      "TimberFrame": {"csioCode": "csio:6", "version": "V145", "description": "Timber Frame construction type"},
+      "PostBeamWood": {"csioCode": "csio:5", "version": "V145", "description": "Post and Beam Wood construction type"}
+    },
+    "heatingInstallationCodes": {
+      "PrimaryHeating": {"csioCode": "csio:1", "version": "V145", "description": "Primary heating installation"},
+      "SecondaryHeating": {"csioCode": "csio:2", "version": "V145", "description": "Secondary heating installation"}
+    },
+    "foundationCodes": {
+      "CrawlSpace": {"csioCode": "standard:Crawlspace", "resolvedFrom": "V121.IFoundationValues.Crawlspace", "version": "V145"},
+      "Basement": {"csioCode": "standard:Basement", "resolvedFrom": "_enumValuesFactory.GetFoundationValues().Basement", "version": "V145"}
+    },
+    "natureOfInterest": {
+      "CoOwner": {"csioCode": "standard:Other", "version": "V145"},
+      "Assignee": {"csioCode": "csio:AS", "version": "V145", "description": "Assignee nature of interest"}
+    },
+    "antiTheftProducts": {
+      "KYCS": {"csioCode": "csio:3A", "version": "V145", "description": "KYCS Global Inc. anti-theft product"},
+      "DOMINO_Commercial": {"csioCode": "csio:3B", "version": "V145", "description": "Domino Commercial anti-theft product"},
+      "DOMINO": {"csioCode": "standard:Other", "resolvedFrom": "V130.IAntiTheftProductValues.Other", "version": "V145"}
+    },
+    "vehicleSpecialUse": {
+      "ArtisanContractorPainter": {"csioCode": "standard:ArtisanContractorPainter", "resolvedFrom": "V127.IVehicleSpecialUseValues.ArtisanContractorPainter", "version": "V145"},
+      "MealsHomeDelivery": {"csioCode": "standard:MealsHomeDeliveryNoFastFood", "resolvedFrom": "V127.IVehicleSpecialUseValues.MealsHomeDeliveryNoFastFood", "version": "V145"}
+    },
+    "causeOfLoss": {
+      "CollisionDirectCompensation": {"csioCode": "41", "companyConstant": "CompanyConstants.CompanyValue.CollisionNotAtFault", "version": "V145", "description": "Collision - Direct Compensation (Not At Fault)"},
+      "CollisionPhysicalDamageOnly": {"csioCode": "standard:Other", "resolvedFrom": "_enumValuesFactory.GetCauseOfLossValues_MiscType().Other", "version": "V145"},
+      "CollisionLiabilityAndPhysicalDamage": {"csioCode": "standard:Other", "resolvedFrom": "_enumValuesFactory.GetCauseOfLossValues_MiscType().Other", "version": "V145"}
+    },
+    "bathroomInfo": {
+      "BathroomNumber": {"csioCode": "csio:6", "version": "V137", "description": "Bathroom count identifier"}
+    },
+    "kitchenInfo": {
+      "KitchenNumber": {"csioCode": "csio:6", "version": "V137", "description": "Kitchen count identifier"}
+    },
+    "otherIdTypeCd": {
+      "ClaimFile": {"csioCode": "csio:ClaimFile", "version": "V136", "description": "Claim file other ID type"}
+    }
+  },
+  "responseClassification": {
+    "isLiabilityExtensions": [
+      "standard:MiscellaneousVehiclesAllRisks (ATV)",
+      "standard:AdditionalLocationsRented",
+      "standard:GardenTypeTractor (V137)"
+    ],
+    "vacancySurchargeCode": "standard:VacancyPermit",
+    "smartHomeSystemsNote": "Limit suppressed in V145 rated PcCoverageConverter.ConvertLimit"
+  },
+  "zCodeInventory": {
+    "autoEndorsementCodes": [
+      {"code": "csio:OEMA", "name": "OEMAdvantageCoverage", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:45", "name": "OPCF45W", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:49", "name": "OPCF49", "version": "V145", "availableIn": ["V141", "V145"]},
+      {"code": "csio:47R", "name": "OPCF47R", "version": "V145", "availableIn": ["V145"]}
+    ],
+    "homeEndorsementCodes": [
+      {"code": "csio:ENVLS", "name": "EnvironmentallyFriendlyHomeReplacementLossSettlement", "version": "V145", "availableIn": ["V135", "V141", "V145"]},
+      {"code": "csio:STHE", "name": "StrongerHomeCoverage", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:ACLHV", "name": "EnhancedHomeowner", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:SELCL", "name": "CoverageAlignmentEndorsement", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:CONTR", "name": "InsuredActingAsOwnContractor", "version": "V135", "availableIn": ["V135"]}
+    ],
+    "watercraftCodes": [
+      {"code": "csio:17", "name": "InflatableBoat", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:18", "name": "JetBoat", "version": "V145", "availableIn": ["V145"]}
+    ],
+    "discountCodes": [
+      {"code": "csio:DISOL", "name": "NewlyLicensedCreditUnderageOccasional", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:DISNU", "name": "Newcomer", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:DISOU", "name": "NewcomerUnderageOccasional", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:DISOT", "name": "DriverTrainingCreditUnderageOccasional", "version": "V145", "availableIn": ["V145"]}
+    ],
+    "surchargeCodes": [
+      {"code": "csio:SURHT", "name": "HighTheftRisk", "version": "V145", "availableIn": ["V141", "V145"]},
+      {"code": "csio:SUROS", "name": "LicenseSuspensionUnderageOccasional", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:SUREO", "name": "MiscellaneousAutoSurcharge_V135", "version": "V135", "availableIn": ["V135"]}
+    ],
+    "accidentBenefitCodes": [
+      {"code": "csio:NEB", "name": "NonEarnerBenefit", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:CGCAT", "name": "CaregiverBenefitCatastrophic", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:CGB", "name": "CaregiverBenefit", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:LEE", "name": "LostEducationalExpenses", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:EXV", "name": "ExpensesOfVisitors", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:HHCAT", "name": "HousekeepingHomeMaintenanceCatastrophic", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:HHM", "name": "HousekeepingHomeMaintenance", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:DPI", "name": "DamageToPersonalItems", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:DEA", "name": "DeathBenefit", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:FNB", "name": "FuneralBenefit", "version": "V145", "availableIn": ["V145"]}
+    ],
+    "otherCodes": [
+      {"code": "csio:AS", "name": "NatureInterestAssignee", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:3A", "name": "KYCS_AntiTheft", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:3B", "name": "DOMINO_Commercial_AntiTheft", "version": "V145", "availableIn": ["V145"]},
+      {"code": "csio:NP", "name": "LapseReason_NonPayment", "version": "V137", "availableIn": ["V137"]},
+      {"code": "csio:CM", "name": "LapseReason_FraudMisrepresentation", "version": "V137", "availableIn": ["V137"]},
+      {"code": "csio:ClaimFile", "name": "OtherIdTypeCd_ClaimFile", "version": "V136", "availableIn": ["V135", "V136"]},
+      {"code": "wawa:1", "name": "CompanyCsioCode_Wawa1", "version": "V145", "availableIn": ["V135", "V141", "V145"]},
+      {"code": "wawa:2", "name": "CompanyCsioCode_Wawa02", "version": "V145", "availableIn": ["V135", "V141", "V145"]},
+      {"code": "csio:ANLE", "name": "AnimalLiabilityExtension", "version": "V145", "availableIn": ["V137", "V141", "V145"], "note": "Standard code resolved via _enumValuesFactory.GetCoveragesValues_LiabilityExtensions().AnimalLiabilityExtension. Used for PetAccidentWordingEndorsement mapping on response."},
+      {"code": "csio:RemarksInfo", "name": "RemarksInfo_IgnoredProperty", "version": "V135", "availableIn": ["V135"], "note": "Used in CsioElementComparer as an ignored XML property for ModInfo comparison, not a mapping code"},
+      {"code": "csio:WinterTiresInd", "name": "WinterTiresInd_IgnoredProperty", "version": "V135", "availableIn": ["V135"], "note": "Used in CsioElementComparer as an ignored XML property for ModInfo comparison, not a mapping code"}
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 41,
+    "totalGenericInheritedCodes": 48,
+    "orphanCodes": [],
+    "undeclaredCodes": [
+      {"code": "csio:SUREO", "location": "V135/EnumConverters/CoverageCodeConverter.vb:227", "note": "Hardcoded inline, not in CompanyConstants"},
+      {"code": "csio:ANLE", "location": "via _enumValuesFactory standard call", "note": "Standard CSIO code, used for PetAccidentWordingEndorsement in rated response"},
+      {"code": "csio:RemarksInfo", "location": "V135/Helpers/ModInfo/CsioElementComparer.vb:20", "note": "Not a mapping code, used as ignored XML property in comparison"},
+      {"code": "csio:WinterTiresInd", "location": "V135/Helpers/ModInfo/CsioElementComparer.vb:20", "note": "Not a mapping code, used as ignored XML property in comparison"}
+    ],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V145only": 28,
+      "V141only": 0,
+      "V137only": 2,
+      "V136only": 1,
+      "V135only": 2,
+      "sharedAcrossVersions": 8
+    },
+    "fileBreakdown": {
+      "V145": 43,
+      "V141": 30,
+      "V137": 41,
+      "V136": 44,
+      "V135": 185,
+      "v043": 2,
+      "total": 345
+    }
+  }
+}

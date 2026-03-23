@@ -1,0 +1,15 @@
+{
+  "carrier": "SGICanadaGIS",
+  "extractions": [
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22.json",
+      "totalCodes": 85,
+      "zCodeCount": 8,
+      "filesProcessed": 381,
+      "versions": ["V134", "V137"],
+      "durationSeconds": 180,
+      "status": "complete"
+    }
+  ]
+}

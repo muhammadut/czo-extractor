@@ -1,0 +1,557 @@
+{
+  "_metadata": {
+    "carrier": "Commonwell",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V134"],
+    "latestVersion": "V134",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 31,
+    "description": "Complete CZO mapping for Commonwell Mutual Insurance Group. Commonwell is a single-version carrier (V134 only) with relatively few carrier-specific overrides. It inherits most mappings from the Generic base through V134 -> V133 -> ... -> v043 chain.",
+    "versionRoles": {
+      "V134": "BAU (current active service)"
+    },
+    "notes": "Commonwell has minimal carrier-specific CompanyConstants (only 3 constants: FireHallProtected='P', FireHallUnprotected='U', CSIONone='NONE'). No carrier-specific Z-codes. All coverage, endorsement, discount, and surcharge codes come from the standard CSIO enum value factory interfaces. The carrier-specific overrides focus on: (1) home endorsements (RoofDamageExclusion, VandalismMaliciousActs), (2) home liabilities (PremisesLiabilityRestriction, FosterCare), (3) auto endorsements (End13C inbound), (4) policy type mappings for various dwelling forms, (5) occupancy type (under construction, rented to third party), (6) exterior wall material (Log), (7) company code ('No Previous Insurance' -> 'NONE'), (8) fire protection classification (Protected/Unprotected)."
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "_inheritedFromGeneric": true,
+      "_note": "Commonwell inherits ALL auto endorsement mappings from v043 Generic and V134 Generic. The only Commonwell-specific override is the inbound mapping for End13C.",
+      "carrierSpecific": {
+        "End13C_inbound": {
+          "csioProperty": "GetCoveragesValues_AutoCoverageAndEndorsement().End13C",
+          "frameworkCode": "EndorsementCodes.End13C",
+          "direction": "CsioToFramework (inbound only - override of non-Ontario generic)",
+          "source": "commonwell",
+          "version": "V134",
+          "availableIn": ["V134"],
+          "description": "Endorsement 13C - inbound response parsing override for Commonwell"
+        }
+      }
+    },
+    "homeEndorsements": {
+      "_inheritedFromGeneric": true,
+      "_note": "Commonwell overrides two home endorsement mappings in its CoverageCodeConverter.",
+      "carrierSpecific": {
+        "RoofDamageExclusionEndorsement": {
+          "csioProperty": "Xml.V134.ICoveragesValues.IHabPackageAndOtherForms.RoofReplacementCostValue",
+          "frameworkCode": "EndorsementCodes.RoofDamageExclusionEndorsement",
+          "direction": "bidirectional",
+          "source": "commonwell",
+          "version": "V134",
+          "availableIn": ["V134"],
+          "description": "Roof Damage Exclusion / Roof Replacement Cost - uses V134 interface property"
+        },
+        "VandalismMaliciousActsExtensionEndorsement": {
+          "csioProperty": "GetCoveragesValues_HabPackageAndOtherForms().MaliciousDamageonBuilding",
+          "frameworkCode": "EndorsementCodes.VandalismMaliciousActsExtensionEndorsement",
+          "direction": "bidirectional",
+          "source": "commonwell",
+          "version": "V134",
+          "availableIn": ["V134"],
+          "description": "Vandalism / Malicious Acts Extension Endorsement - Malicious Damage on Building"
+        }
+      }
+    },
+    "homeLiabilities": {
+      "_inheritedFromGeneric": true,
+      "_note": "Commonwell overrides two liability mappings in its CoverageCodeConverter.",
+      "carrierSpecific": {
+        "PremisesLiabilityRestriction": {
+          "csioProperty": "Xml.V134.ICoveragesValues.ILiabilityExtensions.PremisesCoverageLimitation",
+          "frameworkCode": "LiabilityCodes.PremisesLiabilityRestriction",
+          "direction": "bidirectional",
+          "source": "commonwell",
+          "version": "V134",
+          "availableIn": ["V134"],
+          "description": "Premises Coverage Limitation - uses V134 interface property"
+        },
+        "FosterCareLiability": {
+          "csioProperty": "Xml.V134.ICoveragesValues.ILiabilityExtensions.FosterCareHomeExtension",
+          "frameworkCode": "LiabilityCodes.FosterCareLiability",
+          "direction": "bidirectional",
+          "source": "commonwell",
+          "version": "V134",
+          "availableIn": ["V134"],
+          "description": "Foster Care Home Extension - uses V134 interface property"
+        }
+      }
+    },
+    "autoCoverages": {
+      "_note": "Standard auto coverages used in PcCoverageCollectionConverter and LossPaymentCollectionConverter",
+      "AccidentBenefits": {
+        "csioProperty": "GetCoveragesValues_AutoCoverageAndEndorsement().AccidentBenefits",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Accident Benefits - sent as a standalone PCCOVERAGE element"
+      },
+      "UninsuredAutomobile": {
+        "csioProperty": "GetCoveragesValues_AutoCoverageAndEndorsement().UninsuredAutomobile",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Uninsured Automobile coverage - sent as standalone element"
+      },
+      "Collision": {
+        "csioProperty": "GetCoveragesValues_AutoCoverageAndEndorsement().Collision",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Collision - used in loss payment classification"
+      },
+      "PropertyDamage": {
+        "csioProperty": "GetCoveragesValues_AutoCoverageAndEndorsement().PropertyDamage",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Property Damage / Comprehensive - used for comp loss payment"
+      },
+      "BodilyInjury": {
+        "csioProperty": "GetCoveragesValues_AutoCoverageAndEndorsement().BodilyInjury",
+        "source": "standard",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Bodily Injury / Third Party Liability - used for TPL loss payment"
+      }
+    },
+    "scheduledPropertyItems": {}
+  },
+  "companyConstants": {
+    "CompanyValue": {
+      "FireHallProtected": {
+        "value": "P",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Fire hall protected classification code",
+        "usedIn": "BldgProtectionConverter.ConvertFireProtectionClassCd"
+      },
+      "FireHallUnprotected": {
+        "value": "U",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Fire hall unprotected classification code",
+        "usedIn": "BldgProtectionConverter.ConvertFireProtectionClassCd"
+      }
+    },
+    "CompanyCsioCode": {
+      "CSIONone": {
+        "value": "NONE",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "CSIO code for 'No Previous Insurance' company mapping",
+        "usedIn": "CompanyCodeConverter.TryConvertToCsio"
+      }
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "_inheritedFromGeneric": true,
+      "_note": "No carrier-specific auto discount overrides. All auto discounts come from the v043 Generic base via factory methods. V134 Generic adds DiscountAutonomousEmergencyBrakingSystem mapping."
+    },
+    "autoSurcharges": {
+      "_inheritedFromGeneric": true,
+      "_note": "No carrier-specific auto surcharge overrides."
+    },
+    "habDiscounts": {
+      "_inheritedFromGeneric": true,
+      "_note": "No carrier-specific hab discount overrides. V134 Generic adds SewerBackupPreventionDiscount mapping."
+    },
+    "habSurcharges": {
+      "_inheritedFromGeneric": true,
+      "_note": "No carrier-specific hab surcharge overrides."
+    },
+    "tierCodes": {}
+  },
+  "policyTypeMappings": {
+    "_note": "Commonwell has extensive PolicyTypeConverter overrides. Inherits from V118.Generic.",
+    "home": {
+      "HomeBroadForm": {
+        "csioProperty": "GetPolicyTypeValues().HomeownersBroadForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "HomeStandardForm": {
+        "csioProperty": "GetPolicyTypeValues().HomeownersStandardForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "SecurityPlusComp_Home": {
+        "csioProperty": "GetPolicyTypeValues().HomeownersComprehensiveForm",
+        "frameworkCode": "HabCoverageType.SecurityPlusComp",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "SelectCottageLimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().SeasonalDwellingStandardForm",
+        "frameworkCode": "HabCoverageType.SelectCottageLimitedForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Maps SelectCottageLimitedForm to Seasonal Dwelling Standard Form"
+      }
+    },
+    "condo": {
+      "SecurityPlusComp_Condo": {
+        "csioProperty": "GetPolicyTypeValues().CondominiumComprehensiveExpandedForm",
+        "frameworkCode": "HabCoverageType.SecurityPlusComp",
+        "direction": "outbound",
+        "version": "V134",
+        "availableIn": ["V134"]
+      }
+    },
+    "rentedCondo": {
+      "LimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().CondominiumPackageLimitedForm",
+        "direction": "outbound",
+        "version": "V134",
+        "availableIn": ["V134"]
+      }
+    },
+    "rentedDwelling": {
+      "LimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().RentedDwellingLimitedForm",
+        "direction": "outbound",
+        "version": "V134",
+        "availableIn": ["V134"]
+      }
+    },
+    "fec": {
+      "LimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().RentedDwellingLimitedForm",
+        "direction": "outbound",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "FEC Limited Form maps to Rented Dwelling Limited Form"
+      }
+    },
+    "mobileHome": {
+      "StandardForm": {
+        "csioProperty": "GetPolicyTypeValues().MobileHomeStandardForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "LimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().MobileHomeLimitedForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      }
+    },
+    "seasonal": {
+      "SelectCottageLimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().SeasonalDwellingStandardForm",
+        "direction": "outbound",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "LimitedForm": {
+        "csioProperty": "GetPolicyTypeValues().SeasonalDwellingLimitedForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "SeasonalComprehensiveForm": {
+        "csioProperty": "GetPolicyTypeValues().SeasonalDwellingComprehensiveForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "SeasonalBroadForm": {
+        "csioProperty": "GetPolicyTypeValues().SeasonalDwellingBroadForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      }
+    },
+    "tenant": {
+      "StandardForm": {
+        "csioProperty": "GetPolicyTypeValues().TenantsPackageStandardForm",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"]
+      },
+      "SecurityPlusComp_Tenant": {
+        "csioProperty": "Xml.V123.IPolicyTypeValues.BasicResidentialComprehensiveForm",
+        "frameworkCode": "HabCoverageType.SecurityPlusComp",
+        "direction": "bidirectional",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Tenant comprehensive uses V123 BasicResidentialComprehensiveForm"
+      }
+    }
+  },
+  "enumMappings": {
+    "companyCode": {
+      "NoPreviousInsurance": {
+        "frameworkValue": "No Previous Insurance",
+        "csioValue": "NONE",
+        "source": "commonwell",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Maps 'No Previous Insurance' company name to CSIO NONE code"
+      }
+    },
+    "exteriorWallMaterial": {
+      "Log": {
+        "frameworkField": "DynamicFieldNameConstants.OutsideWallCoveringLog",
+        "csioProperty": "v132EnumValuesFactory.GetConstructionTypeValues().Log",
+        "direction": "bidirectional",
+        "source": "commonwell",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Log exterior wall material mapping"
+      }
+    },
+    "occupancyType": {
+      "UnderConstruction": {
+        "csioProperty": "GetOccupancyTypeValues().UnderConstruction",
+        "condition": "isDwellUnderConstruction = True",
+        "source": "commonwell",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "If dwelling is under construction, set occupancy to UnderConstruction"
+      },
+      "RentedToThirdParty": {
+        "csioProperty": "GetOccupancyTypeValues().RentedToThirdParty",
+        "condition": "IsDwellingTenant(inCoveragePolicyType, frameworkCovItemCategory, frameworkCoverageItemCode)",
+        "source": "commonwell",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "If dwelling is tenant-occupied, set occupancy to RentedToThirdParty"
+      }
+    },
+    "fireProtectionClass": {
+      "Protected": {
+        "value": "P",
+        "condition": "Distance to firehall is ProtectedUrban, OR numeric distance value exists, OR hydrant within 300m",
+        "source": "commonwell",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Fire hall protected classification"
+      },
+      "Unprotected": {
+        "value": "U",
+        "condition": "Not protected by any of the above criteria",
+        "source": "commonwell",
+        "version": "V134",
+        "availableIn": ["V134"],
+        "description": "Fire hall unprotected classification"
+      }
+    }
+  },
+  "genericBaseCodes": {
+    "_note": "These are standard CSIO codes inherited from v043/Generic and V134/Generic CoverageCodeConverter. Commonwell does NOT override these. Property names map to standard CSIO code strings via the IEnumValuesFactory.",
+    "homeEndorsements": [
+      "BettermentsAndImprovements", "BuildingBylawsExtension", "Earthquake",
+      "EquipmentBreakdownCoverage", "FireFightingCoverage", "GlassReducedDeductible",
+      "GuaranteedReplacementCost", "IdentityTheft", "MassEvacuation", "RentalIncome",
+      "ReplacementOrRepairCost", "SewerBackup", "SingleLimitEndorsement",
+      "SpecialLimitsEnhancement", "VacancyPermit", "GlassBreakage", "WindHailCoverage",
+      "LegalExpense", "PowerInterruptionCoverage", "FoodFreezerFoodSpoilage",
+      "CreditCardFraud", "WaterCoverage", "ServiceLineCoverage", "CondoDeductibleAssessment",
+      "LimitedRoofCoverage", "TheftfromVehicle", "AccidentalDeathandDismemberment",
+      "ClaimsProtector", "InflationProtectionEndorsement", "VandalismByTenantExclusion",
+      "AdditionalInsuredEndorsement", "AdditionalNamedInsuredCooccupant", "DebrisRemoval",
+      "EscapeOfFuelOil", "ExtendedCareEndorsement", "FloodEndorsement", "HomeBasedBusiness",
+      "LeaseholdCondoCorpEndorsement", "PersonalPropertyReplacementExtension",
+      "ReplacementCostOnContents", "TravelInsurance",
+      "VandalismMaliciousActsExclusionTenantsGuests", "PetAccidentWordingSupplement",
+      "CollectivelyOwnedLifeLeasePropertyCoverage", "LifeLeasePropertyCoverage",
+      "BooksToolsAndInstrumentsPertainingToBusiness",
+      "CyberCoverage", "HomeRenovation", "PollutionCleanup", "RoofRestriction",
+      "SeasonalTireEndorsement", "VandalismByTenant", "FuelExclusion"
+    ],
+    "homeLiabilities": [
+      "DayCareInHome", "ResidenceEmployees", "RentedRoomSuite", "DwellingUnderConstruction",
+      "BusinessUseOfHome", "BedAndBreakfast", "AdditionalResidence", "SwimmingPool",
+      "BoatAndMotor", "SeasonalDwelling", "Atv", "AdditionalNamedInsured",
+      "ElevatorEscalatorsInclinators", "PremisesExtension", "JetSki", "GolfCart",
+      "ForestAndPrairieProtectionEndorsement", "VoluntaryCompensation",
+      "LiabilityRestriction", "Horses", "AnimalShows", "IncidentalOfficeUse",
+      "LandRealEstate", "PersonalInjury", "LiquorLiabilityEndorsement",
+      "PersonalLiabilityInsurance", "WaterWell", "TrailerHoliday", "RentedDwelling"
+    ],
+    "homeDiscounts": [
+      "BusinessUse", "ClaimForgiveness", "CooperativeComplex", "Evaluator",
+      "FireResistive", "GroupRate", "HailResistant", "Heating", "SecuritySystem",
+      "LongTermOccupancy", "Loyalty", "Miscellaneous", "MobileHomeTiedDown",
+      "MortgageeFree", "MultiFamily", "MultiLine", "NeighbourhoodWatch",
+      "NewHome", "NewBusiness", "ClaimsFree", "NonSmoker", "Occupation",
+      "Construction", "Renewal", "Retiree", "Age", "SmokeDetector", "Sprinklered",
+      "SupportingHab", "TankerShuttleService", "AgeOfHome", "MatureCitizen",
+      "CombinedFireAndBurglaryAlarm", "PreventativeMeasures"
+    ],
+    "homeSurcharges": [
+      "AbsenteeLandlord", "AgeOfHome", "BusinessUse", "Claims", "CommercialExposure",
+      "HailDamage", "Heating", "LogHome", "Miscellaneous", "MultiFamily",
+      "NonPayment", "NoPreviousInsurance", "Occupancy", "PrimaryHeating", "Location",
+      "AuxiliaryHeating"
+    ],
+    "autoEndorsementsOntario": [
+      "DrivingRecordProtectorClaims", "Opcf02", "Opcf03", "Opcf05", "Opcf05C", "Opcf05D",
+      "Opcf06A", "Opcf06D", "Opcf07", "Opcf08", "Opcf08A", "Opcf09", "Opcf13C",
+      "Opcf16", "Opcf17", "Opcf19", "Opcf19A", "Opcf20", "Opcf23A", "Opcf23B",
+      "Opcf25A", "Opcf27", "Opcf27B", "Opcf28", "Opcf28A", "Opcf29", "Opcf30",
+      "Opcf31", "Opcf32", "Opcf35", "Opcf37", "Opcf38", "Opcf40", "Opcf43",
+      "Opcf43A", "Opcf44", "Opcf46", "Opcf47", "Opcf48",
+      "Pak20and27", "LossOfUseBroadForm", "PermissionToCarryRadioactiveMaterial",
+      "DissapearingDeductible", "PetAccidentWordingEndorsement", "Pak09", "Pak08"
+    ],
+    "autoEndorsementsNonOntario": [
+      "DrivingRecordProtectorClaims", "EmergencyAssistancePackage", "End2", "End3",
+      "End4A", "End4B", "End5", "End5A", "End6A", "End6B", "End6C", "End6D",
+      "End7", "End8", "End8A", "End9", "End13C", "End13D", "End13H",
+      "End16", "End17", "End19", "End19A", "End20", "End20A",
+      "End22", "End23A", "End23B", "End24", "End25", "End25A",
+      "End26", "End27", "End27B", "End28", "End28A", "End30", "End30A",
+      "End31", "End32", "End35", "End36", "End37", "End38", "End39", "End40",
+      "End43", "End43R", "End43RL", "End44", "End48",
+      "Pak03", "Pak05", "Pak06", "Pak08", "Pak09",
+      "PetAccidentWordingEndorsement"
+    ],
+    "autoDiscounts": [
+      "Age", "AssociationMembership", "AwayAtSchool", "TwentyFourHourGuard",
+      "ClaimForgiveness", "ClaimsFree", "ConvictionFree", "ConvictionFreeOccasional",
+      "DriverTraining", "Farm", "Female", "GoodStudent", "GraduatedLicense",
+      "GraduatedLicenseOccasional", "GroupRate", "Hybrid", "IPromiseProgram",
+      "InsuredsDrivingRecord", "LowAnnualMileage", "LowCommuteDistance",
+      "MaritalStatus", "Miscellaneous", "MortgageeFree", "MultiLine", "MultiVehicle",
+      "NeighbourhoodWatch", "NewDriver", "NewDriverOccasional", "NewVehicle",
+      "NonSmoker", "OccasionalDriver", "Occupation", "OutOfProvince", "OwnerOfVehicle",
+      "PreferredCustomer", "Professional", "RecreationalVehicle", "ReligiousClerical",
+      "Renewal", "Retiree", "SecuritySystem", "SmokeDetector", "Sprinklered",
+      "Stability", "TankerShuttleService", "TrailPermit", "Experience", "ShortCommute",
+      "Evaluator", "CooperativeComplex", "SecuritySystemPlus", "NewBusiness",
+      "AdditionalMultiVehicle", "Construction", "GroupRateOccasional",
+      "MultiLine05", "MultiLine06", "AntiLockBrakes", "WinterTire",
+      "AutomaticEmergencyBraking"
+    ],
+    "autoSurcharges": [
+      "BusinessUse", "Carpooling", "Claims", "ClaimsOccasional", "CommercialExposure",
+      "ClaimConvictionOccasional", "Convictions", "ConvictionsOccasional",
+      "ExplosiveMaterial", "HailDamage", "HighKilometersDriven", "HighPerformance",
+      "LogHome", "Miscellaneous", "MultiFamily", "NoPreviousInsurance", "NonPayment",
+      "Occupancy", "OutOfProvince", "OversizeEngine", "PrimaryHeating", "USExposure",
+      "Location", "MultipleOperator", "ClaimsFree", "AbsenteeLandlord", "AgeOfHome",
+      "AuxiliaryHeating"
+    ]
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["DIS*", "csio:DIS*"],
+    "isSurchargePatterns": ["SUR*", "csio:SUR*"],
+    "_note": "These patterns are from the v043 Generic IsDiscount() and IsSurcharge() methods. Commonwell does not override these."
+  },
+  "zCodeInventory": {
+    "_note": "Commonwell has NO carrier-specific Z-codes. All CZO codes used are standard CSIO codes resolved through the IEnumValuesFactory interfaces. The only carrier-specific code is 'NONE' for the company code mapping.",
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": []
+  },
+  "converterOverrides": {
+    "_note": "Commonwell-specific converter overrides that modify behavior from the Generic base.",
+    "FrameworkToCsio_Unrated": {
+      "AccidentViolationConverter": {
+        "inheritsFrom": "V133.Generic",
+        "overrides": "Convert - adds ConvertAccidentViolationDt call after base conversion",
+        "version": "V134"
+      },
+      "AddrConverter": {
+        "inheritsFrom": "V133.Generic",
+        "overrides": "ConvertLegalAddress, Convert - removes DetailAddr, uses SimpleAddress format, sets AddressType to PrimaryPrincipal",
+        "version": "V134"
+      },
+      "BldgProtectionConverter": {
+        "inheritsFrom": "V043.Generic",
+        "overrides": "ConvertDistanceToHydrant (300m threshold), ConvertFireProtectionClassCd (P/U classification based on firehall distance, numeric distance, hydrant proximity)",
+        "version": "V134"
+      },
+      "DwellConverter": {
+        "inheritsFrom": "V133.Generic",
+        "overrides": "ConvertBusinessOnPremisesCd (uses MercantileBusinessTypeConverter), ConvertNumEmployeesFullTimeResidence",
+        "version": "V134"
+      },
+      "DwellOccupancyConverter": {
+        "inheritsFrom": "V128.Generic",
+        "overrides": "ConvertOwnerOccupiesUnitInd - sets true only if occupancy is Owner",
+        "version": "V134"
+      },
+      "LossPaymentCollectionConverter": {
+        "inheritsFrom": "V118.Generic",
+        "overrides": "Convert - maps AB/Collision/Comprehensive/TPL payments to specific coverage codes for loss payment classification",
+        "version": "V134"
+      },
+      "PcCoverageCollectionConverter": {
+        "inheritsFrom": "V130.Generic",
+        "overrides": "ConvertAccidentBenefits (standalone PCCOVERAGE element), ConvertUninsuredAutomobile (standalone element)",
+        "version": "V134"
+      },
+      "PcVehConverter": {
+        "inheritsFrom": "V129.Generic",
+        "overrides": "AppendtExtendedCodeToVehSymbolCd - appends extended code to VehSymbolCd",
+        "version": "V134"
+      },
+      "PersDriverInfoConverter": {
+        "inheritsFrom": "V134.Generic",
+        "overrides": "ConvertSuspensionRevocationDt, ConvertSuspensionRevocationReasonCd, ConvertReinstatementDt - handles InsuranceAndLicense and License lapses",
+        "version": "V134"
+      },
+      "PersPolicyConverter": {
+        "inheritsFrom": "V043.Generic",
+        "overrides": "ConvertAccidentViolation - iterates all persons for accident violation conversion",
+        "version": "V134"
+      },
+      "PersVehConverter": {
+        "inheritsFrom": "V133.Generic",
+        "overrides": "ConvertCoverage (adds AB coverage), ConvertAlternateDrivingStateProvUsePct (US exposure), ConvertOdometerReading",
+        "version": "V134"
+      },
+      "PhoneInfoCollectionConverter": {
+        "inheritsFrom": "V043.Generic",
+        "overrides": "ConvertPolicyPhoneInfo - maps Home/Business/Cell/Fax with proper PhoneType and CommunicationUse codes",
+        "version": "V134"
+      },
+      "VehInspectionInfoConverter": {
+        "inheritsFrom": "V129.Generic",
+        "overrides": "ConvertOdometerReading - uses V134 output type for odometer",
+        "version": "V134"
+      }
+    },
+    "CsioToFramework_Unrated": {
+      "PcVehConverter": {
+        "inheritsFrom": "V126.Generic",
+        "overrides": "ConvertTowingVehInd - sets TowingVehicleID field if indicator is true",
+        "version": "V134"
+      }
+    },
+    "CsioToFramework_Rated": {
+      "_note": "No converter overrides - ConverterFactory inherits from V134.Generic"
+    },
+    "FrameworkToCsio_Rated": {
+      "_note": "No converter overrides - ConverterFactory inherits from Generic"
+    }
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 3,
+    "totalGenericInheritedCodes": 250,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "carrierSpecificConstants": {
+      "CompanyValue.FireHallProtected": "P - used in BldgProtectionConverter",
+      "CompanyValue.FireHallUnprotected": "U - used in BldgProtectionConverter",
+      "CompanyCsioCode.CSIONone": "NONE - used in CompanyCodeConverter"
+    },
+    "notes": [
+      "Commonwell is a lightweight carrier with minimal custom code. Only 3 CompanyConstants defined.",
+      "No Z-codes (carrier-proprietary CSIO codes). All codes are standard CSIO enum values.",
+      "31 VB files in V134/Companies/Commonwell/.",
+      "Inheritance chain: Commonwell -> V134/Generic -> V133/Generic -> ... -> v043/Generic.",
+      "Coverage, discount, and surcharge codes resolve through IEnumValuesFactory interface methods to standard CSIO strings at runtime.",
+      "The carrier's customization is primarily in: (1) fire protection classification logic, (2) policy type form mappings, (3) two home endorsement overrides, (4) two liability code overrides, (5) occupancy type handling, (6) address formatting, (7) accident violation and driver info handling."
+    ]
+  }
+}

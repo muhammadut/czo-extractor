@@ -1,0 +1,568 @@
+{
+  "_metadata": {
+    "carrier": "Gore",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V131"],
+    "latestVersion": "V131",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 70,
+    "description": "Complete CZO mapping for Gore Mutual. Gore exists only in V131, inheriting from v043/V118/V121/V127/V128/V129/V130/V131 Generic bases.",
+    "versionRoles": {
+      "V131": "Single active version (hab-only carrier)"
+    },
+    "inheritanceChain": {
+      "CoverageCodeConverter": "V131.Gore -> V129.Generic -> v043.Generic",
+      "PolicyTypeConverter": "V131.Gore -> v043.Generic",
+      "MultiPolicyDiscountConverter": "V131.Gore -> v043.Generic",
+      "PcCoverageConverter_FtC": "V131.Gore -> V128.Generic",
+      "PcCoverageCollectionConverter_FtC": "V131.Gore -> V130.Generic",
+      "PcCoverageConverter_CtF_Rated": "V131.Gore -> V130.Generic",
+      "ResidenceTypeConverter": "V131.Gore -> V121.Generic",
+      "RiskConverter": "V131.Gore -> V127.Generic",
+      "HeatingUnitTypeConverter": "V131.Gore -> V118.Generic",
+      "CauseOfLossConverter": "V131.Gore -> V130.Generic"
+    }
+  },
+  "coverageCodes": {
+    "homeEndorsements": {
+      "WaterCoverageAndSewerBackup": {
+        "csioCode": "SurfaceWater (V131 ICoveragesValues.IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Surface Water / Water Coverage and Sewer Backup - Gore maps WaterCoverageAndSewerBackup to the V131 SurfaceWater enum value"
+      },
+      "SewerBackup": {
+        "csioCode": "SewerBackupCoverage (IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Sewer Backup Coverage - Gore explicitly maps this in TryConvertToCsioHomeEndorsement"
+      },
+      "GolfCart": {
+        "csioCode": "csio:GC",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Golf Cart endorsement - uses Gore-specific CsioCode constant, mapped via GolfCart LiabilityExtensions in home endorsement outbound"
+      },
+      "DissapearingDeductible": {
+        "csioCode": "EndorsementForChangeInDeductibleNotice (V131 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Disappearing / Change in Deductible Notice endorsement - Gore overrides both home and auto directions"
+      },
+      "Lifestyle3Pack": {
+        "csioCode": "csio:OTH3",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Lifestyle 3 Pack endorsement"
+      },
+      "Lifestyle4Pack": {
+        "csioCode": "csio:OTH4",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Lifestyle 4 Pack endorsement"
+      },
+      "VacantLandCondoCorpEndorsement": {
+        "csioCode": "VacantLand (IPersonalLiability)",
+        "source": "standard",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Vacant Land / Condo Corp endorsement"
+      },
+      "SpecialLimitsEnhancement": {
+        "csioCode": "EnhancedInternalLimits (V131 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Enhanced Internal Limits / Special Limits Enhancement"
+      },
+      "CondoDeductibleAssessment": {
+        "csioCode": "csio:CDEDA",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Condominium Deductible Assessment Earthquake - only available in CSIO version 1.33+"
+      },
+      "PermissionForUnoccupancy": {
+        "csioCode": "inherited from base",
+        "source": "standard",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Permission for Unoccupancy - Gore adds EffectiveDt (deceased date) handling"
+      },
+      "LossAssessment": {
+        "csioCode": "AllRiskLossAssessmentCoverage (V118 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "All Risk Loss Assessment Coverage - added for additional residences in PcCoverageConverter"
+      },
+      "ClaimProtector": {
+        "csioCode": "ClaimFreeProtection (V118 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Claim Free Protection - added for additional residences"
+      },
+      "AccidentalDeathAndDismemberment": {
+        "csioCode": "AccidentalDeathandDismemberment (V118 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Accidental Death and Dismemberment - added for additional residences"
+      },
+      "BettermentsAndImprovements": {
+        "csioCode": "AllRiskUnitOwnersBuildingImprovementsandBettermentsIncreasedLimits (V118 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Betterments endorsement for additional residences"
+      }
+    },
+    "homeLiabilities": {
+      "BusinessUseOfHome": {
+        "csioCode": "csio:HBBLI",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Home Based Business Liability Extension - Gore OVERRIDES generic IncidentalBusinessPursuitsEndorsement with csio:HBBLI (only available in CSIO version 1.35)"
+      },
+      "AdditionalResidenceTenant": {
+        "csioCode": "AdditionalResidencesPropertiesAcreage (ILiabilityExtensions)",
+        "source": "standard",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Additional Residence Tenant liability"
+      },
+      "AdditionalResidenceHouse": {
+        "csioCode": "AdditionalResidencesPropertiesAcreage (ILiabilityExtensions)",
+        "source": "standard",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Additional Residence House liability - same code as Tenant"
+      },
+      "AdditionalResidenceCondo": {
+        "csioCode": "AdditionalResidencesPropertiesAcreage (ILiabilityExtensions)",
+        "source": "standard",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Additional Residence Condo liability - same code as Tenant"
+      },
+      "RentedDwelling": {
+        "csioCode": "csio:ADRNT",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Additional Locations Rented - only available in CSIO version 1.34"
+      },
+      "RentedCondo": {
+        "csioCode": "csio:ADRNT",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Additional Locations Rented (condo) - same code as RentedDwelling"
+      },
+      "SeasonalDwelling": {
+        "csioCode": "csio:SEDWG",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Seasonal Dwelling Liability Extension - only available in CSIO version 1.34"
+      }
+    },
+    "autoEndorsements": {
+      "DissapearingDeductible": {
+        "csioCode": "EndorsementForChangeInDeductibleNotice (V131 IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Disappearing Deductible for auto - Gore overrides to use V131-specific enum value"
+      }
+    },
+    "watercraftLiability": {
+      "JetSki": {
+        "csioCode": "WaterjetPropulsionPersonalWatercraftBasic (IPersonalLiability)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "JetSki watercraft liability"
+      },
+      "OtherWatercraft": {
+        "csioCode": "WatercraftLiabilityA (ILiabilityExtensions)",
+        "source": "standard",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Default watercraft liability for non-JetSki watercraft"
+      }
+    },
+    "habCoverages": {
+      "DwellCondoOverride": {
+        "csioCode": "PersonalPropertyHomeownersForm (IHabPackageAndOtherForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "For Condo policy type, Gore maps Dwell coverage to PersonalPropertyHomeownersForm instead of the standard DwellingResidenceforHomeowner"
+      },
+      "TrailerBoatAllRisks": {
+        "csioCode": "TrailerAllRisks (IWatercraftUtilityBoatTrailerCoverageForms)",
+        "source": "gore",
+        "version": "V131",
+        "availableIn": ["V131"],
+        "description": "Trailer/Boat All Risks property schedule coverage"
+      }
+    },
+    "scheduledPropertyItems": {}
+  },
+  "companyConstants": {
+    "csioCodeConstants": {
+      "GolfCart": { "value": "csio:GC", "description": "Golf Cart coverage code" },
+      "Lifestyle3Pack": { "value": "csio:OTH3", "description": "Lifestyle 3 Pack" },
+      "Lifestyle4Pack": { "value": "csio:OTH4", "description": "Lifestyle 4 Pack" },
+      "CondominiumDeductibleAssessmentEarthquake": { "value": "csio:CDEDA", "description": "Condo Deductible Assessment Earthquake (CSIO v1.33+)" },
+      "HomeBasedBusinessLiabilityExtension": { "value": "csio:HBBLI", "description": "Home Based Business Liability Extension (CSIO v1.35)" },
+      "SeasonalDwellingLiabilityExtension": { "value": "csio:SEDWG", "description": "Seasonal Dwelling Liability Extension (CSIO v1.34)" },
+      "OccupancyTypeOther": { "value": "csio:O", "description": "Occupancy Type Other (not implemented correctly in CSIO v1.28)" },
+      "AdditionalLocationsRented": { "value": "csio:ADRNT", "description": "Additional Locations Rented (CSIO v1.34)" }
+    },
+    "coverageTypes": {
+      "CompPlus": "Comp. Plus",
+      "Plus": "Plus",
+      "VIPPlus": "VIP Plus"
+    },
+    "fieldOptions": {
+      "EarthquakeBuildingContents": "Building and Contents",
+      "BuildingOnly": "Building Only",
+      "CrossLiability": "Cross Liability",
+      "NumberOfMorgagees": "Number of Morgagees"
+    },
+    "companyValues": {
+      "FireHallProtected": "P",
+      "FireHallUnprotected": "U",
+      "Y": "Y",
+      "N": "N",
+      "Yes": "Yes",
+      "No": "No"
+    },
+    "supportingPolicy": {
+      "GoreMutual": "Gore Mutual"
+    },
+    "commonConstants": {
+      "NoPreviousInsurance": "No Previous Insurance",
+      "None": "None"
+    }
+  },
+  "discountCodes": {
+    "autoDiscounts": {},
+    "autoSurcharges": {},
+    "habDiscounts": {},
+    "habSurcharges": {},
+    "tierCodes": {},
+    "notes": "Gore does not define carrier-specific discount or surcharge codes. All discount/surcharge handling inherits from the v043 Generic base. The MultiPolicyDiscountConverter uses ImmediateDiscount for multi-line discounts when the MultiLine field is true on the primary item."
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "homeowner": {
+        "CompPlus": "HomeownersComprehensiveForm",
+        "Plus": "HomeownersBroadForm",
+        "VIPPlus": "HomeownersComprehensiveExpandedForm",
+        "default": "HomeownersBroadExpandedForm"
+      },
+      "condo": {
+        "AllRisks/AllRisk": "ComprehensiveCondominiumForm",
+        "VipPlus": "CondominiumComprehensiveExpandedForm",
+        "default": "falls through to base"
+      },
+      "tenant": {
+        "AllRisks/AllRisk": "TenantsComprehensiveForm",
+        "default": "falls through to base"
+      },
+      "seasonal": {
+        "FourSeasonsSuperior": "SeasonalDwellingBroadForm",
+        "default": "falls through to base"
+      },
+      "fec": "delegates to TryConvertHomeToCsio (same as homeowner mappings)"
+    },
+    "cancelledDeclinedCodes": {
+      "emptyString": "Nonpayment (default override)"
+    },
+    "causeOfLoss": {
+      "propertyType": {
+        "Burglary": "Burglary (ICauseOfLossValues.IPropertyType)",
+        "Explosion": "Explosion (IAutomobileType)",
+        "GroundWater": "GroundWater",
+        "WindstormDamage/Hail": "WindstormDamage",
+        "SurfaceWater": "SurfaceWater",
+        "ExteriorSewerLine": "ExteriorSewerLine (V130)",
+        "ExteriorWaterLine": "ExteriorWaterLine (V130)",
+        "Collapse": "Other (IMiscType)"
+      }
+    },
+    "constructionTypes": {
+      "Asbestos": "Asbestos",
+      "BrickSolid": "Brick",
+      "CementConcrete": "Cement",
+      "FrameWood": "Frame",
+      "Log": "Log",
+      "MasonrySolid": "Masonry",
+      "Steel": "Steel",
+      "StoneSolid": "Stone",
+      "Sectional": "Frame (mapped to Frame)",
+      "PostBeamWood": "Frame (mapped to Frame)"
+    },
+    "exteriorWallMaterial": {
+      "ICFConstruction": "Other (ConstructionType)"
+    },
+    "fuelTypes": {
+      "Other": "OtherSolidFuel",
+      "GroundSource": "Electric"
+    },
+    "heatingUnitTypes": {
+      "ElectricFurnace220Watt": "Other",
+      "WallFurnace": "Other",
+      "FloorFunace": "Other",
+      "RadiantCeiling": "Other",
+      "RadiantFloor": "RadiantFloor"
+    },
+    "occupancyTypes": {
+      "Owner_AdditionalResidenceCondo": "PrimaryResidence",
+      "FamilyMember_AdditionalResidenceCondo": "csio:O (OccupancyTypeOther)"
+    },
+    "policyStatus": {
+      "renewal": "Renewal (if calculation date matches renewal criteria)",
+      "newBusiness": "NewBusinessQuoted (default)"
+    },
+    "propulsionTypes": {
+      "JetSki": "returns False (not sent)",
+      "Sailboat": "Sail",
+      "Canoe/Kayak/Rowboat/Windsurfer": "NonPowerCraft",
+      "JetBoat": "Waterjet",
+      "Motor_Inboard": "Inboard",
+      "Motor_InboardOutboard": "InboardOutdrive",
+      "Motor_Outboard": "Outboard"
+    },
+    "residenceTypes": {
+      "ApartmentBuilding": "LowRise",
+      "OfficeBuilding/RetailBuilding": "ApartmentincludingMercantile",
+      "response_LowRise": "ApartmentBuilding",
+      "response_HighRise": "ApartmentBuilding"
+    },
+    "waterUnitTypes": {
+      "JetSki": "RunaboutSkiBoat",
+      "Pontoon": "PontoonBoat",
+      "Motorboat": "RunaboutSkiBoat",
+      "Cruiser/CuddyCruiser": "CabinCruiser",
+      "MultihulledVessels/TunnelHull": "MultiHulledVessels",
+      "None/AirCushion/Canoe/Charter/etc": "returns False (not sent)"
+    },
+    "riskTypes": {
+      "outbound": {
+        "SportingEquipment": "MiscellaneousSportingEquipment",
+        "VideoEquipment": "VideoEquipment",
+        "AudioVideoMedia": "AudioVisualDataMediaCDDVDVHSetc",
+        "Television": "Televisions",
+        "StereoEquipment": "ElectronicEquipment",
+        "Piano": "MusicalInstruments",
+        "GolfCart": "GolfCart",
+        "WindsurfingEquipment": "SportsEquipment",
+        "HockeyEquipment": "MiscellaneousProperty",
+        "Computer_Laptop": "Laptop",
+        "Computer_Desktop": "PersonalComputer",
+        "FineArts_Professional": "FineArtsProfessionalCommercial",
+        "FineArts_Personal": "FineArts",
+        "Jewellery_InVault": "JewelleryInVaultSafetydeposit",
+        "Jewellery_Regular": "Jewellery"
+      },
+      "inbound": {
+        "SportsEquipment": "SportingEquipment",
+        "VideoEquipment": "VideoEquipment",
+        "FineArtsProfessionalCommercial": "FineArts",
+        "PortableRadiosTypewriters": "RadioPortable",
+        "Televisions": "Television",
+        "AudioVisualDataMediaCDDVDVHSetc": "AudioVideoMedia",
+        "Laptop": "Computer (Laptop=True)",
+        "PersonalComputer": "Computer (Laptop=False)",
+        "MiscellaneousSportingEquipment": "SportingEquipment",
+        "ElectronicEquipment": "StereoEquipment",
+        "MusicalInstruments": "Piano"
+      }
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["coverageCd value after colon starts with 'DIS'"],
+    "isSurchargePatterns": ["coverageCd value after colon starts with 'SUR'"],
+    "notes": "Gore uses simple prefix matching: IsDiscount checks if value after ':' StartsWith('DIS'), IsSurcharge checks if value after ':' StartsWith('SUR'). No Z-code based discount/surcharge patterns."
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "BettermentsAndImprovements -> NamedPerilsUnitOwnersBuildingImprovementsandBettermentsIncreasedLimits",
+      "BuildingBylawsExtension -> BylawsEndorsement",
+      "Earthquake -> Earthquake",
+      "EquipmentBreakdownCoverage -> EquipmentBreakdown",
+      "FireFightingCoverage -> FireDepartmentServiceCharge",
+      "GlassReducedDeductible -> GlassDeductibleEndorsement",
+      "GuaranteedReplacementCost -> GuaranteedReplacementCostBuilding",
+      "IdentityTheft -> IdentityTheft",
+      "MassEvacuation -> MassEvacuationEndorsement",
+      "RentalIncome -> RentalIncome",
+      "ReplacementOrRepairCost -> ReplacementCostContentsBasic",
+      "SewerBackup -> SewerBackupCoverage",
+      "SingleLimitEndorsement -> HomeownersSingleLimit",
+      "SpecialLimitsEnhancement -> EnhancedInternalLimits",
+      "VacancyPermit -> VacancyPermit",
+      "GlassBreakage -> GlassBreakage",
+      "WindHailCoverage -> WindstormHail",
+      "LegalExpense -> LegalFees",
+      "PowerInterruptionCoverage -> PowerFluctuation",
+      "FoodFreezerFoodSpoilage -> HomeFreezer",
+      "CreditCardFraud -> CreditCardForgeryandCounterfeitMoneyCoverage",
+      "WaterCoverage -> RestrictedWaterDamage",
+      "ServiceLineCoverage -> ServiceLineExtensionEndorsement",
+      "CondoDeductibleAssessment -> DeductibleAssessmentBuydown",
+      "LimitedRoofCoverage -> RoofLimitedtoCashValue",
+      "TheftfromVehicle -> TheftfromVehicle",
+      "AccidentalDeathandDismemberment -> AccidentalDeathandDismemberment",
+      "ClaimsProtector -> ClaimFreeProtection",
+      "InflationProtectionEndorsement -> InflationGuardEndorsement",
+      "VandalismByTenantExclusion -> VandalismbyTenantsExclusion",
+      "AdditionalInsuredEndorsement -> AdditionalInsureds",
+      "AdditionalNamedInsuredCooccupant -> AdditionalNamedInsured",
+      "DebrisRemoval -> DebrisRemoval",
+      "EscapeOfFuelOil -> LeakageorOverflowofDomesticFuelOil",
+      "ExtendedCareEndorsement -> CareFacilityContentsExtension",
+      "FloodEndorsement -> FloodDamage",
+      "HomeBasedBusiness -> HomeBusinessCoverage",
+      "LeaseholdCondoCorpEndorsement -> LegalLiabilityLossAssessment",
+      "PersonalPropertyReplacementExtension -> ReplacementCostContentsExtended",
+      "ReplacementCostOnContents -> ReplacementCostContentsBasic",
+      "TravelInsurance -> EmergencyMedicalTravelInsurance",
+      "VandalismMaliciousActsExclusionTenantsGuests -> VandalismbyTenantsExclusion",
+      "PetAccidentWordingSupplement -> AnimalLiabilityExtension",
+      "CollectivelyOwnedLifeLeasePropertyCoverage -> NamedPerilsLossAssessmentCoverage",
+      "LifeLeasePropertyCoverage -> NamedPerilsUnitOwnersAdditionalProtection",
+      "BooksToolsAndInstrumentsPertainingToBusiness -> BooksToolsandInstrumentsPertainingtoaBusiness"
+    ],
+    "homeLiabilities": [
+      "DayCareInHome -> DayCareExtension",
+      "ResidenceEmployees -> ResidenceEmployeesLiability",
+      "RentedRoomSuite/RoomerBoarder -> Roomer",
+      "DwellingUnderConstruction -> ConstructionLiability",
+      "BusinessUseOfHome -> IncidentalBusinessPursuitsEndorsement (OVERRIDDEN by Gore to csio:HBBLI)",
+      "BedAndBreakfast -> BedBreakfast",
+      "AdditionalResidence/Acreage -> AdditionalResidencesPropertiesAcreage",
+      "SwimmingPool -> SwimmingPoolorPond",
+      "Boat/BoatAndMotor -> WatercraftLiabilityA",
+      "SeasonalDwelling -> SeasonalResidence (OVERRIDDEN by Gore to csio:SEDWG)",
+      "Atv -> AllTerrainVehiclesBasic",
+      "AdditionalNamedInsured -> AdditionalNamedInsured",
+      "ElevatorEscalatorsInclinators -> Elevator",
+      "PremisesExtension -> PremisesExtension",
+      "JetSki -> WaterjetPropulsionPersonalWatercraftBasic",
+      "GolfCart -> GolfCart",
+      "ForestAndPrairieProtectionEndorsement -> ForestandPrairieProtectionAct",
+      "VoluntaryCompensation -> ResidenceVoluntaryCompensationResidentEmployee",
+      "LiabilityRestriction -> LimitedLiabilityExtension",
+      "Horses -> Horse",
+      "AnimalShows -> ExhibitionofAnimals",
+      "IncidentalOfficeUse -> ProfessionalUseResPremises",
+      "LandRealEstate -> VacantLand",
+      "PersonalInjury -> PersonalInjuryEndorsement",
+      "Pond -> SwimmingPoolorPond",
+      "LiquorLiabilityEndorsement -> HostLiquorLiability"
+    ],
+    "homeDiscounts": [
+      "BusinessUse -> BusinessUseDiscount",
+      "ClaimForgiveness -> ClaimsForgiveness",
+      "CooperativeComplex -> CooperativeCoop",
+      "Evaluator -> EvaluatorBased",
+      "FireResistive -> PreferredConstruction",
+      "GroupRate -> GroupRateApplied",
+      "HailResistant -> HailResistant",
+      "Heating -> Heating",
+      "SecuritySystem -> HomeSecurity",
+      "LongTermOccupancy -> LongTermOccupancy",
+      "Loyalty -> ValuedPreferredCustomer",
+      "Miscellaneous -> MiscellaneousDiscount",
+      "MobileHomeTiedDown -> MobileHomeTiedDown",
+      "MortgageeFree -> MortgageFree",
+      "MultiFamily -> MultipleFamilyDiscount",
+      "MultiLine -> MultipleLine",
+      "NeighbourhoodWatch -> NeighbourhoodWatchCrimePreventionProgramme",
+      "NewHome -> NewHome",
+      "NewBusiness -> NewPolicy",
+      "ClaimsFree -> NoClaims",
+      "NonSmoker -> Nonsmoker",
+      "Occupation -> Occupation",
+      "Construction -> PreferredConstruction",
+      "Renewal -> Renewal",
+      "Retiree -> Retiree",
+      "Age -> SeniorCitizenAgeRelated",
+      "SmokeDetector -> SmokeDetector",
+      "Sprinklered -> Sprinklered",
+      "SupportingHab -> MultiplePropertyRisks",
+      "TankerShuttleService -> TankerShuttleServiceFireFightingService",
+      "AgeOfHome -> YearBuiltOtherthanNewHome",
+      "MatureCitizen -> MatureCitizen"
+    ],
+    "homeSurcharges": [
+      "AbsenteeLandlord -> AbsenteeLandlordRentedDwelling",
+      "AgeOfHome -> AgeConditionofHome",
+      "BusinessUse -> BusinessUseSurcharge",
+      "Claims -> Claims",
+      "CommercialExposure -> CommercialExposure",
+      "HailDamage -> HailDamageSusceptibility",
+      "Heating -> PrimaryHeating",
+      "LogHome -> LogHome",
+      "Miscellaneous -> MiscellaneousSurcharge",
+      "MultiFamily -> MultipleFamilySurcharge",
+      "NonPayment -> Nonpayment",
+      "NoPreviousInsurance -> NoPreviousInsurance",
+      "Occupancy -> Occupancy",
+      "PrimaryHeating -> PrimaryHeating",
+      "Location -> RiskLocation"
+    ],
+    "autoEndorsementsOntario": "Gore inherits all standard OPCF endorsements from v043 Generic (OPCF 2,3,5,5C,5D,6A,6D,7,8,8A,9,13C,16,17,19,19A,20,23A,23B,25A,27,27B,28,28A,29,30,31,32,35,37,38,40,43,43A,44R,46,47,48,Pak06,20A,4B,26)",
+    "autoEndorsementsNonOntario": "Gore inherits all standard End-series endorsements from v043 Generic (End2,3,4A,4B,5,5A,6A,6B,6D,7,8,8A,9,13C,13D,13H,16,17,19,19A,20,20A,22,23A,24,27,27B,28,28A,30,30A,31,32,35,36,37,38,39,40,43,43R,43Rl,44,48,Pak03,05,06,08,09)",
+    "autoDiscounts": "All inherited from v043 Generic",
+    "autoSurcharges": "All inherited from v043 Generic"
+  },
+  "zCodeInventory": {
+    "habCoverage": [
+      { "code": "csio:GC", "constant": "CompanyConstants.CsioCode.GolfCart", "version": "V131", "availableIn": ["V131"], "description": "Golf Cart" },
+      { "code": "csio:OTH3", "constant": "CompanyConstants.CsioCode.Lifestyle3Pack", "version": "V131", "availableIn": ["V131"], "description": "Lifestyle 3 Pack" },
+      { "code": "csio:OTH4", "constant": "CompanyConstants.CsioCode.Lifestyle4Pack", "version": "V131", "availableIn": ["V131"], "description": "Lifestyle 4 Pack" },
+      { "code": "csio:CDEDA", "constant": "CompanyConstants.CsioCode.CondominiumDeductibleAssessmentEarthquake", "version": "V131", "availableIn": ["V131"], "description": "Condo Deductible Assessment Earthquake" },
+      { "code": "csio:HBBLI", "constant": "CompanyConstants.CsioCode.HomeBasedBusinessLiabilityExtension", "version": "V131", "availableIn": ["V131"], "description": "Home Based Business Liability Extension" },
+      { "code": "csio:SEDWG", "constant": "CompanyConstants.CsioCode.SeasonalDwellingLiabilityExtension", "version": "V131", "availableIn": ["V131"], "description": "Seasonal Dwelling Liability Extension" },
+      { "code": "csio:O", "constant": "CompanyConstants.CsioCode.OccupancyTypeOther", "version": "V131", "availableIn": ["V131"], "description": "Occupancy Type Other" },
+      { "code": "csio:ADRNT", "constant": "CompanyConstants.CsioCode.AdditionalLocationsRented", "version": "V131", "availableIn": ["V131"], "description": "Additional Locations Rented" }
+    ],
+    "autoCoverage": [],
+    "discountsSurcharges": []
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 8,
+    "totalGenericInheritedCodes": 120,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "V131only": 8,
+      "sharedAcrossVersions": 0
+    },
+    "notes": [
+      "Gore is a hab-only carrier (home insurance) with a single version V131.",
+      "All 8 carrier-specific csio: codes in CompanyConstants.CsioCode are used in CoverageCodeConverter.vb.",
+      "No Z-codes (proprietary codes starting with Z after csio:) are defined - all Gore-specific codes use standard CSIO code prefixes.",
+      "csio:GC (GolfCart) is a standard CSIO code, not proprietary.",
+      "csio:CDEDA, csio:HBBLI, csio:SEDWG, csio:ADRNT reference newer CSIO schema versions (1.33-1.35) not yet available in the base enum factory.",
+      "csio:O (OccupancyTypeOther) works around a bug in CSIO v1.28.",
+      "The IsDiscount/IsSurcharge patterns in CsioToFramework.Rated.PcCoverageConverter use simple prefix matching on 'DIS' and 'SUR'.",
+      "Gore defines Gore Mutual as a supporting policy for multi-policy discount validation."
+    ]
+  }
+}

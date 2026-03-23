@@ -1,0 +1,1383 @@
+{
+  "_metadata": {
+    "carrier": "RoyalSunAlliance",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["V128"],
+    "latestVersion": "V128",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 118,
+    "description": "Complete CZO mapping for RoyalSunAlliance (RSA), including CNS and Western Assurance sub-brands",
+    "versionRoles": {
+      "V128": "Primary service (all RSA/CNS/WAH traffic)"
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "Pak06": {
+        "csioCode": "rsa:2027",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Ontario PAK 06 bundle endorsement"
+      },
+      "DrivingRecordProtectorClaimsPrincipalAndOccasional": {
+        "csioCode": "rsa:CPPPO",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Claims Protection Plan - Principal and Occasional drivers"
+      },
+      "DrivingRecordProtectorClaimsOccasionalOnly05": {
+        "csioCode": "rsa:CP05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Claims Protection Plan - Occasional only (class 05)"
+      },
+      "DrivingRecordProtectorClaimsOccasionalOnly06": {
+        "csioCode": "rsa:CP06",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Claims Protection Plan - Occasional only (class 06)"
+      },
+      "Opcf05C": {
+        "csioCode": "Z5CS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "OPCF 5C endorsement"
+      },
+      "PermissionPassengersTranNetworkON": {
+        "csioCode": "Z6TNC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Permission to Carry Passengers for Transportation Network (Ontario)"
+      },
+      "PermissionPassengersTranNetwork": {
+        "csioCode": "Z1TNC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Permission to Carry Passengers for Transportation Network (non-Ontario)"
+      },
+      "End28A": {
+        "csioCode": "28OD",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Endorsement 28A - Other Driver"
+      },
+      "AP05": {
+        "csioCode": "ZAP05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto coverage AP class 05"
+      },
+      "TP05": {
+        "csioCode": "ZTP05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto coverage TP class 05"
+      },
+      "BI05": {
+        "csioCode": "ZTP05BI",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto coverage TP05 Bodily Injury"
+      },
+      "DC05": {
+        "csioCode": "ZTP05DC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto coverage TP05 Direct Compensation"
+      },
+      "PD05": {
+        "csioCode": "ZTP05PD",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto coverage TP05 Property Damage"
+      },
+      "UM05": {
+        "csioCode": "ZUM05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto Uninsured Motorist class 05"
+      },
+      "COLL05": {
+        "csioCode": "ZCL05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto Collision class 05"
+      },
+      "COMP05": {
+        "csioCode": "ZCMP05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto Comprehensive class 05"
+      },
+      "SP05": {
+        "csioCode": "ZCP05",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Auto Specified Perils class 05"
+      },
+      "AccidentalDeath": {
+        "csioCode": "csio:ADB",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Accidental Death Benefit"
+      },
+      "License5GDL": {
+        "csioCode": "5L",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "License class 5 GDL"
+      }
+    },
+    "homeEndorsements": {
+      "Building": {
+        "csioCode": "ZHBLG",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Building coverage (dwelling)"
+      },
+      "Contents": {
+        "csioCode": "ZHPRO",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Contents / Personal Property"
+      },
+      "CondoPersonalProperty": {
+        "csioCode": "ZHPRO",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Condo unit personal property (same code as Contents)"
+      },
+      "AdditionalBuildingOutbuildings": {
+        "csioCode": "csio:BLDG",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Additional Building / Outbuildings"
+      },
+      "AdditionalLivingExpensesLossOfUse": {
+        "csioCode": "ZHLOU",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Additional Living Expenses / Loss of Use"
+      },
+      "PersonalLiability": {
+        "csioCode": "ZHLIA",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Personal Liability"
+      },
+      "LegalLiability": {
+        "csioCode": "ZHLIA",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Legal Liability (same code as Personal Liability)"
+      },
+      "VoluntaryMedicalPayments": {
+        "csioCode": "ZHVMP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Voluntary Medical Payments"
+      },
+      "VoluntaryPropertyDamage": {
+        "csioCode": "csio:VLPD",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Voluntary Property Damage"
+      },
+      "Earthquake": {
+        "csioCode": "csio:Earthquake",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Coverage",
+        "contentsCoverageOptions": {
+          "FullCoverage": "ZHECF",
+          "PartialCoverage": "ZHECP",
+          "NotCovered": "ZHECX"
+        }
+      },
+      "EarthquakeAdditionalBuilding": {
+        "csioCode": "ZHEAB",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake - Additional Building"
+      },
+      "EarthquakeBuilding": {
+        "csioCode": "ZHEBG",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake - Building"
+      },
+      "EarthquakeCorporationDeductible": {
+        "csioCode": "ZHELA",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Corporation Deductible"
+      },
+      "EarthquakeLossAssessment": {
+        "csioCode": "ZHEAS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Loss Assessment"
+      },
+      "EarthquakeContentsFullCoverage": {
+        "csioCode": "ZHECF",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Contents - 100% Building, 100% Contents, 100% Outbuildings"
+      },
+      "EarthquakeContentsNotCovered": {
+        "csioCode": "ZHECX",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Contents - 100% Building and 100% Outbuildings (no contents)"
+      },
+      "EarthquakeContentsPartialCoverage": {
+        "csioCode": "ZHECP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Contents - 100% Building, 50% Contents, 100% Outbuildings"
+      },
+      "EarthquakeLossOfUse": {
+        "csioCode": "csio:ERQKF",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Earthquake Loss of Use"
+      },
+      "LimitedByLawsCoverageEndorsement": {
+        "csioCode": "ZHBYL",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Building Bylaws Extension (default/Atlantic provinces)",
+        "provinceSpecific": {
+          "ON": "ZHBY3",
+          "BC": "ZHBY5 (or ZHBY6 for condo FEC)"
+        }
+      },
+      "LimitedByLawsCoverageEndorsement3": {
+        "csioCode": "ZHBY3",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Building Bylaws Extension - Ontario"
+      },
+      "LimitedByLawsCoverageEndorsement5": {
+        "csioCode": "ZHBY5",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Building Bylaws Extension - BC"
+      },
+      "LimitedByLawsCoverageEndorsement6": {
+        "csioCode": "ZHBY6",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Building Bylaws Extension - BC Condo FEC"
+      },
+      "GlassBreakage": {
+        "csioCode": "csio:GLABR",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Glass Breakage"
+      },
+      "GlassDeductible": {
+        "csioCode": "csio:GLDED",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Glass Reduced Deductible"
+      },
+      "GolfCartCoverage": {
+        "csioCode": "csio:GOLFC",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Golf Cart Coverage"
+      },
+      "SingleLimit": {
+        "csioCode": "ZHSGL",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Single Limit Endorsement"
+      },
+      "IdentityTheft": {
+        "csioCode": "csio:IDTFT",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Identity Theft"
+      },
+      "RentalIncome": {
+        "csioCode": "csio:RENT",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Rental Income"
+      },
+      "SewerBackup": {
+        "csioCode": "ZHWD1",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Sewer Backup (Form 20183)"
+      },
+      "SewerBackupForm20174": {
+        "csioCode": "ZHWD5",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Sewer Backup (Form 20174)"
+      },
+      "WineSpoilageAndBreakage": {
+        "csioCode": "ZHWSP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Wine Spoilage and Breakage (mapped from WindHailCoverage)"
+      },
+      "ClaimProtectionEndorsement": {
+        "csioCode": "ZHCPC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Claims Protection Endorsement"
+      },
+      "WaterCoverageAndSewerBackup": {
+        "csioCode": "ZHWDF",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Waterproof (Form 21030) - Water Coverage and Sewer Backup"
+      },
+      "HospitalCash": {
+        "csioCode": "ZHOSP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Hospital Cash and Accidental Death"
+      },
+      "ServiceLine": {
+        "csioCode": "ZHWSL",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Service Line Coverage"
+      },
+      "LimitedRoof": {
+        "csioCode": "csio:ACV",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Roof Restriction / Actual Cash Value"
+      },
+      "GreenerHomeEndorsement": {
+        "csioCode": "ZHGRN",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Greener Home / Environment-Friendly Replacement"
+      },
+      "ShortTermRental": {
+        "csioCode": "ZHRE0",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Short Term Rental Endorsement (base / home)"
+      },
+      "ShortTermRental24": {
+        "csioCode": "ZHRE1",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Short Term Rental Endorsement - 24 weeks (condo)"
+      },
+      "ShortTermRental48": {
+        "csioCode": "ZHRE2",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Short Term Rental Endorsement - 48 weeks (condo)"
+      },
+      "ShortTermRental24Extn3": {
+        "csioCode": "ZHRE3",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Short Term Rental Endorsement - 24 weeks (seasonal)"
+      },
+      "ShortTermRental24Extn4": {
+        "csioCode": "ZHRE4",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Short Term Rental Endorsement - 24 weeks (seasonal FEC/landlord)"
+      },
+      "SpecialLimitsEndorsementForSeniors": {
+        "csioCode": "csio:DISSC",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Special Limits Enhancement for Seniors"
+      },
+      "SellingBacktoPowerGrid": {
+        "csioCode": "ZHPOW",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Loss of Income - Solar Energy / Selling Back to Power Grid"
+      },
+      "LossAssessmentCondominiumCorporationDeductible": {
+        "csioCode": "ZHLAD",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Loss Assessment - Condominium Corporation Deductible"
+      },
+      "LegalLossAssessmentCondominiumCorporationDeductible": {
+        "csioCode": "ZHLLD",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Legal Loss Assessment - Condominium Corporation Deductible"
+      },
+      "LossAssessmentHomeownersAssociation": {
+        "csioCode": "ZHHAL",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Loss Assessment - Homeowners Association"
+      },
+      "SeasonalBuildingExtension": {
+        "csioCode": "ZHSDE",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Seasonal Building/Dwelling Extension"
+      },
+      "Burglary": {
+        "csioCode": "csio:BURG",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Burglary Coverage (seasonal FEC)"
+      },
+      "Vandalism": {
+        "csioCode": "ZHVAN",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Vandalism Coverage (seasonal FEC)"
+      },
+      "BusinessInTheHome": {
+        "csioCode": "csio:HBON",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Business in the Home / Home-Based Business"
+      },
+      "ContingentCoverage": {
+        "csioCode": "csio:ARAP",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Contingent Coverage - All Risk"
+      },
+      "ContingentCoverageNamedPerils": {
+        "csioCode": "csio:NPAP",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Contingent Coverage - Named Perils"
+      },
+      "ContentsInStorage": {
+        "csioCode": "ZHCIS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Contents in Storage"
+      },
+      "EquipmentBreakdown": {
+        "csioCode": "ZHEBI",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Equipment Breakdown"
+      },
+      "FoodFreezer": {
+        "csioCode": "ZHFRZ",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Food Freezer / Food Spoilage"
+      },
+      "GoodsForSaleAllRisk": {
+        "csioCode": "ZHISS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Goods for Sale / Items Held for Sale or Sample"
+      },
+      "HobbyFarmProperty": {
+        "csioCode": "csio:FRMHB",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Hobby Farm Property"
+      },
+      "HobbyFarmBuilding": {
+        "csioCode": "ZHHFB",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Hobby Farm Building"
+      },
+      "HobbyFarmHay": {
+        "csioCode": "ZHHFH",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Hobby Farm Hay"
+      },
+      "HomeAssistance": {
+        "csioCode": "ZHOAS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Home Assistance"
+      },
+      "IncidentalOfficeUse": {
+        "csioCode": "ZHLBU",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Incidental Office Use"
+      },
+      "PersonalInjury": {
+        "csioCode": "ZHLPI",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Personal Injury"
+      },
+      "MechanicsTools": {
+        "csioCode": "ZHMEC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Mechanics Tools"
+      },
+      "PetInsuranceAccidental": {
+        "csioCode": "ZHPAC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Pet Insurance Accidental"
+      },
+      "VancityPureHome": {
+        "csioCode": "ZHVAP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Vancity Pure Home"
+      },
+      "ResidenceVoluntaryCompensation": {
+        "csioCode": "ZHRVC",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Residence Voluntary Compensation"
+      },
+      "RentedUnitOwnersEndorsement": {
+        "csioCode": "csio:RUOE",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Rented Unit Owners Endorsement"
+      },
+      "EnhancementEndorsementForm20757wa": {
+        "csioCode": "ZENH3",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Enhancement Endorsement Form 20757wa"
+      },
+      "SURCX": {
+        "csioCode": "csio:SURCX",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Surcharge Exclusion marker"
+      },
+      "DISCX": {
+        "csioCode": "csio:DISCX",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Discount Exclusion marker"
+      }
+    },
+    "homeLiabilities": {
+      "AdditionalResidenceLiabilityExtension": {
+        "csioCode": "ZHLAR",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Additional Residence Liability Extension (also used for seasonal, rented condo, rented dwelling)"
+      },
+      "ChildCareLiabilityExtension": {
+        "csioCode": "csio:Daycare",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Child Care / Daycare Liability Extension"
+      },
+      "ElevatorLiabilityExtension": {
+        "csioCode": "csio:ELEV",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Elevator Liability Extension"
+      },
+      "HairSalonLiabilityExtension": {
+        "csioCode": "ZHLHS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Hair Salon Liability Extension"
+      },
+      "RacquetSportsLiabilityExtension": {
+        "csioCode": "ZHLRS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Racquet Sports Liability Extension"
+      },
+      "SaddleAnimalLiability": {
+        "csioCode": "ZHLSA",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Saddle Animal / Horses Liability"
+      },
+      "ResidenceEmployeeLiability": {
+        "csioCode": "csio:RELIA",
+        "source": "standard",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Residence Employee Liability"
+      }
+    },
+    "islandSavingsPacks": {
+      "BundlePremium": {
+        "csioCode": "ZHIBP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Bundle Premium"
+      },
+      "BusinessPack": {
+        "csioCode": "ZHIBS",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Business Pack"
+      },
+      "CollectorPack": {
+        "csioCode": "ZHICL",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Collector Pack"
+      },
+      "ConveniencePack": {
+        "csioCode": "ZHICV",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Convenience Pack"
+      },
+      "GardenerPack": {
+        "csioCode": "ZHIGD",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Gardener Pack"
+      },
+      "GardenerPackHspl": {
+        "csioCode": "ZHIGP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Gardener Pack HSPL"
+      },
+      "Premium": {
+        "csioCode": "ZHIPR",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Premium"
+      },
+      "SportsPack": {
+        "csioCode": "ZHISP",
+        "source": "rsa",
+        "version": "V128",
+        "availableIn": ["V128"],
+        "description": "Island Savings Enhancement Endorsement - Sports Pack"
+      }
+    },
+    "scheduledPropertyItems": {
+      "BicyclesAllRisk": { "csioCode": "ZIABK", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Bicycles - All Risk" },
+      "BicyclesNamedPerils": { "csioCode": "csio:CCBIK", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Bicycles - Named Perils" },
+      "CamerasAllRisk": { "csioCode": "csio:MPC", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Cameras - All Risk" },
+      "CamerasBlanket": { "csioCode": "ZIBCM", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Cameras - Blanket" },
+      "CamerasProfessionalAllRisk": { "csioCode": "ZIACB", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Cameras Professional - All Risk" },
+      "CampingEquipmentAllRisk": { "csioCode": "ZIACE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Camping Equipment - All Risk" },
+      "CampingEquipmentNamedPerils": { "csioCode": "ZINCE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Camping Equipment - Named Perils" },
+      "CellularPhoneAllRisk": { "csioCode": "csio:CELLP", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Cellular Phone - All Risk" },
+      "CellularPhoneNamedPerils": { "csioCode": "csio:MPP", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Cellular Phone - Named Perils" },
+      "CoinsAllRisk": { "csioCode": "ZIACN", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Coins - All Risk" },
+      "ComicBooksCollectionsAllRisk": { "csioCode": "ZIACO", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Comic Books / Collections - All Risk" },
+      "ElectricWheelchairAllRisk": { "csioCode": "ZIAWC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair - All Risk" },
+      "ElectricWheelchairNamedPerils": { "csioCode": "ZINWC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair - Named Perils" },
+      "ElectricWheelchairAllRiskRSAON": { "csioCode": "ZIAWE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair - All Risk (RSA ON)" },
+      "ElectricWheelchairNamedPerilsRSAON": { "csioCode": "ZINWE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair - Named Perils (RSA ON)" },
+      "FineArtsAllRisk": { "csioCode": "ZIAFA", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Fine Arts - All Risk" },
+      "FineArtsBlanket": { "csioCode": "ZIBFA", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Fine Arts - Blanket" },
+      "FineArtsWithBreakageAllRisk": { "csioCode": "ZIAFB", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Fine Arts with Breakage - All Risk" },
+      "FirearmsAllRisk": { "csioCode": "ZIAFI", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Firearms - All Risk" },
+      "FishingEquipment": { "csioCode": "rsa:FE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Fishing Equipment (generic)" },
+      "FishingEquipmentAllRisk": { "csioCode": "ZIAFE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Fishing Equipment - All Risk" },
+      "FishingEquipmentNamedPerils": { "csioCode": "ZINFE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Fishing Equipment - Named Perils" },
+      "FoodFreezerAllRisk": { "csioCode": "ZIAOT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Food Freezer - All Risk" },
+      "FoodFreezerNamedPerils": { "csioCode": "ZINHF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Food Freezer - Named Perils" },
+      "FursAllRisk": { "csioCode": "csio:CCFR", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Furs - All Risk" },
+      "FursBlanket": { "csioCode": "ZIBFR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Furs - Blanket" },
+      "GolfCartsAllRisk": { "csioCode": "csio:CCGC", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Golf Carts - All Risk" },
+      "GolfCartsNamedPerils": { "csioCode": "ZINGC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Golf Carts - Named Perils" },
+      "GolfEquipmentAllRisk": { "csioCode": "ZIAGE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Golf Equipment - All Risk" },
+      "GolfEquipmentNamedPerils": { "csioCode": "ZINGE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Golf Equipment - Named Perils" },
+      "HockeyEquipmentAllRisk": { "csioCode": "ZIAHK", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Hockey Equipment - All Risk" },
+      "HockeyEquipmentNamedPerils": { "csioCode": "ZINHK", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Hockey Equipment - Named Perils" },
+      "HorsesNamedPerils": { "csioCode": "ZINHO", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Horses - Named Perils" },
+      "HorseTackRoomNamedPerils": { "csioCode": "ZINHT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Horse Tack Room - Named Perils" },
+      "JewelleryAllRisk": { "csioCode": "csio:CCJW", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Jewellery - All Risk" },
+      "JewelleryAllRiskIncreasedLimits": { "csioCode": "ZIBJL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Jewellery - All Risk Increased Limits" },
+      "JewelleryInSafetyDepositBoxAllRisk": { "csioCode": "ZIAJS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Jewellery in Safety Deposit Box - All Risk" },
+      "JewelleryPairAndSetsAllRisk": { "csioCode": "ZIAJP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Jewellery Pair and Sets - All Risk" },
+      "JewelryStampsCoinsBlanket": { "csioCode": "csio:CCC", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Jewelry / Stamps / Coins - Blanket" },
+      "LawnGardenEquipmentAllRisk": { "csioCode": "ZIALG", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Lawn & Garden Equipment - All Risk" },
+      "LawnGardenEquipmentNamedPerils": { "csioCode": "ZINLG", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Lawn & Garden Equipment - Named Perils" },
+      "LawnMowerAllRisk": { "csioCode": "ZIALM", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Lawn Mower - All Risk" },
+      "MiscellaneousAllRisk": { "csioCode": " ZIAOT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Miscellaneous - All Risk (note: leading space in code)" },
+      "MiscellaneousNamedPerils": { "csioCode": "csio:AMENP", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Miscellaneous - Named Perils" },
+      "MusicalInstrumentsNonProfessionalAllRisk": { "csioCode": "ZIAMN", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Musical Instruments Non-Professional - All Risk" },
+      "MusicalInstrumentsProfessionalAllRisk": { "csioCode": "ZIAPI", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Musical Instruments Professional - All Risk" },
+      "MusicalInstrumentsProfessionalNamedPerils": { "csioCode": "ZINPI", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Musical Instruments Professional - Named Perils" },
+      "PianoProfessionalAllRisk": { "csioCode": "ZIAPP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Piano Professional - All Risk" },
+      "PianoProfessionalNamedPerils": { "csioCode": "ZINPP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Piano Professional - Named Perils" },
+      "OfficeEquipmentAllRisk": { "csioCode": "ZIAOE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Office Equipment - All Risk" },
+      "OfficeEquipmentNamedPerils": { "csioCode": "ZINOE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Office Equipment - Named Perils" },
+      "PagerAllRisk": { "csioCode": "ZIAPG", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Pager - All Risk" },
+      "PagerNamedPerils": { "csioCode": "csio:MPP", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Pager - Named Perils" },
+      "PersonalComputerAllRisk": { "csioCode": "ZIAPC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Personal Computer - All Risk" },
+      "PersonalEffectsFloaterAllRisk": { "csioCode": "csio:ARPAE", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Personal Effects Floater - All Risk" },
+      "RadioPortableAllRisk": { "csioCode": "ZIAPR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Radio Portable - All Risk" },
+      "RadioPortableNamedPerils": { "csioCode": "ZINPR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Radio Portable - Named Perils" },
+      "RadioAllRisk": { "csioCode": "ZIART", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Radio (CB/Two-Way) - All Risk" },
+      "SatelliteDishAllRisk": { "csioCode": "ZIASD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Satellite Dish - All Risk" },
+      "SatelliteDishNamedPerils": { "csioCode": "ZINSD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Satellite Dish - Named Perils" },
+      "ScubaEquipmentAllRisk": { "csioCode": "ZIASE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Scuba Equipment - All Risk" },
+      "ScubaEquipmentNamedPerils": { "csioCode": "ZINSE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Scuba Equipment - Named Perils" },
+      "SilverwareAllRisk": { "csioCode": "ZIASV", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Silverware - All Risk" },
+      "SkisAllRisk": { "csioCode": "ZIASK", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Skis - All Risk" },
+      "SkisNamedPerils": { "csioCode": "ZINSK", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Skis - Named Perils" },
+      "SportsCardsAllRisk": { "csioCode": "ZIACC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Sports Cards - All Risk" },
+      "SportsCardsNamedPerils": { "csioCode": "ZINCC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Sports Cards - Named Perils" },
+      "SportsEquipmentAllRisk": { "csioCode": "ZIAEQ", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Sports Equipment - All Risk" },
+      "SportsEquipmentNamedPerils": { "csioCode": "ZINEQ", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Sports Equipment - Named Perils" },
+      "StampsAllRisk": { "csioCode": "csio:CCST", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Stamps - All Risk" },
+      "TelevisionAllRisk": { "csioCode": "ZIATV", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Television - All Risk" },
+      "TelevisionNamedPerils": { "csioCode": "ZINTV", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Television - Named Perils" },
+      "TelevisionNamedPerilsZINAT": { "csioCode": "ZINAT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Television Named Perils (alternate code)" },
+      "ToolsAllRisk": { "csioCode": "ZIATL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Tools - All Risk" },
+      "ToolsNamedPerils": { "csioCode": "csio:NPPAE", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Tools - Named Perils" },
+      "ToolsAllRiskProfessional": { "csioCode": "ZIATO", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Tools Professional - All Risk" },
+      "ToolsNamedPerilsProfessional": { "csioCode": "csio:AMENP", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Tools Professional - Named Perils" },
+      "TrailerHoliday": { "csioCode": "HHTT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Trailer Holiday" },
+      "TrailerHolidayAllRisks": { "csioCode": "csio:TTAR", "source": "standard", "version": "V128", "availableIn": ["V128"], "description": "Trailer Holiday - All Risks" },
+      "Typewriter": { "csioCode": "rsa:PR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Typewriter / Portable" },
+      "VideoEquipmentAllRisk": { "csioCode": "ZIAVE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Video Equipment - All Risk" },
+      "WaterSportsEquipmentAllRisk": { "csioCode": "ZIASC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Water Sports Equipment - All Risk" },
+      "WaterSportsEquipmentNamedPerils": { "csioCode": "ZINSC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Water Sports Equipment - Named Perils" },
+      "WheelchairRegularAllRisk": { "csioCode": "ZIAWO", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Wheelchair Regular - All Risk" },
+      "WheelchairRegularNamedPerils": { "csioCode": "ZINWO", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Wheelchair Regular - Named Perils" },
+      "WindsurfingEquipmentAllRisk": { "csioCode": "ZIAWS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Windsurfing Equipment - All Risk" },
+      "WindsurfingEquipmentNamedPerils": { "csioCode": "ZINWS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Windsurfing Equipment - Named Perils" }
+    },
+    "watercraftRiskTypes": {
+      "AllRiskBoat": { "csioCode": "HABT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "All Risk Boat", "csioRiskType": "rsa:6" },
+      "MiscellaneousEquipment": { "csioCode": "HAME", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Miscellaneous Equipment", "csioRiskType": "rsa:7" },
+      "MotorWaterjetJetskiSeadoo": { "csioCode": "HAMT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Motor/Waterjet/Jetski/Seadoo", "csioRiskType": "rsa:8" },
+      "BoatTrailer": { "csioCode": "HATR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Boat Trailer", "csioRiskType": "rsa:9" },
+      "WatercraftLiabilityExtension": { "csioCode": "HLWC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Watercraft Liability Extension" },
+      "StandaloneWatercraftLiabilityExtension": { "csioCode": "ZHLWC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Standalone Watercraft Liability Extension" },
+      "TravelTrailer": { "csioCode": "HHTT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Travel Trailer" }
+    }
+  },
+  "discountCodes": {
+    "habDiscounts": {
+      "MultiLineDiscount": { "csioCode": "MLTPD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Line Discount" },
+      "RetireeDiscount": { "csioCode": "RETIR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Retiree Discount" },
+      "LongTermPolicyHolderDiscount": { "csioCode": "LTDIS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Long-Term Policy Holder Discount" },
+      "GroupDiscount": { "csioCode": "GRR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Group Discount" },
+      "BrokerLoyaltyCredit": { "csioCode": "HDBL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Broker Loyalty Credit" },
+      "CombinedInsurancePolicyDiscount": { "csioCode": "HDCIP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Combined Insurance Policy Discount" },
+      "ElectricHeatDiscount": { "csioCode": "HDHHE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Electric Heat Discount" },
+      "InsideOilTankDiscount": { "csioCode": "HDHHO", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Inside Oil Tank Discount" },
+      "OccupationalDiscount": { "csioCode": "HDOCU", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Occupational Discount" },
+      "ClaimsFreeDiscount": { "csioCode": "HDPCF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Claims Free Discount" },
+      "PreferredPostalCodeDiscount": { "csioCode": "HDPPD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Preferred Postal Code Discount" },
+      "LongTermPolicyDiscount": { "csioCode": "HDPPL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Long-Term Policy Discount" },
+      "QualityRatingDiscount": { "csioCode": "HDQR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Quality Rating / Credit Score Discount" },
+      "NewHomeDiscount": { "csioCode": "HDRAG", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "New Home Discount" },
+      "EvaluationDiscount": { "csioCode": "HDRCT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Evaluation / RCT Discount" },
+      "FoundationDiscount": { "csioCode": "HDRFD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Foundation Discount" },
+      "MobileHomeTieDownDiscount": { "csioCode": "HDRLD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Mobile Home Tie Down Discount" },
+      "MortgageFreeDiscount": { "csioCode": "HDRLF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Mortgage Free Discount" },
+      "MultiLineDiscountHDRLL": { "csioCode": "HDRLL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Line Discount (alternate code HDRLL)" },
+      "NeighbourhoodWatchDiscount": { "csioCode": "HDRNW", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Neighbourhood Watch Discount" },
+      "SecurityCredit": { "csioCode": "HDRPD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Security Credit / Protection Device Discount" },
+      "MatureCitizenDiscount": { "csioCode": "HDRSC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Mature Citizen Discount" },
+      "SpecialDiscountFlatAdjustment": { "csioCode": "HDSFL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Special Discount - Flat Adjustment" },
+      "SpecialDiscountPercentAdjustment": { "csioCode": "HDSPC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Special Discount - Percent Adjustment" },
+      "PowerSquadronDiscount": { "csioCode": "HDUPS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Power Squadron Discount" },
+      "WaterDamageExtensionNewHomeDiscount": { "csioCode": "HDWDE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Water Damage Extension New Home Discount" },
+      "PreferredConstructionDiscount": { "csioCode": "HPCD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Preferred Construction Discount" },
+      "StaffDiscount": { "csioCode": "HDG&S ", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Staff Discount (note trailing space)" },
+      "BrokerWebBusinessProcessing": { "csioCode": "WEBDS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Broker Web Business Processing / Web Discount" },
+      "NewBusinessDiscount": { "csioCode": "HDISN", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "New Business Discount" },
+      "LoyaltyDiscount": { "csioCode": "HDISL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Loyalty Discount" },
+      "WaterAlarmDeviceDiscount": { "csioCode": "HDWAD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Water Alarm Device Discount" },
+      "PftDiscount": { "csioCode": "PFTD ", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "PFT Discount (note trailing space)" },
+      "Discretionary1": { "csioCode": "PF1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Discretionary Adjustment 1 (flat)" },
+      "Discretionary2": { "csioCode": "PF2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Discretionary Adjustment 2 (flat)" },
+      "Discretionary3": { "csioCode": "PP1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Discretionary Adjustment 3 (percent)" },
+      "Discretionary4": { "csioCode": "PP2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Discretionary Adjustment 4 (percent)" }
+    },
+    "habSurcharges": {
+      "HailWindSurcharge": { "csioCode": "HDHAL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Hail/Wind Surcharge" },
+      "HeatAdjustmentDiscretionaryFlatOne": { "csioCode": "HDHF1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Heat Adjustment Discretionary Flat 1" },
+      "HeatAdjustmentDiscretionaryFlatTwo": { "csioCode": "HDHF2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Heat Adjustment Discretionary Flat 2" },
+      "ApprovedAuxiliaryHeatSurcharge": { "csioCode": "HDHHB", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Approved Auxiliary Heat Surcharge" },
+      "PrimaryHeatSurcharge": { "csioCode": "HDHHP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Primary Heat Surcharge" },
+      "AuxiliaryWoodHeatSurcharge": { "csioCode": "HDHHW", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Auxiliary Wood Heat Surcharge" },
+      "HeatAdjustmentDiscretionaryPercentOne": { "csioCode": "HDHP1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Heat Adjustment Discretionary Percent 1" },
+      "HeatAdjustmentDiscretionaryPercentTwo": { "csioCode": "HDHP2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Heat Adjustment Discretionary Percent 2" },
+      "MultiFamilyAdjustment": { "csioCode": "HFAM", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Family Adjustment" },
+      "EarthquakeStoriesStructureDifferentialSurcharge": { "csioCode": "HSEQS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Stories/Structure Differential Surcharge" },
+      "EarthquakeYearDifferentialSurcharge": { "csioCode": "HSEQY", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Year Differential Surcharge" },
+      "SecondMortgageRating": { "csioCode": "HSRLF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Second Mortgage Rating Surcharge" },
+      "NonSufficientFundSurcharge": { "csioCode": "NSF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Non-Sufficient Fund Surcharge" },
+      "HSNPY": { "csioCode": "HSNPY", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "HSNPY surcharge (miscellaneous)" },
+      "MobileAgeSurcharge": { "csioCode": "HDRLG", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Mobile Home Age Surcharge" },
+      "RiskAdjustmentDiscretionaryFlatOne": { "csioCode": "HDUF1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Risk Adjustment Discretionary Flat 1" },
+      "RiskAdjustmentDiscretionaryFlatTwo": { "csioCode": "HDUF2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Risk Adjustment Discretionary Flat 2" },
+      "RiskAdjustmentDiscretionaryPercOne": { "csioCode": "HDUP1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Risk Adjustment Discretionary Percent 1" },
+      "RiskAdjustmentDiscretionaryPercTwo": { "csioCode": "HDUP2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Risk Adjustment Discretionary Percent 2" }
+    },
+    "autoDiscounts": {
+      "AtvDiscount": { "csioCode": "ATVD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "ATV Discount" },
+      "BrokerLoyaltyDiscount": { "csioCode": "BRYRS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Broker Loyalty Discount" },
+      "BrokerLoyaltyDiscount5": { "csioCode": "BRYR5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Broker Loyalty Discount (class 05)" },
+      "BrokerLoyaltyDiscount6": { "csioCode": "BRYR6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Broker Loyalty Discount (class 06)" },
+      "LoyaltyDiscount": { "csioCode": "LDIS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Loyalty Discount" },
+      "LoyaltyDiscount5": { "csioCode": "LDIS5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Loyalty Discount (class 05)" },
+      "LoyaltyDiscount6": { "csioCode": "LDIS6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Loyalty Discount (class 06)" },
+      "ConvictionFreeDiscount5": { "csioCode": "CON5F", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Free Discount (class 05)" },
+      "ConvictionFreeDiscount6": { "csioCode": "CON6F", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Free Discount (class 06)" },
+      "ConvictionFreeDiscountAT": { "csioCode": "CONAT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Free Discount (ATV)" },
+      "ConvictionFreeDiscountSN": { "csioCode": "CONSN", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Free Discount (Snowmobile)" },
+      "ConvictionFreeDiscountVN": { "csioCode": "CONVF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Free Discount (Vehicle)" },
+      "DriveForLifeDiscount": { "csioCode": "DRFL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Drive for Life Discount" },
+      "DriveForLifeDiscount5": { "csioCode": "DRFL5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Drive for Life Discount (class 05)" },
+      "DriveForLifeDiscount6": { "csioCode": "DRFL6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Drive for Life Discount (class 06)" },
+      "DriverTrainingDiscount": { "csioCode": "DRTD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Driver Training Discount" },
+      "DriverTrainingDiscount5": { "csioCode": "DRTD5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Driver Training Discount (class 05)" },
+      "DriverTrainingDiscount6": { "csioCode": "DRTD6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Driver Training Discount (class 06)" },
+      "AdjustmentDollarReason": { "csioCode": "DSCF1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Adjustment Dollar Reason 1" },
+      "AdjustmentCF2": { "csioCode": "DSCF2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Adjustment Flat 2" },
+      "AdjustmentCF3": { "csioCode": "DSCF3", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Adjustment Flat 3" },
+      "AdjustmentCP1": { "csioCode": "DSCP1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Adjustment Percent 1" },
+      "AdjustmentCP2": { "csioCode": "DSCP2", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Adjustment Percent 2" },
+      "AdjustmentCP3": { "csioCode": "DSCP3", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Adjustment Percent 3" },
+      "ExperienceDiscount": { "csioCode": "EXPD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Experience Discount" },
+      "ExperienceDiscount1": { "csioCode": "EXPN1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Experience Discount N1" },
+      "ExperienceDiscount2": { "csioCode": "EXPN", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Experience Discount N" },
+      "FarmerDiscount": { "csioCode": "FARM", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Farmer Discount (TPL)" },
+      "FarmerDiscount1": { "csioCode": "FARM1", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Farmer Discount 1" },
+      "FarmerDiscount1XX": { "csioCode": "FARM1XX", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Farmer Discount 1 Extended" },
+      "GraduatedLicensingDiscount": { "csioCode": "GRAD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Graduated Licensing Discount" },
+      "GraduatedLicensingDiscount5": { "csioCode": "GRAD05", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Graduated Licensing Discount (class 05)" },
+      "GraduatedLicensingDiscount6": { "csioCode": "GRAD06", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Graduated Licensing Discount (class 06)" },
+      "GroupDiscountAuto": { "csioCode": "GRRSA", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Group Rate Discount (auto)" },
+      "LongTermDiscount": { "csioCode": "LTDIS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Long-Term Discount" },
+      "LongTermDiscount5": { "csioCode": "LTD5D", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Long-Term Discount (class 05)" },
+      "LongTermDiscount6": { "csioCode": "LTD6D", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Long-Term Discount (class 06)" },
+      "MultiLineDiscount": { "csioCode": "MLTPD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Line Discount (auto)" },
+      "MultiLineDiscount5": { "csioCode": "MLT5D", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Line Discount (class 05)" },
+      "MultiLineDiscount6": { "csioCode": "MLT6D", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Line Discount (class 06)" },
+      "MultiVehicleDiscount": { "csioCode": "MVD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Vehicle Discount" },
+      "MultiVehicleDiscount5": { "csioCode": "MV5D", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Vehicle Discount (class 05)" },
+      "MultiVehicleDiscount6": { "csioCode": "MV6D", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Multi-Vehicle Discount (class 06)" },
+      "NewVehicleDiscount": { "csioCode": "NEWVH", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "New Vehicle Discount" },
+      "NewVehicleDiscount5": { "csioCode": "NEWV5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "New Vehicle Discount (class 05)" },
+      "NewVehicleDiscount6": { "csioCode": "NEWV6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "New Vehicle Discount (class 06)" },
+      "OwnerOperatedDiscount": { "csioCode": "OWNOP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Owner Operated Discount" },
+      "RetireeDiscount": { "csioCode": "RETIR", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Retiree Discount" },
+      "SafetyFactor": { "csioCode": "SAFEP", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Safety Factor" },
+      "SafetyFactor5": { "csioCode": "SAFE5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Safety Factor (class 05)" },
+      "SafetyFactor6": { "csioCode": "SAFE6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Safety Factor (class 06)" },
+      "SnowVehicleDiscount": { "csioCode": "SNOWD", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Snow Vehicle Discount" },
+      "StabilityDiscount": { "csioCode": "STNB", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Stability Discount" },
+      "StabilityDiscount5": { "csioCode": "STNB5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Stability Discount (class 05)" },
+      "StabilityDiscount6": { "csioCode": "STNB6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Stability Discount (class 06)" },
+      "AwayFromHomeDiscount": { "csioCode": "STUDT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Away From Home / Student Discount" },
+      "TrailPermitDiscount": { "csioCode": "TRAIL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Trail Permit Discount" },
+      "WinterTireDiscount": { "csioCode": "WINT", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Winter Tire Discount" },
+      "WinterTireDiscount5": { "csioCode": "WIN5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Winter Tire Discount (class 05)" },
+      "WinterTireDiscount6": { "csioCode": "WIN6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Winter Tire Discount (class 06)" },
+      "WinterTireDiscountAB": { "csioCode": "WINA", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Winter Tire Discount (Alberta)" },
+      "WinterTireDiscount5AB": { "csioCode": "WINA5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Winter Tire Discount (Alberta class 05)" },
+      "WinterTireDiscount6AB": { "csioCode": "WINA6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Winter Tire Discount (Alberta class 06)" },
+      "StaffDiscount": { "csioCode": "STAFF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Staff Discount (auto)" },
+      "IrfGenderAndAge": { "csioCode": "GAGE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Gender and Age" },
+      "IrfGenderAndAge5": { "csioCode": "GAGE5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Gender and Age (class 05)" },
+      "IrfGenderAndAge6": { "csioCode": "GAGE6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Gender and Age (class 06)" },
+      "CombinedDrtDflDis6": { "csioCode": "DRDF6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Combined DRT/DFL Discount 6" },
+      "CombinedDrtDflDisL": { "csioCode": "DRDFL", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Combined DRT/DFL Discount L" },
+      "CombinedDrtDflDisS": { "csioCode": "DRDFS", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Combined DRT/DFL Discount S" }
+    },
+    "autoSurcharges": {
+      "AccidentSurcharge": { "csioCode": "SRCAC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Accident Surcharge" },
+      "AccidentSurcharge5": { "csioCode": "SRCA5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Accident Surcharge (class 05)" },
+      "AccidentSurcharge6": { "csioCode": "SRCA6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Accident Surcharge (class 06)" },
+      "ConvictionSurcharge": { "csioCode": "SRCCV", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Surcharge" },
+      "ConvictionSurcharge5": { "csioCode": "SRCC5", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Surcharge (class 05)" },
+      "ConvictionSurcharge6": { "csioCode": "SRCC6", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "Conviction Surcharge (class 06)" }
+    },
+    "autoIrfZoneAgeCodes": {
+      "ZAG5N": { "csioCode": "ZAG5N", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 5N" },
+      "ZAG5O": { "csioCode": "ZAG5O", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 5O" },
+      "ZAG5P": { "csioCode": "ZAG5P", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 5P" },
+      "ZAG5Q": { "csioCode": "ZAG5Q", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 5Q" },
+      "ZAG5R": { "csioCode": "ZAG5R", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 5R" },
+      "ZAG6I": { "csioCode": "ZAG6I", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 6I" },
+      "ZAG6J": { "csioCode": "ZAG6J", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 6J" },
+      "ZAG6K": { "csioCode": "ZAG6K", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 6K" },
+      "ZAG6L": { "csioCode": "ZAG6L", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 6L" },
+      "ZAG6M": { "csioCode": "ZAG6M", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed 6M" },
+      "ZAGEA": { "csioCode": "ZAGEA", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EA" },
+      "ZAGEB": { "csioCode": "ZAGEB", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EB" },
+      "ZAGEC": { "csioCode": "ZAGEC", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EC" },
+      "ZAGED": { "csioCode": "ZAGED", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed ED" },
+      "ZAGEE": { "csioCode": "ZAGEE", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EE" },
+      "ZAGEF": { "csioCode": "ZAGEF", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EF" },
+      "ZAGEG": { "csioCode": "ZAGEG", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EG" },
+      "ZAGEH": { "csioCode": "ZAGEH", "source": "rsa", "version": "V128", "availableIn": ["V128"], "description": "IRF Zone/Age Licensed EH" }
+    }
+  },
+  "enumMappings": {
+    "vehicleTypes": {
+      "Trailer_PPV": "ZTRLR",
+      "ATV": "ZATV",
+      "Snow": "ZSNOW",
+      "Moped": "ZMOP",
+      "Motorcycle": "ZMC",
+      "MotorHome": "ZMHCV"
+    },
+    "vehicleBodyTypes": {
+      "Jeep": "ZJEEP"
+    },
+    "coverageTypesCsioValue": {
+      "BroadHomeshield": "HSBD",
+      "CompHomeshield": "HSCP",
+      "PlatinumPlus": "HSPL",
+      "PrivateClient": "HHVP",
+      "CompPlus": "HSPL",
+      "CondominiumRented": "rsa:1",
+      "CondominiumLandlordshield": "rsa:2",
+      "LandlordshieldDwelling": "rsa:5",
+      "MobileHomeRented": "rsa:3",
+      "MobileHomeSeasonal": "rsa:4",
+      "AllRiskBoat": "rsa:6",
+      "MiscellaneousEquipment": "rsa:7",
+      "MotorWaterjetJetskiSeadoo": "rsa:8",
+      "BoatTrailer": "rsa:9",
+      "MobileHomeshield": "csio:32",
+      "NamedPerilsTenant": "csio:11",
+      "RentedDwellingNamedPerils": "csio:62",
+      "TenantProgram65": "rsa:10",
+      "FecFireEC": "csio:62"
+    },
+    "productCodes": {
+      "CNS": "CPH",
+      "RSA": "RSA",
+      "PersonalLinesAuto": "PER",
+      "PersonalLinesProperty": "PPL",
+      "WesternAssurance": "WAH"
+    },
+    "policyStatusCodes": {
+      "RenewalQuoted": "csio:REN",
+      "NewBusinessQuoted": "csio:NBQ"
+    },
+    "exteriorWallMaterialCodes": {
+      "Log": "csio:1",
+      "Wood": "csio:F",
+      "WoodShake": "csio:F"
+    },
+    "occupationCodes": {
+      "Coach": "csio:C09",
+      "CourtsBailiff": "ZOTHEMP",
+      "CourtsClerk": "ZOTHEMP",
+      "CourtsReporter": "ZOTHEMP",
+      "CourtsStenographer": "ZOTHEMP",
+      "FactoryWorker": "ZLABINS",
+      "FitnessHealthEmployee": "csio:C09",
+      "GeneralContractor": "ZCONLB",
+      "InsuranceUnderwriter": "ZINSGEN",
+      "Librarian": "ZOTHEMP",
+      "MachineOperator": "ZLABINS",
+      "WriterPublisher": "ZOTHEMP",
+      "ToolAndDieWorker": "ZLABINS",
+      "TechnicianResearchMedical": "ZMEDRES",
+      "SelfEmployedServices": "csio:S05",
+      "SecurityOfficerWorker": "csio:P01",
+      "SalesPersonCommercial": "csio:R04",
+      "TrustCompanyEmployeeAdmin": "ZTRSTADMIN",
+      "EducationSchoolBoardAdmin": "ZEDUCADMIN",
+      "MunicipalityEmployeeAdmin": "ZMUNEMP",
+      "RadiologyTechnician": "csio:R07",
+      "MedicalProfessionOrthodontist": "ZMEDOTH",
+      "MedicalProfessionGeneral": "ZMEDGEN",
+      "FederalGovernmentEmployeeAdmin": "ZFEDGOV",
+      "Dermatologist": "csio:D11",
+      "CollegeEmployeeAdmin": "ZCOLEMP",
+      "ProvincialGovernmentEmployeeAdmin": "ZPrOVGOV",
+      "PublicTransportWorker": "csio:D08",
+      "Photographer": "ZOTHEMP",
+      "Ophthalmologist": "ZMEDOPTH",
+      "Other": "ZOTHEMP",
+      "Unknown": "csio:997",
+      "LandSurveyor": "csio:L04"
+    },
+    "employerCodes": {
+      "RCMP": "csio:C0013",
+      "Telus": "csio:C0012",
+      "TrustCompany": "csio:C0016",
+      "CreditUnion": "ZCUADMIN"
+    },
+    "convictionCodes": {
+      "DrivingMotorcycleUsageViolation": "DMU",
+      "FailToSlowChangeLaneForStationaryEmergencyVehicle": "FSCEV",
+      "FailureToProceedOntoHighwaySafely": "FPHS",
+      "FailureToObeyPolice": "FP",
+      "ImprudentDriver": "IMPRU",
+      "TrafficLight": "TSL",
+      "InsuranceOffence": "INS"
+    },
+    "optionalAccidentBenefits": {
+      "MedicalAttendantCatastrophic": "rsa:CATIM",
+      "MedicalAttendantNonCatastrophic": "csio:MRB",
+      "MedicalAttendantNonCatastrophic1M": "rsa:IMRB",
+      "IMedicalAttendantCatastrophic": "rsa:ICAT",
+      "ICaregiverHousekeepingHomemaintenance": "rsa:ICHH",
+      "IMedicalAttendantNonCatastrophic": "rsa:IMRB",
+      "IMedicalAttendantNonCatastrophic1M": "rsa:IAIMRB",
+      "IIncomeReplacement": "rsa:IWIB",
+      "MedicalAttendantNonCatastrophicMCMRB": "rsa:NCMRB",
+      "MedicalAttendantNonCatastrophic1MAIMRB": "rsa:AIMRB",
+      "MedicalAttendantCatastrophicACIMRB": "rsa:ACIMRB"
+    },
+    "propulsionTypes": {
+      "PowercraftHullLength27to30ft": "rsa:1",
+      "PowercraftHullLength31to34ft": "rsa:2",
+      "PowercraftHullLength35to38ft": "rsa:3",
+      "PowercraftHullLength39to40ft": "rsa:4",
+      "PowercraftHullLength41to42ft": "rsa:5",
+      "PowercraftHullLengthOver42ft": "rsa:6",
+      "SailboatOver26ftUpTo32ft": "rsa:7",
+      "SailboatOver32ftUpTo40ft": "rsa:8",
+      "SailboatOver40ftUpTo50ft": "rsa:9",
+      "SailboatOver50ft": "rsa:10",
+      "OutboardInboardOutboard51to100HP": "rsa:11",
+      "OutboardInboardOutboardOver100HP": "rsa:12",
+      "InboardSpeed30MPHOrLess": "rsa:13",
+      "InboardSpeed31to45MPH": "rsa:14",
+      "BoatPoweredCraft": "rsa:15"
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": [
+      "Hab: DiscountSurchargeCode constants mapped via TryConvertToFrameworkHabDiscount",
+      "Auto: AutoDisSurCode constants mapped via TryConvertToFrameworkAutoDiscount",
+      "Falls back to generic v043/V127 base patterns for unmatched codes"
+    ],
+    "isSurchargePatterns": [
+      "Hab: HDHHP (primary heat), HDHHB/HDHHW (auxiliary heat), HFAM (multi-family), HSRLF (mortgage), HDHF1/HDHF2/HDHP1/HDHP2 (heat adjustment), HDHAL/HSEQS/HSEQY/NSF/HSNPY (misc), HDRLG (mobile age)",
+      "Auto: SRCAC/SRCA5/SRCA6 (accident), SRCCV/SRCC5/SRCC6 (conviction)"
+    ]
+  },
+  "zCodeInventory": {
+    "autoCoverage": [
+      { "code": "ZAP05", "version": "V128", "availableIn": ["V128"], "description": "AP class 05" },
+      { "code": "ZTP05", "version": "V128", "availableIn": ["V128"], "description": "TP class 05" },
+      { "code": "ZTP05BI", "version": "V128", "availableIn": ["V128"], "description": "TP05 Bodily Injury" },
+      { "code": "ZTP05DC", "version": "V128", "availableIn": ["V128"], "description": "TP05 Direct Compensation" },
+      { "code": "ZTP05PD", "version": "V128", "availableIn": ["V128"], "description": "TP05 Property Damage" },
+      { "code": "ZUM05", "version": "V128", "availableIn": ["V128"], "description": "Uninsured Motorist class 05" },
+      { "code": "ZCL05", "version": "V128", "availableIn": ["V128"], "description": "Collision class 05" },
+      { "code": "ZCMP05", "version": "V128", "availableIn": ["V128"], "description": "Comprehensive class 05" },
+      { "code": "ZCP05", "version": "V128", "availableIn": ["V128"], "description": "Specified Perils class 05" },
+      { "code": "Z5CS", "version": "V128", "availableIn": ["V128"], "description": "OPCF 5C" },
+      { "code": "Z1TNC", "version": "V128", "availableIn": ["V128"], "description": "Permission Passengers Transport Network" },
+      { "code": "Z6TNC", "version": "V128", "availableIn": ["V128"], "description": "Permission Passengers Transport Network ON" },
+      { "code": "ZENH3", "version": "V128", "availableIn": ["V128"], "description": "Enhancement Endorsement Form 20757wa" },
+      { "code": "ZJEEP", "version": "V128", "availableIn": ["V128"], "description": "Vehicle Body Type Jeep" },
+      { "code": "ZTRLR", "version": "V128", "availableIn": ["V128"], "description": "Trailer PPV" },
+      { "code": "ZATV", "version": "V128", "availableIn": ["V128"], "description": "ATV" },
+      { "code": "ZSNOW", "version": "V128", "availableIn": ["V128"], "description": "Snowmobile" },
+      { "code": "ZMOP", "version": "V128", "availableIn": ["V128"], "description": "Moped" },
+      { "code": "ZMC", "version": "V128", "availableIn": ["V128"], "description": "Motorcycle" },
+      { "code": "ZMHCV", "version": "V128", "availableIn": ["V128"], "description": "Motor Home" }
+    ],
+    "habCoverage": [
+      { "code": "ZHBLG", "version": "V128", "availableIn": ["V128"], "description": "Building" },
+      { "code": "ZHPRO", "version": "V128", "availableIn": ["V128"], "description": "Contents/Personal Property" },
+      { "code": "ZHLOU", "version": "V128", "availableIn": ["V128"], "description": "Additional Living Expenses" },
+      { "code": "ZHLIA", "version": "V128", "availableIn": ["V128"], "description": "Personal/Legal Liability" },
+      { "code": "ZHVMP", "version": "V128", "availableIn": ["V128"], "description": "Voluntary Medical Payments" },
+      { "code": "ZHLAR", "version": "V128", "availableIn": ["V128"], "description": "Additional Residence Liability Extension" },
+      { "code": "ZHCPC", "version": "V128", "availableIn": ["V128"], "description": "Claims Protection Endorsement" },
+      { "code": "ZHLAD", "version": "V128", "availableIn": ["V128"], "description": "Loss Assessment Condo Corp Deductible" },
+      { "code": "ZHLLD", "version": "V128", "availableIn": ["V128"], "description": "Legal Loss Assessment Condo Corp Deductible" },
+      { "code": "ZHHAL", "version": "V128", "availableIn": ["V128"], "description": "Loss Assessment Homeowners Association" },
+      { "code": "ZHCIS", "version": "V128", "availableIn": ["V128"], "description": "Contents in Storage" },
+      { "code": "ZHEAB", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Additional Building" },
+      { "code": "ZHEBG", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Building" },
+      { "code": "ZHELA", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Corporation Deductible" },
+      { "code": "ZHEAS", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Loss Assessment" },
+      { "code": "ZHECF", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Contents Full Coverage" },
+      { "code": "ZHECX", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Contents Not Covered" },
+      { "code": "ZHECP", "version": "V128", "availableIn": ["V128"], "description": "Earthquake Contents Partial Coverage" },
+      { "code": "ZHEBI", "version": "V128", "availableIn": ["V128"], "description": "Equipment Breakdown" },
+      { "code": "ZHFRZ", "version": "V128", "availableIn": ["V128"], "description": "Food Freezer" },
+      { "code": "ZHBYL", "version": "V128", "availableIn": ["V128"], "description": "Building Bylaws (default)" },
+      { "code": "ZHBY3", "version": "V128", "availableIn": ["V128"], "description": "Building Bylaws (ON)" },
+      { "code": "ZHBY5", "version": "V128", "availableIn": ["V128"], "description": "Building Bylaws (BC)" },
+      { "code": "ZHBY6", "version": "V128", "availableIn": ["V128"], "description": "Building Bylaws (BC condo FEC)" },
+      { "code": "ZHSGL", "version": "V128", "availableIn": ["V128"], "description": "Single Limit Endorsement" },
+      { "code": "ZHWD1", "version": "V128", "availableIn": ["V128"], "description": "Sewer Backup Form 20183" },
+      { "code": "ZHWD5", "version": "V128", "availableIn": ["V128"], "description": "Sewer Backup Form 20174" },
+      { "code": "ZHWSP", "version": "V128", "availableIn": ["V128"], "description": "Wine Spoilage/Breakage" },
+      { "code": "ZHWDF", "version": "V128", "availableIn": ["V128"], "description": "Waterproof Form 21030" },
+      { "code": "ZHOSP", "version": "V128", "availableIn": ["V128"], "description": "Hospital Cash" },
+      { "code": "ZHWSL", "version": "V128", "availableIn": ["V128"], "description": "Service Line" },
+      { "code": "ZHGRN", "version": "V128", "availableIn": ["V128"], "description": "Greener Home" },
+      { "code": "ZHRE0", "version": "V128", "availableIn": ["V128"], "description": "Short Term Rental (base)" },
+      { "code": "ZHRE1", "version": "V128", "availableIn": ["V128"], "description": "Short Term Rental 24 weeks" },
+      { "code": "ZHRE2", "version": "V128", "availableIn": ["V128"], "description": "Short Term Rental 48 weeks" },
+      { "code": "ZHRE3", "version": "V128", "availableIn": ["V128"], "description": "Short Term Rental 24 weeks (seasonal extn3)" },
+      { "code": "ZHRE4", "version": "V128", "availableIn": ["V128"], "description": "Short Term Rental 24 weeks (seasonal extn4)" },
+      { "code": "ZHPOW", "version": "V128", "availableIn": ["V128"], "description": "Selling Back to Power Grid" },
+      { "code": "ZHSDE", "version": "V128", "availableIn": ["V128"], "description": "Seasonal Dwelling Extension" },
+      { "code": "ZHVAN", "version": "V128", "availableIn": ["V128"], "description": "Vandalism" },
+      { "code": "ZHISS", "version": "V128", "availableIn": ["V128"], "description": "Goods for Sale/Items Held" },
+      { "code": "ZHHFB", "version": "V128", "availableIn": ["V128"], "description": "Hobby Farm Building" },
+      { "code": "ZHHFH", "version": "V128", "availableIn": ["V128"], "description": "Hobby Farm Hay" },
+      { "code": "ZHOAS", "version": "V128", "availableIn": ["V128"], "description": "Home Assistance" },
+      { "code": "ZHLBU", "version": "V128", "availableIn": ["V128"], "description": "Incidental Office Use" },
+      { "code": "ZHLPI", "version": "V128", "availableIn": ["V128"], "description": "Personal Injury" },
+      { "code": "ZHMEC", "version": "V128", "availableIn": ["V128"], "description": "Mechanics Tools" },
+      { "code": "ZHPAC", "version": "V128", "availableIn": ["V128"], "description": "Pet Insurance Accidental" },
+      { "code": "ZHVAP", "version": "V128", "availableIn": ["V128"], "description": "Vancity Pure Home" },
+      { "code": "ZHRVC", "version": "V128", "availableIn": ["V128"], "description": "Residence Voluntary Compensation" },
+      { "code": "ZHLHS", "version": "V128", "availableIn": ["V128"], "description": "Hair Salon Liability Extension" },
+      { "code": "ZHLRS", "version": "V128", "availableIn": ["V128"], "description": "Racquet Sports Liability Extension" },
+      { "code": "ZHLSA", "version": "V128", "availableIn": ["V128"], "description": "Saddle Animal Liability" },
+      { "code": "ZHLWC", "version": "V128", "availableIn": ["V128"], "description": "Standalone Watercraft Liability Extension" }
+    ],
+    "scheduledProperty": [
+      { "code": "ZIABK", "version": "V128", "availableIn": ["V128"], "description": "Bicycles All Risk" },
+      { "code": "ZIBCM", "version": "V128", "availableIn": ["V128"], "description": "Cameras Blanket" },
+      { "code": "ZIACB", "version": "V128", "availableIn": ["V128"], "description": "Cameras Professional All Risk" },
+      { "code": "ZIACE", "version": "V128", "availableIn": ["V128"], "description": "Camping Equipment All Risk" },
+      { "code": "ZINCE", "version": "V128", "availableIn": ["V128"], "description": "Camping Equipment Named Perils" },
+      { "code": "ZIACN", "version": "V128", "availableIn": ["V128"], "description": "Coins All Risk" },
+      { "code": "ZIACO", "version": "V128", "availableIn": ["V128"], "description": "Comic Books All Risk" },
+      { "code": "ZIAWC", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair All Risk" },
+      { "code": "ZINWC", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair Named Perils" },
+      { "code": "ZIAWE", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair All Risk RSA ON" },
+      { "code": "ZINWE", "version": "V128", "availableIn": ["V128"], "description": "Electric Wheelchair Named Perils RSA ON" },
+      { "code": "ZIAFA", "version": "V128", "availableIn": ["V128"], "description": "Fine Arts All Risk" },
+      { "code": "ZIBFA", "version": "V128", "availableIn": ["V128"], "description": "Fine Arts Blanket" },
+      { "code": "ZIAFB", "version": "V128", "availableIn": ["V128"], "description": "Fine Arts With Breakage" },
+      { "code": "ZIAFI", "version": "V128", "availableIn": ["V128"], "description": "Firearms All Risk" },
+      { "code": "ZIAFE", "version": "V128", "availableIn": ["V128"], "description": "Fishing Equipment All Risk" },
+      { "code": "ZINFE", "version": "V128", "availableIn": ["V128"], "description": "Fishing Equipment Named Perils" },
+      { "code": "ZIAOT", "version": "V128", "availableIn": ["V128"], "description": "Food Freezer All Risk" },
+      { "code": "ZINHF", "version": "V128", "availableIn": ["V128"], "description": "Food Freezer Named Perils" },
+      { "code": "ZIBFR", "version": "V128", "availableIn": ["V128"], "description": "Furs Blanket" },
+      { "code": "ZINGC", "version": "V128", "availableIn": ["V128"], "description": "Golf Carts Named Perils" },
+      { "code": "ZIAGE", "version": "V128", "availableIn": ["V128"], "description": "Golf Equipment All Risk" },
+      { "code": "ZINGE", "version": "V128", "availableIn": ["V128"], "description": "Golf Equipment Named Perils" },
+      { "code": "ZIAHK", "version": "V128", "availableIn": ["V128"], "description": "Hockey Equipment All Risk" },
+      { "code": "ZINHK", "version": "V128", "availableIn": ["V128"], "description": "Hockey Equipment Named Perils" },
+      { "code": "ZINHO", "version": "V128", "availableIn": ["V128"], "description": "Horses Named Perils" },
+      { "code": "ZINHT", "version": "V128", "availableIn": ["V128"], "description": "Horse Tack Room Named Perils" },
+      { "code": "ZIBJL", "version": "V128", "availableIn": ["V128"], "description": "Jewellery Increased Limits/Blanket" },
+      { "code": "ZIAJS", "version": "V128", "availableIn": ["V128"], "description": "Jewellery Safety Deposit Box" },
+      { "code": "ZIAJP", "version": "V128", "availableIn": ["V128"], "description": "Jewellery Pair and Sets" },
+      { "code": "ZIALG", "version": "V128", "availableIn": ["V128"], "description": "Lawn Garden Equipment All Risk" },
+      { "code": "ZINLG", "version": "V128", "availableIn": ["V128"], "description": "Lawn Garden Equipment Named Perils" },
+      { "code": "ZIALM", "version": "V128", "availableIn": ["V128"], "description": "Lawn Mower All Risk" },
+      { "code": "ZIAMN", "version": "V128", "availableIn": ["V128"], "description": "Musical Instruments Non-Professional" },
+      { "code": "ZIAPI", "version": "V128", "availableIn": ["V128"], "description": "Musical Instruments Professional All Risk" },
+      { "code": "ZINPI", "version": "V128", "availableIn": ["V128"], "description": "Musical Instruments Professional Named Perils" },
+      { "code": "ZIAPP", "version": "V128", "availableIn": ["V128"], "description": "Piano Professional All Risk" },
+      { "code": "ZINPP", "version": "V128", "availableIn": ["V128"], "description": "Piano Professional Named Perils" },
+      { "code": "ZIAOE", "version": "V128", "availableIn": ["V128"], "description": "Office Equipment All Risk" },
+      { "code": "ZINOE", "version": "V128", "availableIn": ["V128"], "description": "Office Equipment Named Perils" },
+      { "code": "ZIAPG", "version": "V128", "availableIn": ["V128"], "description": "Pager All Risk" },
+      { "code": "ZIAPC", "version": "V128", "availableIn": ["V128"], "description": "Personal Computer All Risk" },
+      { "code": "ZIAPR", "version": "V128", "availableIn": ["V128"], "description": "Radio Portable All Risk" },
+      { "code": "ZINPR", "version": "V128", "availableIn": ["V128"], "description": "Radio Portable Named Perils" },
+      { "code": "ZIART", "version": "V128", "availableIn": ["V128"], "description": "Radio All Risk" },
+      { "code": "ZIASD", "version": "V128", "availableIn": ["V128"], "description": "Satellite Dish All Risk" },
+      { "code": "ZINSD", "version": "V128", "availableIn": ["V128"], "description": "Satellite Dish Named Perils" },
+      { "code": "ZIASE", "version": "V128", "availableIn": ["V128"], "description": "Scuba Equipment All Risk" },
+      { "code": "ZINSE", "version": "V128", "availableIn": ["V128"], "description": "Scuba Equipment Named Perils" },
+      { "code": "ZIASV", "version": "V128", "availableIn": ["V128"], "description": "Silverware All Risk" },
+      { "code": "ZIASK", "version": "V128", "availableIn": ["V128"], "description": "Skis All Risk" },
+      { "code": "ZINSK", "version": "V128", "availableIn": ["V128"], "description": "Skis Named Perils" },
+      { "code": "ZIACC", "version": "V128", "availableIn": ["V128"], "description": "Sports Cards All Risk" },
+      { "code": "ZINCC", "version": "V128", "availableIn": ["V128"], "description": "Sports Cards Named Perils" },
+      { "code": "ZIAEQ", "version": "V128", "availableIn": ["V128"], "description": "Sports Equipment All Risk" },
+      { "code": "ZINEQ", "version": "V128", "availableIn": ["V128"], "description": "Sports Equipment Named Perils" },
+      { "code": "ZIATV", "version": "V128", "availableIn": ["V128"], "description": "Television All Risk" },
+      { "code": "ZINTV", "version": "V128", "availableIn": ["V128"], "description": "Television Named Perils" },
+      { "code": "ZINAT", "version": "V128", "availableIn": ["V128"], "description": "Television Named Perils (alt)" },
+      { "code": "ZIATL", "version": "V128", "availableIn": ["V128"], "description": "Tools All Risk" },
+      { "code": "ZIATO", "version": "V128", "availableIn": ["V128"], "description": "Tools Professional All Risk" },
+      { "code": "ZIAVE", "version": "V128", "availableIn": ["V128"], "description": "Video Equipment All Risk" },
+      { "code": "ZIASC", "version": "V128", "availableIn": ["V128"], "description": "Water Sports Equipment All Risk" },
+      { "code": "ZINSC", "version": "V128", "availableIn": ["V128"], "description": "Water Sports Equipment Named Perils" },
+      { "code": "ZIAWO", "version": "V128", "availableIn": ["V128"], "description": "Wheelchair Regular All Risk" },
+      { "code": "ZINWO", "version": "V128", "availableIn": ["V128"], "description": "Wheelchair Regular Named Perils" },
+      { "code": "ZIAWS", "version": "V128", "availableIn": ["V128"], "description": "Windsurfing Equipment All Risk" },
+      { "code": "ZINWS", "version": "V128", "availableIn": ["V128"], "description": "Windsurfing Equipment Named Perils" }
+    ],
+    "islandSavingsPacks": [
+      { "code": "ZHIBP", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Bundle Premium" },
+      { "code": "ZHIBS", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Business Pack" },
+      { "code": "ZHICL", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Collector Pack" },
+      { "code": "ZHICV", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Convenience Pack" },
+      { "code": "ZHIGD", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Gardener Pack" },
+      { "code": "ZHIGP", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Gardener Pack HSPL" },
+      { "code": "ZHIPR", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Premium" },
+      { "code": "ZHISP", "version": "V128", "availableIn": ["V128"], "description": "Island Savings Sports Pack" }
+    ],
+    "occupationZCodes": [
+      { "code": "ZOTHEMP", "version": "V128", "availableIn": ["V128"], "description": "Other Employment" },
+      { "code": "ZLABINS", "version": "V128", "availableIn": ["V128"], "description": "Labour/Industrial" },
+      { "code": "ZCONLB", "version": "V128", "availableIn": ["V128"], "description": "Construction/Labour" },
+      { "code": "ZINSGEN", "version": "V128", "availableIn": ["V128"], "description": "Insurance General" },
+      { "code": "ZMEDRES", "version": "V128", "availableIn": ["V128"], "description": "Medical Research" },
+      { "code": "ZTRSTADMIN", "version": "V128", "availableIn": ["V128"], "description": "Trust Company Admin" },
+      { "code": "ZEDUCADMIN", "version": "V128", "availableIn": ["V128"], "description": "Education/School Board Admin" },
+      { "code": "ZMUNEMP", "version": "V128", "availableIn": ["V128"], "description": "Municipality Employee" },
+      { "code": "ZMEDOTH", "version": "V128", "availableIn": ["V128"], "description": "Medical Other" },
+      { "code": "ZMEDGEN", "version": "V128", "availableIn": ["V128"], "description": "Medical General" },
+      { "code": "ZFEDGOV", "version": "V128", "availableIn": ["V128"], "description": "Federal Government" },
+      { "code": "ZCOLEMP", "version": "V128", "availableIn": ["V128"], "description": "College Employee" },
+      { "code": "ZPrOVGOV", "version": "V128", "availableIn": ["V128"], "description": "Provincial Government" },
+      { "code": "ZMEDOPTH", "version": "V128", "availableIn": ["V128"], "description": "Medical Ophthalmology" },
+      { "code": "ZCUADMIN", "version": "V128", "availableIn": ["V128"], "description": "Credit Union Admin" }
+    ],
+    "irfZoneAge": [
+      { "code": "ZAG5N", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG5O", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG5P", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG5Q", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG5R", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG6I", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG6J", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG6K", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG6L", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAG6M", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEA", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEB", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEC", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGED", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEE", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEF", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEG", "version": "V128", "availableIn": ["V128"] },
+      { "code": "ZAGEH", "version": "V128", "availableIn": ["V128"] }
+    ]
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 322,
+    "totalGenericInheritedCodes": 55,
+    "orphanCodes": ["ZHPAC (PetInsuranceAccidental - declared but not seen in converter logic)", "ZHVAP (VancityPureHome - declared but not seen in converter logic)", "ZHMEC (MechanicsTools - declared but not seen in converter logic)"],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "98%",
+    "notes": [
+      "RSA exists only in V128 - single version carrier",
+      "Inherits from V127/V128 Generic and falls back to v043 Generic base",
+      "Three sub-brands share this codebase: RSA (product code RSA/PER/PPL), CNS (product code CPH), and Western Assurance (product code WAH)",
+      "CompanyConstants.vb: 763 lines, ~220 constants across 24 nested classes",
+      "CoverageCodeConverter.vb: 583 lines with both directions (FrameworkToCsio and CsioToFramework)",
+      "RiskConverter.vb: 404 lines with comprehensive scheduled property mapping",
+      "Province-specific logic present for Building Bylaws (ON/BC), Golf Equipment (AB/MB/SK/NS/NB/PE -> Sports Equipment)",
+      "Short Term Rental has complex policy-type-dependent routing (Home/Condo/Seasonal/MobileHome each produce different codes)"
+    ]
+  }
+}

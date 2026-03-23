@@ -1,0 +1,601 @@
+{
+  "_metadata": {
+    "carrier": "Trillium",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043"],
+    "latestVersion": "v043",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 54,
+    "description": "Complete CZO mapping for Trillium Mutual. Single-version carrier (v043 only), outbound-only (no CsioToFramework). Inherits extensively from v043/Generic base.",
+    "versionRoles": {
+      "v043": "Base version (only version for Trillium)"
+    },
+    "notes": [
+      "Trillium has no CsioToFramework directory - response parsing uses Generic base only",
+      "Trillium uses InsuranceCompanyCode.TrilliumMutual for company identification",
+      "All codes are standard CSIO codes (no Z-codes / proprietary codes)",
+      "Carrier maps IntactInsurance to company code 'GC' and UnicaInsurance to YorkFire"
+    ]
+  },
+  "coverageCodes": {
+    "autoEndorsements": {},
+    "homeEndorsements": {
+      "GardenTractor": {
+        "csioCode": "csio:LT",
+        "source": "trillium",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Garden Tractor / Lawn Tractor coverage endorsement (property category only, liability skipped)",
+        "usedIn": ["CoverageCodeConverter.TryConvertToCsioHomeEndorsement", "PcCoverageConverter.ConvertEndorsement"],
+        "notes": "Garden tractor endorsements where category=Liability are skipped in both Unrated and Rated"
+      }
+    },
+    "homeCoverages": {
+      "Burglary": {
+        "csioCode": "csio:THFBU",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Burglary / Theft from Building coverage. Added to dwelling if burglary field (Theft) is true.",
+        "usedIn": ["PcCoverageConverter.ConvertBurglary"]
+      },
+      "Vandalism": {
+        "csioCode": "csio:VMBC",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Vandalism or Malicious Acts coverage. Added to dwelling if Vandalism field is true.",
+        "usedIn": ["PcCoverageConverter.ConvertVandalism"]
+      }
+    },
+    "autoAccidentBenefits": {
+      "AttendantCare": {
+        "csioCode": "csio:ACB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Attendant Care Benefit (pre-June 2016 SABS). Used when calcDate < June 1 2016.",
+        "usedIn": ["PcCoverageCollectionConverter.TryConvertAccidentBenefits"],
+        "dateCondition": "calcDate < 2016-06-01"
+      },
+      "Caregiver": {
+        "csioCode": "csio:CHHMB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Caregiver / Child Care Housekeeping and Maintenance Benefit. Sent regardless of date.",
+        "usedIn": ["PcCoverageCollectionConverter.TryConvertAccidentBenefits"]
+      },
+      "DependantCare": {
+        "csioCode": "csio:DCB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Dependant Care Benefit. Sent regardless of date.",
+        "usedIn": ["PcCoverageCollectionConverter.TryConvertAccidentBenefits"]
+      },
+      "MedicalRehabilitation": {
+        "csioCode": "csio:MEDRH",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Medical Rehabilitation Benefit (pre-June 2016 SABS). Used when calcDate < June 1 2016.",
+        "usedIn": ["PcCoverageCollectionConverter.TryConvertAccidentBenefits"],
+        "dateCondition": "calcDate < 2016-06-01"
+      },
+      "MedicalRehabilitationAttendentCatastrophic": {
+        "csioCode": "csio:CIMRB",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Catastrophic Impairment Medical Rehabilitation Benefit (post-June 2016 SABS). Used when calcDate >= June 1 2016 and MedicalAttendantCatastrophic is true.",
+        "usedIn": ["PcCoverageCollectionConverter.TryConvertAccidentBenefits"],
+        "dateCondition": "calcDate >= 2016-06-01"
+      }
+    },
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {},
+    "autoSurcharges": {},
+    "habDiscounts": {},
+    "habSurcharges": {
+      "Suites": {
+        "csioCode": "(standard) MultipleFamilySurcharge",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Suites surcharge mapped to standard CSIO MultipleFamilySurcharge code via enumValuesFactory",
+        "frameworkCode": "SurchargeCode.Suites",
+        "usedIn": ["CoverageCodeConverter.TryConvertToCsioHabSurcharge"]
+      },
+      "Mercantile": {
+        "csioCode": "(standard) CommercialExposure",
+        "source": "standard",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Mercantile surcharge mapped to standard CSIO CommercialExposure code via enumValuesFactory",
+        "frameworkCode": "SurchargeCode.Mercantile",
+        "usedIn": ["CoverageCodeConverter.TryConvertToCsioHabSurcharge"]
+      }
+    },
+    "tierCodes": {},
+    "ratedSurchargeSkips": {
+      "Electricity": {
+        "csioCode": "N/A",
+        "source": "trillium",
+        "version": "v043",
+        "availableIn": ["v043"],
+        "description": "Electricity surcharge is explicitly SKIPPED (not sent) in rated hab surcharge conversion",
+        "usedIn": ["FrameworkToCsio.Rated.PcCoverageCollectionConverter.ConvertHabSurcharges"]
+      }
+    }
+  },
+  "questionCodes": {
+    "dayCareInHousehold": {
+      "csioCode": "csio:112",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Day Care in Household question indicator. Used as ResponseIndicator in QuestionAnswer elements.",
+      "usedIn": ["QuestionAnswerConverter.ConvertDayCareInHousehold", "QuestionAnswerCollectionConverter.ConvertToDwell"]
+    },
+    "unlicensedRecreationalVehicles": {
+      "csioCode": "csio:140",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Unlicensed Recreational Vehicles question indicator",
+      "usedIn": ["QuestionAnswerConverter.ConvertUnlicensedRecreationalVehicles"]
+    },
+    "motorizedWheelChairs": {
+      "csioCode": "csio:141",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Motorized Wheelchairs question indicator",
+      "usedIn": ["QuestionAnswerConverter.ConvertMotorizedWheelChairs"]
+    },
+    "trampoline": {
+      "csioCode": "csio:137",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Trampoline ownership question indicator",
+      "usedIn": ["QuestionAnswerConverter.ConvertOwnTrampoline"]
+    },
+    "waterCraft": {
+      "csioCode": "csio:142",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Watercraft ownership question indicator",
+      "usedIn": ["QuestionAnswerConverter.ConvertOwnWaterCraft"]
+    },
+    "gardenTractor": {
+      "csioCode": "csio:138",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Garden Tractor ownership question indicator",
+      "usedIn": ["QuestionAnswerConverter.ConvertGardenTractor"]
+    },
+    "golfCart": {
+      "csioCode": "csio:139",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Golf Cart ownership question indicator",
+      "usedIn": ["QuestionAnswerConverter.ConvertGolfCart"]
+    },
+    "renewableEnergy": {
+      "csioCode": "RenewableEnergyInd",
+      "source": "trillium",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Renewable Energy Installation question indicator (non-csio prefixed, custom name)",
+      "usedIn": ["QuestionAnswerConverter.ConvertRenewableEnergyLiability"]
+    }
+  },
+  "roofMaterialCodes": {
+    "other": {
+      "csioCode": "csio:999",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Roof Material Code: Other",
+      "frameworkValue": "Other",
+      "usedIn": ["RoofMaterialCodeConverter.TryConvertToCsio"]
+    },
+    "otherTile": {
+      "csioCode": "csio:O",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Roof Material Code: Other Tile",
+      "frameworkValue": "Other Tile",
+      "usedIn": ["RoofMaterialCodeConverter.TryConvertToCsio"]
+    },
+    "unknown": {
+      "csioCode": "csio:997",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Roof Material Code: Unknown (declared in constants but usage inherited from Generic)",
+      "usedIn": ["CompanyConstants only"]
+    }
+  },
+  "watercraftEquipmentCodes": {
+    "hull": {
+      "csioCode": "csio:HU",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Equipment Type: Hull. Passed to WatercraftAccessoryConverter when boat coverage > 0.",
+      "usedIn": ["WatercraftAccessoryCollectionConverter.Convert"]
+    },
+    "motor": {
+      "csioCode": "csio:MO",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Equipment Type: Motor. Passed to WatercraftAccessoryConverter when motor coverage > 0.",
+      "usedIn": ["WatercraftAccessoryCollectionConverter.Convert"]
+    }
+  },
+  "booleanCodes": {
+    "boolTrue": {
+      "csioCode": "csio:1",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Boolean True indicator. Used for InspectionReportSourceCd and InspectionStatusCd.",
+      "usedIn": ["HomeLineBusinessConverter.ConvertDwellingInspectionInfo", "InspectionInfoConverter.ConvertInspectionStatusCd"]
+    },
+    "boolFalse": {
+      "csioCode": "csio:0",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Boolean False indicator. Used for InspectionReportSourceCd when property not seen.",
+      "usedIn": ["HomeLineBusinessConverter.ConvertDwellingInspectionInfo"]
+    }
+  },
+  "valuationProductCodes": {
+    "EZITV": {
+      "csioCode": "7",
+      "source": "trillium",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: EZITV (numeric code, not csio-prefixed)",
+      "frameworkEnum": "EvaluatorType.EZITV",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    },
+    "iClarify": {
+      "csioCode": "8",
+      "source": "trillium",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: iClarify (numeric code, not csio-prefixed)",
+      "frameworkEnum": "EvaluatorType.IClarify",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    },
+    "E2Value": {
+      "csioCode": "9",
+      "source": "trillium",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: E2Value (numeric code, not csio-prefixed)",
+      "frameworkEnum": "EvaluatorType.E2Value",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    },
+    "EvalWorks": {
+      "csioCode": "12",
+      "source": "trillium",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: EvalWorks (numeric code, not csio-prefixed)",
+      "frameworkEnum": "EvaluatorType.EvalWorks",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    },
+    "RCT": {
+      "csioCode": "(standard) RCT via enumValuesFactory",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: RCT (uses standard CSIO value)",
+      "frameworkEnum": "EvaluatorType.RCT",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    },
+    "RSMeans": {
+      "csioCode": "(standard) MeansCostWorks via enumValuesFactory",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: RSMeans / MeansCostWorks (uses standard CSIO value)",
+      "frameworkEnum": "EvaluatorType.RSMeans",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    },
+    "Other": {
+      "csioCode": "(standard) Other via enumValuesFactory",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Valuation product: Other (default fallback, uses standard CSIO value)",
+      "frameworkEnum": "Case Else",
+      "usedIn": ["ValuationProductConverter.TryConvertToCsio"]
+    }
+  },
+  "companyMappings": {
+    "IntactInsurance": {
+      "csioCode": "GC",
+      "source": "trillium",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Intact Insurance mapped to company code 'GC'",
+      "usedIn": ["CompanyCodeConverter.TryConvertToCsio"]
+    },
+    "UnicaInsurance": {
+      "csioCode": "(standard) YorkFire via enumValuesFactory",
+      "source": "standard",
+      "version": "v043",
+      "availableIn": ["v043"],
+      "description": "Unica Insurance mapped to standard YorkFire company code",
+      "usedIn": ["CompanyCodeConverter.TryConvertToCsio"]
+    }
+  },
+  "enumMappings": {
+    "policyTypes": {
+      "condo": {
+        "Comprehensive": "ComprehensiveCondominiumForm"
+      },
+      "fec": {
+        "Named Perils - Dwelling": "RentedDwellingStandardForm",
+        "Named Perils - Mobile Home": "TravelVacationTrailerForm"
+      },
+      "home": {
+        "Comprehensive": "HomeownersComprehensiveForm",
+        "Broad": "HomeownersBroadForm",
+        "Standard": "HomeownersStandardForm",
+        "Limited Perils": "BasicResidentialForm"
+      },
+      "mobileHome": {
+        "All Risk": "MobileHomeComprehensiveForm",
+        "NamedPerils": "MobileHomeStandardForm",
+        "Limited Perils": "MobileHomeLimitedForm"
+      },
+      "seasonal": {
+        "Gold": "SeasonalDwellingStandardForm",
+        "Silver": "SeasonalDwellingLimitedForm"
+      },
+      "tenant": {
+        "Comprehensive": "TenantsComprehensiveForm",
+        "Basic": "TenantsPackageStandardForm"
+      }
+    },
+    "billingMethods": {
+      "DirectBill": "DirectBill (standard CSIO)",
+      "Mac": "DirectBill (standard CSIO)",
+      "notes": "Both DirectBill and Mac map to CSIO DirectBill"
+    },
+    "paymentPlans": {
+      "One": "Annual",
+      "Two": "Semiannual",
+      "Three": "ThreePayments403030",
+      "Other": "Other"
+    },
+    "propulsionTypes": {
+      "boatTypes": {
+        "Sailboat": "Sail",
+        "Windsurfer": "Sail",
+        "Canoe": "NonPowerCraft",
+        "JetBoat": "Waterjet",
+        "JetSki": "PWCPersonalWatercraft"
+      },
+      "motorTypes": {
+        "Inboard": "Inboard",
+        "InboardOutboard": "InboardOutdrive",
+        "Outboard": "Outboard"
+      }
+    },
+    "inspectionReportSource": {
+      "propertySeen=true": "AgentBrokerInspection",
+      "propertySeen=false": "NotOrderedorReplacementCostNotVerified"
+    }
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [
+      "IncidentalBusinessPursuitsEndorsement (BusinessUseOfHome)",
+      "Roomer (RentedRoomSuite)",
+      "BooksToolsandInstrumentsPertainingtoaBusiness",
+      "BylawsEndorsement (BuildingBylawsExtension)",
+      "DayCareExtension (DayCareInHome)",
+      "Earthquake",
+      "EnhancedInternalLimits (SpecialLimitsEnhancement)",
+      "EquipmentBreakdown",
+      "FloodDamage",
+      "FireDepartmentServiceCharge",
+      "GlassDeductibleEndorsement",
+      "GlassBreakage",
+      "GuaranteedReplacementCostBuilding",
+      "HomeownersSingleLimit",
+      "Horse (Horses)",
+      "IdentityTheft",
+      "MassEvacuationEndorsement",
+      "NamedPerilsUnitOwnersBuildingImprovements",
+      "PowerFluctuation",
+      "RentalIncome",
+      "SewerBackupCoverage",
+      "WindstormHail",
+      "LegalFees",
+      "DeductibleAssessmentBuydown",
+      "CreditCardForgeryandCounterfeitMoney",
+      "SwimmingPoolorPond",
+      "ResidenceEmployeesLiability",
+      "BedBreakfast",
+      "AdditionalResidencesPropertiesAcreage",
+      "Elevator",
+      "PremisesExtension",
+      "RoofLimitedtoCashValue",
+      "TheftfromVehicle",
+      "VacancyPermit",
+      "AccidentalDeathandDismemberment",
+      "ClaimFreeProtection",
+      "HomeFreezer",
+      "InflationGuardEndorsement",
+      "AdditionalNamedInsured",
+      "GolfCart",
+      "ForestandPrairieProtectionAct",
+      "LimitedLiabilityExtension",
+      "ResidenceVoluntaryCompensation",
+      "WatercraftLiabilityA",
+      "VandalismbyTenantsExclusion",
+      "ExhibitionofAnimals",
+      "ProfessionalUseResPremises",
+      "VacantLand",
+      "PersonalInjuryEndorsement",
+      "HostLiquorLiability",
+      "SeasonalResidence",
+      "AdditionalInsureds",
+      "DebrisRemoval",
+      "LeakageorOverflowofDomesticFuelOil",
+      "CareFacilityContentsExtension",
+      "HomeBusinessCoverage",
+      "LegalLiabilityLossAssessment",
+      "ReplacementCostContentsExtended",
+      "ReplacementCostContentsBasic",
+      "EmergencyMedicalTravelInsurance",
+      "AnimalLiabilityExtension",
+      "NamedPerilsLossAssessmentCoverage",
+      "NamedPerilsUnitOwnersAdditionalProtection"
+    ],
+    "homeDiscounts": [
+      "BusinessUseDiscount", "ClaimsForgiveness", "CooperativeCoop", "EvaluatorBased",
+      "GroupRateApplied", "HailResistant", "Heating", "HomeSecurity", "LongTermOccupancy",
+      "MatureCitizen", "MiscellaneousDiscount", "MobileHomeTiedDown", "MortgageFree",
+      "MultipleFamilyDiscount", "MultipleLine", "MultiplePropertyRisks",
+      "NeighbourhoodWatchCrimePreventionProgramme", "NewHome", "NewPolicy", "NoClaims",
+      "Nonsmoker", "Occupation", "PreferredConstruction", "Renewal", "Retiree",
+      "SeniorCitizenAgeRelated", "SmokeDetector", "Sprinklered",
+      "TankerShuttleServiceFireFightingService", "ValuedPreferredCustomer",
+      "YearBuiltOtherthanNewHome", "WaterLeakDetectionSystem", "DiscountAlarmSystem"
+    ],
+    "homeSurcharges": [
+      "AbsenteeLandlordRentedDwelling", "AgeConditionofHome", "BusinessUseSurcharge",
+      "Claims", "CommercialExposure", "HailDamageSusceptibility", "LogHome",
+      "MiscellaneousSurcharge", "MultipleFamilySurcharge", "Nonpayment",
+      "NoPreviousInsurance", "Occupancy", "PrimaryHeating", "RiskLocation",
+      "SecondaryAuxiliaryHeating"
+    ],
+    "autoDiscounts": [
+      "AbstainfromAlcohol", "BasicPolicyNoFrills", "BrokerSelfService",
+      "DiscountAlarmSystem (AntiTheft)", "DiscountAssociationMembership",
+      "DiscountAwayatSchool", "DiscountClaimsForgiveness", "DiscountConvictionFree",
+      "DiscountConvictionFreeOccasionalDriver", "DiscountDriverAge",
+      "DiscountDriverTraining", "DiscountDrivingSimulator", "DiscountExperiencedDriver",
+      "DiscountFacility", "DiscountFarm", "DiscountFemale", "DiscountGoodStudent",
+      "DiscountGraduatedLicenseHolder", "DiscountGraduatedLicenseforanOccasionalDriver",
+      "DiscountGroupRateApplied", "DiscountHybrid", "DiscountIPromiseProgramParentTeen",
+      "DiscountInsuredsDrivingRecord", "DiscountLowAnnualMileage", "DiscountLowCommuteDistance",
+      "DiscountMaritalStatus", "DiscountMortgageFreeHomeCondominium", "DiscountMultiVehicle",
+      "DiscountMultipleLine", "DiscountNewDriver", "DiscountNewVehicle", "DiscountNoClaims",
+      "DiscountNonsmoker", "DiscountOccasionalDriver", "DiscountOccupation",
+      "DiscountOutofProvince", "DiscountOwnerofVehicle", "DiscountProfessional",
+      "DiscountReligiousClerical", "DiscountRenewal", "DiscountRetiree",
+      "DiscountSeniorCitizenAgeRelated", "DiscountStability", "DiscountTrailPermit",
+      "DiscountValuedPreferredCustomer"
+    ],
+    "autoSurcharges": [
+      "SurchargeBusinessUse", "SurchargeCarPooling", "SurchargeClaims",
+      "SurchargeClaimsforOccasionalDriverclass0605", "SurchargeCommercialExposure",
+      "SurchargeConvictionClaimforanOccasionalDriver", "SurchargeConvictions",
+      "SurchargeConvictionsforOccasionalDriverclass0605",
+      "SurchargeExplosiveRadioactiveMaterial", "SurchargeHighKilometresDriven",
+      "SurchargeHighPerformance", "SurchargeMiscellaneous", "SurchargeMultipleOperators",
+      "SurchargeOutofProvince", "SurchargeOversizeEngine", "SurchargeUsNonCanadianExposure",
+      "SurchargeNoofComprehensiveClaims"
+    ],
+    "autoEndorsementsOntario": [
+      "ClaimsProtectionPlan", "End2 (OPCF02)", "End5 (OPCF05)", "End5C (OPCF05C)",
+      "End5D (OPCF05D)", "End6A (OPCF06A)", "End6D (OPCF06D)", "End7 (OPCF07)",
+      "End35 (OPCF35)", "End13C (OPCF13C)", "End19 (OPCF19)", "End19A (OPCF19A)",
+      "End20 (OPCF20)", "End23A (OPCF23A)", "End25A (OPCF25A)", "End27 (OPCF27)",
+      "End27B (OPCF27B)", "End28 (OPCF28)", "End28A (OPCF28A)", "End29 (OPCF29)",
+      "End30 (OPCF30)", "End31 (OPCF31)", "End32 (OPCF32)", "End37 (OPCF37)",
+      "End38 (OPCF38)", "End40 (OPCF40)", "End43 (OPCF43)", "End43A (OPCF43A)",
+      "End44R/End44 (OPCF44)", "End47 (OPCF47)", "End48 (OPCF48)",
+      "Pak05", "Pak06", "End17 (OPCF17)", "End3 (OPCF03)", "End8A (OPCF08A)",
+      "End16 (OPCF16)", "End9 (OPCF09)", "End20A (LossOfUseBroadForm)",
+      "AnimalLiabilityExtension", "End4B (RadioactiveMaterial)", "End26 (DisappearingDeductible)",
+      "Pak08", "Pak09"
+    ],
+    "autoEndorsementsNonOntario": [
+      "ClaimsProtectionPlan", "End35", "End13C", "End13D", "End13H", "End17",
+      "End19", "End2", "End20", "End23A", "End27", "End28", "End28A", "End3",
+      "End30", "End31", "End32", "End36", "End37", "End38", "End39", "End40",
+      "End43R", "End43RL", "End44", "End5", "End5A", "End6A", "End8", "End8A",
+      "Pak03", "Pak05", "Pak06", "End26", "End4B", "End20A", "End27B", "End30A",
+      "End43", "End48", "AnimalLiabilityExtension", "End16", "End9",
+      "End6D", "End6B", "Pak08", "Pak09", "End19A", "End4A", "End24", "End22",
+      "End7", "End23B", "End25", "End25A", "End6C"
+    ]
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["Inherited from v043/Generic base - standard CSIO discount codes"],
+    "isSurchargePatterns": ["Inherited from v043/Generic base - standard CSIO surcharge codes"],
+    "notes": "Trillium has no CsioToFramework directory. All response classification uses Generic base."
+  },
+  "zCodeInventory": {
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": [],
+    "notes": "Trillium uses NO proprietary Z-codes. All codes are standard CSIO codes."
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 22,
+    "totalCsioCodeConstants": 22,
+    "totalGenericInheritedCodes": 200,
+    "orphanCodes": ["RoofUnknown (csio:997) - declared in CompanyConstants but not directly referenced in Trillium code; likely used via Generic inheritance"],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "zCodeCount": 0,
+    "versionBreakdown": {
+      "v043": 22,
+      "notes": "Single-version carrier, all codes in v043"
+    },
+    "codeBreakdown": {
+      "csioCodesInCompanyConstants": {
+        "csio:LT": "GardenTractor (Coverages class)",
+        "csio:112": "DayCareInHousehold",
+        "csio:140": "UnlicensedRecreationalVehicles",
+        "csio:141": "MotorizedWheelChairs",
+        "csio:137": "Trampoline",
+        "csio:142": "WaterCraft",
+        "csio:138": "GardenTractor (CompanyCsioCode class)",
+        "csio:139": "GolfCart",
+        "csio:999": "RoofOther",
+        "csio:O": "RoofOtherTile",
+        "csio:997": "RoofUnknown",
+        "csio:HU": "EquipmentTypeCdHull",
+        "csio:MO": "EquipmentTypeCdMotor",
+        "csio:THFBU": "Burglary",
+        "csio:VMBC": "Vandalism",
+        "csio:1": "BoolTrue",
+        "csio:0": "BoolFalse",
+        "csio:ACB": "AttendantCare",
+        "csio:CHHMB": "Caregiver",
+        "csio:DCB": "DependantCare",
+        "csio:MEDRH": "MedicalRehabilitation",
+        "csio:CIMRB": "MedicalRehabilitationAttendentCatastrophic"
+      },
+      "nonCsioConstants": {
+        "CompanyPolicyType": ["Comprehensive", "Broad", "Standard", "Limited Perils", "Named Perils - Dwelling", "Named Perils - Mobile Home", "Gold", "Silver", "All Risk", "NamedPerils"],
+        "CompanyCoverageType": ["Policy Limit", "Broad"],
+        "ValuationProducts": ["7 (EZITV)", "8 (iClarify)", "9 (E2Value)", "12 (EvalWorks)"],
+        "CompanyCode": ["GC (Intact)"],
+        "CommonValues": ["0", "Other", "Other Tile", "Theft", "None", "1", "0", "Yes", "Boat", "Motor"]
+      }
+    }
+  }
+}

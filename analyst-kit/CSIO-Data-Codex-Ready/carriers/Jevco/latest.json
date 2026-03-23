@@ -1,0 +1,905 @@
+{
+  "_metadata": {
+    "carrier": "Jevco",
+    "extractedFrom": "Cssi.Schemas.Csio.Converters",
+    "versions": ["v043"],
+    "latestVersion": "v043",
+    "extractionDate": "2026-03-22",
+    "filesProcessed": 19,
+    "description": "Complete CZO mapping for Jevco. Auto-only carrier in v043 base version only. No CompanyConstants.vb -- relies entirely on Generic base for standard CSIO codes. No CoverageCodeConverter override. Carrier-specific overrides are purely behavioral (address formatting, accident benefits, question migration, driver/vehicle assignment logic).",
+    "versionRoles": {
+      "v043": "Base version (only version for Jevco)"
+    },
+    "carrierProfile": {
+      "lineOfBusiness": "Auto only (no hab/home)",
+      "hasCompanyConstants": false,
+      "hasCoverageCodeConverter": false,
+      "hasCsioToFramework": false,
+      "inheritsAllGenericCodes": true,
+      "zCodeCount": 0,
+      "hardcodedCsioCodesCount": 4
+    }
+  },
+  "coverageCodes": {
+    "autoEndorsements": {
+      "_note": "Jevco does NOT override the Generic CoverageCodeConverter. All auto endorsement codes come from the v043 Generic base. The following are the standard CSIO endorsement codes inherited unchanged.",
+      "ontarioEndorsements": {
+        "DrivingRecordProtectorClaims": {
+          "csioCode": "csio:CPP",
+          "frameworkCode": "EndorsementCodes.DrivingRecordProtectorClaims",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Claims Protection Plan"
+        },
+        "Opcf02": {
+          "csioCode": "csio:2",
+          "frameworkCode": "EndorsementCodes.Opcf02",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 2 - Permission to Rent or Lease"
+        },
+        "Opcf03": {
+          "csioCode": "csio:3",
+          "frameworkCode": "EndorsementCodes.Opcf03",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 3 - Permission to Carry Explosives"
+        },
+        "Opcf05": {
+          "csioCode": "csio:5",
+          "frameworkCode": "EndorsementCodes.Opcf05",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 5 - Permission to Rent or Lease Automobile"
+        },
+        "Opcf05C": {
+          "csioCode": "csio:5C",
+          "frameworkCode": "EndorsementCodes.Opcf05C",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 5C"
+        },
+        "Opcf05D": {
+          "csioCode": "csio:5D",
+          "frameworkCode": "EndorsementCodes.Opcf05D",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 5D"
+        },
+        "Opcf06A": {
+          "csioCode": "csio:6A",
+          "frameworkCode": "EndorsementCodes.Opcf06A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 6A - Permission to Carry Passengers for Compensation"
+        },
+        "Opcf06D": {
+          "csioCode": "csio:6D",
+          "frameworkCode": "EndorsementCodes.Opcf06D",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 6D"
+        },
+        "Opcf07": {
+          "csioCode": "csio:7",
+          "frameworkCode": "EndorsementCodes.Opcf07",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 7 - Permission to Deliver Propane"
+        },
+        "Opcf08": {
+          "csioCode": "csio:8",
+          "frameworkCode": "EndorsementCodes.Opcf08",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 8"
+        },
+        "Opcf08A": {
+          "csioCode": "csio:8A",
+          "frameworkCode": "EndorsementCodes.Opcf08A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 8A"
+        },
+        "Opcf09": {
+          "csioCode": "csio:9",
+          "frameworkCode": "EndorsementCodes.Opcf09",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 9"
+        },
+        "Opcf13C": {
+          "csioCode": "csio:13C",
+          "frameworkCode": "EndorsementCodes.Opcf13C",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 13C"
+        },
+        "Opcf16": {
+          "csioCode": "csio:16",
+          "frameworkCode": "EndorsementCodes.Opcf16",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 16 - Agreement Not to Use"
+        },
+        "Opcf17": {
+          "csioCode": "csio:17",
+          "frameworkCode": "EndorsementCodes.Opcf17",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 17"
+        },
+        "Opcf19": {
+          "csioCode": "csio:19",
+          "frameworkCode": "EndorsementCodes.Opcf19",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 19 - Limitation of Amount Payable"
+        },
+        "Opcf19A": {
+          "csioCode": "csio:19A",
+          "frameworkCode": "EndorsementCodes.Opcf19A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 19A"
+        },
+        "Opcf20": {
+          "csioCode": "csio:20",
+          "frameworkCode": "EndorsementCodes.Opcf20",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 20 - Loss of Use"
+        },
+        "Opcf23A": {
+          "csioCode": "csio:23A",
+          "frameworkCode": "EndorsementCodes.Opcf23A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 23A - Agreed Amount"
+        },
+        "Opcf23B": {
+          "csioCode": "csio:23B",
+          "frameworkCode": "EndorsementCodes.Opcf23B",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 23B"
+        },
+        "Opcf25A": {
+          "csioCode": "csio:25A",
+          "frameworkCode": "EndorsementCodes.Opcf25A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 25A - Alteration of Deductible"
+        },
+        "Opcf27": {
+          "csioCode": "csio:27",
+          "frameworkCode": "EndorsementCodes.Opcf27",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 27 - Liability for Damage to Non-Owned Automobiles",
+          "specialLogic": "Jevco overrides ConvertEndorsementLimit for End27/Opcf27 to clear and re-convert limit from company fields"
+        },
+        "Opcf27B": {
+          "csioCode": "csio:27B",
+          "frameworkCode": "EndorsementCodes.Opcf27B",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 27B"
+        },
+        "Opcf28": {
+          "csioCode": "csio:28",
+          "frameworkCode": "EndorsementCodes.Opcf28",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 28 - Excluded Driver"
+        },
+        "Opcf28A": {
+          "csioCode": "csio:28A",
+          "frameworkCode": "EndorsementCodes.Opcf28A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 28A - Excluded Driver"
+        },
+        "Opcf29": {
+          "csioCode": "csio:29",
+          "frameworkCode": "EndorsementCodes.Opcf29",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 29"
+        },
+        "Opcf30": {
+          "csioCode": "csio:30",
+          "frameworkCode": "EndorsementCodes.Opcf30",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 30"
+        },
+        "Opcf31": {
+          "csioCode": "csio:31",
+          "frameworkCode": "EndorsementCodes.Opcf31",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 31"
+        },
+        "Opcf32": {
+          "csioCode": "csio:32",
+          "frameworkCode": "EndorsementCodes.Opcf32",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 32"
+        },
+        "Opcf35": {
+          "csioCode": "csio:35",
+          "frameworkCode": "EndorsementCodes.Opcf35",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 35 - Emergency Assistance"
+        },
+        "Opcf37": {
+          "csioCode": "csio:37",
+          "frameworkCode": "EndorsementCodes.Opcf37",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 37"
+        },
+        "Opcf38": {
+          "csioCode": "csio:38",
+          "frameworkCode": "EndorsementCodes.Opcf38",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 38"
+        },
+        "Opcf40": {
+          "csioCode": "csio:40",
+          "frameworkCode": "EndorsementCodes.Opcf40",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 40"
+        },
+        "Opcf43": {
+          "csioCode": "csio:43",
+          "frameworkCode": "EndorsementCodes.Opcf43",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 43 - Removing Depreciation Deduction"
+        },
+        "Opcf43A": {
+          "csioCode": "csio:43A",
+          "frameworkCode": "EndorsementCodes.Opcf43A",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 43A - Limited Waiver of Depreciation"
+        },
+        "Opcf44": {
+          "csioCode": "csio:44R",
+          "frameworkCode": "EndorsementCodes.Opcf44",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 44R - Family Protection"
+        },
+        "Opcf46": {
+          "csioCode": "csio:46",
+          "frameworkCode": "EndorsementCodes.Opcf46",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 46"
+        },
+        "Opcf47": {
+          "csioCode": "csio:47",
+          "frameworkCode": "EndorsementCodes.Opcf47",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 47"
+        },
+        "Opcf48": {
+          "csioCode": "csio:48",
+          "frameworkCode": "EndorsementCodes.Opcf48",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "OPCF 48"
+        },
+        "LossOfUseBroadForm": {
+          "csioCode": "csio:20A",
+          "frameworkCode": "EndorsementCodes.LossOfUseBroadForm",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Loss of Use Broad Form (End 20A)"
+        },
+        "PermissionToCarryRadioactiveMaterial": {
+          "csioCode": "csio:4B",
+          "frameworkCode": "EndorsementCodes.PermissionToCarryRadioactiveMaterial",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Permission to Carry Radioactive Material (End 4B)"
+        },
+        "DissapearingDeductible": {
+          "csioCode": "csio:26",
+          "frameworkCode": "EndorsementCodes.DissapearingDeductible",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Disappearing Deductible (End 26)"
+        },
+        "PetAccidentWordingEndorsement": {
+          "csioCode": "csio:ANMLB",
+          "frameworkCode": "EndorsementCodes.PetAccidentWordingEndorsement",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Animal Liability Extension"
+        },
+        "Pak05": {
+          "csioCode": "csio:PAK05",
+          "frameworkCode": "EndorsementCodes.Pak05",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Package 05"
+        },
+        "Pak06": {
+          "csioCode": "csio:PAK06",
+          "frameworkCode": "EndorsementCodes.Pak06",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Package 06"
+        },
+        "Pak08": {
+          "csioCode": "csio:PAK08",
+          "frameworkCode": "EndorsementCodes.Pak08",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Package 08"
+        },
+        "Pak09": {
+          "csioCode": "csio:PAK09",
+          "frameworkCode": "EndorsementCodes.Pak09",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Package 09"
+        }
+      },
+      "nonOntarioEndorsements": {
+        "_note": "Non-Ontario provinces use the generic TryConvertToCsioAutoEndorsement which includes additional endorsement codes beyond Ontario.",
+        "End2": { "csioCode": "csio:2", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 2" },
+        "End3": { "csioCode": "csio:3", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 3" },
+        "End4A": { "csioCode": "csio:4A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 4A" },
+        "End4B": { "csioCode": "csio:4B", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 4B" },
+        "End5": { "csioCode": "csio:5", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 5" },
+        "End5A": { "csioCode": "csio:5A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 5A" },
+        "End6A": { "csioCode": "csio:6A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 6A" },
+        "End6B": { "csioCode": "csio:6B", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 6B" },
+        "End6C": { "csioCode": "csio:6C", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 6C" },
+        "End6D": { "csioCode": "csio:6D", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 6D" },
+        "End7": { "csioCode": "csio:7", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 7" },
+        "End8": { "csioCode": "csio:8", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 8" },
+        "End8A": { "csioCode": "csio:8A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 8A" },
+        "End9": { "csioCode": "csio:9", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 9" },
+        "End13C": { "csioCode": "csio:13C", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 13C" },
+        "End13D": { "csioCode": "csio:13D", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 13D" },
+        "End13H": { "csioCode": "csio:13H", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 13H" },
+        "End16": { "csioCode": "csio:16", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 16" },
+        "End17": { "csioCode": "csio:17", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 17" },
+        "End19": { "csioCode": "csio:19", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 19" },
+        "End19A": { "csioCode": "csio:19A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 19A" },
+        "End20": { "csioCode": "csio:20", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 20" },
+        "End20A": { "csioCode": "csio:20A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 20A" },
+        "End22": { "csioCode": "csio:22", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 22" },
+        "End23A": { "csioCode": "csio:23A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 23A" },
+        "End23B": { "csioCode": "csio:23B", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 23B" },
+        "End24": { "csioCode": "csio:24", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 24" },
+        "End25": { "csioCode": "csio:25", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 25" },
+        "End25A": { "csioCode": "csio:25A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 25A" },
+        "End27": { "csioCode": "csio:27", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 27" },
+        "End27B": { "csioCode": "csio:27B", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 27B" },
+        "End28": { "csioCode": "csio:28", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 28" },
+        "End28A": { "csioCode": "csio:28A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 28A" },
+        "End30": { "csioCode": "csio:30", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 30" },
+        "End30A": { "csioCode": "csio:30A", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 30A" },
+        "End31": { "csioCode": "csio:31", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 31" },
+        "End32": { "csioCode": "csio:32", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 32" },
+        "End35": { "csioCode": "csio:35", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 35" },
+        "End36": { "csioCode": "csio:36", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 36" },
+        "End37": { "csioCode": "csio:37", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 37" },
+        "End38": { "csioCode": "csio:38", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 38" },
+        "End39": { "csioCode": "csio:39", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 39" },
+        "End40": { "csioCode": "csio:40", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 40" },
+        "End43": { "csioCode": "csio:43", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 43" },
+        "End43R": { "csioCode": "csio:43R", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 43R" },
+        "End43RL": { "csioCode": "csio:43RL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 43RL" },
+        "End44": { "csioCode": "csio:44", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 44" },
+        "End48": { "csioCode": "csio:48", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Endorsement 48" },
+        "Pak03": { "csioCode": "csio:PAK03", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Package 03" },
+        "Pak05": { "csioCode": "csio:PAK05", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Package 05" },
+        "Pak06": { "csioCode": "csio:PAK06", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Package 06" },
+        "Pak08": { "csioCode": "csio:PAK08", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Package 08" },
+        "Pak09": { "csioCode": "csio:PAK09", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Package 09" }
+      },
+      "increasedAccidentBenefits": {
+        "_note": "These 4 codes are hardcoded directly in Jevco's PcCoverageCollectionConverter.vb. They are standard CSIO codes but assigned outside the CoverageCodeConverter pattern.",
+        "AttendantCare": {
+          "csioCode": "csio:ACB",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Attendant Care Benefit (Increased Accident Benefits)",
+          "triggerCondition": "input.AttendantCare = True"
+        },
+        "Caregiver": {
+          "csioCode": "csio:CHHMB",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Caregiver/Housekeeping/Home Maintenance Benefit (Increased Accident Benefits)",
+          "triggerCondition": "input.Caregiver = True"
+        },
+        "DependantCare": {
+          "csioCode": "csio:DCB",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Dependant Care Benefit (Increased Accident Benefits)",
+          "triggerCondition": "input.DependantCare = True"
+        },
+        "MedicalRehabilitation": {
+          "csioCode": "csio:MEDRH",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Medical/Rehabilitation Benefit (Increased Accident Benefits)",
+          "triggerCondition": "input.MedicalRehabilitation = True"
+        },
+        "IncomeReplacement": {
+          "csioCode": "(resolved from enumValuesFactory)",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Income Replacement Coverage (Increased Accident Benefits)",
+          "triggerCondition": "input.IncomeReplacementCoverage > 400",
+          "hasLimit": true
+        },
+        "Indexation": {
+          "csioCode": "(resolved from enumValuesFactory)",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Indexation Benefit (Increased Accident Benefits)",
+          "triggerCondition": "input.IndexationBenefit = True"
+        },
+        "MedicalRehabAttendantCare": {
+          "csioCode": "(resolved from enumValuesFactory)",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Medical Rehab and Attendant Care Combined (Increased Accident Benefits)",
+          "triggerCondition": "input.MedicalRehabilitationAndAttendantCare = True"
+        },
+        "DeathAndFuneral": {
+          "csioCode": "(resolved from enumValuesFactory)",
+          "source": "standard",
+          "version": "v043",
+          "availableIn": ["v043"],
+          "description": "Death and Funeral Benefits (Increased Accident Benefits)",
+          "triggerCondition": "input.DeathAndFuneral = True"
+        }
+      }
+    },
+    "homeEndorsements": {
+      "_note": "Jevco is auto-only. No home/hab endorsements are carrier-specific. Generic base home endorsements are inherited but not expected to be used."
+    },
+    "homeLiabilities": {},
+    "watercraftLiability": {},
+    "scheduledPropertyItems": {}
+  },
+  "discountCodes": {
+    "autoDiscounts": {
+      "_note": "All auto discount codes come from the v043 Generic base TryConvertToCsioAutoDiscount. No Jevco-specific discount overrides.",
+      "NotIdentified": { "csioCode": "csio:DISMIS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Miscellaneous Discount (Default)" },
+      "Age": { "csioCode": "csio:DISAGE", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Driver Age Discount" },
+      "AssociationMembership": { "csioCode": "csio:DISASS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Association Membership Discount" },
+      "AwayAtSchool": { "csioCode": "csio:DISSCH", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Away at School Discount" },
+      "ClaimForgiveness": { "csioCode": "csio:DISCFR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Claims Forgiveness Discount" },
+      "ClaimsFree": { "csioCode": "csio:DISNCL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "No Claims Discount" },
+      "ConvictionFree": { "csioCode": "csio:DISCFR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Conviction Free Discount" },
+      "ConvictionFreeOccasional": { "csioCode": "csio:DISCFO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Conviction Free Occasional Driver Discount" },
+      "DriverTraining": { "csioCode": "csio:DISDRV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Driver Training Discount" },
+      "Farm": { "csioCode": "csio:DISFRM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Farm Discount" },
+      "Female": { "csioCode": "csio:DISFML", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Female Discount" },
+      "GoodStudent": { "csioCode": "csio:DISGDS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Good Student Discount" },
+      "GraduatedLicense": { "csioCode": "csio:DISGRL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Graduated License Holder Discount" },
+      "GraduatedLicenseOccasional": { "csioCode": "csio:DISGLO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Graduated License Occasional Driver Discount" },
+      "GroupRate": { "csioCode": "csio:DISGRA", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Group Rate Applied Discount" },
+      "IPromiseProgram": { "csioCode": "csio:DISIPR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "I Promise Program (Parent/Teen Safe Driving Contract)" },
+      "InsuredsDrivingRecord": { "csioCode": "csio:DISIDR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Insured's Driving Record Discount" },
+      "LowAnnualMileage": { "csioCode": "csio:DISLAM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Low Annual Mileage Discount" },
+      "LowCommuteDistance": { "csioCode": "csio:DISLCD", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Low Commute Distance Discount" },
+      "MaritalStatus": { "csioCode": "csio:DISMAR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Marital Status Discount" },
+      "Miscellaneous": { "csioCode": "csio:DISMIS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Miscellaneous Discount" },
+      "MultiLine": { "csioCode": "csio:DISMLL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multiple Line Discount" },
+      "MultiVehicle": { "csioCode": "csio:DISMVH", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multi-Vehicle Discount" },
+      "NewDriver": { "csioCode": "csio:DISNDR", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "New Driver Discount" },
+      "NewVehicle": { "csioCode": "csio:DISNVH", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "New Vehicle Discount" },
+      "NonSmoker": { "csioCode": "csio:DISNS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Non-Smoker Discount" },
+      "OccasionalDriver": { "csioCode": "csio:DISOCD", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Occasional Driver Discount" },
+      "Occupation": { "csioCode": "csio:DISOCC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Occupation Discount" },
+      "OutOfProvince": { "csioCode": "csio:DISOOP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Out of Province Discount" },
+      "OwnerOfVehicle": { "csioCode": "csio:DISOWN", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Owner of Vehicle Discount" },
+      "PreferredCustomer": { "csioCode": "csio:DISVPC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Valued/Preferred Customer Discount" },
+      "Professional": { "csioCode": "csio:DISPRO", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Professional Discount" },
+      "RecreationalVehicle": { "csioCode": "csio:DISMRV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multi Recreational Vehicle Discount" },
+      "ReligiousClerical": { "csioCode": "csio:DISRLC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Religious/Clerical Discount" },
+      "Renewal": { "csioCode": "csio:DISRNW", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Renewal Discount" },
+      "Retiree": { "csioCode": "csio:DISRET", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Retiree Discount" },
+      "Experience": { "csioCode": "csio:DISEXP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Experienced Driver Discount" },
+      "Stability": { "csioCode": "csio:DISSTB", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Stability Discount" },
+      "TrailPermit": { "csioCode": "csio:DISTRP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Trail Permit Discount" },
+      "Hybrid": { "csioCode": "csio:DISHYB", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Hybrid Vehicle Discount" },
+      "WinterTire": { "csioCode": "csio:DISSN", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Winter/Snow Tire Discount" }
+    },
+    "autoSurcharges": {
+      "_note": "All auto surcharge codes from the v043 Generic base TryConvertToCsioAutoSurcharge.",
+      "BusinessUse": { "csioCode": "csio:SURBUS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Business Use Surcharge" },
+      "Carpooling": { "csioCode": "csio:SURCPL", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Carpooling Surcharge" },
+      "Claims": { "csioCode": "csio:SURCLM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Claims Surcharge" },
+      "ClaimsOccasional": { "csioCode": "csio:SURCO5", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Claims for Occasional Driver Surcharge" },
+      "CommercialExposure": { "csioCode": "csio:SURCOM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Commercial Exposure Surcharge" },
+      "Convictions": { "csioCode": "csio:SURCNV", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Convictions Surcharge" },
+      "ConvictionsOccasional": { "csioCode": "csio:SURCC5", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Convictions for Occasional Driver Surcharge" },
+      "ExplosiveMaterial": { "csioCode": "csio:SUREXP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Explosive/Radioactive Material Surcharge" },
+      "HighKilometersDriven": { "csioCode": "csio:SURHKM", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "High Kilometres Driven Surcharge" },
+      "HighPerformance": { "csioCode": "csio:SURHIP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "High Performance Surcharge" },
+      "Miscellaneous": { "csioCode": "csio:SURMIS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Miscellaneous Surcharge" },
+      "OutOfProvince": { "csioCode": "csio:SUROOP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Out of Province Surcharge" },
+      "OversizeEngine": { "csioCode": "csio:SUROVS", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Oversize Engine Surcharge" },
+      "USExposure": { "csioCode": "csio:SURUSE", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "US/Non-Canadian Exposure Surcharge" },
+      "MultipleOperator": { "csioCode": "csio:SURMOP", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Multiple Operators Surcharge" },
+      "ClaimsFree": { "csioCode": "csio:SURNCC", "source": "standard", "version": "v043", "availableIn": ["v043"], "description": "Number of Comprehensive Claims Surcharge" }
+    },
+    "habDiscounts": {},
+    "habSurcharges": {},
+    "tierCodes": {}
+  },
+  "genericBaseCodes": {
+    "homeEndorsements": [],
+    "homeLiabilities": [],
+    "homeDiscounts": [],
+    "homeSurcharges": [],
+    "autoEndorsementsOntario": [
+      "csio:CPP", "csio:2", "csio:3", "csio:5", "csio:5C", "csio:5D", "csio:6A", "csio:6D",
+      "csio:7", "csio:8", "csio:8A", "csio:9", "csio:13C", "csio:16", "csio:17", "csio:19",
+      "csio:19A", "csio:20", "csio:20A", "csio:23A", "csio:23B", "csio:25A", "csio:26",
+      "csio:27", "csio:27B", "csio:28", "csio:28A", "csio:29", "csio:30", "csio:31",
+      "csio:32", "csio:35", "csio:37", "csio:38", "csio:40", "csio:43", "csio:43A",
+      "csio:44R", "csio:46", "csio:47", "csio:48", "csio:4B", "csio:ANMLB",
+      "csio:PAK05", "csio:PAK06", "csio:PAK08", "csio:PAK09"
+    ],
+    "autoEndorsementsNonOntario": [
+      "csio:2", "csio:3", "csio:4A", "csio:4B", "csio:5", "csio:5A", "csio:6A", "csio:6B",
+      "csio:6C", "csio:6D", "csio:7", "csio:8", "csio:8A", "csio:9", "csio:13C", "csio:13D",
+      "csio:13H", "csio:16", "csio:17", "csio:19", "csio:19A", "csio:20", "csio:20A",
+      "csio:22", "csio:23A", "csio:23B", "csio:24", "csio:25", "csio:25A", "csio:26",
+      "csio:27", "csio:27B", "csio:28", "csio:28A", "csio:30", "csio:30A", "csio:31",
+      "csio:32", "csio:35", "csio:36", "csio:37", "csio:38", "csio:39", "csio:40",
+      "csio:43", "csio:43R", "csio:43RL", "csio:44", "csio:48",
+      "csio:ANMLB", "csio:PAK03", "csio:PAK05", "csio:PAK06", "csio:PAK08", "csio:PAK09"
+    ],
+    "autoDiscounts": [
+      "csio:DISMIS", "csio:DISAGE", "csio:DISASS", "csio:DISSCH", "csio:DISCFR",
+      "csio:DISNCL", "csio:DISCFO", "csio:DISDRV", "csio:DISFRM", "csio:DISFML",
+      "csio:DISGDS", "csio:DISGRL", "csio:DISGLO", "csio:DISGRA", "csio:DISIPR",
+      "csio:DISIDR", "csio:DISLAM", "csio:DISLCD", "csio:DISMAR", "csio:DISMLL",
+      "csio:DISMVH", "csio:DISNDR", "csio:DISNVH", "csio:DISNS", "csio:DISOCD",
+      "csio:DISOCC", "csio:DISOOP", "csio:DISOWN", "csio:DISVPC", "csio:DISPRO",
+      "csio:DISMRV", "csio:DISRLC", "csio:DISRNW", "csio:DISRET", "csio:DISEXP",
+      "csio:DISSTB", "csio:DISTRP", "csio:DISHYB", "csio:DISSN"
+    ],
+    "autoSurcharges": [
+      "csio:SURBUS", "csio:SURCPL", "csio:SURCLM", "csio:SURCO5", "csio:SURCOM",
+      "csio:SURCNV", "csio:SURCC5", "csio:SUREXP", "csio:SURHKM", "csio:SURHIP",
+      "csio:SURMIS", "csio:SUROOP", "csio:SUROVS", "csio:SURUSE", "csio:SURMOP",
+      "csio:SURNCC"
+    ]
+  },
+  "enumMappings": {
+    "companyCode": {
+      "_note": "Jevco-specific mapping: InsuranceCompanyName -> numeric company code. Defined in CompanyCodeConverter.vb.",
+      "AXA": "88",
+      "AlgomaMutual": "A01",
+      "Allianz": "902",
+      "Aviva": "48",
+      "Elite": "48",
+      "TradersGeneral": "48",
+      "BayofQuinte": "A04",
+      "Chieftain": "53",
+      "ChubbInsurance": "819",
+      "CoachmanInsurance": "810",
+      "Cumis": "497",
+      "Dominion": "7",
+      "Echelon": "27",
+      "Economical": "94",
+      "Federation": "8",
+      "Germania": "A21",
+      "Grain": "536",
+      "INGHalifax": "222",
+      "IndustrialGeneral": "222",
+      "INGNovex": "222",
+      "Jevco": "828",
+      "Kingsway": "897",
+      "LloydsNonMarine": "274",
+      "Lombard": "850",
+      "MetroGeneral": "729",
+      "NorthWaterloo": "568",
+      "OptimumWest": "590",
+      "Pafco": "90",
+      "PeaceHills": "75",
+      "PeelMaryboroughMutual": "A44",
+      "PeelMutual": "A43",
+      "Pembridge": "59",
+      "Perth": "428",
+      "Pilot": "178",
+      "PortageMutual": "213",
+      "PromutuelGaspesie": "826",
+      "PromutuelTemiscouata": "834",
+      "RelianceBrandedProgram": "330",
+      "RoyalSunAlliance": "40",
+      "SGICanada": "313",
+      "SaskatchewanMutual": "260",
+      "ScottishandYork": "446",
+      "SouthEasthopeMutual": "A46",
+      "Sovereign": "370",
+      "Trafalgar": "824",
+      "TrilliumMutual": "A57",
+      "Waterloo": "633",
+      "Wawanesa": "207",
+      "WesternAssurance": "32",
+      "WesternGeneral": "849",
+      "INGWesternUnion": "222",
+      "WestminsterMutual": "A51",
+      "YorkFire": "303",
+      "Zurich": "119"
+    },
+    "convictionCodes": {
+      "_note": "Jevco-specific conviction code mapping. Framework conviction enum -> numeric CZO code.",
+      "BloodAlcoholOverLegalLimit": "279",
+      "CarelessDriving": "132",
+      "CrowdingDriversSeat": "211",
+      "DangerousDrivingIncludingBodilyHarm": "136",
+      "DefectiveBrakes": "210",
+      "DisobeyTrafficSignOrSignal": "239",
+      "DriveSuspendedVehicle": "293",
+      "DriveLeftOfCentre": "102",
+      "DriveOnSidewalk": "214",
+      "DriverDistraction": "277",
+      "DrivingDuringCurfew": "261",
+      "DrivingOnABetOrWager": "138",
+      "DrivingWhileUnauthorized": "139",
+      "DrivingWhileSuspended": "274",
+      "ExcessBloodAlcoholWhileAccompanyingLicenseClassG1Driver": "265",
+      "MotorcyclistWithoutHelmet": "222",
+      "FailureToSurrenderLicense": "200",
+      "FailureToDiscloseParticulars": "205",
+      "FailureToGiveNameAddressInformation": "248",
+      "FailureToPassBreathOrBloodTest": "281",
+      "FailureToPermitPassing": "116",
+      "FailureToProduceEvidenceOfInsurance": "201",
+      "FailureToRemain": "140",
+      "FailureTorenderAllPossibleAssistance": "141",
+      "FailureToReportAccidentDamage": "107",
+      "FailureToReportDamageToHighwayProperty": "208",
+      "FailureToSignal": "108",
+      "FailureToStop": "109",
+      "FailureToStopAtLevelCrossingWhenDrivingSchoolBus": "147",
+      "FailureToStopAtSceneOfAccident": "142",
+      "FailureToStopAtRequestOfPoliceOfficer": "145",
+      "FailureToStopForPoliceResultingInLicenseSuspension": "283",
+      "FailureToYield": "246",
+      "FailureToYieldToPedestrianCyclist": "114",
+      "FalseStatementReInsurance": "257",
+      "FollowingTooClosely": "115",
+      "HeadlightOffense": "218",
+      "ImpairedDriving": "155",
+      "ImproperBackingUp": "209",
+      "ImproperOpeningOfDoor": "212",
+      "ImproperPassing": "223",
+      "ImproperTowing": "237",
+      "ImproperTurn": "241",
+      "ImproperUseofDividedHighway": "117",
+      "ImproperUseOfEmergencyEquipment": "215",
+      "ImprudentDriver": "213",
+      "InsufficientSpaceBetweenVehicles": "217",
+      "LicenseClassG1G2AccompanyingDriverFailureToIdentify": "284",
+      "LicenseClassG1AccompDriverFailOrRefuseToProvideBreath": "263",
+      "LicenseClassG1DriveOnProhibitedHighway": "268",
+      "LicenseClassG1DriveWithFrontSeatPassenger": "266",
+      "LicenseClassM1DriveMotorCycleOnProhibitedHighway": "271",
+      "LicenseClassM1DriveMotorcycleWithPassenger": "270",
+      "LicenseClassRestrictedDriveWithAlcoholInBlood": "285",
+      "LicenseClassRestrictedDriveAtUnlawfulHour": "269",
+      "LicenseClassRestrictedDriveUnaccompaniedByQualifiedDriver": "264",
+      "LicenseClassRestrictedDriveWithExcessPassengers": "267",
+      "MajorConvictionNotSpecified": "159",
+      "MakeFalseStatement": "259",
+      "MinorConvictionNotSpecified": "157",
+      "MotorManslaughter": "151",
+      "NoDriversLicenseOrImproperClass": "242",
+      "NoDriversLicenseRecreationalVehicle": "242",
+      "NoInsuranceRecreationalVehicle": "252",
+      "NoviceDriverFailreOrRefuseBreathSample": "280",
+      "ObstructingTraffic": "212",
+      "OperateMotorVehicleNoInsurance": "253",
+      "PedestrianViolation": "224",
+      "PermitNoviceDriveInContraventionOfConductorRestrictions": "262",
+      "ProduceFalseEvidence": "256",
+      "ProduceFalseInsurance": "258",
+      "Racing": "153",
+      "RadarWarningDeviceInVehicle": "225",
+      "RailwayCrossing": "226",
+      "RefuseBreathalyserOrProvideBloodSample": "156",
+      "SchoolBusImproperPassingOrFailToStop": "250",
+      "SchoolCrossingStopSignalFailureToObey": "249",
+      "SchoolPlaygroundImproperPassing": "118",
+      "SeatBeltViolation": "228",
+      "SeriousConvictionNotSpecified": "158",
+      "SpeedingOverCompanyMajorConviction": "127",
+      "Speeding": "232",
+      "SpeedingSchoolZonePlayground": "251",
+      "StopSign": "111",
+      "Stunting": "130",
+      "Suspended": "274",
+      "SuspendedForLife": "274",
+      "TrafficLaneViolation": "131",
+      "TrailerOffense": "240",
+      "UnnecessarySlowDriving": "125",
+      "UnsafeDrivingDueToWeather": "219",
+      "UnsafeVehicle": "244",
+      "UnsafeMove": "243",
+      "UnsafeOrProhibitedUturn": "294",
+      "VehicleOwnerWithoutInsurance": "254",
+      "WrongWayOnOneWay": "103"
+    },
+    "vehicleLiabilityCard": {
+      "_note": "Jevco-specific TypeOfInsuranceCard mapping.",
+      "None": "None",
+      "Permanent": "Perm",
+      "Temporary": "Temp"
+    },
+    "customQuestionAnswers": {
+      "_note": "Jevco custom question/answer response indicators used in QuestionAnswerCollectionConverter.",
+      "LapsesForNonPaymentInThreeYears": {
+        "responseIndicatorCode": "130",
+        "description": "Whether insured has 3+ non-payment lapses in the last 3 years",
+        "logic": "Count InsuranceLapse/InsuranceAndLicenseLapse with reason=NonPaymentOfPremium within 3 years; if count >= 3 then Yes"
+      },
+      "RacingSpeedEvents": {
+        "responseIndicatorCode": "131",
+        "description": "Whether vehicle is used for racing/speed events",
+        "fieldSource": "DynamicFieldNameConstants.RacingSpeedEvents"
+      },
+      "PrototypeExperimental": {
+        "responseIndicatorCode": "132",
+        "description": "Whether vehicle is prototype/experimental",
+        "fieldSource": "DynamicFieldNameConstants.PrototypeExperimental"
+      }
+    }
+  },
+  "responseClassification": {
+    "isDiscountPatterns": ["DIS*", "csio:DIS*"],
+    "isSurchargePatterns": ["SUR*", "csio:SUR*"],
+    "_note": "Generic base pattern. Jevco does not override IsDiscount or IsSurcharge."
+  },
+  "zCodeInventory": {
+    "_note": "Jevco has ZERO proprietary Z-codes. No CompanyConstants.vb exists. All codes are standard CSIO codes from the Generic base.",
+    "autoCoverage": [],
+    "habCoverage": [],
+    "discountsSurcharges": []
+  },
+  "carrierSpecificBehavior": {
+    "addressConverter": {
+      "description": "Jevco overrides address conversion to use simple address format (clearing DetailAddr) for both regular and legal addresses.",
+      "file": "FrameworkToCsio/Unrated/AddrConverter.vb"
+    },
+    "pcCoverageConverter": {
+      "description": "Jevco overrides ConvertEndorsementLimit for End27/Opcf27 to clear existing limits and re-convert from company-specific fields.",
+      "file": "FrameworkToCsio/Unrated/PcCoverageConverter.vb"
+    },
+    "pcCoverageCollectionConverter": {
+      "description": "Jevco suppresses ConvertTPL (does nothing). Overrides ConvertAccidentBenefits to send increased AB coverages (csio:ACB, csio:CHHMB, csio:DCB, csio:MEDRH, IncomeReplacement, Indexation, MedicalRehabAttendantCare, DeathAndFuneral) directly on each coverage.",
+      "file": "FrameworkToCsio/Unrated/PcCoverageCollectionConverter.vb"
+    },
+    "persAutoLineBusinessConverter": {
+      "description": "Jevco explicitly adds unassigned drivers to all vehicles with 0% usage. Copies optional increased AB coverages (csio:ACB, csio:CHHMB, csio:DCB, csio:MEDRH, IncomeReplacement, Indexation, MedicalRehabAttendantCare, DeathAndFuneral) to each vehicle.",
+      "file": "FrameworkToCsio/Unrated/PersAutoLineBusinessConverter.vb"
+    },
+    "persAutoPolicyQuoteInqRqConverter": {
+      "description": "Jevco migrates QuestionAnswers from PersPolicy to first vehicle (CarryPassengersForCompensation, MaterialMisrepresentation, ApplicantBothRegisteredAndActualOwner->RegisteredOwner) and first driver (LicenseSuspendedCancelledLapsed, InsuranceCancelledDeclinedRefused).",
+      "file": "FrameworkToCsio/Unrated/PersAutoPolicyQuoteInqRqConveter.vb"
+    },
+    "persAutoPolInfoConverter": {
+      "description": "Same QuestionAnswer migration logic as PersAutoPolicyQuoteInqRqConverter but for PolicyInfo requests.",
+      "file": "FrameworkToCsio/Unrated/PersAutoPolInfoConverter.vb"
+    },
+    "questionAnswerCollectionConverter": {
+      "description": "Jevco removes RegisteredOwner question (different purpose for this field), adds 3 custom questions: LapsesForNonPayment (code 130), RacingSpeedEvents (code 131), PrototypeExperimental (code 132).",
+      "file": "FrameworkToCsio/Unrated/QuestionAnswerCollectionConverter.vb"
+    },
+    "pcVehConverter": {
+      "description": "Jevco overrides ConvertAlteredInd to use CustomizedVehicle field (defaults to false if empty or 'No'). Suppresses ConvertVehRateGroupInfo (does nothing).",
+      "file": "FrameworkToCsio/Unrated/PcVehConverter.vb"
+    },
+    "ratedPcCoverageCollectionConverter": {
+      "description": "Jevco suppresses ConvertBodilyInjury and ConvertPropertyDamage in rated output (does nothing for both).",
+      "file": "FrameworkToCsio/Rated/PcCoverageCollectionConverter.vb"
+    }
+  },
+  "verificationReport": {
+    "totalCarrierSpecificCodes": 0,
+    "totalGenericInheritedCodes": 105,
+    "orphanCodes": [],
+    "undeclaredCodes": [],
+    "extractionCompleteness": "100%",
+    "versionBreakdown": {
+      "v043only": 105
+    },
+    "notes": [
+      "Jevco is auto-only and resides solely in v043 base version.",
+      "No CompanyConstants.vb exists -- zero proprietary Z-codes.",
+      "No CoverageCodeConverter override -- all coverage/discount/surcharge codes come from v043/Generic.",
+      "4 standard CSIO codes (csio:ACB, csio:CHHMB, csio:DCB, csio:MEDRH) are hardcoded in PcCoverageCollectionConverter for increased accident benefits.",
+      "3 Jevco-specific enum converters: CompanyCode (55 companies), ConvictionCode (97 convictions), VehLiabilityCard (3 types).",
+      "No CsioToFramework folder exists -- Jevco does not have response parsing overrides.",
+      "Carrier-specific overrides are behavioral only (address formatting, question migration, driver assignment, suppression of TPL/BI/PD/rate group info)."
+    ],
+    "filesProcessed": {
+      "total": 19,
+      "enumConverters": 4,
+      "frameworkToCsioUnrated": 11,
+      "frameworkToCsioRated": 2,
+      "csioToFramework": 0,
+      "rootLevel": 1,
+      "genericBaseReviewed": 3
+    }
+  }
+}

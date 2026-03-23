@@ -1,0 +1,16 @@
+{
+  "carrier": "Economical",
+  "extractions": [
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22.json",
+      "rulesFile": "2026-03-22-rules.md",
+      "totalCodes": 24,
+      "zCodeCount": 21,
+      "filesProcessed": 166,
+      "versions": ["v043", "V128", "V132", "V133"],
+      "durationSeconds": 120,
+      "status": "complete"
+    }
+  ]
+}
