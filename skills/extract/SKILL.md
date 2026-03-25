@@ -13,22 +13,32 @@ Example: /czo-extractor:extract Aviva
 Run /czo-extractor:list to see available carriers.
 ```
 
-## Step 0: Check for Existing Extraction
+## Step 0: Check for Existing Extraction (MANDATORY — do this BEFORE anything else)
 
-Before running a full extraction, check TWO locations for existing data:
+**IMPORTANT: You MUST run these checks before launching any extraction agent. Do NOT skip this step.**
 
-1. **Live extraction** at the converter root: `.czo-extraction/carriers/<Carrier>/latest.json`
-2. **Seed data** bundled with the plugin. Find it by running this command:
-   ```bash
-   find "$HOME/.claude/plugins/cache" -path "*/czo-extractor/*/seed-data/carriers/<Carrier>/latest.json" 2>/dev/null | head -1
-   ```
-   If that returns nothing (e.g., local dev install), also try:
-   ```bash
-   find "$(pwd)" -path "*/czo-extractor-plugin/seed-data/carriers/<Carrier>/latest.json" 2>/dev/null | head -1
-   ```
-   The seed-data directory lives at the root of the czo-extractor plugin, alongside `tools/`, `agents/`, and `skills/`.
+Run these Bash commands NOW to check for existing data:
 
-If extraction data is found in EITHER location, read the `_metadata` section from the JSON to get the extraction date and code counts, then present the user with a choice:
+```bash
+# Check 1: Live extraction at converter root
+ls ".czo-extraction/carriers/<Carrier>/latest.json" 2>/dev/null
+
+# Check 2: Seed data in plugin cache (marketplace install)
+SEED_FILE=$(find "$HOME/.claude/plugins/cache" -path "*/czo-extractor/*/seed-data/carriers/<Carrier>/latest.json" 2>/dev/null | head -1)
+echo "Seed file: $SEED_FILE"
+
+# Check 3: Seed data from local dev install
+if [ -z "$SEED_FILE" ]; then
+  SEED_FILE=$(find "$HOME" -maxdepth 8 -path "*/czo-extractor*/seed-data/carriers/<Carrier>/latest.json" 2>/dev/null | head -1)
+  echo "Seed file (local): $SEED_FILE"
+fi
+```
+
+Replace `<Carrier>` with the actual carrier name before running.
+
+### If existing data IS found (either check):
+
+Read the JSON file to get the extraction date and code counts, then **STOP and ask the user**:
 
 ```
 Found existing extraction for <Carrier>:
@@ -43,12 +53,16 @@ Options:
 ```
 
 **If the user chooses option 1:**
-- If the data is from seed-data and `.czo-extraction/carriers/<Carrier>/` doesn't exist yet, copy ALL files from `seed-data/carriers/<Carrier>/` to `.czo-extraction/carriers/<Carrier>/`
+- If the data is from seed-data, copy ALL files from the seed-data carrier directory to `.czo-extraction/carriers/<Carrier>/` using: `mkdir -p .czo-extraction/carriers/<Carrier> && cp -r "$(dirname "$SEED_FILE")/"* .czo-extraction/carriers/<Carrier>/`
 - If the data is already in `.czo-extraction/`, do nothing — it's already in place
 - Update `.czo-extraction/inventory.json` if the carrier isn't listed yet
-- Report the summary and stop (skip Steps 1 and 2)
+- Report the summary and **STOP** (skip Steps 1 and 2)
 
-**If the user chooses option 2**, or if NO existing data is found, proceed with the full extraction below.
+**If the user chooses option 2**, proceed with the full extraction below.
+
+### If NO existing data is found in any location:
+
+Proceed directly to Step 1.
 
 ---
 
