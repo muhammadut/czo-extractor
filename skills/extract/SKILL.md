@@ -18,7 +18,15 @@ Run /czo-extractor:list to see available carriers.
 Before running a full extraction, check TWO locations for existing data:
 
 1. **Live extraction** at the converter root: `.czo-extraction/carriers/<Carrier>/latest.json`
-2. **Seed data** bundled with the plugin: `seed-data/carriers/<Carrier>/latest.json` (relative to this plugin's root directory — use the Glob tool to find `**/czo-extractor-plugin/seed-data/carriers/<Carrier>/latest.json`)
+2. **Seed data** bundled with the plugin. Find it by running this command:
+   ```bash
+   find "$HOME/.claude/plugins/cache" -path "*/czo-extractor/*/seed-data/carriers/<Carrier>/latest.json" 2>/dev/null | head -1
+   ```
+   If that returns nothing (e.g., local dev install), also try:
+   ```bash
+   find "$(pwd)" -path "*/czo-extractor-plugin/seed-data/carriers/<Carrier>/latest.json" 2>/dev/null | head -1
+   ```
+   The seed-data directory lives at the root of the czo-extractor plugin, alongside `tools/`, `agents/`, and `skills/`.
 
 If extraction data is found in EITHER location, read the `_metadata` section from the JSON to get the extraction date and code counts, then present the user with a choice:
 
